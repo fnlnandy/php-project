@@ -11,7 +11,7 @@
 
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
-            <tr>
+            <tr onclick="UpdateDataTracker(0, true)">
                 <th>Num Affect</th>
                 <th>Num Emp</th>
                 <th>Ancien Lieu</th>

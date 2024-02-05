@@ -12,7 +12,7 @@ function GetNewId() : int
 }
 
 
-$query = "INSERT INTO AFFECTER VALUES ([1], [2], [3], [4], [5], [6]);";
+$query = "INSERT INTO AFFECTER VALUES ('[1]', '[2]', '[3]', '[4]', '[5]', '[6]');";
 var_dump($query);
 var_dump($_POST);
 $id = $_POST['formNumAffect'];
@@ -20,12 +20,16 @@ $id = $_POST['formNumAffect'];
 if ($id == -1) {
     $id = GetNewId();
 }
+var_dump($_POST['formDateAffect']);
+var_dump($_POST['formPriseService']);
 
+$dateAffect = new DateTime($_POST['formDateAffect']);
+$datePrServ = new DateTime($_POST['formPriseService']);
 ExecPreparedQuery($query,
                     $id,
                     $_POST['formNumEmp'], 
                     $_POST['formAncienLieu'], 
                     $_POST['formNouveauLieu'], 
-                    $_POST['formDateAffect'], 
-                    $_POST['formPriseService']);
+                    $dateAffect->format("Y-m-d"), 
+                    $datePrServ->format("Y-m-d"));
 ?>
