@@ -6,6 +6,17 @@
         <link rel="stylesheet" href="View/Stylesheets/main.css">
     </head>
     <body>
+        <!-- Initalize the database. -->
+        <?php 
+        include_once("Models/Database/init.php");
+
+        CheckConnection();
+        CreateDatabase();
+        // TO-DO: Comment this
+        include_once("Models/Database/queries.php");
+        PopulateTablesRandomly();
+        ?>
+
         <a href="View/affectation_page.php">Affectation</a>
     </body>
 </html>

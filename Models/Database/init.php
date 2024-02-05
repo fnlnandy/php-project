@@ -7,12 +7,20 @@ DEFINE("gDatabaseName", "dbGestionTravail");// To avoid hard-coding
 
 $gSqlConnection = new mysqli(gHostName, gUserName, gPassword);
 
+/*
+* Checks for any error when opening the database 
+*/
 function CheckConnection() : void {
+    global $gSqlConnection;
+
     if (!$gSqlConnection) {
         die("Error opening database, quitting.");
     }
 }
 
+/*
+* Specify that we want to use the correct database
+*/
 function ChooseDatabase()
 {
     global $gSqlConnection;
@@ -23,6 +31,9 @@ function ChooseDatabase()
     }
 }
 
+/*
+* Initializes the database and populates it.
+*/
 function CreateDatabase()
 {
     global $gSqlConnection;
@@ -63,7 +74,4 @@ function CreateDatabase()
         }
     }
 }
-
-CheckConnection();
-CreateDatabase();
 ?>
