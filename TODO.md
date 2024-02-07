@@ -20,3 +20,7 @@
     - Suppression...[ ]
     - Génerer un PDF d'un arrêté....................[ ]
     - Listage d'affect effectuées entre deux dates..[ ]
+
+## Misc
+* Prendre en charge les nombres qui commencent par '0'
+* Prendre en charge la reorganization des ids d'affectation

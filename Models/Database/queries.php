@@ -51,16 +51,16 @@ function PopulateTablesRandomly()
     ExecQuery("DELETE FROM EMPLOYE");
     ExecQuery("DELETE FROM AFFECTER");
     ExecQuery("INSERT INTO LIEU VALUES
-    ('01', 'Lieu1', 'Province1'),
-    ('02', 'Lieu2', 'Province2'),
-    ('03', 'Lieu3', 'Province3'),
-    ('04', 'Lieu4', 'Province4');");
+    ('1', 'Lieu1', 'Province1'),
+    ('2', 'Lieu2', 'Province2'),
+    ('3', 'Lieu3', 'Province3'),
+    ('4', 'Lieu4', 'Province4');");
     ExecQuery("INSERT INTO EMPLOYE VALUES
-    ('01', 'Mr', 'RAKOTO', 'Be', 'rakotobe@host.com', 'Directeur General', '01'),
-    ('02', 'Mlle', 'RANDRIA', 'Kely', 'randriakely@host.com', 'Ingenieur', '02'),
-    ('03', 'Mme', 'RAVO', 'Soa', 'ravosoa@host.com', 'Ingenieur', '03');");
+    ('1', 'Mr', 'RAKOTO', 'Be', 'rakotobe@host.com', 'Directeur General', '1'),
+    ('2', 'Mlle', 'RANDRIA', 'Kely', 'randriakely@host.com', 'Ingenieur', '2'),
+    ('3', 'Mme', 'RAVO', 'Soa', 'ravosoa@host.com', 'Ingenieur', '3');");
     ExecQuery("INSERT INTO AFFECTER VALUES
-    ('01', '01', '01', '02', '2024-01-02', '2024-02-15'),
-    ('02', '03', '02', '01', '2024-01-19', '2024-01-02');");
+    ('1', '1', '1', '2', '2024-01-02', '2024-02-15'),
+    ('2', '3', '2', '1', '2024-01-19', '2024-01-02');");
 }
 ?>
