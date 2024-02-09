@@ -27,19 +27,20 @@
             ?>
         </table>
 
-        <button>Ajouter</button>
-        <button>Modifier</button>
+        <button onclick="AddAffectation()">Ajouter</button>
+        <button onclick="EditAffectation()">Modifier</button>
         <button onclick="RemoveAffectationEntry()">Supprimer</button>
 
         <!-- Form that will be shown when adding or editing an entry -->
-        <form method="post" id="affectationForm">
+        <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>
                 <input type="number" value="-1" id="formNumAffect" name="formNumAffect">
                 <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required>        <br></label>
                 <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
                 <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>
                 <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>
                 <label>Date Prise Service: <input id="formPriseService" name="formPriseService" type="date" required><br></label>
-                <input type="submit" value="Confirmer" onclick="SubmitForm()">
+                <input type="submit" value="Confirmer">
+                <input type="reset" value="Réinitaliser">
         </form>
     </body>
 </html>
