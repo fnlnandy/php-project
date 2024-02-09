@@ -40,8 +40,6 @@ function ExecPreparedQuery(string $queryToBind, ... $queryArgs): mysqli_result|b
         $idCounter++;
     }
 
-    var_dump($queryToBind);
-
     return ExecQuery($queryToBind);
 }
 
@@ -51,14 +49,8 @@ function ExecPreparedQuery(string $queryToBind, ... $queryArgs): mysqli_result|b
  */
 function PopulateTablesRandomly()
 {
-    ExecQuery("DELETE FROM LIEU");
     ExecQuery("DELETE FROM EMPLOYE");
     ExecQuery("DELETE FROM AFFECTER");
-    ExecQuery("INSERT INTO LIEU VALUES
-    ('1', 'Lieu1', 'Province1'),
-    ('2', 'Lieu2', 'Province2'),
-    ('3', 'Lieu3', 'Province3'),
-    ('4', 'Lieu4', 'Province4');");
     ExecQuery("INSERT INTO EMPLOYE VALUES
     ('1', 'Mr', 'RAKOTO', 'Be', 'rakotobe@host.com', 'Directeur General', '1'),
     ('2', 'Mlle', 'RANDRIA', 'Kely', 'randriakely@host.com', 'Ingenieur', '2'),

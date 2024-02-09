@@ -18,5 +18,6 @@
         ?>
 
         <a href="View/affectation_page.php">Affectation</a>
+        <a href="View/location_page.php">Lieu</a>
     </body>
 </html>

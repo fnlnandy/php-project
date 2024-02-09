@@ -3,7 +3,7 @@
  * the form submitting, current mode depends
  * on its value
  */
-var gDataTracker = {
+var gAffectationDataTracker = {
     id: 0,
     isEditMode: false
 };
@@ -27,28 +27,28 @@ function SendXMLHttpRequest(dataToSend, dest) {
 }
 
 /**
- * Updates gDataTracker to the current
+ * Updates gAffectationDataTracker to the current
  * selected <td> row
  */
 function UpdateDataTracker(id, mode)
 {
     var displayer = document.getElementById("currentNumAffectDisplayer");
 
-    gDataTracker.id = (id < 0 ? 0 : id);
-    gDataTracker.mode = mode;
-    displayer.value = gDataTracker.id;
+    gAffectationDataTracker.id = (id < 0 ? 0 : id);
+    gAffectationDataTracker.isEditMode = mode;
+    displayer.value = gAffectationDataTracker.id;
 
     console.log(id);
     console.log(mode);
 }
 
 /**
- * Removes an entry using gDataTracker's data,
+ * Removes an entry using gAffectationDataTracker's data,
  * remove.php handles all edge cases
  */
 function RemoveAffectationEntry()
 {
-    SendXMLHttpRequest(gDataTracker, "../Control/Affectation/remove.php");
+    SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/remove.php");
 }
 
 /**
@@ -87,21 +87,26 @@ function EditAffectation()
     var datePriseServiceField = document.getElementById("formPriseService");
     var tableRows = document.getElementsByClassName("affectationRow");
 
-    if (gDataTracker.id <= 0 || gDataTracker.id > tableRows.length) {
+    if (gAffectationDataTracker.id <= 0) {
         alert("Séléctionnez une affectation valide.");
         return;
     }
 
-    gDataTracker.isEditMode = true;
+    gAffectationDataTracker.isEditMode = true;
     form.hidden = false;
 
-    var columnsOnRow = tableRows[gDataTracker.id - 1].querySelectorAll("td");
-    console.log(columnsOnRow);
-    numEmpField.value = columnsOnRow[1].innerText;
-    ancienLieuField.value = columnsOnRow[2].innerText;
-    nouveauLieuField.value = columnsOnRow[3].innerText;
-    dateAffectField.value = columnsOnRow[4].innerText;
-    datePriseServiceField.value = columnsOnRow[5].innerText;
+    for (var i = 0 ; i < tableRows.length ; i++) {
+        var columnsInRow = tableRows[i].querySelectorAll("td");
+
+        if (columnsInRow[0].innerText == gAffectationDataTracker.id) {
+            numEmpField.value           = columnsInRow[1].innerText;
+            ancienLieuField.value       = columnsInRow[2].innerText;
+            nouveauLieuField.value      = columnsInRow[3].innerText;
+            dateAffectField.value       = columnsInRow[4].innerText;
+            datePriseServiceField.value = columnsInRow[5].innerText;
+            break;
+        }
+    }
 }
 
 /*
@@ -123,8 +128,8 @@ function SubmitForm()
     }
     else {
     var formData = {
-        numAffect: gDataTracker.id,
-        editMode: gDataTracker.isEditMode,
+        numAffect: gAffectationDataTracker.id,
+        editMode: gAffectationDataTracker.isEditMode,
         numEmp: numEmpField.value,
         ancienLieu: ancienLieuField.value,
         nouveauLieu: nouveauLieuField.value,

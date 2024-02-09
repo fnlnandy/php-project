@@ -22,6 +22,8 @@
     - Listage d'affect effectuées entre deux dates..[ ]
 
 ## Misc
+* Ajouter des checks pour les overflow de nombre de caractères
+* Changer la fonction de modification pour qu'elle ne depende pas de x.length
 * Prendre en charge les nombres qui commencent par '0'.......[ ]
 * Prendre en charge la reorganization des ids d'affectation..[ ]
 * Ajuster le formulaire et la table d'Affectation
