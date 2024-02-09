@@ -1,11 +1,11 @@
 <?php
 include_once("init.php");
 
-/*
-* Instantly executes a query without the hassle
-* of referencing $gSqlConnection and specifiying
-* the use of our database
-*/
+/**
+ * Shortcut to avoid referencing $gSqlConnection and choosing
+ * out current database everytime we want to execute a single
+ * query
+ */
 function ExecQuery(string $query): mysqli_result|bool
 {
     global $gSqlConnection;
@@ -20,11 +20,14 @@ function ExecQuery(string $query): mysqli_result|bool
     return $result;
 }
 
-/*
-* Instead of using the default prepared query format using ?
-* we bind parameters using their indexes, the expected format is:
-* Ex: SELECT [1] FROM [2] WHERE [3] = [4];
-*/
+/**
+ * Instead of using $var->prepare which requires you to reference
+ * $gSqlConnection, and isn't really modular when you want to re-order
+ * arguments in it, this function replaces arguments in a string with
+ * $queryArgs which are arguments with variable number
+ * 
+ * Expected format is : INSTR [1] [2]...;
+ */
 function ExecPreparedQuery(string $queryToBind, ... $queryArgs): mysqli_result|bool
 {
     // Expected starting id of the bindable parameters
@@ -42,9 +45,10 @@ function ExecPreparedQuery(string $queryToBind, ... $queryArgs): mysqli_result|b
     return ExecQuery($queryToBind);
 }
 
-/*
-* For debugging purposes 
-*/
+
+/**
+ * Populates the tables for debugging purposes
+ */
 function PopulateTablesRandomly()
 {
     ExecQuery("DELETE FROM LIEU");

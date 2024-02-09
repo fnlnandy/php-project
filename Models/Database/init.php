@@ -7,9 +7,10 @@ DEFINE("gDatabaseName", "dbGestionTravail");// To avoid hard-coding
 
 $gSqlConnection = new mysqli(gHostName, gUserName, gPassword);
 
-/*
-* Checks for any error when opening the database 
-*/
+/**
+ * Checks if there was any error while connecting
+ * to the MySql database
+ */
 function CheckConnection() : void {
     global $gSqlConnection;
 
@@ -18,9 +19,11 @@ function CheckConnection() : void {
     }
 }
 
-/*
-* Specify that we want to use the correct database
-*/
+/**
+ * Specify that we want to use the correct database,
+ * for some reason it must be called before executing
+ * a query
+ */
 function ChooseDatabase()
 {
     global $gSqlConnection;
@@ -31,9 +34,10 @@ function ChooseDatabase()
     }
 }
 
-/*
-* Initializes the database and populates it.
-*/
+/**
+ * Initalize the database and add every
+ * needed table
+ */
 function CreateDatabase()
 {
     global $gSqlConnection;
@@ -66,6 +70,8 @@ function CreateDatabase()
         );",
     );
 
+    // We execute each element from $queries and simultaneously
+    // check for any possible error
     foreach ($queries as $query) {
         $result = $gSqlConnection->query($query);
 

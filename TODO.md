@@ -24,3 +24,6 @@
 ## Misc
 * Prendre en charge les nombres qui commencent par '0'.......[ ]
 * Prendre en charge la reorganization des ids d'affectation..[ ]
+* Ajuster le formulaire et la table d'Affectation
+    - Remplacer IDs par texte dans le formulaire..[ ]
+    - Remplacer IDs par texte dans la table.......[ ]

@@ -1,10 +1,18 @@
+/**
+ * Global data tracker to be used later for
+ * the form submitting, current mode depends
+ * on its value
+ */
 var gDataTracker = {
     id: 0,
     isEditMode: false
 };
 
-var gResponseText = "";
-
+/**
+ * Sends a Request to a specific file,
+ * response is just logged, but we rarely
+ * are able to use that response
+ */
 function SendXMLHttpRequest(dataToSend, dest) {
     var req = new XMLHttpRequest();
 
@@ -18,6 +26,10 @@ function SendXMLHttpRequest(dataToSend, dest) {
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
 }
 
+/**
+ * Updates gDataTracker to the current
+ * selected <td> row
+ */
 function UpdateDataTracker(id, mode)
 {
     var displayer = document.getElementById("currentNumAffectDisplayer");
@@ -30,11 +42,19 @@ function UpdateDataTracker(id, mode)
     console.log(mode);
 }
 
+/**
+ * Removes an entry using gDataTracker's data,
+ * remove.php handles all edge cases
+ */
 function RemoveAffectationEntry()
 {
     SendXMLHttpRequest(gDataTracker, "../Control/Affectation/remove.php");
 }
 
+/**
+ * Switches current mode to addMode, handles
+ * showing the form to add a new entry
+ */
 function AddAffectation()
 {
     var form = document.getElementById("affectationForm");
@@ -53,6 +73,10 @@ function AddAffectation()
     datePriseServiceField.value = "";
 }
 
+/**
+ * Switches the current mode to edit mode, fills the form
+ * with the current selected row's data
+ */
 function EditAffectation()
 {
     var form = document.getElementById("affectationForm");

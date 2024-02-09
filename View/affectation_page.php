@@ -33,7 +33,6 @@
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>
-                <input type="number" value="-1" id="formNumAffect" name="formNumAffect">
                 <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required>        <br></label>
                 <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
                 <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>

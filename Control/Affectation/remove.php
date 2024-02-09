@@ -1,6 +1,11 @@
 <?php
 include_once("../../Models/Database/queries.php");
 
+/**
+ * Removes an entry having the id : $id
+ * from AFFECTER if $id is > 0 (i.e. if it's valid)
+ * and if the entry exists at all
+ */
 function RemoveEntryFromDatabase()
 {
     $data = json_decode(file_get_contents("php://input"), true);
@@ -14,5 +19,8 @@ function RemoveEntryFromDatabase()
     ExecPreparedQuery($query, $realId);
 }
 
+/**
+ * This file's main function
+ */
 RemoveEntryFromDatabase();
 ?>
