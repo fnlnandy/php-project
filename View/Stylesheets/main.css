@@ -12,3 +12,8 @@
     cursor: pointer;
     background-color: beige;
 }
+
+.workerRow:hover {
+    cursor: pointer;
+    background-color: beige;
+}

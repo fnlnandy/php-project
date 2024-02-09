@@ -29,3 +29,10 @@
 * Ajuster le formulaire et la table d'Affectation
     - Remplacer IDs par texte dans le formulaire..[ ]
     - Remplacer IDs par texte dans la table.......[ ]
+
+## Improvements
+* Create namespaces for queries.php and init.php
+    - Maybe fuse the files ?
+* Fuse repeating files into helpers
+* Create namespaces for the handler.js file(s)
+* Use UpdateDataTracker when it's possible

@@ -19,5 +19,6 @@
 
         <a href="View/affectation_page.php">Affectation</a>
         <a href="View/location_page.php">Lieu</a>
+        <a href="View/worker_page.php">Employés</a>
     </body>
 </html>

@@ -49,14 +49,5 @@ function ExecPreparedQuery(string $queryToBind, ... $queryArgs): mysqli_result|b
  */
 function PopulateTablesRandomly()
 {
-    ExecQuery("DELETE FROM EMPLOYE");
-    ExecQuery("DELETE FROM AFFECTER");
-    ExecQuery("INSERT INTO EMPLOYE VALUES
-    ('1', 'Mr', 'RAKOTO', 'Be', 'rakotobe@host.com', 'Directeur General', '1'),
-    ('2', 'Mlle', 'RANDRIA', 'Kely', 'randriakely@host.com', 'Ingenieur', '2'),
-    ('3', 'Mme', 'RAVO', 'Soa', 'ravosoa@host.com', 'Ingenieur', '3');");
-    ExecQuery("INSERT INTO AFFECTER VALUES
-    ('1', '1', '1', '2', '2024-01-02', '2024-02-15'),
-    ('2', '3', '2', '1', '2024-01-19', '2024-01-02');");
 }
 ?>
