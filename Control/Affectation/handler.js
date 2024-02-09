@@ -24,6 +24,7 @@ function SendXMLHttpRequest(dataToSend, dest) {
         }    
     };
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
+    location.reload();
 }
 
 /**
@@ -49,6 +50,7 @@ function UpdateDataTracker(id, mode)
 function RemoveAffectationEntry()
 {
     SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/remove.php");
+    location.reload();
 }
 
 /**

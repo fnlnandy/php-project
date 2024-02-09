@@ -24,6 +24,7 @@ function SendXMLHttpRequest(dataToSend, dest) {
         }    
     };
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
+    location.reload(); // Force refresh to load data instantly
 }
 
 /**
@@ -105,4 +106,5 @@ function SubmitForm()
     };
 
     SendXMLHttpRequest(dataToSend, "../Control/Location/form_submit.php");
+    location.reload();
 }
