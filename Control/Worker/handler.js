@@ -109,6 +109,7 @@ function EditWorker()
 function RemoveWorker()
 {
     SendXMLHttpRequest(gWorkerDataTracker, "../Control/Worker/remove.php");
+    location.reload();
 }
 
 /*

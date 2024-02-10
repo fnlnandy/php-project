@@ -142,4 +142,5 @@ function SubmitForm()
     }
     
     SendXMLHttpRequest(formData, "../Control/Affectation/form_submit.php");
+    location.reload();
 }

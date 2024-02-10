@@ -83,6 +83,7 @@ function EditLocation()
 function RemoveLocation()
 {
     SendXMLHttpRequest(gLocationDataTracker, "../Control/Location/remove.php");
+    location.reload();
 }
 
 /*
