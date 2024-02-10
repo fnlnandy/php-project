@@ -11,7 +11,7 @@ class LocationHelper
         if ($possibelId <= 0)
             return;
 
-        ExecPreparedQuery("DELETE FROM LIEU WHERE IDLieu = [1];", $possibelId);
+        SQLQuery::ExecPreparedQuery("DELETE FROM LIEU WHERE IDLieu = [1];", $possibelId);
     }
 }
 

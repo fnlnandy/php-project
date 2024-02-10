@@ -7,7 +7,7 @@ include_once("../Models/Database/queries.php");
  */
 function PopulateLocationList()
 {
-    $result = ExecQuery("SELECT * FROM LIEU ORDER BY IDLieu ASC;");
+    $result = SQLQuery::ExecQuery("SELECT * FROM LIEU ORDER BY IDLieu ASC;");
     $counter = 0;
 
     while($resultRow = $result->fetch_assoc()) {

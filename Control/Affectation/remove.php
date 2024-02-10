@@ -17,7 +17,7 @@ class AffectationHelper {
         }
 
         $query = "DELETE FROM AFFECTER WHERE NumAffect = [1];";
-        ExecPreparedQuery($query, $realId);
+        SQLQuery::ExecPreparedQuery($query, $realId);
     }
     }
 /**

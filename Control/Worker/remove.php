@@ -11,7 +11,7 @@ class WorkerHelper
         if ($possibelId <= 0)
             return;
 
-        ExecPreparedQuery("DELETE FROM EMPLOYE WHERE NumEmp = [1];", $possibelId);
+        SQLQuery::ExecPreparedQuery("DELETE FROM EMPLOYE WHERE NumEmp = [1];", $possibelId);
     }
 }
 

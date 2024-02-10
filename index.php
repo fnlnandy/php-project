@@ -8,13 +8,9 @@
     <body>
         <!-- Initalize the database. -->
         <?php 
-        include_once("Models/Database/init.php");
-
-        CheckConnection();
-        CreateDatabase();
-        // TO-DO: Comment this
         include_once("Models/Database/queries.php");
-        PopulateTablesRandomly();
+        SQLQuery::CheckConnection();
+        SQLQuery::CreateDatabase();
         ?>
 
         <a href="View/affectation_page.php">Affectation</a>

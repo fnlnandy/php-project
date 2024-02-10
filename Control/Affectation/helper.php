@@ -7,7 +7,7 @@ include_once("../Models/Database/queries.php");
  */
 function PopulateAffectationList()
 {
-    $result = ExecQuery("SELECT * FROM AFFECTER ORDER BY NumAffect ASC;");
+    $result = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY NumAffect ASC;");
     $counter = 0;
 
     while($resultRow = $result->fetch_assoc()) {

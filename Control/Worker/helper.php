@@ -7,7 +7,7 @@ include_once("../Models/Database/queries.php");
  */
 function PopulateWorkerList()
 {
-    $result = ExecQuery("SELECT * FROM EMPLOYE ORDER BY NumEmp ASC;");
+    $result = SQLQuery::ExecQuery("SELECT * FROM EMPLOYE ORDER BY NumEmp ASC;");
     $counter = 0;
 
     while($resultRow = $result->fetch_assoc()) {

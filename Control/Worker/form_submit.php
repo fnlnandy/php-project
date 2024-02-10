@@ -10,7 +10,7 @@ class Worker {
      */
     public static function GenerateNewID()
     {
-        $lastIdQuery = ExecQuery("SELECT * FROM EMPLOYE ORDER BY NumEmp DESC LIMIT 1;");
+        $lastIdQuery = SQLQuery::ExecQuery("SELECT * FROM EMPLOYE ORDER BY NumEmp DESC LIMIT 1;");
         $realId      = intval($lastIdQuery->fetch_assoc()['NumEmp']) + 1;
 
         return $realId;
@@ -35,7 +35,7 @@ class Worker {
             $queryToExec = "UPDATE EMPLOYE SET Civilite='[2]', Nom='[3]', Prenom='[4]', Mail='[5]', Poste='[6]', Lieu='[7]' WHERE NumEmp='[1]';";
         }
 
-        ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Civilite'], $receivedData['Nom'],
+        SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Civilite'], $receivedData['Nom'],
                           $receivedData['Prenom'], $receivedData['Mail'], $receivedData['Poste'], $receivedData['Lieu']);
     }
 }

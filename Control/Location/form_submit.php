@@ -10,7 +10,7 @@ class Location {
      */
     public static function GenerateNewID()
     {
-        $lastIdQuery = ExecQuery("SELECT * FROM LIEU ORDER BY IDLieu DESC LIMIT 1;");
+        $lastIdQuery = SQLQuery::ExecQuery("SELECT * FROM LIEU ORDER BY IDLieu DESC LIMIT 1;");
         $realId      = intval($lastIdQuery->fetch_assoc()['IDLieu']) + 1;
 
         return $realId;
@@ -35,7 +35,7 @@ class Location {
             $queryToExec = "UPDATE LIEU SET Design='[2]', Province='[3]' WHERE IDLieu='[1]';";
         }
 
-        ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Design'], $receivedData['Province']);
+        SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Design'], $receivedData['Province']);
     }
 }
 
