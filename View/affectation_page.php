@@ -9,7 +9,6 @@
     <script src="../Control/Affectation/handler.js"></script>
         <a href="../index.php">Menu principal</a>
 
-        <label>Id actuel:<input id="currentNumAffectDisplayer" type="number" readonly value="0"></label>
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
             <tr class="affectationHeaderRow">

@@ -15,7 +15,7 @@
             <label>Non affectés<input type="checkbox" id="showUnaffectedOne" name="showUnaffectedOnes" onchange="UpdateAffectedCheck()"></label>
             <input type="submit" value="Afficher">
         </form>
-        <label>Id actuel:<input id="currentNumWorkerDisplayer" type="number" readonly value="0"></label>
+        
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
             <tr class="workerHeaderRow">

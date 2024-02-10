@@ -28,11 +28,14 @@ function SendXMLHttpRequest(dataToSend, dest) {
 }
 
 /**
- * 
+ * Updates gWorkerDataTracker to the current
+ * selected <td> row
  */
-function HighlightCurrentSelected()
+function UpdateDataTracker(id, mode)
 {
     var workerTableRows = document.getElementsByClassName("workerRow");
+    gWorkerDataTracker.id = (id < 0 ? 0 : id);
+    gWorkerDataTracker.isEditMode = mode;
 
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         workerTableRows[i].style.backgroundColor = "";
@@ -46,22 +49,6 @@ function HighlightCurrentSelected()
             break;
         }
     }
-}
-
-/**
- * Updates gWorkerDataTracker to the current
- * selected <td> row
- */
-function UpdateDataTracker(id, mode)
-{
-    var displayer = document.getElementById("currentNumWorkerDisplayer");
-    gWorkerDataTracker.id = (id < 0 ? 0 : id);
-    gWorkerDataTracker.isEditMode = mode;
-    displayer.value = gWorkerDataTracker.id;
-
-    HighlightCurrentSelected();
-    console.log(id);
-    console.log(mode);
 }
 
 function AddWorker()

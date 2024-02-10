@@ -33,14 +33,22 @@ function SendXMLHttpRequest(dataToSend, dest) {
  */
 function UpdateDataTracker(id, mode)
 {
-    var displayer = document.getElementById("currentNumLocationDisplayer");
-
+    var locationTableRows = document.getElementsByClassName("locationRow");
     gLocationDataTracker.id = (id < 0 ? 0 : id);
     gLocationDataTracker.isEditMode = mode;
-    displayer.value = gLocationDataTracker.id;
 
-    console.log(id);
-    console.log(mode);
+    for (var i = 0 ; i < locationTableRows.length ; i++) {
+        locationTableRows[i].style.backgroundColor = "";
+    }
+
+    for (var i = 0 ; i < locationTableRows.length ; i++) {
+        var columnsInRow = locationTableRows[i].querySelectorAll("td");
+
+        if (columnsInRow[0].innerText == gLocationDataTracker.id) {
+            locationTableRows[i].style.backgroundColor = "beige";
+            break;
+        }
+    }
 }
 
 function AddLocation()

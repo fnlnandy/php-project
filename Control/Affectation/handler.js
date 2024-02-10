@@ -33,14 +33,22 @@ function SendXMLHttpRequest(dataToSend, dest) {
  */
 function UpdateDataTracker(id, mode)
 {
-    var displayer = document.getElementById("currentNumAffectDisplayer");
-
+    var affectationTableRows = document.getElementsByClassName("affectationRow");
     gAffectationDataTracker.id = (id < 0 ? 0 : id);
     gAffectationDataTracker.isEditMode = mode;
-    displayer.value = gAffectationDataTracker.id;
 
-    console.log(id);
-    console.log(mode);
+    for (var i = 0 ; i < affectationTableRows.length ; i++) {
+        affectationTableRows[i].style.backgroundColor = "";
+    }
+
+    for (var i = 0 ; i < affectationTableRows.length ; i++) {
+        var columnsInRow = affectationTableRows[i].querySelectorAll("td");
+
+        if (columnsInRow[0].innerText == gAffectationDataTracker.id) {
+            affectationTableRows[i].style.backgroundColor = "beige";
+            break;
+        }
+    }
 }
 
 /**
