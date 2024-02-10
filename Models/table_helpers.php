@@ -17,13 +17,11 @@ class TableHelper {
         SQLQuery::ExecPreparedQuery("DELETE FROM ".$tableName." WHERE ".$idInDatabase." = [1];", $possibleId);
     }
 
-    /**
-     * Helper function to populate an HTML Table element,
-     * makes other helper.php files irrelevant
+        /**
+     * 
      */
-    public static function PopulateTableElementWithDatabseData($sourceTable, $idToGet, $className)
+    public static function PopulateTableElementWithQueryResult($result, $idToGet, $className)
     {
-        $result = SQLQuery::ExecQuery("SELECT * FROM ".$sourceTable." ORDER BY ".$idToGet." ASC;");
         $counter = 0;
 
         while($resultRow = $result->fetch_assoc()) {
@@ -43,6 +41,16 @@ class TableHelper {
 
             echo "</tr>";
         }
+    }
+
+    /**
+     * Helper function to populate an HTML Table element,
+     * makes other helper.php files irrelevant
+     */
+    public static function PopulateTableElementWithDatabseData($sourceTable, $idToGet, $className)
+    {
+        $result = SQLQuery::ExecQuery("SELECT * FROM ".$sourceTable." ORDER BY ".$idToGet." ASC;");
+        TableHelper::PopulateTableElementWithQueryResult($result, $idToGet, $className);
     }
 }
 ?>

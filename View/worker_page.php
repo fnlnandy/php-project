@@ -9,10 +9,10 @@
     <script src="../Control/Worker/handler.js"></script>
         <a href="../index.php">Menu principal</a>
 
-        <div class="searchBarContainer">
-        <input type="search" id="searchBarByNameOrFirstname">
-        <button>o</button>
-        </div>
+        <form class="searchBarContainer" method="get">
+            <input type="search" id="searchBar" name="searchBar">
+            <input type="submit" value="o">
+        </form>
         <label>Id actuel:<input id="currentNumWorkerDisplayer" type="number" readonly value="0"></label>
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
@@ -27,8 +27,8 @@
             </tr>
 
             <?php
-                include_once("../Models/table_helpers.php");
-                TableHelper::PopulateTableElementWithDatabseData("EMPLOYE", "NumEmp", "workerRow");
+                include_once("../Control/Worker/page_load.php");
+                WorkerPageConditions::PopulateWorkersAfterConditions();
             ?>
         </table>
 

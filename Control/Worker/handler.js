@@ -145,3 +145,36 @@ function SubmitForm()
     SendXMLHttpRequest(dataToSend, "../Control/Worker/form_submit.php");
     location.reload();
 }
+
+/**
+ * 
+ */
+// function SendSearchBarVal()
+// {
+//     var searchBar = document.getElementById("searchBarByNameOrFirstname");
+//     var searchString = String(searchBar.value);
+//     var nameToSearch = searchString;
+//     var firstnameToSearch  = ""
+
+//     if (searchString.includes(" ")) {
+//         var splitString = searchString.split(" ", 2);
+//         nameToSearch = splitString[0];
+//         firstnameToSearch = splitString[1];
+//     }
+
+//     var dataToSend = {
+//         Nom: nameToSearch,
+//         Prenom: firstnameToSearch,
+//     };
+
+//     var request = new XMLHttpRequest();
+
+//     request.open("GET", "../View/worker_page.php");              // We prepare the destination file
+//     request.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
+//     request.onreadystatechange = function () {
+//         if (request.readyState == 4 && request.status === 200) {
+//             console.log(request.responseText);
+//         }    
+//     };
+//     request.send(JSON.stringify(dataToSend));// We send the data in JSON Format
+// }
