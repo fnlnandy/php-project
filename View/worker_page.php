@@ -66,6 +66,10 @@
         <button onclick="AddWorker()">Ajouter</button>
         <button onclick="EditWorker()">Modifier</button>
         <button onclick="RemoveWorker()">Supprimer</button>
+        <form method="get">
+            <input type="submit" value="Afficher les affectations">
+            <input type="number" id="workerId" name="workerId" readonly hidden>
+        </form>
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="workerForm" hidden>
@@ -82,6 +86,25 @@
                 <input type="submit" value="Confirmer">
                 <input type="reset" value="Réinitaliser">
         </form>
+
+        <div id="affectationListContainer" hidden>
+            <table border="1"id="affectationList">
+                <tr>
+                    <th>Num Affect</th>
+                    <th>Ancien Lieu</th>
+                    <th>Nouveau Lieu</th>
+                    <th>Date Affect</th>
+                    <th>Date Prise Service</th>
+                </tr>
+                <?php 
+                    include_once("../Control/Worker/affectation_list.php")
+                ?>
+            </table>
+        </div>
+        <script>
+            ShowOrHideAffectationList();
+            console.log("Working.");
+        </script>
 
         <div id="searchResults">
 

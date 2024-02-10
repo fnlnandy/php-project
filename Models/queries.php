@@ -11,7 +11,7 @@ class XMLHttpRequest {
     /**
      * Decodes JSON data sent via AJAX
      */
-    public static function DecodeJson(): array
+    public static function DecodeJson(): array|null
     {
         $returnValue = json_decode(file_get_contents("php://input"), true);
         return $returnValue;

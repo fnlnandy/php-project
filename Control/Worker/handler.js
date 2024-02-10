@@ -34,8 +34,11 @@ function SendXMLHttpRequest(dataToSend, dest) {
 function UpdateDataTracker(id, mode)
 {
     var workerTableRows = document.getElementsByClassName("workerRow");
+    var affectCurrWorkerId = document.getElementById("workerId");
+
     gWorkerDataTracker.id = (id < 0 ? 0 : id);
     gWorkerDataTracker.isEditMode = mode;
+    affectCurrWorkerId.value = gWorkerDataTracker.id;
 
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         workerTableRows[i].style.backgroundColor = "";
@@ -180,4 +183,20 @@ function UpdateAffectedCheck()
         affectedCBox.checked = false;
         return;
     }
+}
+
+/**
+ * 
+ */
+function ShowOrHideAffectationList()
+{
+    const url = new URLSearchParams(window.location.search);
+
+    console.log("HEEE");
+    if (url.get("workerId") === null)
+        return;
+
+    console.log("HEEE");
+    var workersAffectList = document.getElementById("affectationListContainer");
+    workersAffectList.hidden = false;
 }
