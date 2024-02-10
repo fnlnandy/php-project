@@ -5,7 +5,7 @@ class LocationHelper
 {
     public static function RemoveEntryFromDatabase()
     {
-        $receivedData = json_decode(file_get_contents("php://input"), true);
+        $receivedData = XMLHttpRequest::DecodeJson();
         $possibelId = intval($receivedData['id']);
 
         if ($possibelId <= 0)

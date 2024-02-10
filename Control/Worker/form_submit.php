@@ -23,7 +23,7 @@ class Worker {
     public static function InsertOrReplaceEntry()
     {
         $queryToExec = "";
-        $receivedData = json_decode(file_get_contents("php://input"), true);
+        $receivedData = XMLHttpRequest::DecodeJson();
         $possibleId = intval($receivedData['NumEmp']);
         $isEditMode = (intval($receivedData['editMode']) != 0);
 

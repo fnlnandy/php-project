@@ -23,7 +23,7 @@ class Affectation {
     public static function InsertOrReplaceEntry()
     {
         $query        = "";
-        $receivedData = json_decode(file_get_contents("php://input"), true); // We get the date sent via AJAX in JSON format
+        $receivedData = XMLHttpRequest::DecodeJson(); // We get the date sent via AJAX in JSON format
         $id           = intval($receivedData['numAffect']);                  // We get the ID, that will be checked if valid or not
         $editMode     = (intval($receivedData['editMode']) != 0);            // We also get the EditMode, in case the ID wasn't correctly made invalid for some reason
 

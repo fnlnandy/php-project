@@ -9,7 +9,7 @@ class AffectationHelper {
      */
     public static function RemoveEntryFromDatabase()
     {
-        $data = json_decode(file_get_contents("php://input"), true);
+        $data = XMLHttpRequest::DecodeJson();
         $realId = intval($data["id"]);
 
         if ($realId <= 0) {

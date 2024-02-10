@@ -7,6 +7,14 @@ DEFINE("gDatabaseName", "dbGestionTravail");// To avoid hard-coding
 
 $gSqlConnection = new mysqli(gHostName, gUserName, gPassword);
 
+class XMLHttpRequest {
+    public static function DecodeJson(): array
+    {
+        $returnValue = json_decode(file_get_contents("php://input"), true);
+        return $returnValue;
+    }
+}
+
 class SQLQuery {
     /**
      * Checks if there was any error while connecting
@@ -121,6 +129,13 @@ class SQLQuery {
         }
 
         return SQLQuery::ExecQuery($queryToBind);
+    }
+    /**
+     * 
+     */
+    public static function RemoveFromTable()
+    {
+
     }
 }
 ?>

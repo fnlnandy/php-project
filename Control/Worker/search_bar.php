@@ -3,7 +3,7 @@ include_once("../../Models/Database/queries.php");
 
 function PopulateSearchBarResults()
 {
-    $receivedData = json_decode(file_get_contents("php://input"), true);
+    $receivedData = XMLHttpRequest::DecodeJson();
     $nameToSearch = $receivedData['Nom'];
     $firstnameToSearch = $receivedData['Prenom'];
     $queryToExec = "SELECT * FROM EMPLOYE WHERE NOM LIKE '%[1]%' OR NOM LIKE '%[2]%' OR PRENOM LIKE '%[1]%' OR PRENOM LIKE '%[3]%';";

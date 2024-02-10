@@ -23,7 +23,7 @@ class Location {
     public static function InsertOrReplaceEntry()
     {
         $queryToExec = "";
-        $receivedData = json_decode(file_get_contents("php://input"), true);
+        $receivedData = XMLHttpRequest::DecodeJson();
         $possibleId = intval($receivedData['IDLieu']);
         $isEditMode = (intval($receivedData['editMode']) != 0);
 
