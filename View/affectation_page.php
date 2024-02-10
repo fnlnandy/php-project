@@ -22,8 +22,8 @@
             </tr>
 
             <?php
-            include_once("../Control/Affectation/helper.php");
-            PopulateAffectationList(); // Should always be last
+            include_once("../Models/table_helpers.php");
+            TableHelper::PopulateTableElementWithDatabseData("AFFECTER", "NumAffect", "affectationRow");
             ?>
         </table>
 

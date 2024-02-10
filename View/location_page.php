@@ -19,8 +19,8 @@
             </tr>
 
             <?php
-            include_once("../Control/Location/helper.php");
-            PopulateLocationList(); // Should always be last
+                include_once("../Models/table_helpers.php");
+                TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "locationRow");
             ?>
         </table>
 

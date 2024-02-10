@@ -27,8 +27,8 @@
             </tr>
 
             <?php
-            include_once("../Control/Worker/helper.php");
-            PopulateWorkerList(); // Should always be last
+                include_once("../Models/table_helpers.php");
+                TableHelper::PopulateTableElementWithDatabseData("EMPLOYE", "NumEmp", "workerRow");
             ?>
         </table>
 

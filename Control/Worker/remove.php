@@ -1,19 +1,10 @@
 <?php
 include_once("../../Models/queries.php");
+include_once("../../Models/table_helpers.php");
 
-class WorkerHelper
-{
-    public static function RemoveEntryFromDatabase()
-    {
-        $receivedData = XMLHttpRequest::DecodeJson();
-        $possibelId = intval($receivedData['id']);
-
-        if ($possibelId <= 0)
-            return;
-
-        SQLQuery::ExecPreparedQuery("DELETE FROM EMPLOYE WHERE NumEmp = [1];", $possibelId);
-    }
-}
-
-WorkerHelper::RemoveEntryFromDatabase();
+/**
+ * Removes from EMPLOYE the entry that has id 'id' as value
+ * of the column 'NumEmp'
+ */
+TableHelper::RemoveEntryFromTable("id", "EMPLOYE", "NumEmp");
 ?>
