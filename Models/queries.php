@@ -8,6 +8,9 @@ DEFINE("gDatabaseName", "dbGestionTravail");// To avoid hard-coding
 $gSqlConnection = new mysqli(gHostName, gUserName, gPassword);
 
 class XMLHttpRequest {
+    /**
+     * Decodes JSON data sent via AJAX
+     */
     public static function DecodeJson(): array
     {
         $returnValue = json_decode(file_get_contents("php://input"), true);
