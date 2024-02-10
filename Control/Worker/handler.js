@@ -28,17 +28,38 @@ function SendXMLHttpRequest(dataToSend, dest) {
 }
 
 /**
+ * 
+ */
+function HighlightCurrentSelected()
+{
+    var workerTableRows = document.getElementsByClassName("workerRow");
+
+    for (var i = 0 ; i < workerTableRows.length ; i++) {
+        workerTableRows[i].style.backgroundColor = "";
+    }
+
+    for (var i = 0 ; i < workerTableRows.length ; i++) {
+        var columnsInRow = workerTableRows[i].querySelectorAll("td");
+
+        if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
+            workerTableRows[i].style.backgroundColor = "beige";
+            break;
+        }
+    }
+}
+
+/**
  * Updates gWorkerDataTracker to the current
  * selected <td> row
  */
 function UpdateDataTracker(id, mode)
 {
     var displayer = document.getElementById("currentNumWorkerDisplayer");
-
     gWorkerDataTracker.id = (id < 0 ? 0 : id);
     gWorkerDataTracker.isEditMode = mode;
     displayer.value = gWorkerDataTracker.id;
 
+    HighlightCurrentSelected();
     console.log(id);
     console.log(mode);
 }
