@@ -10,12 +10,41 @@
         <a href="../index.php">Menu principal</a>
 
         <form class="searchBarContainer" method="get">
-            <input type="search" id="searchBar" name="searchBar" placeholder="Nom, Prénom...">
-            <label>Affectés<input type="checkbox" id="showAffectedOnes" name="showAffectedOnes" onchange="UpdateUnaffectedCheck()"></label>
-            <label>Non affectés<input type="checkbox" id="showUnaffectedOne" name="showUnaffectedOnes" onchange="UpdateAffectedCheck()"></label>
+            <?php
+                // Reloading the value searched on refresh
+                $value = "";
+
+                if (key_exists('searchBar', $_GET))
+                    $value = str_replace('+', ' ', $_GET['searchBar']);
+
+                $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom, Prénom...\" value=\"{$value}\">";
+                echo $searchBar;
+            ?>
+            <label>Affectés
+            <?php 
+                $checked = "";
+
+                if (key_exists('showAffectedOnes', $_GET) && $_GET['showAffectedOnes'] == 'on')
+                    $checked = "checked";
+
+                $affectedCBox = "<input type=\"checkbox\" id=\"showAffectedOnes\" name=\"showAffectedOnes\" onchange=\"UpdateUnaffectedCheck()\" {$checked}>";
+                echo $affectedCBox;
+            ?>    
+            </label>
+            <label>Non affectés
+            <?php 
+                $checked = "";
+
+                if (key_exists('showUnaffectedOne', $_GET) && $_GET['showUnaffectedOne'] == 'on')
+                    $checked = "checked";
+
+                $unaffectedCBox = "<input type=\"checkbox\" id=\"showUnaffectedOne\" name=\"showUnaffectedOne\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
+                echo $unaffectedCBox;
+            ?>       
+            </label>
             <input type="submit" value="Afficher">
         </form>
-        
+
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
             <tr class="workerHeaderRow">
