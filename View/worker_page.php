@@ -9,6 +9,10 @@
     <script src="../Control/Worker/handler.js"></script>
         <a href="../index.php">Menu principal</a>
 
+        <div class="searchBarContainer">
+        <input type="search" id="searchBarByNameOrFirstname">
+        <button>o</button>
+        </div>
         <label>Id actuel:<input id="currentNumWorkerDisplayer" type="number" readonly value="0"></label>
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
@@ -47,5 +51,9 @@
                 <input type="submit" value="Confirmer">
                 <input type="reset" value="Réinitaliser">
         </form>
+
+        <div id="searchResults">
+
+        </div>
     </body>
 </html>

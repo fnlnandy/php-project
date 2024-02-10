@@ -1,14 +1,14 @@
 ## Core
 * Lieus
-    - Listage.......[ ]
-    - Création......[ ]
-    - Modification..[ ]
-    - Suppression...[ ]
+    - Listage.......[X]
+    - Création......[X]
+    - Modification..[X]
+    - Suppression...[X]
 * Employés
-    - Listage.......[ ]
-    - Création......[ ]
-    - Modification..[ ]
-    - Suppression...[ ]
+    - Listage.......[X]
+    - Création......[X]
+    - Modification..[X]
+    - Suppression...[X]
     - Recherche par nom/prénom.........................[ ]
     - Historique des affectations......................[ ]
     - Notifier par mail qu'un Employé va être affecté..[ ]
