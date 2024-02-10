@@ -38,7 +38,7 @@ class Affectation {
         $dateAffect = new DateTime($receivedData['dateAffect']);
         $datePrServ = new DateTime($receivedData['datePriseService']);
 
-        SQLQuery::ExecPreparedQuery($query,                           // Executes a prepared query, either
+        SQLQuery::ExecPreparedQuery($query,                 // Executes a prepared query, either
                             $id,                            // an INSERT or an UPDATE,
                             $receivedData['numEmp'],        // Parameters are already in the correct
                             $receivedData['ancienLieu'],    // order.
