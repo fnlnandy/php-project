@@ -8,6 +8,8 @@
     background-color: beige;
 }
 
+.affectationRow::
+
 .locationRow:hover {
     cursor: pointer;
     background-color: beige;

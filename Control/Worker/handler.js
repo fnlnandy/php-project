@@ -149,32 +149,27 @@ function SubmitForm()
 /**
  * 
  */
-// function SendSearchBarVal()
-// {
-//     var searchBar = document.getElementById("searchBarByNameOrFirstname");
-//     var searchString = String(searchBar.value);
-//     var nameToSearch = searchString;
-//     var firstnameToSearch  = ""
+function UpdateUnaffectedCheck()
+{
+    var affectedCBox = document.getElementById("showAffectedOnes");
+    var unaffectedCBox = document.getElementById("showUnaffectedOne");
 
-//     if (searchString.includes(" ")) {
-//         var splitString = searchString.split(" ", 2);
-//         nameToSearch = splitString[0];
-//         firstnameToSearch = splitString[1];
-//     }
+    if (affectedCBox.checked == true) {
+        unaffectedCBox.checked = false;
+        return;
+    }
+}
 
-//     var dataToSend = {
-//         Nom: nameToSearch,
-//         Prenom: firstnameToSearch,
-//     };
+/**
+ * 
+ */
+function UpdateAffectedCheck()
+{
+    var affectedCBox = document.getElementById("showAffectedOnes");
+    var unaffectedCBox = document.getElementById("showUnaffectedOne");
 
-//     var request = new XMLHttpRequest();
-
-//     request.open("GET", "../View/worker_page.php");              // We prepare the destination file
-//     request.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
-//     request.onreadystatechange = function () {
-//         if (request.readyState == 4 && request.status === 200) {
-//             console.log(request.responseText);
-//         }    
-//     };
-//     request.send(JSON.stringify(dataToSend));// We send the data in JSON Format
-// }
+    if (unaffectedCBox.checked == true) {
+        affectedCBox.checked = false;
+        return;
+    }
+}

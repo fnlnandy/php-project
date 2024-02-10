@@ -10,8 +10,10 @@
         <a href="../index.php">Menu principal</a>
 
         <form class="searchBarContainer" method="get">
-            <input type="search" id="searchBar" name="searchBar">
-            <input type="submit" value="o">
+            <input type="search" id="searchBar" name="searchBar" placeholder="Nom, Prénom...">
+            <label>Affectés<input type="checkbox" id="showAffectedOnes" name="showAffectedOnes" onchange="UpdateUnaffectedCheck()"></label>
+            <label>Non affectés<input type="checkbox" id="showUnaffectedOne" name="showUnaffectedOnes" onchange="UpdateAffectedCheck()"></label>
+            <input type="submit" value="Afficher">
         </form>
         <label>Id actuel:<input id="currentNumWorkerDisplayer" type="number" readonly value="0"></label>
         <!-- Table that will contain informations about every affectation -->
@@ -28,7 +30,7 @@
 
             <?php
                 include_once("../Control/Worker/page_load.php");
-                WorkerPageConditions::PopulateWorkersAfterConditions();
+                WorkerPageConditions::PopulateWorkersAfterTaskConditions();
             ?>
         </table>
 
