@@ -1,5 +1,5 @@
 <?php
-include_once("../Models/Database/queries.php");
+include_once("../Models/queries.php");
 
 /**
  * Populates the affectation table in affectation_page.php

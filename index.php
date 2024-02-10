@@ -8,7 +8,7 @@
     <body>
         <!-- Initalize the database. -->
         <?php 
-        include_once("Models/Database/queries.php");
+        include_once("Models/queries.php");
         SQLQuery::CheckConnection();
         SQLQuery::CreateDatabase();
         ?>

@@ -1,5 +1,5 @@
 <?php
-include_once("../../Models/Database/queries.php");
+include_once("../../Models/queries.php");
 
 class Worker {
     /**
