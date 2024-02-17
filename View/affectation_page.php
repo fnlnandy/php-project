@@ -9,6 +9,12 @@
     <script src="../Control/Affectation/handler.js"></script>
         <a href="../index.php">Menu principal</a>
 
+        <form id="twoDatesForm" method="get">
+            <label>Début: <input type="date" id="dateStart" name="dateStart"></label>
+            <label>Fin: <input type="date" id="dateEnd" name="dateEnd"></label>
+            <input type="submit" value="Afficher les affectations">
+        </form>
+
         <!-- Table that will contain informations about every affectation -->
         <table border="1">
             <tr class="affectationHeaderRow">
@@ -21,8 +27,8 @@
             </tr>
 
             <?php
-            include_once("../Models/table_helpers.php");
-            TableHelper::PopulateTableElementWithDatabseData("AFFECTER", "NumAffect", "affectationRow");
+            include_once("../Control/Affectation/page_load.php");
+            AffectationPageLoadConditions::PopulateAffectationList();
             ?>
         </table>
 

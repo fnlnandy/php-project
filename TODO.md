@@ -19,7 +19,7 @@
     - Modification..[X]
     - Suppression...[X]
     - Génerer un PDF d'un arrêté....................[ ]
-    - Listage d'affect effectuées entre deux dates..[ ]
+    - Listage d'affect effectuées entre deux dates..[X]
 
 ## Misc
 * Ajouter des checks pour les overflow de nombre de caractères
@@ -35,5 +35,27 @@
     - Maybe fuse the files ?......................[X]
 * Fuse repeating files into helpers...............[X]
 * Create namespaces for the handler.js file(s)....[ ]
+* In the dates for the affectation, try to control input..[ ]
 * After using the searchbar, selected values shall be preserved, like searchbar content etc...[X]
 * Use UpdateDataTracker when it's possible........[X]
+
+## Last-To-Do
+* Strict code review
+    * Variables [ ]
+        * Named correctly [ ]
+        * Named meaningfully [ ]
+    * Functions [ ]
+        * Are in appropriate containers [ ]
+        * Are fused if there is redundancy [ ]
+        * Named correctly [ ]
+        * Named meaningfully [ ]
+    * Containers [ ]
+        * Are fused if there is redundancy [ ]
+        * Named correctly [ ]
+        * Named meaningfully [ ]
+    * Comments [ ]
+        * Functions are *all* commented with `/**/` [ ]
+        * Subprocesses inside functions are commented [ ]
+        * Containers are documented [ ]
+        * HTML Pages are commented [ ]
+        * CSS Stylesheets are commented [ ]
