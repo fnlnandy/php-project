@@ -1,6 +1,10 @@
 <?php
 include_once("../../Models/queries.php");
 
+/**
+ * Basic container to avoid *eventual* naming
+ * conflicts
+ */
 class Affectation {
     /**
      * If needed, i.e. when adding a new entry, the user

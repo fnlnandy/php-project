@@ -1,6 +1,10 @@
 <?php 
 include_once("../Models/table_helpers.php");
 
+/**
+ * Basic container to avoid *eventual* naming
+ * conflicts
+ */
 class WorkerPageConditions {
     /**
      * Verifies if a value, specifically an ID, is present inside a result

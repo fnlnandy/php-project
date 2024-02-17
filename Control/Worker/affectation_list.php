@@ -1,6 +1,10 @@
 <?php 
 include_once("../Models/queries.php");
 
+/**
+ * Basic container to avoid *eventual* naming
+ * conflicts
+ */
 class AffectationList {
     public static function PrintAffectations()
     {

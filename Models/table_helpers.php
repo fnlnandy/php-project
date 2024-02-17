@@ -1,6 +1,10 @@
 <?php 
 include_once("queries.php");
 
+/**
+ * Basic container to avoid *eventual* naming
+ * conflicts
+ */
 class TableHelper {
     /**
      * Helper function to remove a specific entry from a table, avoids repetition

@@ -7,6 +7,10 @@ DEFINE("gDatabaseName", "dbGestionTravail");// To avoid hard-coding
 
 $gSqlConnection = new mysqli(gHostName, gUserName, gPassword);
 
+/**
+ * Basic container to avoid *eventual* naming
+ * conflicts
+ */
 class XMLHttpRequest {
     /**
      * Decodes JSON data sent via AJAX
