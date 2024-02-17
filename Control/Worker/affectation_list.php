@@ -11,7 +11,7 @@ class AffectationList {
         if (!key_exists('workerId', $_GET) || intval($_GET['workerId']) <= 0)
             return;
 
-        $queryToExec = "SELECT NumAffect, AncienLieu, NouveauLieu, DateAffect, DatePriseService FROM EMPLOYE WHERE NumEmp = '[1]';";
+        $queryToExec = "SELECT NumAffect, AncienLieu, NouveauLieu, DateAffect, DatePriseService FROM AFFECTER WHERE NumEmp = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($queryToExec, $_GET['workerId']);
 
         while ($row = $result->fetch_assoc()) {

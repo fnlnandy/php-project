@@ -10,7 +10,7 @@
     - Modification..[X]
     - Suppression...[X]
     - Recherche par nom/prénom.........................[X]
-    - Historique des affectations......................[ ]
+    - Historique des affectations......................[X]
     - Notifier par mail qu'un Employé va être affecté..[ ]
     - Liste des employés pas encore affectés...........[X]
 * Affectations

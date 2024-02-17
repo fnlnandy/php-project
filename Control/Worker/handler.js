@@ -184,19 +184,3 @@ function UpdateAffectedCheck()
         return;
     }
 }
-
-/**
- * 
- */
-function ShowOrHideAffectationList()
-{
-    const url = new URLSearchParams(window.location.search);
-
-    console.log("HEEE");
-    if (url.get("workerId") === null)
-        return;
-
-    console.log("HEEE");
-    var workersAffectList = document.getElementById("affectationListContainer");
-    workersAffectList.hidden = false;
-}

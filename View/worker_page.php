@@ -66,7 +66,7 @@
         <button onclick="AddWorker()">Ajouter</button>
         <button onclick="EditWorker()">Modifier</button>
         <button onclick="RemoveWorker()">Supprimer</button>
-        <form method="get">
+        <form id="affectationListForm" method="get">
             <input type="submit" value="Afficher les affectations">
             <input type="number" id="workerId" name="workerId" readonly hidden>
         </form>
@@ -87,8 +87,11 @@
                 <input type="reset" value="Réinitaliser">
         </form>
 
-        <div id="affectationListContainer" hidden>
-            <table border="1"id="affectationList">
+        <div id="affectationListContainer">
+            <table border="1" id="affectationList" 
+        <?php 
+        if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
+            echo "hidden"; ?>>
                 <tr>
                     <th>Num Affect</th>
                     <th>Ancien Lieu</th>
@@ -97,14 +100,12 @@
                     <th>Date Prise Service</th>
                 </tr>
                 <?php 
-                    include_once("../Control/Worker/affectation_list.php")
+                include_once("../Control/Worker/affectation_list.php");
                 ?>
             </table>
         </div>
-        <script>
-            ShowOrHideAffectationList();
-            console.log("Working.");
-        </script>
+        <?php 
+        ?>
 
         <div id="searchResults">
 
