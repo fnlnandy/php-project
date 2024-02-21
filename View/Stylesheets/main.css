@@ -17,3 +17,13 @@
     cursor: pointer;
     background-color: beige;
 }
+
+#navigationMenu {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+#navigationMenu a {
+    border: 1px solid;
+    border-radius: 5px;
+}

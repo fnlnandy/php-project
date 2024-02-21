@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Menu principal</title>
-        <meta charset="utf-8">
+        <title>Page des affectations</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Page des affectations">
+        <link rel="icon" href="" type="image/x-icon">
         <link rel="stylesheet" href="Stylesheets/main.css">
     </head>
     <body>

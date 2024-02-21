@@ -2,7 +2,10 @@
 <html>
     <head>
         <title>Menu principal</title>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Menu principal">
+        <link rel="icon" href="" type="image/x-icon">
         <link rel="stylesheet" href="View/Stylesheets/main.css">
     </head>
     <body>
@@ -13,8 +16,10 @@
         SQLQuery::CreateDatabase();
         ?>
 
-        <a href="View/affectation_page.php">Affectation</a>
-        <a href="View/location_page.php">Lieu</a>
-        <a href="View/worker_page.php">Employés</a>
+        <nav id="navigationMenu">
+        <a href="View/affectation_page.php">Affectation</a> <br>
+        <a href="View/location_page.php">Lieu</a>           <br>
+        <a href="View/worker_page.php">Employés</a>         
+        </nav>
     </body>
 </html>
