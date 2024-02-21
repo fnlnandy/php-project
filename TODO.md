@@ -31,11 +31,11 @@
     - Remplacer IDs par texte dans la table.......[ ]
 
 ## Improvements
-* Create namespaces for queries.php and init.php..[X]
-    - Maybe fuse the files ?......................[X]
-* Fuse repeating files into helpers...............[X]
-* Create namespaces for the handler.js file(s)....[ ]
-* In the dates for the affectation, try to control input..[ ]
+* Ajouter des namespaces pour queries.php and init.php..[X]
+    - Fusionner les fichiers ?..........................[X]
+* Fusionner les fichiers répétés vers des 'headers'.....[X]
+* Créer des namespaces pour les fichiers handler.js....[ ]
+* Contrôler l'entrée des dates pour les affectations...[ ]
 * After using the searchbar, selected values shall be preserved, like searchbar content etc...[X]
 * Use UpdateDataTracker when it's possible........[X]
 

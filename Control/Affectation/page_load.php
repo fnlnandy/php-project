@@ -4,7 +4,7 @@ include_once("../Models/table_helpers.php");
 class AffectationPageLoadConditions
 {
     /**
-     * Verifies if a value, specifically an ID, is present inside a result
+     * Verifies if NumAffect is in $subject
      */
     public static function IsNumAffectInResult(array $toCheck, mysqli_result $subject): bool
     {
@@ -20,6 +20,11 @@ class AffectationPageLoadConditions
 
         return false;
     }
+    
+    /**
+     * Gets the affectations between two dates, whether it is
+     * DateAffect or DatePriseService
+     */
     public static function GetAffectationsBetweenTwoDates($dateStart, $dateEnd): bool|mysqli_result
     {
         $queryToExec = "SELECT * FROM AFFECTER WHERE DateAffect >= '[1]' AND DateAffect <= '[2]';";
@@ -27,6 +32,11 @@ class AffectationPageLoadConditions
 
         return $result;
     }
+
+    /**
+     * Populates the affectation list table depending on the previous
+     * conditions results
+     */
     public static function PopulateAffectationList()
     {
         $dataReceived = $_GET;

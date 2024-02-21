@@ -119,7 +119,7 @@ class SQLQuery {
      * Instead of using $var->prepare which requires you to reference
      * $gSqlConnection, and isn't really modular when you want to re-order
      * arguments in it, this function replaces arguments in a string with
-     * $queryArgs which are arguments with variable number
+     * $queryArgs which are arguments of variable number
      * 
      * Expected format is : INSTR [1] [2]...;
      */
@@ -136,13 +136,6 @@ class SQLQuery {
         }
 
         return SQLQuery::ExecQuery($queryToBind);
-    }
-    /**
-     * 
-     */
-    public static function RemoveFromTable()
-    {
-
     }
 }
 ?>
