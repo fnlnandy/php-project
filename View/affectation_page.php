@@ -38,6 +38,7 @@
         <button onclick="AddAffectation()">Ajouter</button>
         <button onclick="EditAffectation()">Modifier</button>
         <button onclick="RemoveAffectationEntry()">Supprimer</button>
+        <button onclick="TryGeneratePDF()">Generer un PDF</button>
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>
