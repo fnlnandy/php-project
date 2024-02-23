@@ -1,3 +1,16 @@
+window.onload = () => {
+    var currentDate = new Date();
+    var year = currentDate.getFullYear();
+    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    var day = currentDate.getDate().toString().padStart(2, '0');
+    var formattedDate = year + '-' + month + '-' + day;
+
+    document.getElementById("dateStart").value = formattedDate;
+    document.getElementById("dateEnd").value = formattedDate;
+    document.getElementById("formDateAffect").value = formattedDate;
+    document.getElementById("formPriseService").value = formattedDate;
+}   
+
 /**
  * Global data tracker to be used later for
  * the form submitting, current mode depends
@@ -77,8 +90,7 @@ function AddAffectation()
     numEmpField.value = "";
     ancienLieuField.value = "";
     nouveauLieuField.value = "";
-    dateAffectField.value = "";
-    datePriseServiceField.value = "";
+    window.onload(null);
 }
 
 /**

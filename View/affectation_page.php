@@ -42,7 +42,7 @@
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>
-                <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required>        <br></label>
+                <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required maxlength="10">        <br></label>
                 <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
                 <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>
                 <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>

@@ -11,19 +11,19 @@
     - Suppression...[X]
     - Recherche par nom/prénom.........................[X]
     - Historique des affectations......................[X]
-    - Notifier par mail qu'un Employé va être affecté..[ ]
+    - Notifier par mail qu'un Employé va être affecté..[X]
     - Liste des employés pas encore affectés...........[X]
 * Affectations
     - Listage.......[X]
     - Création......[X]
     - Modification..[X]
     - Suppression...[X]
-    - Génerer un PDF d'un arrêté....................[ ]
+    - Génerer un PDF d'un arrêté....................[X]
     - Listage d'affect effectuées entre deux dates..[X]
 
 ## Misc
-* Ajouter des checks pour les overflow de nombre de caractères
-* Changer la fonction de modification pour qu'elle ne depende pas de x.length
+* Ajouter des checks pour les overflow de nombre de caractères...[ ]
+* Changer la fonction de modification pour qu'elle ne depende pas de x.length...[ ] (What did I mean by this ???)
 * Prendre en charge les nombres qui commencent par '0'.......[ ]
 * Prendre en charge la reorganization des ids d'affectation..[ ]
 * Ajuster le formulaire et la table d'Affectation
