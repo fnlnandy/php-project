@@ -1,5 +1,14 @@
 <?php
+
 include_once("../../Models/queries.php");
+include_once("../../Models/debug_util.php");
+include_once("../../Dependencies/PHPMailer/PHPMailer.php");
+include_once("../../Dependencies/PHPMailer/SMTP.php");
+include_once("../../Dependencies/PHPMailer/Exception.php");
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 /**
  * Basic container to avoid *eventual* naming
@@ -49,6 +58,49 @@ class Affectation {
                             $receivedData['nouveauLieu'], 
                             $dateAffect->format("Y-m-d"), 
                             $datePrServ->format("Y-m-d"));
+        Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
+    }
+    /**
+     * 
+     */
+    public static function SendEmailOnSubmit($numEmp, $location, $dateAffect, $datePrServ)
+    {
+        $result = SQLQuery::ExecPreparedQuery("SELECT * FROM EMPLOYE WHERE NumEmp = '[1]';", $numEmp);
+        
+        if (!$result || is_null($result)) {
+            die("Error in query.");
+        }
+
+        $row = $result->fetch_assoc();
+        $dest = $row["Mail"];
+        $subject = "Notification d'affectation du ".strval($dateAffect);
+        $message = "Bonjour, ".$row["Nom"]." ".$row["Prenom"].", nous vous informons que vous serez affecté à ".$location.", vous prendrez service à partir du ".$datePrServ.".";
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "definitelynotandy01@gmail.com";
+            $mail->Password = "gkwtdvvgwxinusqx";
+            $mail->SMTPSecure = "ssl";
+            $mail->Port = 465;
+
+            $mail->setFrom("definitelynotandy01@gmail.com");
+            $mail->addAddress($dest);
+
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            DebugUtil::LogIntoFile(__FILE__, __LINE__, $dest);
+            $mail->send();
+            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Message sent");
+        } catch (Exception $e) {
+            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Message could not be sent, error: { $mail->ErrorInfo }");
+        }
     }
 }
 

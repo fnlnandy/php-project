@@ -41,7 +41,7 @@ class AffectationPageLoadConditions
     {
         $dataReceived = $_GET;
         $limitingDatesPresent = !is_null($dataReceived) && key_exists("dateStart", $dataReceived) && key_exists("dateEnd", $dataReceived) && $dataReceived["dateStart"] != "" && $dataReceived["dateEnd"] != "";
-        $queryToExec = "SELECT * FROM AFFECTER;";
+        $queryToExec = "SELECT * FROM AFFECTER ORDER BY NumAffect ASC;";
         $result = SQLQuery::ExecQuery($queryToExec);
 
         while ($row = $result->fetch_assoc()) {
