@@ -16,15 +16,13 @@ var gAffectationDataTracker = {
 function SendXMLHttpRequest(dataToSend, dest) {
     var req = new XMLHttpRequest();
 
-    req.open("POST", dest); // Destination file that will be executed
-    req.setRequestHeader("Content-type", "application/json")
-    req.onreadystatechange = () => {
-         if (req.readyState == 4 && req.status === 200) { 
-            console.log(req.responseText); 
-        } 
+    req.open("POST", dest);              // We prepare the destination file
+    req.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
+    req.onreadystatechange = function () {
+        console.log(req.responseText);
     };
-    req.send(JSON.stringify(dataToSend));// Data to send in JSON format
-    location.reload(); // Force refresh the page (optional)
+    req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
+    location.reload(); // Force refresh to load data instantly
 }
 
 /**
@@ -158,9 +156,5 @@ function SubmitForm()
  */
 function TryGeneratePDF()
 {
-    var toSend = {
-        id: gAffectationDataTracker.id
-    };
-    var callback = () => { console.log("I got called!"); };
-    SendXMLHttpRequest(toSend, "../Control/Affectation/pdf_generator.php", callback);
+    SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/pdf_generator.php");
 }
