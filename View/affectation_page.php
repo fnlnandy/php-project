@@ -14,8 +14,8 @@
 
         <div class="searchBarAreaContainer">
             <form id="twoDatesForm" method="get">
-                <label>Début: <input type="date" id="dateStart" name="dateStart"></label>
-                <label>Fin: <input type="date" id="dateEnd" name="dateEnd"></label>
+                <label>Début: <input type="date" id="dateStart" name="dateStart" <?php if (key_exists('dateStart', $_GET) && $_GET['dateStart'] != "") { echo "value=\"{$_GET['dateStart']}\""; }  ?>></label>
+                <label>Fin: <input type="date" id="dateEnd" name="dateEnd" <?php if (key_exists('dateEnd', $_GET) && $_GET['dateEnd'] != "") { echo "value=\"{$_GET['dateEnd']}\""; }  ?>></label>
                 <input type="submit" value="Afficher les affectations">
             </form>
         </div>

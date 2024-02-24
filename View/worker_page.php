@@ -21,7 +21,7 @@
                     if (key_exists('searchBar', $_GET))
                         $value = str_replace('+', ' ', $_GET['searchBar']);
 
-                    $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom et/ou le Prénom...\" value=\"{$value}\">";
+                    $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
                     echo $searchBar;
                 ?>
                 <label>Affectés
