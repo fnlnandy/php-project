@@ -1,0 +1,62 @@
+#twoDatesForm {
+    background-color: white;
+    padding: 5px;
+    margin: 2px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.searchBarAreaContainer {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.searchBarContainer  {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.searchBarContainer input {
+    border: 1px solid;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.searchBarContainer input:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.searchBarContainer * {
+    background-color: transparent;
+}
+
+#twoDatesForm label {
+    background-color: transparent;
+}
+
+#twoDatesForm input {
+    background-color: transparent;
+}
+
+#dateStart {
+    background-color: transparent;
+}
+
+#dateEnd {
+    background-color: transparent;
+}
+
+#twoDatesForm input {
+    border-color: black;
+    border: 1px solid;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#twoDatesForm input:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

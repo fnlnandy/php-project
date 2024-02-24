@@ -10,25 +10,31 @@
     </head>
     <body>
     <script src="../Control/Location/handler.js"></script>
-        <a href="../index.php">Menu principal</a>
+        <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
         <!-- Table that will contain informations about every affectation -->
-        <table border="1">
-            <tr class="locationHeaderRow">
-                <th>ID Lieu</th>
-                <th>Design</th>
-                <th>Province</th>
-            </tr>
+        <div class="tableListingAreaContainer">
+            <table border="1" class="tableListingArea">
+                <tr class="locationHeaderRow">
+                    <th>ID Lieu</th>
+                    <th>Design</th>
+                    <th>Province</th>
+                </tr>
 
-            <?php
-                include_once("../Models/table_helpers.php");
-                TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "locationRow");
-            ?>
-        </table>
+                <?php
+                    include_once("../Models/table_helpers.php");
+                    TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "locationRow");
+                ?>
+            </table>
+        </div>
 
-        <button onclick="AddLocation()">Ajouter</button>
-        <button onclick="EditLocation()">Modifier</button>
-        <button onclick="RemoveLocation()">Supprimer</button>
+        <div class="centerElementsFlex">
+            <span class="actionButtonsContainer">
+                <button onclick="AddLocation()">Ajouter</button>
+                <button onclick="EditLocation()">Modifier</button>
+                <button onclick="RemoveLocation()">Supprimer</button>
+            </span>
+        </div>
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="locationForm" hidden>

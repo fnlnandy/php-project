@@ -10,35 +10,43 @@
     </head>
     <body>
     <script src="../Control/Affectation/handler.js"></script>
-        <a href="../index.php">Menu principal</a>
+        <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
-        <form id="twoDatesForm" method="get">
-            <label>Début: <input type="date" id="dateStart" name="dateStart"></label>
-            <label>Fin: <input type="date" id="dateEnd" name="dateEnd"></label>
-            <input type="submit" value="Afficher les affectations">
-        </form>
+        <div class="searchBarAreaContainer">
+            <form id="twoDatesForm" method="get">
+                <label>Début: <input type="date" id="dateStart" name="dateStart"></label>
+                <label>Fin: <input type="date" id="dateEnd" name="dateEnd"></label>
+                <input type="submit" value="Afficher les affectations">
+            </form>
+        </div>
 
         <!-- Table that will contain informations about every affectation -->
-        <table border="1">
-            <tr class="affectationHeaderRow">
-                <th>Num Affect</th>
-                <th>Num Emp</th>
-                <th>Ancien Lieu</th>
-                <th>Nouveau Lieu</th>
-                <th>Date Affect</th>
-                <th>Date Prise Service</th>
-            </tr>
+        <div class="tableListingAreaContainer">
+            <table border="1" class="tableListingArea">
+                <tr class="affectationHeaderRow">
+                    <th>Num Affect</th>
+                    <th>Num Emp</th>
+                    <th>Ancien Lieu</th>
+                    <th>Nouveau Lieu</th>
+                    <th>Date Affect</th>
+                    <th>Date Prise Service</th>
+                </tr>
 
-            <?php
-            include_once("../Control/Affectation/page_load.php");
-            AffectationPageLoadConditions::PopulateAffectationList();
-            ?>
-        </table>
+                <?php
+                include_once("../Control/Affectation/page_load.php");
+                AffectationPageLoadConditions::PopulateAffectationList();
+                ?>
+            </table>
+        </div>
 
-        <button onclick="AddAffectation()">Ajouter</button>
-        <button onclick="EditAffectation()">Modifier</button>
-        <button onclick="RemoveAffectationEntry()">Supprimer</button>
-        <button onclick="TryGeneratePDF()">Generer un PDF</button>
+        <div class="centerElementsFlex">
+            <span class="actionButtonsContainer">
+                <button onclick="AddAffectation()">Ajouter</button>
+                <button onclick="EditAffectation()">Modifier</button>
+                <button onclick="RemoveAffectationEntry()">Supprimer</button>
+                <button onclick="TryGeneratePDF()">Generer un PDF</button>
+            </span>
+        </div>
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>

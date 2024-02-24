@@ -10,69 +10,78 @@
     </head>
     <body>
     <script src="../Control/Worker/handler.js"></script>
-        <a href="../index.php">Menu principal</a>
+        <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
-        <form class="searchBarContainer" method="get">
-            <?php
-                // Reloading the value searched on refresh
-                $value = "";
+        <div class="searchBarAreaContainer">
+            <form class="searchBarContainer" method="get">
+                <?php
+                    // Reloading the value searched on refresh
+                    $value = "";
 
-                if (key_exists('searchBar', $_GET))
-                    $value = str_replace('+', ' ', $_GET['searchBar']);
+                    if (key_exists('searchBar', $_GET))
+                        $value = str_replace('+', ' ', $_GET['searchBar']);
 
-                $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom, Prénom...\" value=\"{$value}\">";
-                echo $searchBar;
-            ?>
-            <label>Affectés
-            <?php 
-                $checked = "";
+                    $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom et/ou le Prénom...\" value=\"{$value}\">";
+                    echo $searchBar;
+                ?>
+                <label>Affectés
+                <?php 
+                    $checked = "";
 
-                if (key_exists('showAffectedOnes', $_GET) && $_GET['showAffectedOnes'] == 'on')
-                    $checked = "checked";
+                    if (key_exists('showAffectedOnes', $_GET) && $_GET['showAffectedOnes'] == 'on')
+                        $checked = "checked";
 
-                $affectedCBox = "<input type=\"checkbox\" id=\"showAffectedOnes\" name=\"showAffectedOnes\" onchange=\"UpdateUnaffectedCheck()\" {$checked}>";
-                echo $affectedCBox;
-            ?>    
-            </label>
-            <label>Non affectés
-            <?php 
-                $checked = "";
+                    $affectedCBox = "<input type=\"checkbox\" id=\"showAffectedOnes\" name=\"showAffectedOnes\" onchange=\"UpdateUnaffectedCheck()\" {$checked}>";
+                    echo $affectedCBox;
+                ?>    
+                </label>
+                <label>Non affectés
+                <?php 
+                    $checked = "";
 
-                if (key_exists('showUnaffectedOne', $_GET) && $_GET['showUnaffectedOne'] == 'on')
-                    $checked = "checked";
+                    if (key_exists('showUnaffectedOnes', $_GET) && $_GET['showUnaffectedOnes'] == 'on')
+                        $checked = "checked";
 
-                $unaffectedCBox = "<input type=\"checkbox\" id=\"showUnaffectedOne\" name=\"showUnaffectedOne\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
-                echo $unaffectedCBox;
-            ?>       
-            </label>
-            <input type="submit" value="Afficher">
-        </form>
+                    $unaffectedCBox = "<input type=\"checkbox\" id=\"showUnaffectedOnes\" name=\"showUnaffectedOnes\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
+                    echo $unaffectedCBox;
+                ?>       
+                </label>
+                <input type="submit" value="Afficher">
+            </form>
+        </div>
 
         <!-- Table that will contain informations about every affectation -->
-        <table border="1">
-            <tr class="workerHeaderRow">
-                <th>Num Emp</th>
-                <th>Civilite</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Mail</th>
-                <th>Poste</th>
-                <th>Lieu</th>
-            </tr>
+        <div class="tableListingAreaContainer">
+            <table border="1" class="tableListingArea">
+                <tr class="workerHeaderRow" class="tableListingArea">
+                    <th>Num Emp</th>
+                    <th>Civilite</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Mail</th>
+                    <th>Poste</th>
+                    <th>Lieu</th>
+                </tr>
 
-            <?php
-                include_once("../Control/Worker/page_load.php");
-                WorkerPageConditions::PopulateWorkersAfterTaskConditions();
-            ?>
-        </table>
+                <?php
+                    include_once("../Control/Worker/page_load.php");
+                    WorkerPageConditions::PopulateWorkersAfterTaskConditions();
+                ?>
+            </table>
+        </div>
 
-        <button onclick="AddWorker()">Ajouter</button>
-        <button onclick="EditWorker()">Modifier</button>
-        <button onclick="RemoveWorker()">Supprimer</button>
-        <form id="affectationListForm" method="get">
-            <input type="submit" value="Afficher les affectations">
-            <input type="number" id="workerId" name="workerId" readonly hidden>
-        </form>
+        <div class="centerElementsFlex">
+            <span class="actionButtonsContainer">
+                <button onclick="AddWorker()">Ajouter</button>
+                <button onclick="EditWorker()">Modifier</button>
+                <button onclick="RemoveWorker()">Supprimer</button>
+                <form id="affectationListForm" method="get">
+                    <input type="submit" value="Afficher les affectations">
+                    <input type="number" id="workerId" name="workerId" readonly hidden>
+                </form>
+            </span>
+        </div>
+
 
         <!-- Form that will be shown when adding or editing an entry -->
         <form onsubmit="SubmitForm()" method="post" id="workerForm" hidden>

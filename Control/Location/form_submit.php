@@ -2,8 +2,8 @@
 include_once("../../Models/queries.php");
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Container with functions called on submit of
+ * a valid location form
  */
 class Location {
     /**

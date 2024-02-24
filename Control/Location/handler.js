@@ -33,24 +33,30 @@ function SendXMLHttpRequest(dataToSend, dest) {
  */
 function UpdateDataTracker(id, mode)
 {
+    // Updating the global data tracker for later use
     var locationTableRows = document.getElementsByClassName("locationRow");
     gLocationDataTracker.id = (id < 0 ? 0 : id);
     gLocationDataTracker.isEditMode = mode;
 
+    // Resetting every rows' style
     for (var i = 0 ; i < locationTableRows.length ; i++) {
         locationTableRows[i].style.backgroundColor = "";
     }
 
+    // Highlighing the lastly clicked row
     for (var i = 0 ; i < locationTableRows.length ; i++) {
         var columnsInRow = locationTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gLocationDataTracker.id) {
-            locationTableRows[i].style.backgroundColor = "beige";
+            locationTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
             break;
         }
     }
 }
 
+/**
+ * Shows the location form and reset its values
+ */
 function AddLocation()
 {
     var locationForm = document.getElementById("locationForm");
@@ -62,6 +68,10 @@ function AddLocation()
     locationProvinceField.value = "";
 }
 
+/**
+ * Shows the location form and load data from the tables
+ * to edit later
+ */
 function EditLocation()
 {
     var locationForm = document.getElementById("locationForm");
@@ -69,6 +79,7 @@ function EditLocation()
     var locationProvinceField = document.getElementById("formLocationProvince");
     var locationTableRows = document.getElementsByClassName("locationRow");
 
+    // No valid data was selected
     if (gLocationDataTracker.id <= 0) {
         alert("Séléctionnez un lieu valide.");
         return;
@@ -77,6 +88,7 @@ function EditLocation()
     gLocationDataTracker.isEditMode = true;
     locationForm.hidden = false;
 
+    // Loading every data from the correct row into the form
     for (var i = 0 ; i < locationTableRows.length ; i++) {
         var columnsInRow = locationTableRows[i].querySelectorAll("td");
 
@@ -88,6 +100,9 @@ function EditLocation()
     }
 }
 
+/**
+ * Is just a connection between the page and the relevant PHP code
+ */
 function RemoveLocation()
 {
     SendXMLHttpRequest(gLocationDataTracker, "../Control/Location/remove.php");

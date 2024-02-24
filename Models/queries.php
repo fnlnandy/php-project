@@ -8,8 +8,8 @@ DEFINE("gDatabaseName", "dbGestionTravail");// To avoid hard-coding
 $gSqlConnection = new mysqli(gHostName, gUserName, gPassword);
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Containers for various queries regarding the database
+ * and the data passed aroung through JavaScript
  */
 class XMLHttpRequest {
     /**

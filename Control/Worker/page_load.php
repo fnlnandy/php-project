@@ -2,8 +2,10 @@
 include_once("../Models/table_helpers.php");
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Containers for basic functions loaded before
+ * the worker page, are used to limit which workers
+ * are displayed according to if they were affected and/or
+ * are matching the current search's pattern
  */
 class WorkerPageConditions {
     /**
@@ -74,6 +76,8 @@ class WorkerPageConditions {
         $entriesUnaffected = WorkerPageConditions::GetEntriesNotInAffectation();
 
         while ($rowInDatabase = $mainResults->fetch_assoc()) {
+            // If the key doesn't exist in one of the arrays that match
+            // the current searching conditions, automatically skip
             if (key_exists('searchBar', $_GET)          && $_GET['searchBar'] != ""            && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesInSearchBar)) {
                 continue;
             }
@@ -84,6 +88,7 @@ class WorkerPageConditions {
                 continue;
             }
 
+            // Printing the rows with the correct call to UpdateDataTracker
             $counter = $rowInDatabase['NumEmp'];
 
             echo "<tr class=\"workerRow\" onclick=\"UpdateDataTracker(".strval($counter).", true)\">";

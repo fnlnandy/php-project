@@ -1,12 +1,19 @@
 window.onload = () => {
+    // Getting the current date formatted as yyyy-mm-dd
     var currentDate = new Date();
     var year = currentDate.getFullYear();
     var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
     var day = currentDate.getDate().toString().padStart(2, '0');
     var formattedDate = year + '-' + month + '-' + day;
-
-    document.getElementById("dateStart").value = formattedDate;
-    document.getElementById("dateEnd").value = formattedDate;
+    var dateStart = document.getElementById("dateStart");
+    var dateEnd = document.getElementById("dateEnd");
+    // Updating every 'date' elements to the current date
+    if (dateStart.value === "") {
+        dateStart.value = formattedDate;
+    }
+    if (dateEnd.value === "") {
+        dateEnd.value = formattedDate;
+    }
     document.getElementById("formDateAffect").value = formattedDate;
     document.getElementById("formPriseService").value = formattedDate;
 }   
@@ -44,19 +51,22 @@ function SendXMLHttpRequest(dataToSend, dest) {
  */
 function UpdateDataTracker(id, mode)
 {
+    // Updating the global data tracker
     var affectationTableRows = document.getElementsByClassName("affectationRow");
     gAffectationDataTracker.id = (id < 0 ? 0 : id);
     gAffectationDataTracker.isEditMode = mode;
 
+    // Resetting the styles of the rows
     for (var i = 0 ; i < affectationTableRows.length ; i++) {
         affectationTableRows[i].style.backgroundColor = "";
     }
 
+    // Highlighting the lastly clicked row
     for (var i = 0 ; i < affectationTableRows.length ; i++) {
         var columnsInRow = affectationTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gAffectationDataTracker.id) {
-            affectationTableRows[i].style.backgroundColor = "beige";
+            affectationTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
             break;
         }
     }
@@ -82,15 +92,13 @@ function AddAffectation()
     var numEmpField = document.getElementById("formNumEmp");
     var ancienLieuField = document.getElementById("formAncienLieu");
     var nouveauLieuField = document.getElementById("formNouveauLieu");
-    var dateAffectField = document.getElementById("formDateAffect");
-    var datePriseServiceField = document.getElementById("formPriseService");
 
     UpdateDataTracker(-1, false);
     form.hidden = false;
     numEmpField.value = "";
     ancienLieuField.value = "";
     nouveauLieuField.value = "";
-    window.onload(null);
+    window.onload(null); // Reloading the current dates
 }
 
 /**
@@ -107,6 +115,7 @@ function EditAffectation()
     var datePriseServiceField = document.getElementById("formPriseService");
     var tableRows = document.getElementsByClassName("affectationRow");
 
+    // An invalid data was selected, thus we cannot load anything into the form
     if (gAffectationDataTracker.id <= 0) {
         alert("Séléctionnez une affectation valide.");
         return;
@@ -115,6 +124,7 @@ function EditAffectation()
     gAffectationDataTracker.isEditMode = true;
     form.hidden = false;
 
+    // Loading every value from the table to the form
     for (var i = 0 ; i < tableRows.length ; i++) {
         var columnsInRow = tableRows[i].querySelectorAll("td");
 
@@ -147,6 +157,7 @@ function SubmitForm()
             return;
     }
     else {
+    // Loading every form field into a container that will be parsed on the server side
     var formData = {
         numAffect: gAffectationDataTracker.id,
         editMode: gAffectationDataTracker.isEditMode,
@@ -164,7 +175,9 @@ function SubmitForm()
 }
 
 /**
- * 
+ * Tries to generate a PDF file out
+ * of the selected entry, only is a connection
+ * between the page and the PHP code to be honest
  */
 function TryGeneratePDF()
 {

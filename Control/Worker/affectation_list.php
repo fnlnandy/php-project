@@ -2,10 +2,14 @@
 include_once("../Models/queries.php");
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Container with functions regarding
+ * the loading of the affectation list of an
+ * employee
  */
 class AffectationList {
+    /**
+     * Prints the list where the form is supposed to be at, I guess
+     */
     public static function PrintAffectations()
     {
         if (!key_exists('workerId', $_GET) || intval($_GET['workerId']) <= 0)

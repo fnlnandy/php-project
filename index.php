@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="View/Stylesheets/main.css">
     </head>
     <body>
+        <script src="Control/menu_handler.js"></script>
         <!-- Initalize the database. -->
         <?php 
         include_once("Models/queries.php");
@@ -16,10 +17,15 @@
         SQLQuery::CreateDatabase();
         ?>
 
-        <nav id="navigationMenu">
-        <a href="View/affectation_page.php">Affectation</a> <br>
-        <a href="View/location_page.php">Lieu</a>           <br>
-        <a href="View/worker_page.php">Employés</a>         
-        </nav>
+        <section id="navigationMenu">
+            <div id="navMenuOptionsContainer">
+                <ol id="navMenuOptions">
+                    <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="">Menu principal</a></li>
+                    <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/affectation_page.php">Affectation</a></li>
+                    <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/location_page.php">Lieu</a></li>
+                    <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/worker_page.php">Employés</a></li>
+                </ol>
+            </div>
+        </section>
     </body>
 </html>

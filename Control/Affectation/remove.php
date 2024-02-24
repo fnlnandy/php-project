@@ -3,7 +3,7 @@ include_once("../../Models/queries.php");
 include_once("../../Models/table_helpers.php");
 
 /**
- * 
+ * This file's main and only callback
  */
 TableHelper::RemoveEntryFromTable("id", "AFFECTER", "NumAffect");
 ?>

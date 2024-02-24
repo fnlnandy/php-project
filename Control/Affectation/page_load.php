@@ -50,6 +50,7 @@ class AffectationPageLoadConditions
                 $dateEnd = $dataReceived["dateEnd"];
                 $betweenDates = AffectationPageLoadConditions::GetAffectationsBetweenTwoDates($dateStart, $dateEnd);
                 
+                // If it;s not part of the limited results i.e. not in the range, we skip
                 if (!AffectationPageLoadConditions::IsNumAffectInResult($row, $betweenDates))
                     continue;
             }

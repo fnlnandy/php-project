@@ -1,0 +1,54 @@
+.tableListingAreaContainer {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.tableListingArea {
+    background-color: white;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.tableListingArea td {
+    border-radius: 3px;
+}
+
+.tableListingArea * {
+    background-color: transparent;
+}
+
+.actionButtonsContainer {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: white;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.actionButtonsContainer * {
+    background-color: transparent;
+}
+
+.actionButtonsContainer button {
+    border: 1px solid;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.actionButtonsContainer button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.affectationRow, .locationRow, .workerRow {
+    transition: background-color 0.3s ease;
+}
+
+/* On hover of <tr>s */
+.affectationRow:hover, .locationRow:hover, .workerRow:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}

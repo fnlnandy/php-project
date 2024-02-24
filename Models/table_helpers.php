@@ -2,8 +2,8 @@
 include_once("queries.php");
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Container with functions that help
+ * managing SQL Tables a little bit
  */
 class TableHelper {
     /**

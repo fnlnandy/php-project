@@ -11,8 +11,8 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Container for functions executed
+ * on submit of a valid Affectation form
  */
 class Affectation {
     /**
@@ -60,17 +60,20 @@ class Affectation {
                             $datePrServ->format("Y-m-d"));
         Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
     }
+
     /**
-     * 
+     * Sends an email to the affected worker about his affectation
      */
     public static function SendEmailOnSubmit($numEmp, $location, $dateAffect, $datePrServ)
     {
+        // We first get the employee data
         $result = SQLQuery::ExecPreparedQuery("SELECT * FROM EMPLOYE WHERE NumEmp = '[1]';", $numEmp);
         
         if (!$result || is_null($result)) {
             die("Error in query.");
         }
 
+        // Now we get his email, to send the mail too and all his basic personal infos
         $row = $result->fetch_assoc();
         $dest = $row["Mail"];
         $subject = "Notification d'affectation du ".strval($dateAffect);
@@ -79,6 +82,7 @@ class Affectation {
         $mail = new PHPMailer(true);
 
         try {
+            // Mail sending prerequisites
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
             $mail->Host = "smtp.gmail.com";
@@ -88,9 +92,11 @@ class Affectation {
             $mail->SMTPSecure = "ssl";
             $mail->Port = 465;
 
+            // Sender and recipient
             $mail->setFrom("definitelynotandy01@gmail.com");
             $mail->addAddress($dest);
 
+            // Mail content
             $mail->isHTML(true);
             $mail->Subject = $subject;
             $mail->Body = $message;

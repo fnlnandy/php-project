@@ -1,0 +1,85 @@
+/* index.php's base navigation <section> container */
+#navigationMenu {
+    display: grid;
+    height: 100vh;
+}
+
+/* <div> container for the <ol> element */
+#navMenuOptionsContainer {
+    background-color: white;
+    margin: 10%;
+    min-width: 210px;
+    min-height: 120px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+/* <ol> element containing the <li> elements */
+#navMenuOptions {
+    background-color: transparent;
+    list-style-type: none;
+    counter-reset: exponent;
+    padding-left: 0;
+    text-align: left;
+    width: 100%;
+}
+
+/* <li> element containing the <a> element */
+#navMenuOptions li {
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1.4%;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* <a> elements */
+#navMenuOptions a {
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+}
+
+/* Counter to display the list ids as indices */
+#navMenuOptions li::before {
+    content: counter(exponent);
+    font-size: 0.6em;
+    vertical-align: super;
+    display: inline-block;
+    line-height: 1;
+    margin-right: 0.8em;
+    margin-left: 0.8em;
+    counter-increment: exponent;
+}
+
+/* On hover of a <li> element (i.e. a menu row) */
+#navMenuOptions li:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.topNavigationBar {
+    background-color: white;
+    border-radius: 2px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.topNavigationBar a {
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+.topNavigationBar a:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}

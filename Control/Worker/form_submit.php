@@ -2,8 +2,8 @@
 include_once("../../Models/queries.php");
 
 /**
- * Basic container to avoid *eventual* naming
- * conflicts
+ * Containers with functions called on submit
+ * of a valid worker form
  */
 class Worker {
     /**

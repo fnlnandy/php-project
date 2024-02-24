@@ -32,24 +32,31 @@ function UpdateDataTracker(id, mode)
     var workerTableRows = document.getElementsByClassName("workerRow");
     var affectCurrWorkerId = document.getElementById("workerId");
 
+    // Update the global data tracker for later use
     gWorkerDataTracker.id = (id < 0 ? 0 : id);
     gWorkerDataTracker.isEditMode = mode;
     affectCurrWorkerId.value = gWorkerDataTracker.id;
 
+    // Resetting every rows' style
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         workerTableRows[i].style.backgroundColor = "";
     }
 
+    // Highlighting the lastly clicked row
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         var columnsInRow = workerTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
-            workerTableRows[i].style.backgroundColor = "beige";
+            workerTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
             break;
         }
     }
 }
 
+/**
+ * Shows the worker form and resets
+ * all of its values
+ */
 function AddWorker()
 {
     var workerForm           = document.getElementById("workerForm");
@@ -70,6 +77,10 @@ function AddWorker()
     workerLocationField.value = "";
 }
 
+/**
+ * Shows the worker form and loads data
+ * from the table into the form
+ */
 function EditWorker()
 {
     var workerForm           = document.getElementById("workerForm");
@@ -81,6 +92,7 @@ function EditWorker()
     var workerLocationField  = document.getElementById("formWorkerLocation");
     var workerTableRows = document.getElementsByClassName("workerRow");
 
+    // No valid data/row was selected
     if (gWorkerDataTracker.id <= 0) {
         alert("Séléctionnez un employé valide.");
         return;
@@ -89,12 +101,14 @@ function EditWorker()
     gWorkerDataTracker.isEditMode = true;
     workerForm.hidden = false;
 
+    // Loading the data from the table into the row
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         var columnsInRow = workerTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
             var selectedIndex = 0;
             
+            // Selecting the correct option for the civility
             if (columnsInRow[1].innerText == "Mr")
                 selectedIndex = 0;
             else if (columnsInRow[1].innerText == "Mlle")
@@ -113,6 +127,9 @@ function EditWorker()
     }
 }
 
+/**
+ * Only acts as connector between the page and the PHP code
+ */
 function RemoveWorker()
 {
     SendXMLHttpRequest(gWorkerDataTracker, "../Control/Worker/remove.php");
@@ -120,7 +137,7 @@ function RemoveWorker()
 }
 
 /*
-* Send the form to PHP code, in which it will decide
+* Sends the form to PHP code, in which it will decide
 * whether to add or update an entry 
 */
 function SubmitForm()
@@ -154,12 +171,12 @@ function SubmitForm()
 }
 
 /**
- * 
+ * Updates the 'Unaffected' checkbox's state
  */
 function UpdateUnaffectedCheck()
 {
     var affectedCBox = document.getElementById("showAffectedOnes");
-    var unaffectedCBox = document.getElementById("showUnaffectedOne");
+    var unaffectedCBox = document.getElementById("showUnaffectedOnes");
 
     if (affectedCBox.checked == true) {
         unaffectedCBox.checked = false;
@@ -168,12 +185,12 @@ function UpdateUnaffectedCheck()
 }
 
 /**
- * 
+ * Updates the 'Affected' checkbox's state
  */
 function UpdateAffectedCheck()
 {
     var affectedCBox = document.getElementById("showAffectedOnes");
-    var unaffectedCBox = document.getElementById("showUnaffectedOne");
+    var unaffectedCBox = document.getElementById("showUnaffectedOnes");
 
     if (unaffectedCBox.checked == true) {
         affectedCBox.checked = false;
