@@ -63,6 +63,7 @@ function AddLocation()
     var locationDesignField = document.getElementById("formLocationDesign");
     var locationProvinceField = document.getElementById("formLocationProvince");
     
+    UpdateDataTracker(-1, false);
     locationForm.hidden = false;
     locationDesignField.value = "";
     locationProvinceField.value = "";

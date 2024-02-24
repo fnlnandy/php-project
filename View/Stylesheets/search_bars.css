@@ -33,6 +33,10 @@
     background-color: transparent;
 }
 
+.searchBarContainer #searchBar {
+    cursor: text;
+}
+
 #twoDatesForm label {
     background-color: transparent;
 }

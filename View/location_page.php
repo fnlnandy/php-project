@@ -14,7 +14,7 @@
 
         <!-- Table that will contain informations about every affectation -->
         <div class="tableListingAreaContainer">
-            <table border="1" class="tableListingArea">
+            <table class="tableListingArea">
                 <tr class="locationHeaderRow">
                     <th>ID Lieu</th>
                     <th>Design</th>
@@ -37,11 +37,16 @@
         </div>
 
         <!-- Form that will be shown when adding or editing an entry -->
-        <form onsubmit="SubmitForm()" method="post" id="locationForm" hidden>
-                <label>Design: <input id="formLocationDesign" name="formLocationDesign" type="text" required>        <br></label>
-                <label>Province: <input id="formLocationProvince" name="formLocationProvince" type="text" required>       <br></label>
-                <input type="submit" value="Confirmer">
-                <input type="reset" value="Réinitaliser">
-        </form>
+        <div class="centerElementsFlex">
+            <span class="formContainer">
+                <form onsubmit="SubmitForm()" method="post" id="locationForm" hidden>
+                        <h3 class="formTitle">Formulaire pour un lieu</h3>
+                        <label>Design: <input id="formLocationDesign" name="formLocationDesign" type="text" required>        <br></label>
+                        <label>Province: <input id="formLocationProvince" name="formLocationProvince" type="text" required>       <br></label>
+                        <input type="submit" value="Confirmer">
+                        <input type="reset" value="Réinitaliser">
+                </form>
+            </span>
+        </div>
     </body>
 </html>

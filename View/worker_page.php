@@ -82,25 +82,8 @@
             </span>
         </div>
 
-
-        <!-- Form that will be shown when adding or editing an entry -->
-        <form onsubmit="SubmitForm()" method="post" id="workerForm" hidden>
-                <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
-                                    <option id="sirCivility">Mr</option>
-                                    <option id="missCivility">Mlle</option>
-                                    <option id="ladyCivility">Mme</option>
-                                </select>       <br></label>
-                <label>Nom: <input id="formWorkerName" name="formWorkerName" type="text" required>       <br></label>
-                <label>Prénom: <input id="formWorkerFirstname" name="formWorkerFirstname" type="text" required>       <br></label>
-                <label>Mail: <input id="formWorkerMail" name="formWorkerMail" type="email" required>       <br></label>
-                <label>Poste: <input id="formWorkerPost" name="formWorkerPost" type="text" required>       <br></label>
-                <label>Lieu: <input id="formWorkerLocation" name="formWorkerLocation" type="text" required>       <br></label>
-                <input type="submit" value="Confirmer">
-                <input type="reset" value="Réinitaliser">
-        </form>
-
         <div id="affectationListContainer">
-            <table border="1" id="affectationList" 
+            <table id="affectationList" 
         <?php 
         if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
             echo "hidden"; ?>>
@@ -119,8 +102,25 @@
         <?php 
         ?>
 
-        <div id="searchResults">
-
+        <!-- Form that will be shown when adding or editing an entry -->
+        <div class="centerElementsFlex">
+            <span class="formContainer">
+                <form onsubmit="SubmitForm()" method="post" id="workerForm" hidden>
+                    <h3 class="formTitle">Formulaire pour un employé</h3>
+                    <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
+                                        <option id="sirCivility">Mr</option>
+                                        <option id="missCivility">Mlle</option>
+                                        <option id="ladyCivility">Mme</option>
+                                    </select>       <br></label>
+                    <label>Nom: <input id="formWorkerName" name="formWorkerName" type="text" required>       <br></label>
+                    <label>Prénom: <input id="formWorkerFirstname" name="formWorkerFirstname" type="text" required>       <br></label>
+                    <label>Mail: <input id="formWorkerMail" name="formWorkerMail" type="email" required>       <br></label>
+                    <label>Poste: <input id="formWorkerPost" name="formWorkerPost" type="text" required>       <br></label>
+                    <label>Lieu: <input id="formWorkerLocation" name="formWorkerLocation" type="text" required>       <br></label>
+                    <input type="submit" value="Confirmer">
+                    <input type="reset" value="Réinitaliser">
+                </form>
+            </span>
         </div>
     </body>
 </html>

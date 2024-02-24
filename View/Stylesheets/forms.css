@@ -1,0 +1,19 @@
+.formContainer {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.formContainer * {
+    background-color: transparent;
+}
+
+.formContainer input {
+    right: 0;
+    position: relative;
+}
+
+.formTitle {
+    text-align: center;
+}

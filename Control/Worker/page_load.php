@@ -59,8 +59,10 @@ class WorkerPageConditions {
             return false;
         }
 
-        $queryToExecute = "SELECT * FROM EMPLOYE WHERE Nom LIKE '%[1]%' OR Prenom LIKE '%[1]%';";
-        $result = SQLQuery::ExecPreparedQuery($queryToExecute, $_GET['searchBar']);
+        $queryToExecute = "SELECT * FROM EMPLOYE WHERE Nom LIKE '%[1]%' OR Prenom LIKE '%[1]%' OR CONCAT(Nom, ' ', Prenom) LIKE '%[1]%' OR CONCAT(Prenom, ' ', Nom) LIKE '%[1]%';";
+        $cleanString = str_replace("+", " ", $_GET['searchBar']); // To remove the '+' character in the string, which is supposed to be a space
+        $result = SQLQuery::ExecPreparedQuery($queryToExecute, $cleanString); 
+
         return $result;
     }
 

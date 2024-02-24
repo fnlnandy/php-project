@@ -22,7 +22,7 @@
 
         <!-- Table that will contain informations about every affectation -->
         <div class="tableListingAreaContainer">
-            <table border="1" class="tableListingArea">
+            <table class="tableListingArea">
                 <tr class="affectationHeaderRow">
                     <th>Num Affect</th>
                     <th>Num Emp</th>
@@ -49,14 +49,19 @@
         </div>
 
         <!-- Form that will be shown when adding or editing an entry -->
-        <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>
-                <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required maxlength="10">        <br></label>
-                <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
-                <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>
-                <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>
-                <label>Date Prise Service: <input id="formPriseService" name="formPriseService" type="date" required><br></label>
-                <input type="submit" value="Confirmer">
-                <input type="reset" value="Réinitaliser">
-        </form>
+        <div class="centerElementsFlex">
+            <span class="formContainer">
+                <form onsubmit="SubmitForm()" method="post" id="affectationForm" hidden>
+                        <h3 class="formTitle">Formulaire pour une affectation</h3>
+                        <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required maxlength="10">        <br></label>
+                        <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
+                        <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>
+                        <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>
+                        <label>Date Prise Service: <input id="formPriseService" name="formPriseService" type="date" required><br></label>
+                        <input type="submit" value="Confirmer">
+                        <input type="reset" value="Réinitaliser">
+                </form>
+            </span>
+        </div>
     </body>
 </html>

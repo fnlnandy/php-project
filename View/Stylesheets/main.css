@@ -1,6 +1,7 @@
 @import url("navigation_bar.css");
 @import url("search_bars.css");
 @import url("table_listing_area.css");
+@import url("forms.css");
 
 /* Every element */
 * {

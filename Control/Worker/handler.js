@@ -67,7 +67,7 @@ function AddWorker()
     var workerPostField      = document.getElementById("formWorkerPost");
     var workerLocationField  = document.getElementById("formWorkerLocation");
 
-    gWorkerDataTracker.isEditMode = false;
+    UpdateAffectedCheck(-1, false);
     workerForm.hidden = false;
     workerCivilityField.selectedIndex = 0;
     workerNameField.value = "";

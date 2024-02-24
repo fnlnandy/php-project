@@ -10,7 +10,7 @@ class DebugUtil {
      * this function is called, prints a message, $fileName and $line can be replaced
      * with macro defines __FILE__ and __LINE__
      */
-    public static function LogIntoFile(string $fileName, int $line, string $message = "")
+    public static function LogIntoFile(string $fileName, int $line, string|null $message = "")
     {
         $file = fopen(gLogFileName, "a");
         $toWrite = "";
@@ -19,7 +19,7 @@ class DebugUtil {
             return;
         }
 
-        $toWrite = "In file ".$fileName.", on line ".strval($line).":\n".$message."\n";
+        $toWrite = "In file ".$fileName.", on line ".strval($line).":\n".strval($message)."\n";
         fwrite($file, $toWrite);
         fclose($file);
     }
