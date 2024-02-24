@@ -52,7 +52,7 @@
 
         <!-- Table that will contain informations about every affectation -->
         <div class="tableListingAreaContainer">
-            <table border="1" class="tableListingArea">
+            <table class="tableListingArea">
                 <tr class="workerHeaderRow" class="tableListingArea">
                     <th>Num Emp</th>
                     <th>Civilite</th>
@@ -82,26 +82,6 @@
             </span>
         </div>
 
-        <div id="affectationListContainer">
-            <table id="affectationList" 
-        <?php 
-        if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
-            echo "hidden"; ?>>
-                <tr>
-                    <th>Num Affect</th>
-                    <th>Ancien Lieu</th>
-                    <th>Nouveau Lieu</th>
-                    <th>Date Affect</th>
-                    <th>Date Prise Service</th>
-                </tr>
-                <?php 
-                include_once("../Control/Worker/affectation_list.php");
-                ?>
-            </table>
-        </div>
-        <?php 
-        ?>
-
         <!-- Form that will be shown when adding or editing an entry -->
         <div class="centerElementsFlex">
             <span class="formContainer">
@@ -121,6 +101,25 @@
                     <input type="reset" value="Réinitaliser">
                 </form>
             </span>
+        </div>
+
+        <div id="affectationListContainer" class="tableListingAreaContainer">
+            <table id="affectationList" 
+            <?php 
+                if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
+                    echo "hidden"; 
+            ?>>
+                <tr>
+                    <th>Num Affect</th>
+                    <th>Ancien Lieu</th>
+                    <th>Nouveau Lieu</th>
+                    <th>Date Affect</th>
+                    <th>Date Prise Service</th>
+                </tr>
+                <?php 
+                include_once("../Control/Worker/affectation_list.php");
+                ?>
+            </table>
         </div>
     </body>
 </html>
