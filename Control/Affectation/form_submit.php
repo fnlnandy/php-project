@@ -23,7 +23,7 @@ class Affectation {
      */
     public static function GenerateNewID() : int
     {
-        $res    = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY NumAffect DESC LIMIT 1;"); // Last ID in the table
+        $res    = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;"); // Last ID in the table
         $realId = intval($res->fetch_assoc()['NumAffect']) + 1;                      // New ID is thus the last + 1
 
         return $realId;

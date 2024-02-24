@@ -71,7 +71,7 @@ class WorkerPageConditions {
      */
     public static function PopulateWorkersAfterTaskConditions()
     {
-        $mainResults = SQLQuery::ExecQuery("SELECT * FROM EMPLOYE ORDER BY NumEmp ASC;");
+        $mainResults = SQLQuery::ExecQuery("SELECT * FROM EMPLOYE ORDER BY LENGTH(NumEmp) ASC, NumEmp ASC;");
         $counter = 0;
         $entriesInSearchBar = WorkerPageConditions::GetMatchingEntriesToSearchbar();
         $entriesAffected = WorkerPageConditions::GetEntriesInAffection();

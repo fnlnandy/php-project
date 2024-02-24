@@ -53,7 +53,7 @@ class TableHelper {
      */
     public static function PopulateTableElementWithDatabseData($sourceTable, $idToGet, $className)
     {
-        $result = SQLQuery::ExecQuery("SELECT * FROM ".$sourceTable." ORDER BY ".$idToGet." ASC;");
+        $result = SQLQuery::ExecPreparedQuery("SELECT * FROM [1] ORDER BY LENGTH([2]) ASC, [2] ASC;", $sourceTable, $idToGet);
         TableHelper::PopulateTableElementWithQueryResult($result, $idToGet, $className);
     }
 }

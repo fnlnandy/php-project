@@ -83,6 +83,28 @@ function RemoveAffectationEntry()
 }
 
 /**
+ * 
+ */
+function CloseFormDialog()
+{
+    var formDialog = document.getElementById("formDialog");
+    formDialog.style.opacity = 0;
+    formDialog.addEventListener("transitionend", () => {
+        formDialog.close();
+    }, {once: true});
+}
+
+/**
+ * 
+ */
+function DisplayFormDialog()
+{
+    var formDialog = document.getElementById("formDialog");
+    formDialog.showModal(); 
+    formDialog.style.opacity = 1;
+}
+
+/**
  * Switches current mode to addMode, handles
  * showing the form to add a new entry
  */
@@ -94,7 +116,7 @@ function AddAffectation()
     var nouveauLieuField = document.getElementById("formNouveauLieu");
 
     UpdateDataTracker(-1, false);
-    form.hidden = false;
+    DisplayFormDialog();
     numEmpField.value = "";
     ancienLieuField.value = "";
     nouveauLieuField.value = "";

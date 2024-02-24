@@ -14,7 +14,7 @@ class Location {
      */
     public static function GenerateNewID()
     {
-        $lastIdQuery = SQLQuery::ExecQuery("SELECT * FROM LIEU ORDER BY IDLieu DESC LIMIT 1;");
+        $lastIdQuery = SQLQuery::ExecQuery("SELECT * FROM LIEU ORDER BY LENGTH(IDLieu) DESC, IDLieu DESC LIMIT 1;");
         $realId      = intval($lastIdQuery->fetch_assoc()['IDLieu']) + 1;
 
         return $realId;
