@@ -11,7 +11,8 @@
     <body>
         <script src="../Control/Affectation/handler.js"></script>
         <script src="../Control/menu_handler.js"></script>
-        <?php include_once("ClientDBs/workerrel.php"); ?>
+        <?php include_once("ClientDBs/workerrel.php");
+              include_once("ClientDBs/locationrel.php"); ?>
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
         <div class="searchBarAreaContainer">
@@ -58,10 +59,17 @@
                     <form onsubmit="SubmitForm()" method="post" id="affectationForm">
                             <h3 class="formTitle">Formulaire pour une affectation</h3>
                             <label>Numéro Employé: 
-                                <select id="formNumEmp" name="formNumEmp" onchange="UpdateFormWorkerSelection(true)"><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
-                                <select id="formInfoEmp" name="formInfoEmp" onchange="UpdateFormWorkerSelection(false)"><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select><br></label>
-                            <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
-                            <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>
+                                <select id="formNumEmp" name="formNumEmp" onchange="UpdateFormMatchingSelects(true, 'formNumEmp', 'formInfoEmp')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
+                                <select id="formInfoEmp" name="formInfoEmp" onchange="UpdateFormMatchingSelects(false, 'formNumEmp', 'formInfoEmp')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>
+                            <br></label>
+                            <label>Ancien Lieu: 
+                                <select id="formAncienLieu" name="formAncienLieu" onchange="UpdateFormMatchingSelects(true, 'formAncienLieu', 'formInfoAncienLieu')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                                <select id="formInfoAncienLieu" name="formInfoAncienLieu" onchange="UpdateFormMatchingSelects(false, 'formAncienLieu', 'formInfoAncienLieu')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                            <br></label>
+                            <label>Nouveau Lieu: 
+                                <select id="formNouveauLieu" name="formNouveauLieu" onchange="UpdateFormMatchingSelects(true, 'formNouveauLieu', 'formInfoNouveauLieu')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                                <select id="formInfoNouveauLieu" name="formInfoNouveauLieu" onchange="UpdateFormMatchingSelects(false, 'formNouveauLieu', 'formInfoNouveauLieu')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                            <br></label>
                             <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>
                             <label>Date Prise Service: <input id="formPriseService" name="formPriseService" type="date" required><br></label>
                             <input type="submit" value="Confirmer">

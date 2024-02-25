@@ -2,7 +2,7 @@
     <?php 
         include_once("../Models/queries.php");
 
-        $query = SQLQuery::ExecQuery("SELECT IDLieu, Design, Province FROM LIEU;");
+        $query = SQLQuery::ExecQuery("SELECT IDLieu, Design, Province FROM LIEU ORDER BY LENGTH(IDLieu) ASC, IDLieu ASC;");
 
         if (is_null($query))
             return;

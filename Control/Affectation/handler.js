@@ -65,7 +65,7 @@ function UpdateDataTracker(id, mode)
     for (var i = 0 ; i < affectationTableRows.length ; i++) {
         var columnsInRow = affectationTableRows[i].querySelectorAll("td");
 
-        if (columnsInRow[0].innerText == gAffectationDataTracker.id) {
+        if (columnsInRow.length > 0 && columnsInRow[0].innerText == gAffectationDataTracker.id) {
             affectationTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
             break;
         }
@@ -91,36 +91,56 @@ function AddAffectation()
     var numEmpField = document.getElementById("formNumEmp");
     var infoEmpField = document.getElementById("formInfoEmp");
     var ancienLieuField = document.getElementById("formAncienLieu");
+    var infoAncienLieuField = document.getElementById("formInfoAncienLieu");
     var nouveauLieuField = document.getElementById("formNouveauLieu");
+    var infoNouveauLieuField = document.getElementById("formInfoNouveauLieu");
 
     UpdateDataTracker(-1, false);
     DisplayFormDialog();
     numEmpField.selectedIndex = 0;
     infoEmpField.selectedIndex = 0;
-    ancienLieuField.value = "";
-    nouveauLieuField.value = "";
+    ancienLieuField.selectedIndex = 0;
+    infoAncienLieuField.selectedIndex = 0;
+    nouveauLieuField.selectedIndex = 0;
+    infoNouveauLieuField.selectedIndex = 0;
     window.onload(null); // Reloading the current dates
 }
 
 /**
  * 
  */
-function GetCorrectIndexForSelectWorkerIds(workerName)
+function GetCurrentSelectOptionValue(selectElementId, currentId)
 {
-    var workerRel = document.getElementById("workerNameFirstNameMatch");
+    var elem = selectElementId;
+    var options = elem.querySelectorAll("option");
+    const max = options.length;
+
+    if (currentId >= max)
+        return "";
+
+    return options[currentId]?.innerText;
+}
+
+/**
+ * 
+ */
+function GetSelectionIndexForSelectedName(nameToCompare, clientDBId)
+{
+    var workerRel = document.getElementById(clientDBId);
     var workerRows = workerRel.querySelectorAll("tr");
     const max = workerRows.length;
 
+    console.log([nameToCompare, clientDBId]);
     for (var i = 0 ; i < max ; i++) {
         var currentColumn = workerRows[i].querySelectorAll("td");
 
-        if (currentColumn[1].innerHTML == workerName) {
-            console.log(currentColumn[0].innerHTML);
+        if (currentColumn.length > 1 && currentColumn[1].innerText == nameToCompare) {
+            console.log(currentColumn[0].innerText);
             return i;
         }
     }
 
-    console.log("No NumEmp found.");
+    console.log("No index found.");
     return 0;
 }
 
@@ -133,7 +153,9 @@ function EditAffectation()
     var numEmpField = document.getElementById("formNumEmp");
     var infoEmpField = document.getElementById("formInfoEmp");
     var ancienLieuField = document.getElementById("formAncienLieu");
+    var infoAncienLieuField = document.getElementById("formInfoAncienLieu");
     var nouveauLieuField = document.getElementById("formNouveauLieu");
+    var infoNouveauLieuField = document.getElementById("formInfoNouveauLieu");
     var dateAffectField = document.getElementById("formDateAffect");
     var datePriseServiceField = document.getElementById("formPriseService");
     var tableRows = document.getElementsByClassName("affectationRow");
@@ -151,40 +173,22 @@ function EditAffectation()
     for (var i = 0 ; i < tableRows.length ; i++) {
         var columnsInRow = tableRows[i].querySelectorAll("td");
 
-        if (columnsInRow[0].innerText == gAffectationDataTracker.id) {
-            var correctSelectedIndex = GetCorrectIndexForSelectWorkerIds(columnsInRow[1].innerText)
+        if (columnsInRow.length > 0 && columnsInRow[0].innerText == gAffectationDataTracker.id) {
+            var correctSelectedIndex = GetSelectionIndexForSelectedName(columnsInRow[1].innerText, "workerNameFirstNameMatch");
+            var correctOldLocIndex = GetSelectionIndexForSelectedName(columnsInRow[2].innerText, "locationIdDesignMatch");
+            var correctNewLocIndex = GetSelectionIndexForSelectedName(columnsInRow[3].innerText, "locationIdDesignMatch");
 
             numEmpField.selectedIndex   = correctSelectedIndex;
             infoEmpField.selectedIndex  = correctSelectedIndex;
-            ancienLieuField.value       = columnsInRow[2].innerText;
-            nouveauLieuField.value      = columnsInRow[3].innerText;
+            ancienLieuField.selectedIndex = correctOldLocIndex;
+            infoAncienLieuField.selectedIndex = correctOldLocIndex;
+            nouveauLieuField.selectedIndex = correctNewLocIndex;
+            infoNouveauLieuField.selectedIndex = correctNewLocIndex;
             dateAffectField.value       = columnsInRow[4].innerText;
             datePriseServiceField.value = columnsInRow[5].innerText;
             break;
         }
     }
-}
-
-/**
- * 
- */
-function GetNumEmpFromClientDB(empName)
-{
-    var workerRel = document.getElementById("workerNameFirstNameMatch");
-    var workerRows = workerRel.querySelectorAll("tr");
-    const max = workerRows.length;
-
-    for (var i = 0 ; i < max ; i++) {
-        var currentColumn = workerRows[i].querySelectorAll("td");
-
-        if (currentColumn[1].innerHTML == empName) {
-            console.log(currentColumn[0].innerHTML);
-            return currentColumn[0].innerHTML;
-        }
-    }
-
-    console.log("No NumEmp found.");
-    return "";
 }
 
 /*
@@ -200,26 +204,26 @@ function SubmitForm()
     var datePriseServiceField = document.getElementById("formPriseService");
 
     // If some value in the form is empty, then we refuse to submit it
-    if (numEmpField.value == "" || ancienLieuField.value == "" || nouveauLieuField.value == ""
-        || dateAffectField.value == "" || datePriseServiceField.value == "") {
+    if (numEmpField?.innerText == "" || ancienLieuField?.innerText == "" ||
+        nouveauLieuField?.innerText == "" || dateAffectField.value == "" || datePriseServiceField.value == "") {
             return;
     }
     else {
-    // Loading every form field into a container that will be parsed on the server side
-    var formData = {
-        numAffect: gAffectationDataTracker.id,
-        editMode: gAffectationDataTracker.isEditMode,
-        numEmp: numEmpField.value,
-        ancienLieu: ancienLieuField.value,
-        nouveauLieu: nouveauLieuField.value,
-        dateAffect: dateAffectField.value,
-        datePriseService: datePriseServiceField.value
-    };
-    console.log(formData);
+        // Loading every form field into a container that will be parsed on the server side
+        var formData = {
+            numAffect: gAffectationDataTracker.id,
+            editMode: gAffectationDataTracker.isEditMode,
+            numEmp: GetCurrentSelectOptionValue(numEmpField, numEmpField.selectedIndex),
+            ancienLieu: GetCurrentSelectOptionValue(ancienLieuField, ancienLieuField.selectedIndex),
+            nouveauLieu: GetCurrentSelectOptionValue(nouveauLieuField, nouveauLieuField.selectedIndex),
+            dateAffect: dateAffectField.value,
+            datePriseService: datePriseServiceField.value
+        };
+        
+        console.log(formData);
+        SendXMLHttpRequest(formData, "../Control/Affectation/form_submit.php");
+        location.reload();
     }
-    
-    SendXMLHttpRequest(formData, "../Control/Affectation/form_submit.php");
-    location.reload();
 }
 
 /**
@@ -235,11 +239,12 @@ function TryGeneratePDF()
 /**
  * 
  */
-function UpdateFormWorkerSelection(idIsBase)
+function UpdateFormMatchingSelects(idIsBase, idName, infoName)
 {
-    var idField = document.getElementById("formNumEmp");
-    var infoField = document.getElementById("formInfoEmp");
+    var idField = document.getElementById(idName);
+    var infoField = document.getElementById(infoName);
 
+    console.log([idIsBase, idName, infoName]);
     if (idIsBase) {
         infoField.selectedIndex = idField.selectedIndex;
     }
