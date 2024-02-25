@@ -59,6 +59,7 @@ class Affectation {
                             $dateAffect->format("Y-m-d"), 
                             $datePrServ->format("Y-m-d"));
         Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
+        header("Refresh:0");
     }
 
     /**

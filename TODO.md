@@ -29,6 +29,9 @@
 * Ajuster le formulaire et la table d'Affectation
     - Remplacer IDs par texte dans le formulaire..[ ]
     - Remplacer IDs par texte dans la table.......[ ]
+* Faire en sorte que les formulaires soient considérés comme envoyés après AJAX...[ ]
+* Mettre les boutons d'actions en haut à droite pour ne pas avoir à les retrouver à chaque fois...[ ]
+* ^ Même chose pour la barre de navigation
 
 ## Improvements
 * Ajouter des namespaces pour queries.php and init.php..[X]

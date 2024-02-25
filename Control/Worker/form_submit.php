@@ -40,7 +40,8 @@ class Worker {
         }
 
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Civilite'], $receivedData['Nom'],
-                          $receivedData['Prenom'], $receivedData['Mail'], $receivedData['Poste'], $receivedData['Lieu']);
+                        $receivedData['Prenom'], $receivedData['Mail'], $receivedData['Poste'], $receivedData['Lieu']);
+        header("Refresh:0");
     }
 }
 

@@ -40,6 +40,7 @@ class Location {
         }
 
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Design'], $receivedData['Province']);
+        header("Refresh:0");
     }
 }
 
