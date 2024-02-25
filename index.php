@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- PAGE HEADERS -->
     <head>
         <title>Menu principal</title>
         <meta charset="UTF-8">
@@ -9,6 +10,7 @@
         <link rel="stylesheet" href="View/Stylesheets/main.css">
     </head>
     <body>
+        <!-- INCLUDES -->
         <script src="Control/menu_handler.js"></script>
         <!-- Initalize the database. -->
         <?php 
@@ -17,6 +19,7 @@
         SQLQuery::CreateDatabase();
         ?>
 
+        <!-- CUSTOM: MAIN NAVIGATION MENU -->
         <section id="navigationMenu">
             <div id="navMenuOptionsContainer">
                 <ol id="navMenuOptions">

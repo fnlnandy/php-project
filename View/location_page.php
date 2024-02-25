@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- PAGE HEADERS -->
     <head>
         <title>Page des lieux</title>
         <meta charset="UTF-8">
@@ -9,11 +10,14 @@
         <link rel="stylesheet" href="Stylesheets/main.css">
     </head>
     <body>
-    <script src="../Control/Location/handler.js"></script>
-    <script src="../Control/menu_handler.js"></script>
+        <!-- INCLUDES -->
+        <script src="../Control/Location/handler.js"></script>
+        <script src="../Control/menu_handler.js"></script>
+        
+        <!-- NAVIGATION MENU -->
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
-        <!-- Table that will contain informations about every affectation -->
+        <!-- TABLE LISTING DATA -->
         <div class="tableListingAreaContainer">
             <table class="tableListingArea">
                 <tr class="locationHeaderRow">
@@ -29,6 +33,7 @@
             </table>
         </div>
 
+        <!-- CRUD OPERATIONS BUTTONS -->
         <div class="centerElementsFlex">
             <span class="actionButtonsContainer">
                 <button onclick="AddLocation()">Ajouter</button>
@@ -37,7 +42,7 @@
             </span>
         </div>
 
-        <!-- Form that will be shown when adding or editing an entry -->
+        <!-- DATA FILLING FORM -->
         <dialog id="formDialog">
         <p onclick="CloseFormDialog()">x</p>
             <div class="centerElementsFlex">

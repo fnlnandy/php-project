@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- PAGE HEADERS -->
     <head>
         <title>Page des affectations</title>
         <meta charset="UTF-8">
@@ -9,12 +10,16 @@
         <link rel="stylesheet" href="Stylesheets/main.css">
     </head>
     <body>
+        <!-- INCLUDES -->
         <script src="../Control/Affectation/handler.js"></script>
         <script src="../Control/menu_handler.js"></script>
         <?php include_once("ClientDBs/workerrel.php");
               include_once("ClientDBs/locationrel.php"); ?>
+        
+        <!-- NAVIGATION MENU -->
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
+        <!-- SEARCH BAR AREA -->
         <div class="searchBarAreaContainer">
             <form id="twoDatesForm" method="get">
                 <label>Début: <input type="date" id="dateStart" name="dateStart" <?php if (key_exists('dateStart', $_GET) && $_GET['dateStart'] != "") { echo "value=\"{$_GET['dateStart']}\""; }  ?>></label>
@@ -23,7 +28,7 @@
             </form>
         </div>
 
-        <!-- Table that will contain informations about every affectation -->
+        <!-- TABLE LISTING DATA -->
         <div class="tableListingAreaContainer">
             <table class="tableListingArea">
                 <tr class="affectationHeaderRow">
@@ -42,6 +47,7 @@
             </table>
         </div>
 
+        <!-- CRUD OPERATIONS BUTTONS -->
         <div class="centerElementsFlex">
             <span class="actionButtonsContainer">
                 <button onclick="AddAffectation()">Ajouter</button>
@@ -51,7 +57,7 @@
             </span>
         </div>
 
-        <!-- Form that will be shown when adding or editing an entry -->
+        <!-- DATA FILLING FORM -->
         <dialog id="formDialog">
             <p onclick="CloseFormDialog()">x</p>
             <div class="centerElementsFlex">

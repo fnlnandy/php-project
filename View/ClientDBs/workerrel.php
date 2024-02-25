@@ -1,3 +1,4 @@
+<!-- DATA STORING TABLE TO ACCESS IN JS -->
 <table class="clientDB" id="workerNameFirstNameMatch">
     <?php 
         include_once("../Models/queries.php");
