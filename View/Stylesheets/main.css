@@ -16,8 +16,6 @@
 }
 
 #formDialog {
-    top: -400%;
-    left: -400%;
     background-color: white;
     opacity: 0;
     transition: opacity 0.3s;
@@ -37,12 +35,36 @@
     text-align: right;
 }
 
-#formDialog div span form h3 {
+#formTitle {
     padding: 5px;
     margin: 0;
+}
+
+#formDialog input {
+    border: 1px solid;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+}
+
+#formDialog input:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#formDialog input[type="text"]:hover, #formDialog input[type="number"]:hover, #formDialog input[type="date"]:hover {
+    cursor: text;
 }
 
 #formDialog p:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+.clientDB {
+    /* display: none; */
+    background-color: white;
+}
+
+.clientDB * {
+    background-color: transparent;
 }

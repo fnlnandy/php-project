@@ -83,47 +83,45 @@ function RemoveAffectationEntry()
 }
 
 /**
- * 
- */
-function CloseFormDialog()
-{
-    var formDialog = document.getElementById("formDialog");
-    formDialog.style.opacity = 0;
-    formDialog.addEventListener("transitionend", () => {
-        formDialog.close();
-    }, {once: true});
-}
-
-/**
- * 
- */
-function DisplayFormDialog()
-{
-    var formDialog = document.getElementById("formDialog");
-    formDialog.showModal(); 
-    formDialog.style.opacity = 1;
-    formDialog.style.top = 0;
-    formDialog.style.left = 0;
-    formDialog.addEventListener("transitionend", () => {}, { once: true });
-}
-
-/**
  * Switches current mode to addMode, handles
  * showing the form to add a new entry
  */
 function AddAffectation()
 {
-    var form = document.getElementById("affectationForm");
     var numEmpField = document.getElementById("formNumEmp");
+    var infoEmpField = document.getElementById("formInfoEmp");
     var ancienLieuField = document.getElementById("formAncienLieu");
     var nouveauLieuField = document.getElementById("formNouveauLieu");
 
     UpdateDataTracker(-1, false);
     DisplayFormDialog();
-    numEmpField.value = "";
+    numEmpField.selectedIndex = 0;
+    infoEmpField.selectedIndex = 0;
     ancienLieuField.value = "";
     nouveauLieuField.value = "";
     window.onload(null); // Reloading the current dates
+}
+
+/**
+ * 
+ */
+function GetCorrectIndexForSelectWorkerIds(workerName)
+{
+    var workerRel = document.getElementById("workerNameFirstNameMatch");
+    var workerRows = workerRel.querySelectorAll("tr");
+    const max = workerRows.length;
+
+    for (var i = 0 ; i < max ; i++) {
+        var currentColumn = workerRows[i].querySelectorAll("td");
+
+        if (currentColumn[1].innerHTML == workerName) {
+            console.log(currentColumn[0].innerHTML);
+            return i;
+        }
+    }
+
+    console.log("No NumEmp found.");
+    return 0;
 }
 
 /**
@@ -132,8 +130,8 @@ function AddAffectation()
  */
 function EditAffectation()
 {
-    var form = document.getElementById("affectationForm");
     var numEmpField = document.getElementById("formNumEmp");
+    var infoEmpField = document.getElementById("formInfoEmp");
     var ancienLieuField = document.getElementById("formAncienLieu");
     var nouveauLieuField = document.getElementById("formNouveauLieu");
     var dateAffectField = document.getElementById("formDateAffect");
@@ -147,14 +145,17 @@ function EditAffectation()
     }
 
     gAffectationDataTracker.isEditMode = true;
-    form.hidden = false;
+    DisplayFormDialog();
 
     // Loading every value from the table to the form
     for (var i = 0 ; i < tableRows.length ; i++) {
         var columnsInRow = tableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gAffectationDataTracker.id) {
-            numEmpField.value           = columnsInRow[1].innerText;
+            var correctSelectedIndex = GetCorrectIndexForSelectWorkerIds(columnsInRow[1].innerText)
+
+            numEmpField.selectedIndex   = correctSelectedIndex;
+            infoEmpField.selectedIndex  = correctSelectedIndex;
             ancienLieuField.value       = columnsInRow[2].innerText;
             nouveauLieuField.value      = columnsInRow[3].innerText;
             dateAffectField.value       = columnsInRow[4].innerText;
@@ -162,6 +163,28 @@ function EditAffectation()
             break;
         }
     }
+}
+
+/**
+ * 
+ */
+function GetNumEmpFromClientDB(empName)
+{
+    var workerRel = document.getElementById("workerNameFirstNameMatch");
+    var workerRows = workerRel.querySelectorAll("tr");
+    const max = workerRows.length;
+
+    for (var i = 0 ; i < max ; i++) {
+        var currentColumn = workerRows[i].querySelectorAll("td");
+
+        if (currentColumn[1].innerHTML == empName) {
+            console.log(currentColumn[0].innerHTML);
+            return currentColumn[0].innerHTML;
+        }
+    }
+
+    console.log("No NumEmp found.");
+    return "";
 }
 
 /*
@@ -207,4 +230,20 @@ function SubmitForm()
 function TryGeneratePDF()
 {
     SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/pdf_generator.php");
+}
+
+/**
+ * 
+ */
+function UpdateFormWorkerSelection(idIsBase)
+{
+    var idField = document.getElementById("formNumEmp");
+    var infoField = document.getElementById("formInfoEmp");
+
+    if (idIsBase) {
+        infoField.selectedIndex = idField.selectedIndex;
+    }
+    else {
+        idField.selectedIndex = infoField.selectedIndex;
+    }
 }

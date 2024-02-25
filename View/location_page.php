@@ -10,6 +10,7 @@
     </head>
     <body>
     <script src="../Control/Location/handler.js"></script>
+    <script src="../Control/menu_handler.js"></script>
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
         <!-- Table that will contain informations about every affectation -->
@@ -37,16 +38,19 @@
         </div>
 
         <!-- Form that will be shown when adding or editing an entry -->
-        <div class="centerElementsFlex">
-            <span class="formContainer">
-                <form onsubmit="SubmitForm()" method="post" id="locationForm" hidden>
-                        <h3 class="formTitle">Formulaire pour un lieu</h3>
-                        <label>Design: <input id="formLocationDesign" name="formLocationDesign" type="text" required>        <br></label>
-                        <label>Province: <input id="formLocationProvince" name="formLocationProvince" type="text" required>       <br></label>
-                        <input type="submit" value="Confirmer">
-                        <input type="reset" value="Réinitaliser">
-                </form>
-            </span>
-        </div>
+        <dialog id="formDialog">
+        <p onclick="CloseFormDialog()">x</p>
+            <div class="centerElementsFlex">
+                <span class="formContainer">
+                    <form onsubmit="SubmitForm()" method="post" id="locationForm">
+                            <h3 class="formTitle">Formulaire pour un lieu</h3>
+                            <label>Design: <input id="formLocationDesign" name="formLocationDesign" type="text" required>        <br></label>
+                            <label>Province: <input id="formLocationProvince" name="formLocationProvince" type="text" required>       <br></label>
+                            <input type="submit" value="Confirmer">
+                            <input type="reset" value="Réinitaliser">
+                    </form>
+                </span>
+            </div>
+        </dialog>
     </body>
 </html>

@@ -10,6 +10,7 @@
     </head>
     <body>
     <script src="../Control/Worker/handler.js"></script>
+    <script src="../Control/menu_handler.js"></script>
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
         <div class="searchBarAreaContainer">
@@ -83,25 +84,28 @@
         </div>
 
         <!-- Form that will be shown when adding or editing an entry -->
-        <div class="centerElementsFlex">
-            <span class="formContainer">
-                <form onsubmit="SubmitForm()" method="post" id="workerForm" hidden>
-                    <h3 class="formTitle">Formulaire pour un employé</h3>
-                    <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
-                                        <option id="sirCivility">Mr</option>
-                                        <option id="missCivility">Mlle</option>
-                                        <option id="ladyCivility">Mme</option>
-                                    </select>       <br></label>
-                    <label>Nom: <input id="formWorkerName" name="formWorkerName" type="text" required>       <br></label>
-                    <label>Prénom: <input id="formWorkerFirstname" name="formWorkerFirstname" type="text" required>       <br></label>
-                    <label>Mail: <input id="formWorkerMail" name="formWorkerMail" type="email" required>       <br></label>
-                    <label>Poste: <input id="formWorkerPost" name="formWorkerPost" type="text" required>       <br></label>
-                    <label>Lieu: <input id="formWorkerLocation" name="formWorkerLocation" type="text" required>       <br></label>
-                    <input type="submit" value="Confirmer">
-                    <input type="reset" value="Réinitaliser">
-                </form>
-            </span>
-        </div>
+        <dialog id="formDialog">
+            <p onclick="CloseFormDialog()">x</p>
+            <div class="centerElementsFlex">
+                <span class="formContainer">
+                    <form onsubmit="SubmitForm()" method="post" id="workerForm">
+                        <h3 class="formTitle">Formulaire pour un employé</h3>
+                        <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
+                                            <option id="sirCivility">Mr</option>
+                                            <option id="missCivility">Mlle</option>
+                                            <option id="ladyCivility">Mme</option>
+                                        </select>       <br></label>
+                        <label>Nom: <input id="formWorkerName" name="formWorkerName" type="text" required>       <br></label>
+                        <label>Prénom: <input id="formWorkerFirstname" name="formWorkerFirstname" type="text" required>       <br></label>
+                        <label>Mail: <input id="formWorkerMail" name="formWorkerMail" type="email" required>       <br></label>
+                        <label>Poste: <input id="formWorkerPost" name="formWorkerPost" type="text" required>       <br></label>
+                        <label>Lieu: <input id="formWorkerLocation" name="formWorkerLocation" type="text" required>       <br></label>
+                        <input type="submit" value="Confirmer">
+                        <input type="reset" value="Réinitaliser">
+                    </form>
+                </span>
+            </div>
+        </dialog>
 
         <div id="affectationListContainer" class="tableListingAreaContainer">
             <table id="affectationList" 

@@ -72,6 +72,7 @@ function AddWorker()
     var workerLocationField  = document.getElementById("formWorkerLocation");
 
     UpdateAffectedCheck(-1, false);
+    DisplayFormDialog();
     workerForm.hidden = false;
     workerCivilityField.selectedIndex = 0;
     workerNameField.value = "";
@@ -103,7 +104,7 @@ function EditWorker()
     }
 
     gWorkerDataTracker.isEditMode = true;
-    workerForm.hidden = false;
+    DisplayFormDialog();
 
     // Loading the data from the table into the row
     for (var i = 0 ; i < workerTableRows.length ; i++) {

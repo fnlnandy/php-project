@@ -9,7 +9,9 @@
         <link rel="stylesheet" href="Stylesheets/main.css">
     </head>
     <body>
-    <script src="../Control/Affectation/handler.js"></script>
+        <script src="../Control/Affectation/handler.js"></script>
+        <script src="../Control/menu_handler.js"></script>
+        <?php include_once("ClientDBs/workerrel.php"); ?>
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
 
         <div class="searchBarAreaContainer">
@@ -55,7 +57,9 @@
                 <span class="formContainer">
                     <form onsubmit="SubmitForm()" method="post" id="affectationForm">
                             <h3 class="formTitle">Formulaire pour une affectation</h3>
-                            <label>Numéro Employé: <input id="formNumEmp" name="formNumEmp" type="number" required maxlength="10">        <br></label>
+                            <label>Numéro Employé: 
+                                <select id="formNumEmp" name="formNumEmp" onchange="UpdateFormWorkerSelection(true)"><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
+                                <select id="formInfoEmp" name="formInfoEmp" onchange="UpdateFormWorkerSelection(false)"><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select><br></label>
                             <label>Ancien Lieu: <input id="formAncienLieu" name="formAncienLieu" type="number" required>       <br></label>
                             <label>Nouveau Lieu: <input id="formNouveauLieu" name="formNouveauLieu" type="number" required>     <br></label>
                             <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>

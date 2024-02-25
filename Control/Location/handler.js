@@ -64,6 +64,7 @@ function AddLocation()
     var locationProvinceField = document.getElementById("formLocationProvince");
     
     UpdateDataTracker(-1, false);
+    DisplayFormDialog();
     locationForm.hidden = false;
     locationDesignField.value = "";
     locationProvinceField.value = "";
@@ -87,7 +88,7 @@ function EditLocation()
     }
 
     gLocationDataTracker.isEditMode = true;
-    locationForm.hidden = false;
+    DisplayFormDialog();
 
     // Loading every data from the correct row into the form
     for (var i = 0 ; i < locationTableRows.length ; i++) {

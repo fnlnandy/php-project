@@ -55,10 +55,28 @@ class AffectationPageLoadConditions
                     continue;
             }
             $counter = $row["NumAffect"];
+            $secondQuery = SQLQuery::ExecPreparedQuery("SELECT Nom, Prenom FROM EMPLOYE WHERE NumEmp = '[1]'", $row["NumEmp"]);
+
+            if (!$secondQuery || is_null($secondQuery))
+                continue;
+
+            $workerRow = $secondQuery->fetch_assoc();
+
             echo "<tr class=\"affectationRow\" onclick=\"UpdateDataTracker(".strval($counter).", true)\">";
 
             // For each column in the associative array i.e. for each field in a row in the table, we
             // add a new <td>
+
+            if (is_null($workerRow) || !key_exists("Nom", $workerRow) || !key_exists("Prenom", $workerRow))
+                continue;
+
+            echo "<td>".$row["NumAffect"]."</td>";
+            echo "<td>".$workerRow["Nom"]." ".$workerRow["Prenom"]."</td>";
+            echo "<td>".$row["AncienLieu"]."</td>";
+            echo "<td>".$row["NouveauLieu"]."</td>";
+            echo "<td>".$row["DateAffect"]."</td>";
+            echo "<td>".$row["DatePriseService"]."</td>";
+
             foreach ($row as $column) {
                 echo "<td>".$column."</td>";
             }
