@@ -94,12 +94,25 @@ class WorkerPageConditions {
 
             // Printing the rows with the correct call to UpdateDataTracker
             $counter = $rowInDatabase['NumEmp'];
+            $secondQuery = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $rowInDatabase['Lieu']);
+
+            if (!$secondQuery || is_null($secondQuery))
+                continue;
+
+            $locData = $secondQuery->fetch_assoc();
+
+            if (is_null($locData) || !key_exists('Design', $locData) || !key_exists('Province', $locData))
+                continue;
 
             echo "<tr class=\"workerRow\" onclick=\"UpdateDataTracker(".strval($counter).", true)\">";
 
-            foreach ($rowInDatabase as $column) {
-                echo "<td>".$column."</td>";
-            }
+            echo "<td>{$rowInDatabase['NumEmp']}</td>";
+            echo "<td>{$rowInDatabase['Civilite']}</td>";
+            echo "<td>{$rowInDatabase['Nom']}</td>";
+            echo "<td>{$rowInDatabase['Prenom']}</td>";
+            echo "<td>{$rowInDatabase['Mail']}</td>";
+            echo "<td>{$rowInDatabase['Poste']}</td>";
+            echo "<td>{$locData['Design']} ({$locData['Province']})</td>";
 
             echo "</tr>";
         }

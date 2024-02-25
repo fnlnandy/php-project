@@ -70,16 +70,18 @@ function AddWorker()
     var workerMailField      = document.getElementById("formWorkerMail");
     var workerPostField      = document.getElementById("formWorkerPost");
     var workerLocationField  = document.getElementById("formWorkerLocation");
+    var infoWorkerLocationField = document.getElementById("formInfoWorkerLocation");
 
     UpdateAffectedCheck(-1, false);
     DisplayFormDialog();
-    workerForm.hidden = false;
+
     workerCivilityField.selectedIndex = 0;
     workerNameField.value = "";
     workerFirstnameField.value = "";
     workerMailField.value = "";
     workerPostField.value = "";
-    workerLocationField.value = "";
+    workerLocationField.selectedIndex = 0;
+    infoWorkerLocationField.selectedIndex = 0;
 }
 
 /**
@@ -95,6 +97,7 @@ function EditWorker()
     var workerMailField      = document.getElementById("formWorkerMail");
     var workerPostField      = document.getElementById("formWorkerPost");
     var workerLocationField  = document.getElementById("formWorkerLocation");
+    var infoWorkerLocationField = document.getElementById("formInfoWorkerLocation");
     var workerTableRows = document.getElementsByClassName("workerRow");
 
     // No valid data/row was selected
@@ -112,6 +115,7 @@ function EditWorker()
 
         if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
             var selectedIndex = 0;
+            var correctSelectionIndexForLocation = GetSelectionIndexForSelectedName(columnsInRow[6].innerText, "locationIdDesignMatch");
             
             // Selecting the correct option for the civility
             if (columnsInRow[1].innerText == "Mr")
@@ -126,7 +130,8 @@ function EditWorker()
             workerFirstnameField.value = columnsInRow[3].innerText;
             workerMailField.value = columnsInRow[4].innerText;
             workerPostField.value = columnsInRow[5].innerText;
-            workerLocationField.value = columnsInRow[6].innerText;
+            workerLocationField.selectedIndex = correctSelectionIndexForLocation;
+            infoWorkerLocationField.selectedIndex = correctSelectionIndexForLocation;
             break;
         }
     }
@@ -157,7 +162,7 @@ function SubmitForm()
     console.log(dataToSend);
     // If some value in the form is empty, then we refuse to submit it
     if (workerNameField.value == "" || workerFirstnameField.value == "" ||
-        workerMailField.value == "" || workerPostField.value == "" || workerLocationField.value == "")
+        workerMailField.value == "" || workerPostField.value == "" || workerLocationField?.innerText == "")
         return;
 
     var dataToSend = {
@@ -168,7 +173,7 @@ function SubmitForm()
         Prenom: workerFirstnameField.value,
         Mail: workerMailField.value,
         Poste: workerPostField.value,
-        Lieu: workerLocationField.value,
+        Lieu: GetCurrentSelectOptionValue(workerLocationField, workerLocationField.selectedIndex),
     };
 
     SendXMLHttpRequest(dataToSend, "../Control/Worker/form_submit.php");

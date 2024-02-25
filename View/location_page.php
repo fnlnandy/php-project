@@ -11,8 +11,8 @@
     </head>
     <body>
         <!-- INCLUDES -->
+        <script src="../Control/main_handler.js"></script>
         <script src="../Control/Location/handler.js"></script>
-        <script src="../Control/menu_handler.js"></script>
         
         <!-- NAVIGATION MENU -->
         <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>

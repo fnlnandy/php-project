@@ -11,8 +11,8 @@
     </head>
     <body>
         <!-- INCLUDES -->
+        <script src="../Control/main_handler.js"></script>
         <script src="../Control/Affectation/handler.js"></script>
-        <script src="../Control/menu_handler.js"></script>
         <?php include_once("ClientDBs/workerrel.php");
               include_once("ClientDBs/locationrel.php"); ?>
         

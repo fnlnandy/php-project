@@ -11,8 +11,8 @@
     </head>
     <body>
         <!-- INCLUDES -->
+        <script src="../Control/main_handler.js"></script> 
         <script src="../Control/Worker/handler.js"></script>
-        <script src="../Control/menu_handler.js"></script> 
         <?php include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
@@ -106,7 +106,10 @@
                         <label>Prénom: <input id="formWorkerFirstname" name="formWorkerFirstname" type="text" required>       <br></label>
                         <label>Mail: <input id="formWorkerMail" name="formWorkerMail" type="email" required>       <br></label>
                         <label>Poste: <input id="formWorkerPost" name="formWorkerPost" type="text" required>       <br></label>
-                        <label>Lieu: <input id="formWorkerLocation" name="formWorkerLocation" type="text" required>       <br></label>
+                        <label>Lieu: 
+                            <select id="formWorkerLocation" name="formWorkerLocation" onchange="UpdateFormMatchingSelects(true, 'formWorkerLocation', 'formInfoWorkerLocation')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                            <select id="formInfoWorkerLocation" name="formInfoWorkerLocation" onchange="UpdateFormMatchingSelects(false, 'formWorkerLocation', 'formInfoWorkerLocation')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                        <br></label>
                         <input type="submit" value="Confirmer">
                         <input type="reset" value="Réinitaliser">
                     </form>

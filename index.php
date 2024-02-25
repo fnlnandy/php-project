@@ -11,7 +11,7 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="Control/menu_handler.js"></script>
+        <script src="Control/main_handler.js"></script>
         <!-- Initalize the database. -->
         <?php 
         include_once("Models/queries.php");
