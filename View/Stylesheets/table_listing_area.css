@@ -44,21 +44,16 @@
     cursor: pointer;
 }
 
-.affectationRow, .locationRow, .workerRow {
+.affectationRow, .locationRow, .workerRow, .workerAffectationRow {
     transition: background-color 0.3s ease;
 }
 
 /* On hover of <tr>s */
-.affectationRow:hover, .locationRow:hover, .workerRow:hover {
+.affectationRow:hover, .locationRow:hover, .workerRow:hover, .workerAffectationRow:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#affectationListContainer {
-    background-color: white;
-    width: fit-content;
-}
-
-#affectationListContainer * {
-    background-color: transparent;
+table {
+    text-align: center;
 }

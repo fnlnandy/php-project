@@ -21,6 +21,7 @@
     transition: opacity 0.3s;
     display: block;
     border-radius: 10px;
+    z-index: -1;
 }
 
 #formDialog p {

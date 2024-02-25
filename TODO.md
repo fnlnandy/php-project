@@ -22,13 +22,13 @@
     - Listage d'affect effectuées entre deux dates..[X]
 
 ## Misc
-* Ajouter des checks pour les overflow de nombre de caractères...[ ]
-* Changer la fonction de modification pour qu'elle ne depende pas de x.length...[ ] (What did I mean by this ???)
-* Prendre en charge les nombres qui commencent par '0'.......[ ]
-* Prendre en charge la reorganization des ids d'affectation..[ ]
+* Ajouter des checks pour les overflow de nombre de caractères...[X]
+* Changer la fonction de modification pour qu'elle ne depende pas de x.length...[X] (What did I mean by this ???)
+* Prendre en charge les nombres qui commencent par '0'.......[ ] (Will I ever do this lol ?)
+* Prendre en charge la reorganization des ids d'affectation..[ ] (Uuuhh too lazy)
 * Ajuster le formulaire et la table d'Affectation
-    - Remplacer IDs par texte dans le formulaire..[ ]
-    - Remplacer IDs par texte dans la table.......[ ]
+    - Remplacer IDs par texte dans le formulaire..[X]
+    - Remplacer IDs par texte dans la table.......[X]
 * Faire en sorte que les formulaires soient considérés comme envoyés après AJAX...[ ]
 * Mettre les boutons d'actions en haut à droite pour ne pas avoir à les retrouver à chaque fois...[ ]
 * ^ Même chose pour la barre de navigation...[ ]

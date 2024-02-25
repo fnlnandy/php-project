@@ -119,7 +119,7 @@
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
         <div id="affectationListContainer" class="tableListingAreaContainer">
-            <table id="affectationList" 
+            <table id="affectationList" class="tableListingArea"
             <?php 
                 if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
                     echo "hidden"; 
