@@ -16,7 +16,11 @@
         <?php include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
-        <nav class="topNavigationBar"><a href="../index.php">Menu principal</a></nav>
+        <nav class="topNavigationBar">
+            <a href="../index.php">Menu principal</a>
+            <a href="affectation_page.php">Affectations</a>
+            <a href="location_page.php">Lieux</a>
+        </nav>
 
         <!-- SEARCH BAR AREA -->
         <div class="searchBarAreaContainer">

@@ -23,7 +23,6 @@
         <section id="navigationMenu">
             <div id="navMenuOptionsContainer">
                 <ol id="navMenuOptions">
-                    <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="">Menu principal</a></li>
                     <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/affectation_page.php">Affectation</a></li>
                     <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/location_page.php">Lieu</a></li>
                     <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/worker_page.php">Employés</a></li>

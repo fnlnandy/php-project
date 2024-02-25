@@ -67,7 +67,7 @@
     background-color: white;
     border-radius: 2px;
     width: fit-content;
-    padding: 5px;
+    padding: 10px;
 }
 
 .topNavigationBar a {
@@ -75,7 +75,9 @@
     text-decoration: none;
     color: black;
     transition: background-color 0.3s ease;
-    padding: 2px;
+    padding: 5px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
 }
 
