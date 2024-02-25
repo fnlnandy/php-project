@@ -102,6 +102,9 @@ function DisplayFormDialog()
     var formDialog = document.getElementById("formDialog");
     formDialog.showModal(); 
     formDialog.style.opacity = 1;
+    formDialog.style.top = 0;
+    formDialog.style.left = 0;
+    formDialog.addEventListener("transitionend", () => {}, { once: true });
 }
 
 /**

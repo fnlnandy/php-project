@@ -16,14 +16,13 @@
 }
 
 #formDialog {
+    top: -400%;
+    left: -400%;
     background-color: white;
     opacity: 0;
     transition: opacity 0.3s;
     display: block;
-}
-
-#formDialog[open] {
-    opacity: 1;
+    border-radius: 10px;
 }
 
 #formDialog p {
@@ -35,6 +34,12 @@
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;
+    text-align: right;
+}
+
+#formDialog div span form h3 {
+    padding: 5px;
+    margin: 0;
 }
 
 #formDialog p:hover {
