@@ -20,6 +20,7 @@
     - Suppression...[X]
     - Génerer un PDF d'un arrêté....................[X]
     - Listage d'affect effectuées entre deux dates..[X]
+    - Modifier les affectations affecte aussi les employés concernés...[X]
 
 ## Misc
 * Ajouter des checks pour les overflow de nombre de caractères...[X]

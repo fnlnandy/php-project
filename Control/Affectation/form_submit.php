@@ -16,40 +16,42 @@ use PHPMailer\PHPMailer\Exception;
  */
 class Affectation {
     /**
-     * 
+     * Replaces the location of an employee to the previous one
      */
     public static function RewindEmployeeLoc($numEmp, $oldLoc, $newLoc)
     {
         $query = "UPDATE EMPLOYE SET Lieu = '[1]' WHERE NumEmp = '[2]' AND Lieu = '[3]';";
         SQLQuery::ExecPreparedQuery($query, $oldLoc, $numEmp, $newLoc);
     }
+
     /**
-     * 
+     * Checks if an affectation is the lastest one made on the employee,
+     * if it isn't then it would be an expired one
      */
-    public static function IsAffectationLatestForEmployee($numAfect, $numEmp)
+    public static function IsAffectationLatestForEmployee($numAffect, $numEmp)
     {
         $query = "SELECT * FROM AFFECTER WHERE NumEmp = '[1]' 
                   ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;";
         $result = SQLQuery::ExecPreparedQuery($query, $numEmp);
 
-        if (SQLQuery::IsResultInvalid($result))
+        if (SQLQuery::IsResultInvalid($result))                            // Check if not null and not false
             return false;
 
         $lastAffectRow = $result->fetch_assoc();
 
-        if (!SQLQuery::DoKeysExistInArray($lastAffectRow, 'NumAffect'))
+        if (!SQLQuery::DoKeysExistInArray($lastAffectRow, 'NumAffect'))    // Check if the needed key is present
             return false;
 
-        return (intval($lastAffectRow['NumAffect']) == intval($numAfect));
+        return (intval($lastAffectRow['NumAffect']) == intval($numAffect)); // Returns if the given affectation is in fact the latest
     }
+
     /**
-     * Updates two employees if the current NumEmp in the affectation,
-     * if that's the case then the old NumEmp gets back its previous location
-     * and the new employee gets his affectation
-     * This function has to be called before the replacement is done
+     * Fixes the current employee's location depending on the
+     * affectation
      */
     public static function FixCurrentEmployeeLoc($numAffect, bool $rewind = true)
     {
+        // Check ID validity
         if (intval($numAffect) <= 0) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Invalid ID.".var_export($numAffect));
             return;
@@ -58,6 +60,7 @@ class Affectation {
         $query = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
 
+        // Check if result is null or false
         if (SQLQuery::IsResultInvalid($result)) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Result is invalid.");
             return;
@@ -65,20 +68,23 @@ class Affectation {
 
         $row = $result->fetch_assoc();
         
+        // Check if the needed keys are present
         if (!SQLQuery::DoKeysExistInArray($row, "NumEmp", "AncienLieu", "NouveauLieu")) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist in array.");
             return;
         }
 
+        // Check if the current affectation is the latest to date
         if (Affectation::IsAffectationLatestForEmployee($numAffect, $row['NumEmp'])) {
             if ($rewind) {
                 Affectation::RewindEmployeeLoc($row['NumEmp'], $row['AncienLieu'], $row['NouveauLieu']);
             }
-            else {
+            else { // Not rewinding because we're updating the new employee
                 Affectation::RewindEmployeeLoc($row['NumEmp'], $row['NouveauLieu'], $row['AncienLieu']);
             }
         }
     }
+
     /**
      * If needed, i.e. when adding a new entry, the user
      * isn't expected to specify the next affectation ID,
