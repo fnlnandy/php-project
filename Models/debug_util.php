@@ -8,9 +8,10 @@ class DebugUtil {
     /**
      * 
      */
-    public static function WriteMessageIntoFile(string $message)
+    public static function WriteMessageIntoFile(string $message, bool $rewrite = false)
     {
-        $file = fopen(gLogFileName, "a");
+        $mode = ($rewrite ? "w" : "a");
+        $file = fopen(gLogFileName, $mode);
         $message .= "\n";
         if (!$file)
             return;
@@ -23,10 +24,10 @@ class DebugUtil {
      * this function is called, prints a message, $fileName and $line can be replaced
      * with macro defines __FILE__ and __LINE__
      */
-    public static function LogIntoFile(string $fileName, int $line, string|null $message = "")
+    public static function LogIntoFile(string $fileName, int $line, string|null $message = "", bool $rewrite = false)
     {
         $message = "[LOG:{$fileName}:{$line}]: {$message}";
-        DebugUtil::WriteMessageIntoFile($message);
+        DebugUtil::WriteMessageIntoFile($message, $rewrite);
     }
 }
 ?>

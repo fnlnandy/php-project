@@ -3,7 +3,7 @@
     <?php 
         include_once("../Models/queries.php");
 
-        $query = SQLQuery::ExecQuery("SELECT NumEmp, Nom, Prenom FROM EMPLOYE;");
+        $query = SQLQuery::ExecQuery("SELECT NumEmp, Nom, Prenom FROM EMPLOYE ORDER BY LENGTH(NumEmp) ASC, NumEmp ASC;");
 
         if (is_null($query))
             return;
