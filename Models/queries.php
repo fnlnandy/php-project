@@ -126,20 +126,21 @@ class SQLQuery {
     public static function ExecPreparedQuery(string $queryToBind, ... $queryArgs): mysqli_result|bool
     {
         // Expected starting id of the bindable parameters
-        $idCounter = 1;
+        $currentId = 1;
 
         foreach ($queryArgs as $arg) {
-            $queryToBind = str_replace("[".strval($idCounter)."]", 
+            $queryToBind = str_replace("[".strval($currentId)."]", 
                         strval($arg), 
                         $queryToBind);
-            $idCounter++;
+            $currentId++;
         }
 
         return SQLQuery::ExecQuery($queryToBind);
     }
 
     /**
-     * 
+     * Checks if a mysqli_result|bool element is valid or not i.e. if
+     * data can be safely extracted from it
      */
     public static function IsResultValid(mysqli_result|bool $result)
     {
@@ -147,7 +148,8 @@ class SQLQuery {
     }
 
     /**
-     * 
+     * Checks for specified keys in an array, if only one of them is missing
+     * then it returns false
      */
     public static function DoKeysExistInArray(array|null $subject, ... $keys)
     {

@@ -6,28 +6,29 @@ define("gLogFileName", "log.txt");
  */
 class DebugUtil {
     /**
-     * 
+     * Write a message into the default log file
      */
-    public static function WriteMessageIntoFile(string $message, bool $rewrite = false)
+    public static function WriteMessageIntoFile(string $message, bool $isRewrite = false)
     {
-        $mode = ($rewrite ? "w" : "a");
-        $file = fopen(gLogFileName, $mode);
+        $openMode = ($isRewrite ? "w" : "a");
+        $file = fopen(gLogFileName, $openMode);
         $message .= "\n";
+
         if (!$file)
             return;
 
         fwrite($file, $message);
         fclose($file);
     }
+
     /**
-     * Opens a log.txt file in the relative directory of the file from where
-     * this function is called, prints a message, $fileName and $line can be replaced
-     * with macro defines __FILE__ and __LINE__
+     * Writes a message in the format [LOG:{$fileName}:{$line}], both can be respectively
+     * replaced by __FILE__ and __LINE__
      */
-    public static function LogIntoFile(string $fileName, int $line, string|null $message = "", bool $rewrite = false)
+    public static function LogIntoFile(string $fileName, int $line, string|null $message = "", bool $isRewrite = false)
     {
         $message = "[LOG:{$fileName}:{$line}]: {$message}";
-        DebugUtil::WriteMessageIntoFile($message, $rewrite);
+        DebugUtil::WriteMessageIntoFile($message, $isRewrite);
     }
 }
 ?>

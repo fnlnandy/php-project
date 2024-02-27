@@ -12,8 +12,8 @@ class TableHelper {
      */
     public static function RemoveEntryFromTable($idInPost, $tableName, $idInDatabase)
     {
-        $receivedData = XMLHttpRequest::DecodeJson();
-        $possibleId = intval($receivedData[$idInPost]);
+        $dataFromRequest = XMLHttpRequest::DecodeJson();
+        $possibleId = intval($dataFromRequest[$idInPost]);
 
         if ($possibleId <= 0)
             return;
@@ -21,8 +21,9 @@ class TableHelper {
         SQLQuery::ExecPreparedQuery("DELETE FROM ".$tableName." WHERE ".$idInDatabase." = [1];", $possibleId);
     }
 
-        /**
-     * 
+    /**
+     * Standard function to populate a table element with the rows of a query
+     * result
      */
     public static function PopulateTableElementWithQueryResult($result, $idToGet, $className)
     {
