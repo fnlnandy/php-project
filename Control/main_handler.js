@@ -15,6 +15,7 @@ function CloseFormDialog()
     var formDialog = document.getElementById("formDialog");
     formDialog.style.opacity = 0;
     formDialog.addEventListener("transitionend", () => {
+        formDialog.style.display = "none";
         formDialog.close();
     }, {once: true});
 }
@@ -25,7 +26,8 @@ function CloseFormDialog()
 function DisplayFormDialog()
 {
     var formDialog = document.getElementById("formDialog");
-    formDialog.showModal(); 
+    formDialog.showModal();
+    formDialog.style.display = "block";
     formDialog.style.opacity = 1;
 }
 

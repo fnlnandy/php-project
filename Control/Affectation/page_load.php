@@ -4,17 +4,18 @@ include_once("../Models/table_helpers.php");
 class AffectationPageLoadConditions
 {
     /**
-     * Verifies if NumAffect is in $subject
+     * Verifies if NumAffect is in $subject, intrinsically verifies if an entry
+     * is a match of a condition
      */
     public static function IsNumAffectInResult(array $toCheck, mysqli_result $subject): bool
     {
-        if (!key_exists('NumAffect', $toCheck))
+        if (!SQLQuery::DoKeysExistInArray($toCheck, 'NumAffect'))
             return false;
 
-        $subject->data_seek(0); // Because we're fetching, we need the cursor at the beginning
+        $subject->data_seek(0); // Due to fetching that might have happened to $subject, we go back to the beginning
         
         while ($row = $subject->fetch_assoc()) {
-            if ($row['NumAffect'] == $toCheck['NumAffect'])
+            if (isset($row['NumAffect']) && $row['NumAffect'] == $toCheck['NumAffect'])
                 return true;
         }
 
@@ -25,9 +26,26 @@ class AffectationPageLoadConditions
      * Gets the affectations between two dates, whether it is
      * DateAffect or DatePriseService
      */
-    public static function GetAffectationsBetweenTwoDates($dateStart, $dateEnd): bool|mysqli_result
+    public static function GetAffectationsBetweenTwoDates($dateStart, $dateEnd, bool $isDateABased, bool $isDatePSBased): bool|mysqli_result
     {
-        $queryToExec = "SELECT * FROM AFFECTER WHERE DateAffect >= '[1]' AND DateAffect <= '[2]';";
+        $conditionDA = "DateAffect >= '[1]' AND DateAffect <= '[2]'";             // Based on the DateAffect
+        $conditionPS = "DatePriseService >= '[1]' AND DatePriseService <= '[2]'"; // Based on the DatePriseService
+        $joiner = "AND";
+
+        if (!$isDateABased && !$isDatePSBased) { // Both conditions can't be false at the same time
+            $isDateABased = true;
+            $joiner = "";                        // One of the condition is null, so no joiner
+        }
+        if (!$isDateABased) { 
+            $conditionDA = "";
+            $joiner = "";
+        }
+        if (!$isDatePSBased) {
+            $conditionPS = "";
+            $joiner = "";
+        }
+            
+        $queryToExec = "SELECT * FROM AFFECTER WHERE {$conditionDA} {$joiner} {$conditionPS};";
         $result = SQLQuery::ExecPreparedQuery($queryToExec, $dateStart, $dateEnd);
 
         return $result;
@@ -39,44 +57,48 @@ class AffectationPageLoadConditions
      */
     public static function PopulateAffectationList()
     {
-        $dataReceived = $_GET;
-        $limitingDatesPresent = !is_null($dataReceived) && key_exists("dateStart", $dataReceived) && key_exists("dateEnd", $dataReceived) && $dataReceived["dateStart"] != "" && $dataReceived["dateEnd"] != "";
+        $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "dateStart", "dateEnd") && $_GET["dateStart"] != "" && $_GET["dateEnd"] != "";
+        $isDateAffectBased = SQLQuery::DoKeysExistInArray($_GET, "fromDateAffect") && $_GET["fromDateAffect"] != "";
+        $isDatePSBased = SQLQuery::DoKeysExistInArray($_GET, "fromDatePS") && $_GET["fromDatePS"] != "";
         $queryToExec = "SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) ASC, NumAffect ASC;";
         $result = SQLQuery::ExecQuery($queryToExec);
 
         while ($row = $result->fetch_assoc()) {
             if ($limitingDatesPresent) {
-                $dateStart = $dataReceived["dateStart"];
-                $dateEnd = $dataReceived["dateEnd"];
-                $betweenDates = AffectationPageLoadConditions::GetAffectationsBetweenTwoDates($dateStart, $dateEnd);
+                $dateStart = $_GET["dateStart"];
+                $dateEnd = $_GET["dateEnd"];
+                $betweenDates = AffectationPageLoadConditions::GetAffectationsBetweenTwoDates($dateStart, $dateEnd, $isDateAffectBased, $isDatePSBased);
                 
-                // If it;s not part of the limited results i.e. not in the range, we skip
+                // If it's not part of the limited results i.e. not in the range, we skip
                 if (!AffectationPageLoadConditions::IsNumAffectInResult($row, $betweenDates))
                     continue;
             }
-            $counter = $row["NumAffect"];
-            $secondQuery = SQLQuery::ExecPreparedQuery("SELECT Nom, Prenom FROM EMPLOYE WHERE NumEmp = '[1]'", $row["NumEmp"]);
-            $thirdQuery = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["AncienLieu"]);
-            $fourthQuery = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["NouveauLieu"]);
 
-            if (!$secondQuery || is_null($secondQuery) || !$thirdQuery || is_null($thirdQuery)
-                || !$fourthQuery || is_null($fourthQuery))
+            $affectCounter = $row["NumAffect"];
+            $workerResult = SQLQuery::ExecPreparedQuery("SELECT Nom, Prenom FROM EMPLOYE WHERE NumEmp = '[1]'", $row["NumEmp"]);
+            $oldLocResult = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["AncienLieu"]);
+            $newLocResult = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["NouveauLieu"]);
+
+            if (SQLQuery::IsResultInvalid($workerResult) ||
+                SQLQuery::IsResultInvalid($oldLocResult) ||
+                SQLQuery::IsResultInvalid($newLocResult))
                 continue;
 
-            $workerRow = $secondQuery->fetch_assoc();
-            $oldLocRow = $thirdQuery->fetch_assoc();
-            $newLocRow = $fourthQuery->fetch_assoc();
+            $workerRow = $workerResult->fetch_assoc();
+            $oldLocRow = $oldLocResult->fetch_assoc();
+            $newLocRow = $newLocResult->fetch_assoc();
 
-            echo "<tr class=\"affectationRow\" onclick=\"UpdateDataTracker(".strval($counter).", true)\">";
+            // The current row, contains a call to the JavaScript function supposed to update
+            // the data tracker for the Edit and Delete functions on the table
+            echo "<tr class=\"affectationRow\" onclick=\"UpdateDataTracker(".strval($affectCounter).", true)\">";
 
-            // For each column in the associative array i.e. for each field in a row in the table, we
-            // add a new <td>
-
-            if (is_null($workerRow) || !key_exists("Nom", $workerRow) || !key_exists("Prenom", $workerRow) || 
-                is_null($oldLocRow) || !key_exists("Design", $oldLocRow) || !key_exists("Province", $oldLocRow) ||
-                is_null($newLocRow) || !key_exists("Design", $newLocRow) || !key_exists("Province", $newLocRow))
+            // Checking if every needed key is within the results
+            if (!SQLQuery::DoKeysExistInArray($workerRow, "Nom", "Prenom") ||
+                !SQLQuery::DoKeysExistInArray($oldLocRow, "Design", "Province") ||
+                !SQLQuery::DoKeysExistInArray($newLocRow, "Design", "Province"))
                 continue;
 
+            // The table's elements
             echo "<td>".$row["NumAffect"]."</td>";
             echo "<td>".$workerRow["Nom"]." ".$workerRow["Prenom"]."</td>";
             echo "<td> {$oldLocRow['Design']} ({$oldLocRow['Province']})</td>";
@@ -84,6 +106,7 @@ class AffectationPageLoadConditions
             echo "<td>".$row["DateAffect"]."</td>";
             echo "<td>".$row["DatePriseService"]."</td>";
 
+            // Closing the current row
             echo "</tr>";
         }
     }
