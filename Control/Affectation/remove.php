@@ -12,7 +12,7 @@ class RemoveAffectation
     {
         $lastAffectResult = SQLQuery::ExecPreparedQuery("SELECT * FROM AFFECTER WHERE NumEmp = (SELECT NumEmp FROM AFFECTER WHERE NumAffect = '[1]') ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;", $id);
 
-        if (SQLQuery::IsResultInvalid($lastAffectResult)) {
+        if (!SQLQuery::IsResultValid($lastAffectResult)) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Result is invalid.");
             return false;
         }
@@ -47,7 +47,7 @@ class RemoveAffectation
 
         $result = SQLQuery::ExecPreparedQuery($query, $affectId);
 
-        if (SQLQuery::IsResultInvalid($result)) {
+        if (!SQLQuery::IsResultValid($result)) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Query result is invalid.");
             return;
         }

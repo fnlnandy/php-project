@@ -79,9 +79,9 @@ class AffectationPageLoadConditions
             $oldLocResult = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["AncienLieu"]);
             $newLocResult = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["NouveauLieu"]);
 
-            if (SQLQuery::IsResultInvalid($workerResult) ||
-                SQLQuery::IsResultInvalid($oldLocResult) ||
-                SQLQuery::IsResultInvalid($newLocResult))
+            if (!SQLQuery::IsResultValid($workerResult) ||
+                !SQLQuery::IsResultValid($oldLocResult) ||
+                !SQLQuery::IsResultValid($newLocResult))
                 continue;
 
             $workerRow = $workerResult->fetch_assoc();

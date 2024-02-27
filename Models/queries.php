@@ -141,9 +141,9 @@ class SQLQuery {
     /**
      * 
      */
-    public static function IsResultInvalid(mysqli_result|bool $result)
+    public static function IsResultValid(mysqli_result|bool $result)
     {
-        return (!$result || is_null($result));
+        return !(!$result || is_null($result));
     }
 
     /**

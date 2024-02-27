@@ -34,7 +34,7 @@ class Affectation {
                   ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;";
         $result = SQLQuery::ExecPreparedQuery($query, $numEmp);
 
-        if (SQLQuery::IsResultInvalid($result))                            // Check if not null and not false
+        if (!SQLQuery::IsResultValid($result))                            // Check if not null and not false
             return false;
 
         $lastAffectRow = $result->fetch_assoc();
@@ -61,7 +61,7 @@ class Affectation {
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
 
         // Check if result is null or false
-        if (SQLQuery::IsResultInvalid($result)) {
+        if (!SQLQuery::IsResultValid($result)) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Result is invalid.");
             return;
         }
@@ -96,7 +96,7 @@ class Affectation {
         $res    = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;"); // Last ID in the table
         $realId = 0;
 
-        if (SQLQuery::IsResultInvalid($res))
+        if (!SQLQuery::IsResultValid($res))
             $realId = 1;
 
         $row = $res->fetch_assoc();
