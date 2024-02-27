@@ -26,8 +26,8 @@ window.onload = () => {
  * on its value
  */
 var gAffectationDataTracker = {
-    id: 0,
-    isEditMode: false
+    id         : 0,
+    isEditMode : false
 };
 
 /**
@@ -37,7 +37,7 @@ var gAffectationDataTracker = {
 function UpdateDataTracker(id, mode)
 {
     // Updating the global data tracker
-    var affectationTableRows = document.getElementsByClassName("affectationRow");
+    var affectationTableRows   = document.getElementsByClassName("affectationRow");
     gAffectationDataTracker.id = (id < 0 ? 0 : id);
     gAffectationDataTracker.isEditMode = mode;
 

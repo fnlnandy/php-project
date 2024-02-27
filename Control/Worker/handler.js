@@ -14,13 +14,13 @@ var gWorkerDataTracker = {
  */
 function UpdateDataTracker(id, mode)
 {
-    var workerTableRows = document.getElementsByClassName("workerRow");
+    var workerTableRows    = document.getElementsByClassName("workerRow");
     var affectCurrWorkerId = document.getElementById("workerId");
 
     // Update the global data tracker for later use
-    gWorkerDataTracker.id = (id < 0 ? 0 : id);
+    gWorkerDataTracker.id         = (id < 0 ? 0 : id);
     gWorkerDataTracker.isEditMode = mode;
-    affectCurrWorkerId.value = gWorkerDataTracker.id;
+    affectCurrWorkerId.value      = gWorkerDataTracker.id;
 
     // Resetting every rows' style
     for (var i = 0 ; i < workerTableRows.length ; i++) {
@@ -44,24 +44,24 @@ function UpdateDataTracker(id, mode)
  */
 function AddWorker()
 {
-    var workerForm           = document.getElementById("workerForm");
-    var workerCivilityField  = document.getElementById("formWorkerCivility");
-    var workerNameField      = document.getElementById("formWorkerName");
-    var workerFirstnameField = document.getElementById("formWorkerFirstname");
-    var workerMailField      = document.getElementById("formWorkerMail");
-    var workerPostField      = document.getElementById("formWorkerPost");
-    var workerLocationField  = document.getElementById("formWorkerLocation");
+    var workerCivilityField     = document.getElementById("formWorkerCivility");
+    var workerNameField         = document.getElementById("formWorkerName");
+    var workerFirstnameField    = document.getElementById("formWorkerFirstname");
+    var workerMailField         = document.getElementById("formWorkerMail");
+    var workerPostField         = document.getElementById("formWorkerPost");
+    var workerLocationField     = document.getElementById("formWorkerLocation");
     var infoWorkerLocationField = document.getElementById("formInfoWorkerLocation");
 
     UpdateAffectedCheck(-1, false);
     DisplayFormDialog();
 
-    workerCivilityField.selectedIndex = 0;
-    workerNameField.value = "";
-    workerFirstnameField.value = "";
-    workerMailField.value = "";
-    workerPostField.value = "";
-    workerLocationField.selectedIndex = 0;
+    // Resetting every field to their original value
+    workerCivilityField.selectedIndex     = 0;
+    workerNameField.value                 = "";
+    workerFirstnameField.value            = "";
+    workerMailField.value                 = "";
+    workerPostField.value                 = "";
+    workerLocationField.selectedIndex     = 0;
     infoWorkerLocationField.selectedIndex = 0;
 }
 
@@ -71,14 +71,14 @@ function AddWorker()
  */
 function EditWorker()
 {
-    var workerCivilityField  = document.getElementById("formWorkerCivility");
-    var workerNameField      = document.getElementById("formWorkerName");
-    var workerFirstnameField = document.getElementById("formWorkerFirstname");
-    var workerMailField      = document.getElementById("formWorkerMail");
-    var workerPostField      = document.getElementById("formWorkerPost");
-    var workerLocationField  = document.getElementById("formWorkerLocation");
+    var workerCivilityField     = document.getElementById("formWorkerCivility");
+    var workerNameField         = document.getElementById("formWorkerName");
+    var workerFirstnameField    = document.getElementById("formWorkerFirstname");
+    var workerMailField         = document.getElementById("formWorkerMail");
+    var workerPostField         = document.getElementById("formWorkerPost");
+    var workerLocationField     = document.getElementById("formWorkerLocation");
     var infoWorkerLocationField = document.getElementById("formInfoWorkerLocation");
-    var workerTableRows = document.getElementsByClassName("workerRow");
+    var workerTableRows         = document.getElementsByClassName("workerRow");
 
     // No valid data/row was selected
     if (gWorkerDataTracker.id <= 0) {
@@ -93,6 +93,7 @@ function EditWorker()
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         var columnsInRow = workerTableRows[i].querySelectorAll("td");
 
+        // Loading the data from the <table> element to the form
         if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
             var selectedIndex = 0;
             var correctSelectionIndexForLocation = GetSelectionIndexForSelectedName(columnsInRow[6].innerText, "locationIdDesignMatch");
@@ -105,12 +106,12 @@ function EditWorker()
             else if (columnsInRow[1].innerText == "Mme")
                 selectedIndex = 2;
 
-            workerCivilityField.selectedIndex = selectedIndex;
-            workerNameField.value = columnsInRow[2].innerText;
-            workerFirstnameField.value = columnsInRow[3].innerText;
-            workerMailField.value = columnsInRow[4].innerText;
-            workerPostField.value = columnsInRow[5].innerText;
-            workerLocationField.selectedIndex = correctSelectionIndexForLocation;
+            workerCivilityField.selectedIndex     = selectedIndex;
+            workerNameField.value                 = columnsInRow[2].innerText;
+            workerFirstnameField.value            = columnsInRow[3].innerText;
+            workerMailField.value                 = columnsInRow[4].innerText;
+            workerPostField.value                 = columnsInRow[5].innerText;
+            workerLocationField.selectedIndex     = correctSelectionIndexForLocation;
             infoWorkerLocationField.selectedIndex = correctSelectionIndexForLocation;
             break;
         }
@@ -150,14 +151,14 @@ function SubmitForm()
         return;
 
     var dataToSend = {
-        NumEmp: gWorkerDataTracker.id,
-        editMode: gWorkerDataTracker.isEditMode,
-        Civilite: workerCivilityField.options[workerCivilityField.selectedIndex].innerText,
-        Nom: workerNameField.value,
-        Prenom: workerFirstnameField.value,
-        Mail: workerMailField.value,
-        Poste: workerPostField.value,
-        Lieu: GetCurrentSelectOptionValue(workerLocationField, workerLocationField.selectedIndex),
+        NumEmp   : gWorkerDataTracker.id,
+        editMode : gWorkerDataTracker.isEditMode,
+        Civilite : workerCivilityField.options[workerCivilityField.selectedIndex].innerText,
+        Nom      : workerNameField.value,
+        Prenom   : workerFirstnameField.value,
+        Mail     : workerMailField.value,
+        Poste    : workerPostField.value,
+        Lieu     : GetCurrentSelectOptionValue(workerLocationField, workerLocationField.selectedIndex),
     };
 
     SendXMLHttpRequest(dataToSend, "../Control/Worker/form_submit.php");
@@ -169,7 +170,7 @@ function SubmitForm()
  */
 function UpdateUnaffectedCheck()
 {
-    var affectedCBox = document.getElementById("showAffectedOnes");
+    var affectedCBox   = document.getElementById("showAffectedOnes");
     var unaffectedCBox = document.getElementById("showUnaffectedOnes");
 
     if (affectedCBox.checked == true) {
@@ -183,7 +184,7 @@ function UpdateUnaffectedCheck()
  */
 function UpdateAffectedCheck()
 {
-    var affectedCBox = document.getElementById("showAffectedOnes");
+    var affectedCBox   = document.getElementById("showAffectedOnes");
     var unaffectedCBox = document.getElementById("showUnaffectedOnes");
 
     if (unaffectedCBox.checked == true) {
