@@ -107,6 +107,10 @@ function EditLocation()
  */
 function RemoveLocation()
 {
+    if (gLocationDataTracker.id <= 0) {
+        alert("Séléctionnez un lieu valide.");
+        return;
+    }
     SendXMLHttpRequest(gLocationDataTracker, "../Control/Location/remove.php");
     location.reload();
 }

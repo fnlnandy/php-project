@@ -78,6 +78,10 @@ function UpdateDataTracker(id, mode)
  */
 function RemoveAffectationEntry()
 {
+    if (gAffectationDataTracker.id <= 0) {
+        alert("Séléctionnez une affectation valide.");
+        return;
+    }
     SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/remove.php");
     location.reload();
 }

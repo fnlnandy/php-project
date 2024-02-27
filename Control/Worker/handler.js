@@ -141,6 +141,10 @@ function EditWorker()
  */
 function RemoveWorker()
 {
+    if (gWorkerDataTracker.id <= 0) {
+        alert("Séléctionnez un employé valide.");
+        return;
+    }
     SendXMLHttpRequest(gWorkerDataTracker, "../Control/Worker/remove.php");
     location.reload();
 }
