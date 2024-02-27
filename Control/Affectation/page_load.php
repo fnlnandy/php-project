@@ -30,7 +30,7 @@ class AffectationPageLoadConditions
     {
         $conditionDA = "DateAffect >= '[1]' AND DateAffect <= '[2]'";             // Based on the DateAffect
         $conditionPS = "DatePriseService >= '[1]' AND DatePriseService <= '[2]'"; // Based on the DatePriseService
-        $joiner = "AND";
+        $joiner = "OR";
 
         if (!$isDateABased && !$isDatePSBased) { // Both conditions can't be false at the same time
             $isDateABased = true;
