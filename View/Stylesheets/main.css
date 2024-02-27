@@ -69,3 +69,7 @@
 .clientDB * {
     background-color: transparent;
 }
+
+.firstShownElement {
+    margin-top: 5%;
+}

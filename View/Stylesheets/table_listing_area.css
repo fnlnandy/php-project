@@ -27,6 +27,9 @@
     width: fit-content;
     padding: 5px;
     border-radius: 5px;
+    position: fixed;
+    right: 0;
+    top: 0;
 }
 
 .actionButtonsContainer * {
