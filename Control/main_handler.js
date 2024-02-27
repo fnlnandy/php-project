@@ -54,6 +54,7 @@ function GetSelectionIndexForSelectedName(nameToCompare, clientDBId)
     const max = workerRows.length;
 
     console.log([nameToCompare, clientDBId]);
+    
     for (var i = 0 ; i < max ; i++) {
         var currentColumn = workerRows[i].querySelectorAll("td");
 

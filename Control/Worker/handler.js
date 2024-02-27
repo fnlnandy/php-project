@@ -90,7 +90,6 @@ function AddWorker()
  */
 function EditWorker()
 {
-    var workerForm           = document.getElementById("workerForm");
     var workerCivilityField  = document.getElementById("formWorkerCivility");
     var workerNameField      = document.getElementById("formWorkerName");
     var workerFirstnameField = document.getElementById("formWorkerFirstname");

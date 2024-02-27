@@ -12,7 +12,7 @@
             echo "<tr>";
 
             echo "<td>".$row['IDLieu']."</td>";
-            echo "<td> {$row['Design']} ({$row['Province']})</td>";
+            echo "<td>{$row['Design']} ({$row['Province']})</td>";
 
             echo "</tr>";
         }

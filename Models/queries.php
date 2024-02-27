@@ -137,5 +137,29 @@ class SQLQuery {
 
         return SQLQuery::ExecQuery($queryToBind);
     }
+
+    /**
+     * 
+     */
+    public static function IsResultInvalid(mysqli_result|bool $result)
+    {
+        return (!$result || is_null($result));
+    }
+
+    /**
+     * 
+     */
+    public static function DoKeysExistInArray(array|null $subject, ... $keys)
+    {
+        if (is_null($subject))
+            return false;
+
+        foreach ($keys as $key) {
+            if (!key_exists($key, $subject))
+                return false;
+        }
+
+        return true;
+    }
 }
 ?>
