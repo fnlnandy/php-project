@@ -9,25 +9,6 @@ var gWorkerDataTracker = {
 };
 
 /**
- * Sends a Request to a specific file,
- * response is just logged, but we rarely
- * are able to use that response
- */
-function SendXMLHttpRequest(dataToSend, dest) {
-    var req = new XMLHttpRequest();
-
-    req.open("POST", dest);              // We prepare the destination file
-    req.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
-    req.onreadystatechange = () => {
-         if (req.readyState == 4 && req.status === 200) {
-             console.log(req.responseText); 
-        } 
-    };
-    req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
-    location.reload(); // Force refresh to load data instantly
-}
-
-/**
  * Updates gWorkerDataTracker to the current
  * selected <td> row
  */
