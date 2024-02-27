@@ -31,10 +31,10 @@
     - Remplacer IDs par texte dans le formulaire..[X]
     - Remplacer IDs par texte dans la table.......[X]
 * Faire en sorte que les formulaires soient considérés comme envoyés après AJAX...[ ]
-* Mettre les boutons d'actions en haut à droite pour ne pas avoir à les retrouver à chaque fois...[ ]
-* ^ Même chose pour la barre de navigation...[ ]
-* Mettre à jour le lieu d'un Employé quand il est affecté...[ ]
-* Verifier que l'ancien lieu n'est pas identique au nouveau lieu pendant une affectation...[ ]
+* Mettre les boutons d'actions en haut à droite pour ne pas avoir à les retrouver à chaque fois...[X]
+* ^ Même chose pour la barre de navigation...[X]
+* Mettre à jour le lieu d'un Employé quand il est affecté...[X]
+* Verifier que l'ancien lieu n'est pas identique au nouveau lieu pendant une affectation...[X]
 
 ## Improvements
 * Ajouter des namespaces pour queries.php and init.php..[X]
@@ -43,7 +43,7 @@
 * Créer des namespaces pour les fichiers handler.js....[ ]
 * Contrôler l'entrée des dates pour les affectations...[ ]
 * Après avoir utilisé la barre de recherche, les valeurs cherchées doivent être préservées...[X]
-* ^ Même chose pour les dates d'affectation...[ ]
+* ^ Même chose pour les dates d'affectation...[X]
 * Utiliser UpdateDataTracker partout........[X]
 
 ## Last-To-Do

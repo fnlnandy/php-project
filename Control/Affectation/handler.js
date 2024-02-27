@@ -181,6 +181,13 @@ function SubmitForm()
             dateAffect: dateAffectField.value,
             datePriseService: datePriseServiceField.value
         };
+
+        // If the old location and the new location are the same, then it's not an affectation
+        // at all
+        if (formData.ancienLieu == formData.nouveauLieu) {
+            alert("L'ancien lieu et le nouveau lieu ne peuvent pas être identiques.");
+            return;
+        }
         
         console.log(formData);
         SendXMLHttpRequest(formData, "../Control/Affectation/form_submit.php");
