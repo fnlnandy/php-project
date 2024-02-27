@@ -1,12 +1,13 @@
 window.onload = () => {
     // Getting the current date formatted as yyyy-mm-dd
-    var currentDate = new Date();
-    var year = currentDate.getFullYear();
-    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-    var day = currentDate.getDate().toString().padStart(2, '0');
+    var currentDate   = new Date();
+    var year          = currentDate.getFullYear();
+    var month         = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    var day           = currentDate.getDate().toString().padStart(2, '0');
     var formattedDate = year + '-' + month + '-' + day;
-    var dateStart = document.getElementById("dateStart");
-    var dateEnd = document.getElementById("dateEnd");
+    var dateStart     = document.getElementById("dateStart");
+    var dateEnd       = document.getElementById("dateEnd");
+
     // Updating every 'date' elements to the current date
     if (dateStart.value === "") {
         dateStart.value = formattedDate;
@@ -14,6 +15,7 @@ window.onload = () => {
     if (dateEnd.value === "") {
         dateEnd.value = formattedDate;
     }
+
     document.getElementById("formDateAffect").value = formattedDate;
     document.getElementById("formPriseService").value = formattedDate;
 }   
@@ -65,6 +67,7 @@ function RemoveAffectationEntry()
         alert("Séléctionnez une affectation valide.");
         return;
     }
+
     SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/remove.php");
     location.reload();
 }
@@ -75,21 +78,24 @@ function RemoveAffectationEntry()
  */
 function AddAffectation()
 {
-    var numEmpField = document.getElementById("formNumEmp");
-    var infoEmpField = document.getElementById("formInfoEmp");
-    var ancienLieuField = document.getElementById("formAncienLieu");
-    var infoAncienLieuField = document.getElementById("formInfoAncienLieu");
-    var nouveauLieuField = document.getElementById("formNouveauLieu");
-    var infoNouveauLieuField = document.getElementById("formInfoNouveauLieu");
+    var numEmpField     = document.getElementById("formNumEmp");
+    var infoEmpField    = document.getElementById("formInfoEmp");
+    var oldLocField     = document.getElementById("formAncienLieu");
+    var infoOldLocField = document.getElementById("formInfoAncienLieu");
+    var newLocField     = document.getElementById("formNouveauLieu");
+    var infoNewLocField = document.getElementById("formInfoNouveauLieu");
 
     UpdateDataTracker(-1, false);
     DisplayFormDialog();
-    numEmpField.selectedIndex = 0;
-    infoEmpField.selectedIndex = 0;
-    ancienLieuField.selectedIndex = 0;
-    infoAncienLieuField.selectedIndex = 0;
-    nouveauLieuField.selectedIndex = 0;
-    infoNouveauLieuField.selectedIndex = 0;
+
+    // Resetting everything to their original values
+    numEmpField.selectedIndex     = 0;
+    infoEmpField.selectedIndex    = 0;
+    oldLocField.selectedIndex     = 0;
+    infoOldLocField.selectedIndex = 0;
+    newLocField.selectedIndex     = 0;
+    infoNewLocField.selectedIndex = 0;
+
     window.onload(null); // Reloading the current dates
 }
 
@@ -99,15 +105,15 @@ function AddAffectation()
  */
 function EditAffectation()
 {
-    var numEmpField = document.getElementById("formNumEmp");
-    var infoEmpField = document.getElementById("formInfoEmp");
-    var ancienLieuField = document.getElementById("formAncienLieu");
-    var infoAncienLieuField = document.getElementById("formInfoAncienLieu");
-    var nouveauLieuField = document.getElementById("formNouveauLieu");
-    var infoNouveauLieuField = document.getElementById("formInfoNouveauLieu");
-    var dateAffectField = document.getElementById("formDateAffect");
+    var numEmpField           = document.getElementById("formNumEmp");
+    var infoEmpField          = document.getElementById("formInfoEmp");
+    var oldLocField           = document.getElementById("formAncienLieu");
+    var infoOldLocField       = document.getElementById("formInfoAncienLieu");
+    var newLocField           = document.getElementById("formNouveauLieu");
+    var infoNewLocField       = document.getElementById("formInfoNouveauLieu");
+    var dateAffectField       = document.getElementById("formDateAffect");
     var datePriseServiceField = document.getElementById("formPriseService");
-    var tableRows = document.getElementsByClassName("affectationRow");
+    var tableRows             = document.getElementsByClassName("affectationRow");
 
     // An invalid data was selected, thus we cannot load anything into the form
     if (gAffectationDataTracker.id <= 0) {
@@ -122,19 +128,21 @@ function EditAffectation()
     for (var i = 0 ; i < tableRows.length ; i++) {
         var columnsInRow = tableRows[i].querySelectorAll("td");
 
+        // Loading every value from the <table> into the form
         if (columnsInRow.length > 0 && columnsInRow[0].innerText == gAffectationDataTracker.id) {
-            var correctSelectedIndex = GetSelectionIndexForSelectedName(columnsInRow[1].innerText, "workerNameFirstNameMatch");
-            var correctOldLocIndex = GetSelectionIndexForSelectedName(columnsInRow[2].innerText, "locationIdDesignMatch");
-            var correctNewLocIndex = GetSelectionIndexForSelectedName(columnsInRow[3].innerText, "locationIdDesignMatch");
+            var employeeIndex = GetSelectionIndexForSelectedName(columnsInRow[1].innerText, "workerNameFirstNameMatch");
+            var oldLocIndex   = GetSelectionIndexForSelectedName(columnsInRow[2].innerText, "locationIdDesignMatch");
+            var newLocIndex   = GetSelectionIndexForSelectedName(columnsInRow[3].innerText, "locationIdDesignMatch");
 
-            numEmpField.selectedIndex   = correctSelectedIndex;
-            infoEmpField.selectedIndex  = correctSelectedIndex;
-            ancienLieuField.selectedIndex = correctOldLocIndex;
-            infoAncienLieuField.selectedIndex = correctOldLocIndex;
-            nouveauLieuField.selectedIndex = correctNewLocIndex;
-            infoNouveauLieuField.selectedIndex = correctNewLocIndex;
-            dateAffectField.value       = columnsInRow[4].innerText;
-            datePriseServiceField.value = columnsInRow[5].innerText;
+            numEmpField.selectedIndex     = employeeIndex;
+            infoEmpField.selectedIndex    = employeeIndex;
+            oldLocField.selectedIndex     = oldLocIndex;
+            infoOldLocField.selectedIndex = oldLocIndex;
+            newLocField.selectedIndex     = newLocIndex;
+            infoNewLocField.selectedIndex = newLocIndex;
+            dateAffectField.value         = columnsInRow[4].innerText;
+            datePriseServiceField.value   = columnsInRow[5].innerText;
+
             break;
         }
     }
@@ -146,27 +154,27 @@ function EditAffectation()
 */
 function SubmitForm()
 {
-    var numEmpField = document.getElementById("formNumEmp");
-    var ancienLieuField = document.getElementById("formAncienLieu");
-    var nouveauLieuField = document.getElementById("formNouveauLieu");
-    var dateAffectField = document.getElementById("formDateAffect");
+    var numEmpField           = document.getElementById("formNumEmp");
+    var oldLocField           = document.getElementById("formAncienLieu");
+    var newLocField           = document.getElementById("formNouveauLieu");
+    var dateAffectField       = document.getElementById("formDateAffect");
     var datePriseServiceField = document.getElementById("formPriseService");
 
     // If some value in the form is empty, then we refuse to submit it
-    if (numEmpField?.innerText == "" || ancienLieuField?.innerText == "" ||
-        nouveauLieuField?.innerText == "" || dateAffectField.value == "" || datePriseServiceField.value == "") {
+    if (numEmpField?.innerText == "" || oldLocField?.innerText == "" ||
+        newLocField?.innerText == "" || dateAffectField.value == ""  || datePriseServiceField.value == "") {
             return;
     }
     else {
         // Loading every form field into a container that will be parsed on the server side
         var formData = {
-            numAffect: gAffectationDataTracker.id,
-            editMode: gAffectationDataTracker.isEditMode,
-            numEmp: GetCurrentSelectOptionValue(numEmpField, numEmpField.selectedIndex),
-            ancienLieu: GetCurrentSelectOptionValue(ancienLieuField, ancienLieuField.selectedIndex),
-            nouveauLieu: GetCurrentSelectOptionValue(nouveauLieuField, nouveauLieuField.selectedIndex),
-            dateAffect: dateAffectField.value,
-            datePriseService: datePriseServiceField.value
+            numAffect        : gAffectationDataTracker.id,
+            editMode         : gAffectationDataTracker.isEditMode,
+            numEmp           : GetCurrentSelectOptionValue(numEmpField, numEmpField.selectedIndex),
+            ancienLieu       : GetCurrentSelectOptionValue(oldLocField, oldLocField.selectedIndex),
+            nouveauLieu      : GetCurrentSelectOptionValue(newLocField, newLocField.selectedIndex),
+            dateAffect       : dateAffectField.value,
+            datePriseService : datePriseServiceField.value
         };
 
         // If the old location and the new location are the same, then it's not an affectation
@@ -189,5 +197,10 @@ function SubmitForm()
  */
 function TryGeneratePDF()
 {
+    if (gAffectationDataTracker <= 0) {
+        alert("Selectionnez une affectation valide.");
+        return;
+    }
+
     SendXMLHttpRequest(gAffectationDataTracker, "../Control/Affectation/pdf_generator.php");
 }
