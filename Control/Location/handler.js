@@ -4,8 +4,8 @@
  * on its value
  */
 var gLocationDataTracker = {
-    id: 0,
-    isEditMode: false
+    id         : 0,
+    isEditMode : false
 };
 
 /**
@@ -40,14 +40,15 @@ function UpdateDataTracker(id, mode)
  */
 function AddLocation()
 {
-    var locationForm = document.getElementById("locationForm");
-    var locationDesignField = document.getElementById("formLocationDesign");
+    var locationForm          = document.getElementById("locationForm");
+    var locationDesignField   = document.getElementById("formLocationDesign");
     var locationProvinceField = document.getElementById("formLocationProvince");
     
     UpdateDataTracker(-1, false);
     DisplayFormDialog();
-    locationForm.hidden = false;
-    locationDesignField.value = "";
+
+    locationForm.hidden         = false;
+    locationDesignField.value   = "";
     locationProvinceField.value = "";
 }
 
@@ -57,10 +58,9 @@ function AddLocation()
  */
 function EditLocation()
 {
-    var locationForm = document.getElementById("locationForm");
-    var locationDesignField = document.getElementById("formLocationDesign");
+    var locationDesignField   = document.getElementById("formLocationDesign");
     var locationProvinceField = document.getElementById("formLocationProvince");
-    var locationTableRows = document.getElementsByClassName("locationRow");
+    var locationTableRows     = document.getElementsByClassName("locationRow");
 
     // No valid data was selected
     if (gLocationDataTracker.id <= 0) {
@@ -76,7 +76,7 @@ function EditLocation()
         var columnsInRow = locationTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gLocationDataTracker.id) {
-            locationDesignField.value = columnsInRow[1].innerText;
+            locationDesignField.value   = columnsInRow[1].innerText;
             locationProvinceField.value = columnsInRow[2].innerText;
             break;
         }
@@ -92,6 +92,7 @@ function RemoveLocation()
         alert("Séléctionnez un lieu valide.");
         return;
     }
+
     SendXMLHttpRequest(gLocationDataTracker, "../Control/Location/remove.php");
     location.reload();
 }
@@ -102,7 +103,7 @@ function RemoveLocation()
 */
 function SubmitForm()
 {
-    var locationDesignField = document.getElementById("formLocationDesign");
+    var locationDesignField   = document.getElementById("formLocationDesign");
     var locationProvinceField = document.getElementById("formLocationProvince");
 
     // If some value in the form is empty, then we refuse to submit it
@@ -110,10 +111,10 @@ function SubmitForm()
         return;
 
     var dataToSend = {
-        IDLieu: gLocationDataTracker.id,
-        editMode: gLocationDataTracker.isEditMode,
-        Design: locationDesignField.value,
-        Province: locationProvinceField.value
+        IDLieu   : gLocationDataTracker.id,
+        editMode : gLocationDataTracker.isEditMode,
+        Design   : locationDesignField.value,
+        Province : locationProvinceField.value
     };
 
     SendXMLHttpRequest(dataToSend, "../Control/Location/form_submit.php");

@@ -4,8 +4,8 @@
  * on its value
  */
 var gWorkerDataTracker = {
-    id: 0,
-    isEditMode: false
+    id         : 0,
+    isEditMode : false
 };
 
 /**

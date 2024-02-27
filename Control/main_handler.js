@@ -12,6 +12,7 @@ function SendXMLHttpRequest(dataToSend, dest) {
         console.log(req.responseText);
     };
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
+    
     location.reload(); // Force refresh to load data instantly
 }
 
@@ -53,9 +54,9 @@ function DisplayFormDialog()
  */
 function GetCurrentSelectOptionValue(selectElementId, currentId)
 {
-    var elem = selectElementId;
+    var elem    = selectElementId;
     var options = elem.querySelectorAll("option");
-    const max = options.length;
+    const max   = options.length;
 
     if (currentId >= max)
         return "";
@@ -68,9 +69,9 @@ function GetCurrentSelectOptionValue(selectElementId, currentId)
  */
 function GetSelectionIndexForSelectedName(nameToCompare, clientDBId)
 {
-    var workerRel = document.getElementById(clientDBId);
+    var workerRel  = document.getElementById(clientDBId);
     var workerRows = workerRel.querySelectorAll("tr");
-    const max = workerRows.length;
+    const max      = workerRows.length;
 
     console.log([nameToCompare, clientDBId]);
     
@@ -92,7 +93,7 @@ function GetSelectionIndexForSelectedName(nameToCompare, clientDBId)
  */
 function UpdateFormMatchingSelects(idIsBase, idName, infoName)
 {
-    var idField = document.getElementById(idName);
+    var idField   = document.getElementById(idName);
     var infoField = document.getElementById(infoName);
 
     console.log([idIsBase, idName, infoName]);
