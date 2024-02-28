@@ -43,18 +43,24 @@
     margin: 0;
 }
 
+#formDialog * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
 #formDialog input {
     border: 1px solid;
     border-radius: 2px;
     transition: background-color 0.3s;
 }
 
-#formDialog input:hover {
+#formDialog input:hover, #formDialog select:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#formDialog input[type="text"]:hover, #formDialog input[type="number"]:hover, #formDialog input[type="date"]:hover {
+#formDialog input[type="text"]:hover, #formDialog input[type="number"]:hover, #formDialog input[type="date"]:hover, #formDialog input[type="email"]:hover {
     cursor: text;
 }
 
