@@ -11,8 +11,8 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="../Control/main_handler.js"></script>
-        <script src="../Control/Location/handler.js"></script>
+        <script src="../Controller/main_handler.js"></script>
+        <script src="../Controller/Location/handler.js"></script>
         
         <!-- NAVIGATION MENU -->
         <nav class="topNavigationBar">

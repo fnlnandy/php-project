@@ -11,8 +11,8 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="../Control/main_handler.js"></script> 
-        <script src="../Control/Worker/handler.js"></script>
+        <script src="../Controller/main_handler.js"></script> 
+        <script src="../Controller/Worker/handler.js"></script>
         <?php include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
@@ -75,7 +75,7 @@
                 </tr>
 
                 <?php
-                    include_once("../Control/Worker/page_load.php");
+                    include_once("../Controller/Worker/page_load.php");
                     WorkerPageConditions::PopulateWorkersAfterTaskConditions();
                 ?>
             </table>
@@ -136,7 +136,7 @@
                     <th>Date Prise Service</th>
                 </tr>
                 <?php 
-                include_once("../Control/Worker/affectation_list.php");
+                include_once("../Controller/Worker/affectation_list.php");
                 ?>
             </table>
         </div>

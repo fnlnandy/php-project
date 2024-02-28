@@ -11,8 +11,8 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="../Control/main_handler.js"></script>
-        <script src="../Control/Affectation/handler.js"></script>
+        <script src="../Controller/main_handler.js"></script>
+        <script src="../Controller/Affectation/handler.js"></script>
         <?php include_once("ClientDBs/workerrel.php");
               include_once("ClientDBs/locationrel.php"); ?>
         
@@ -47,7 +47,7 @@
                 </tr>
 
                 <?php
-                include_once("../Control/Affectation/page_load.php");
+                include_once("../Controller/Affectation/page_load.php");
                 AffectationPageLoadConditions::PopulateAffectationList();
                 ?>
             </table>
