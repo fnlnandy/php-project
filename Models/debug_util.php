@@ -30,5 +30,23 @@ class DebugUtil {
         $message = "[LOG:{$fileName}:{$line}]: {$message}";
         DebugUtil::WriteMessageIntoFile($message, $isRewrite);
     }
+
+    /**
+     * 
+     */
+    public static function DumpVar(string $fileName, int $line, $var)
+    {
+        DebugUtil::LogIntoFile($fileName, $line, var_export($var, true));
+    }
+
+    /**
+     * 
+     */
+    public static function ExportVars(string $fileName, int $line, ... $vars)
+    {
+        foreach ($vars as $var) {
+            DebugUtil::LogIntoFile($fileName, $line, var_export($var, true));
+        }
+    }
 }
 ?>

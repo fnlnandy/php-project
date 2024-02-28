@@ -197,7 +197,7 @@ function SubmitForm()
  */
 function TryGeneratePDF()
 {
-    if (gAffectationDataTracker <= 0) {
+    if (gAffectationDataTracker.id <= 0) {
         alert("Selectionnez une affectation valide.");
         return;
     }

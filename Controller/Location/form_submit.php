@@ -30,13 +30,13 @@ class Location {
      */
     public static function InsertOrReplaceEntry()
     {
-        $queryToExec = "";
+        $queryToExec  = "";
         $receivedData = XMLHttpRequest::DecodeJson();
-        $possibleId = intval($receivedData['IDLieu']);
-        $isEditMode = (intval($receivedData['editMode']) != 0);
+        $possibleId   = intval($receivedData['IDLieu']);
+        $isEditMode   = (intval($receivedData['editMode']) != 0);
 
         if ($isEditMode == false || $possibleId <= 0) {
-            $possibleId = Location::GenerateNewID();
+            $possibleId  = Location::GenerateNewID();
             $queryToExec = "INSERT INTO LIEU VALUES('[1]', '[2]', '[3]');";
         }
         else {

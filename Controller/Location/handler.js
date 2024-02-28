@@ -15,7 +15,7 @@ var gLocationDataTracker = {
 function UpdateDataTracker(id, mode)
 {
     // Updating the global data tracker for later use
-    var locationTableRows = document.getElementsByClassName("locationRow");
+    var locationTableRows   = document.getElementsByClassName("locationRow");
     gLocationDataTracker.id = (id < 0 ? 0 : id);
     gLocationDataTracker.isEditMode = mode;
 

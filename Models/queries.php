@@ -163,5 +163,24 @@ class SQLQuery {
 
         return true;
     }
+
+    /**
+     * Helper function to perform the usual checks and transformation
+     * of an SQLQuery result into an associative array
+     */
+    public static function ProcessResultAsAssocArray(mysqli_result|bool $result, ... $keysToCheck)
+    {
+        if (!SQLQuery::IsResultValid($result))
+            return null;
+
+        $row = $result->fetch_assoc();
+        
+        foreach ($keysToCheck as $key) {
+            if (!isset($row[$key]))
+                return null;
+        }
+
+        return $row;
+    }
 }
 ?>
