@@ -26,7 +26,7 @@
         <!-- SEARCH BAR AREA -->
         <div class="searchBarAreaContainer firstShownElement">
             <form id="twoDatesForm" method="get">
-            <label>Par date d'affectation<input type="checkbox" id="fromDateAffect" name="fromDateAffect" <?php if (key_exists('fromDateAffect', $_GET) && $_GET['fromDateAffect'] == 'on') echo "checked"; ?>></label>
+                <label>Par date d'affectation<input type="checkbox" id="fromDateAffect" name="fromDateAffect" <?php if (key_exists('fromDateAffect', $_GET) && $_GET['fromDateAffect'] == 'on') echo "checked"; ?>></label>
                 <label>Par date de prise de service<input type="checkbox" id="fromDatePS" name="fromDatePS" <?php if (key_exists('fromDatePS', $_GET) && $_GET['fromDatePS'] == 'on') echo "checked"; ?>></label>
                 <label>Début: <input type="date" id="dateStart" name="dateStart" <?php if (key_exists('dateStart', $_GET) && $_GET['dateStart'] != "") { echo "value=\"{$_GET['dateStart']}\""; }  ?>></label>
                 <label>Fin: <input type="date" id="dateEnd" name="dateEnd" <?php if (key_exists('dateEnd', $_GET) && $_GET['dateEnd'] != "") { echo "value=\"{$_GET['dateEnd']}\""; }  ?>></label>

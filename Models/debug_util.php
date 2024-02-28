@@ -32,7 +32,7 @@ class DebugUtil {
     }
 
     /**
-     * 
+     * Dumps a var as a log
      */
     public static function DumpVar(string $fileName, int $line, $var)
     {
@@ -40,7 +40,8 @@ class DebugUtil {
     }
 
     /**
-     * 
+     * Exports all the vars specified as a list of
+     * logs
      */
     public static function ExportVars(string $fileName, int $line, ... $vars)
     {
