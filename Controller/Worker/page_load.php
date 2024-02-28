@@ -25,8 +25,9 @@ class WorkerPageConditions {
 
         return false;
     }
+
     /**
-     * 
+     * Gets all the employees that have all been affected
      */
     public static function GetEntriesInAffection(): bool|mysqli_result
     {   
@@ -37,7 +38,7 @@ class WorkerPageConditions {
     }
 
     /**
-     * 
+     * Gets all the employees that have not been affected
      */
     public static function GetEntriesNotInAffectation()
     {
@@ -48,7 +49,8 @@ class WorkerPageConditions {
     }
 
     /**
-     * 
+     * Gets all the employees that match the pattern specified
+     * in the searchbar
      */
     public static function GetMatchingEntriesToSearchbar(): bool|mysqli_result
     {
@@ -69,7 +71,8 @@ class WorkerPageConditions {
     }
 
     /**
-     * 
+     * Populates the employees list according
+     * to different conditions
      */
     public static function PopulateWorkersAfterTaskConditions()
     {
