@@ -23,18 +23,12 @@ class AffectationList {
 
             $secondQuery = "SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';";
 
-            $oldLocRes = SQLQuery::ExecPreparedQuery($secondQuery, $row['AncienLieu']);
-            $newLocRes = SQLQuery::ExecPreparedQuery($secondQuery, $row['NouveauLieu']);
+            $oldLocRes  = SQLQuery::ExecPreparedQuery($secondQuery, $row['AncienLieu']);
+            $newLocRes  = SQLQuery::ExecPreparedQuery($secondQuery, $row['NouveauLieu']);
+            $oldLocData = SQLQuery::ProcessResultAsAssocArray($oldLocRes, 'Design', 'Province');
+            $newLocData = SQLQuery::ProcessResultAsAssocArray($newLocRes, 'Design', 'Province');
 
-            if (!$oldLocRes || !$newLocRes || is_null($oldLocRes) || is_null($newLocRes))
-                continue;
-
-            $oldLocData = $oldLocRes->fetch_assoc();
-            $newLocData = $newLocRes->fetch_assoc();
-
-            if (is_null($oldLocData) || is_null($newLocData) || !key_exists('Design', $oldLocData)
-            || !key_exists('Design', $newLocData) || !key_exists('Province', $oldLocData) ||
-            !key_exists('Province', $newLocData))
+            if (is_null($oldLocData) || is_null($newLocData))
                 continue;
 
             echo "<td>{$row['NumAffect']}</td>";

@@ -6,7 +6,8 @@ include_once("../../Models/debug_util.php");
 class RemoveAffectation
 {
     /**
-     * 
+     * Checks if the removed affectation is the latest, the logic is that
+     * the latest affectation is the 'active' one, and the others are irrelevant
      */
     public static function IsRemovedAffectationLatest($id): bool
     {
@@ -33,7 +34,8 @@ class RemoveAffectation
     }
 
     /**
-     * 
+     * Tries to revert the employee's location data to the previous
+     * data
      */
     public static function TryToRevertEmployeeLocation($data)
     {
@@ -66,7 +68,7 @@ class RemoveAffectation
     }
 
     /**
-     * 
+     * Tries to remove the selected affectation from the database
      */
     public static function TryToRemoveAffectation()
     {

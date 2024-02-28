@@ -174,6 +174,9 @@ class SQLQuery {
             return null;
 
         $row = $result->fetch_assoc();
+
+        if (is_null($row))
+            return null;
         
         foreach ($keysToCheck as $key) {
             if (!isset($row[$key]))

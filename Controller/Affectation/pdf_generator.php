@@ -9,7 +9,8 @@ include_once("../../Dependencies/fpdf/fpdf.php");
  */
 class AffectPDFGen {
     /**
-     * 
+     * Reformate the date object from the database into the expected
+     * format for the attestation
      */
     private static function ReformateDate(string $date): string
     {
@@ -108,7 +109,7 @@ class AffectPDFGen {
         );
         
         $attestationPDFFile = new FPDF();
-        $attestationPDFFile->AddPage();
+        $attestationPDFFile->AddPage();                 // So we're able to start writing
         $attestationPDFFile->SetFont('Arial', 'B', 16);
         $attestationPDFFile->Cell(0, 10, mb_convert_encoding($pdfTitle, 'ISO-8859-1', 'UTF-8'), 0, 1, 'C'); // Convert accents etc...
         $attestationPDFFile->SetFont('Arial', '', 14);
