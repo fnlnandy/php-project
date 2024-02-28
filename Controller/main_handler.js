@@ -17,7 +17,9 @@ function SendXMLHttpRequest(dataToSend, dest) {
 }
 
 /**
- * 
+ * Redirects to a page specified in an <a> element,
+ * is used in the main menu page so that clicking on a
+ * menu redirects you to the expected page
  */
 function RedirectToPage(element)
 {
@@ -26,7 +28,18 @@ function RedirectToPage(element)
 }
 
 /**
- * 
+ * Displays a <dialog> element
+ */
+function DisplayFormDialog()
+{
+    var formDialog = document.getElementById("formDialog");
+    formDialog.showModal();
+    formDialog.style.display = "block";
+    formDialog.style.opacity = 1;
+}
+
+/**
+ * Closes a <dialog> element
  */
 function CloseFormDialog()
 {
@@ -39,18 +52,8 @@ function CloseFormDialog()
 }
 
 /**
- * 
- */
-function DisplayFormDialog()
-{
-    var formDialog = document.getElementById("formDialog");
-    formDialog.showModal();
-    formDialog.style.display = "block";
-    formDialog.style.opacity = 1;
-}
-
-/**
- * 
+ * Get the current selected element's innerText
+ * based on an id
  */
 function GetCurrentSelectOptionValue(selectElementId, currentId)
 {
@@ -65,7 +68,7 @@ function GetCurrentSelectOptionValue(selectElementId, currentId)
 }
 
 /**
- * 
+ * Get the current selection's index in the <select> element
  */
 function GetSelectionIndexForSelectedName(nameToCompare, clientDBId)
 {
@@ -89,7 +92,8 @@ function GetSelectionIndexForSelectedName(nameToCompare, clientDBId)
 }
 
 /**
- * 
+ * Synchronizes two select fields that have the relation
+ * <select class="id..."></select> and <select class="name..."></select>
  */
 function UpdateFormMatchingSelects(idIsBase, idName, infoName)
 {
