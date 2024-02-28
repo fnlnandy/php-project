@@ -58,15 +58,15 @@ class AffectationPageLoadConditions
     public static function PopulateAffectationList()
     {
         $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "dateStart", "dateEnd") && $_GET["dateStart"] != "" && $_GET["dateEnd"] != "";
-        $isDateAffectBased = SQLQuery::DoKeysExistInArray($_GET, "fromDateAffect") && $_GET["fromDateAffect"] != "";
-        $isDatePSBased = SQLQuery::DoKeysExistInArray($_GET, "fromDatePS") && $_GET["fromDatePS"] != "";
-        $queryToExec = "SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) ASC, NumAffect ASC;";
-        $result = SQLQuery::ExecQuery($queryToExec);
+        $isDateAffectBased    = SQLQuery::DoKeysExistInArray($_GET, "fromDateAffect") && $_GET["fromDateAffect"] != "";
+        $isDatePSBased        = SQLQuery::DoKeysExistInArray($_GET, "fromDatePS") && $_GET["fromDatePS"] != "";
+        $queryToExec          = "SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) ASC, NumAffect ASC;";
+        $result               = SQLQuery::ExecQuery($queryToExec);
 
         while ($row = $result->fetch_assoc()) {
             if ($limitingDatesPresent) {
-                $dateStart = $_GET["dateStart"];
-                $dateEnd = $_GET["dateEnd"];
+                $dateStart    = $_GET["dateStart"];
+                $dateEnd      = $_GET["dateEnd"];
                 $betweenDates = AffectationPageLoadConditions::GetAffectationsBetweenTwoDates($dateStart, $dateEnd, $isDateAffectBased, $isDatePSBased);
                 
                 // If it's not part of the limited results i.e. not in the range, we skip
@@ -75,9 +75,9 @@ class AffectationPageLoadConditions
             }
 
             $affectCounter = $row["NumAffect"];
-            $workerResult = SQLQuery::ExecPreparedQuery("SELECT Nom, Prenom FROM EMPLOYE WHERE NumEmp = '[1]'", $row["NumEmp"]);
-            $oldLocResult = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["AncienLieu"]);
-            $newLocResult = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["NouveauLieu"]);
+            $workerResult  = SQLQuery::ExecPreparedQuery("SELECT Nom, Prenom FROM EMPLOYE WHERE NumEmp = '[1]'", $row["NumEmp"]);
+            $oldLocResult  = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["AncienLieu"]);
+            $newLocResult  = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["NouveauLieu"]);
 
             if (!SQLQuery::IsResultValid($workerResult) ||
                 !SQLQuery::IsResultValid($oldLocResult) ||

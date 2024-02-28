@@ -30,8 +30,8 @@ class Affectation {
      */
     public static function IsAffectationLatestForEmployee($numAffect, $numEmp)
     {
-        $query = "SELECT * FROM AFFECTER WHERE NumEmp = '[1]' 
-                  ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;";
+        $query  = "SELECT * FROM AFFECTER WHERE NumEmp = '[1]' 
+                   ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;";
         $result = SQLQuery::ExecPreparedQuery($query, $numEmp);
 
         if (!SQLQuery::IsResultValid($result))                            // Check if not null and not false
@@ -57,7 +57,7 @@ class Affectation {
             return;
         }
 
-        $query = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
+        $query  = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
 
         // Check if result is null or false
@@ -66,21 +66,21 @@ class Affectation {
             return;
         }
 
-        $row = $result->fetch_assoc();
+        $currEmployeeRow = $result->fetch_assoc();
         
         // Check if the needed keys are present
-        if (!SQLQuery::DoKeysExistInArray($row, "NumEmp", "AncienLieu", "NouveauLieu")) {
+        if (!SQLQuery::DoKeysExistInArray($currEmployeeRow, "NumEmp", "AncienLieu", "NouveauLieu")) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist in array.");
             return;
         }
 
         // Check if the current affectation is the latest to date
-        if (Affectation::IsAffectationLatestForEmployee($numAffect, $row['NumEmp'])) {
+        if (Affectation::IsAffectationLatestForEmployee($numAffect, $currEmployeeRow['NumEmp'])) {
             if ($rewind) {
-                Affectation::RewindEmployeeLoc($row['NumEmp'], $row['AncienLieu'], $row['NouveauLieu']);
+                Affectation::RewindEmployeeLoc($currEmployeeRow['NumEmp'], $currEmployeeRow['AncienLieu'], $currEmployeeRow['NouveauLieu']);
             }
             else { // Not rewinding because we're updating the new employee
-                Affectation::RewindEmployeeLoc($row['NumEmp'], $row['NouveauLieu'], $row['AncienLieu']);
+                Affectation::RewindEmployeeLoc($currEmployeeRow['NumEmp'], $currEmployeeRow['NouveauLieu'], $currEmployeeRow['AncienLieu']);
             }
         }
     }
@@ -93,20 +93,14 @@ class Affectation {
      */
     public static function GenerateNewID() : int
     {
-        $res    = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;"); // Last ID in the table
-        $realId = 0;
+        $lastAffectResult = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;"); // Last ID in the table
+        $newNumAffect     = 1;
+        $lastAffectRow    = $lastAffectResult->fetch_assoc();
 
-        if (!SQLQuery::IsResultValid($res))
-            $realId = 1;
+        if (SQLQuery::DoKeysExistInArray($lastAffectRow, 'NumAffect'))
+            $newNumAffect = intval($lastAffectRow['NumAffect']) + 1; // New ID is thus the last + 1
 
-        $row = $res->fetch_assoc();
-
-        if (!SQLQuery::DoKeysExistInArray($row, 'NumAffect'))
-            $realId = 1;
-        else
-            $realId = intval($row['NumAffect']) + 1;                      // New ID is thus the last + 1
-
-        return $realId;
+        return $newNumAffect;
     }
 
     /**
@@ -121,7 +115,7 @@ class Affectation {
         $editMode     = (intval($receivedData['editMode']) != 0);            // We also get the EditMode, in case the ID wasn't correctly made invalid for some reason
 
         if ($editMode == false || $id <= 0) { // ID is invalid if it is <= 0 because our first ID must be 1
-            $id = Affectation::GenerateNewID();            // We generate a new ID since that field cannot be NULL
+            $id    = Affectation::GenerateNewID();            // We generate a new ID since that field cannot be NULL
             $query = "INSERT INTO AFFECTER VALUES ('[1]', '[2]', '[3]', '[4]', '[5]', '[6]');";
         }
         else {
@@ -157,38 +151,36 @@ class Affectation {
         }
 
         // Now we get his email, to send the mail too and all his basic personal infos
-        $row = $result->fetch_assoc();
-        $dest = $row["Mail"];
-        $subject = "Notification d'affectation du ".strval($dateAffect);
-        $message = "Bonjour, ".$row["Nom"]." ".$row["Prenom"].", nous vous informons que vous serez affecté à ".$location.", vous prendrez service à partir du ".$datePrServ.".";
-
-        $mail = new PHPMailer(true);
+        $employeeRow    = $result->fetch_assoc();
+        $recipientEmail = $employeeRow["Mail"];
+        $mailSubject    = "Notification d'affectation du ".strval($dateAffect).".";
+        $mailContent    = "Bonjour, {$employeeRow["Civilite"]} {$employeeRow["Nom"]} {$employeeRow["Prenom"]}, nous vous informons que vous serez affecté à ".$location.", à compter de la date de prise de service du ".$datePrServ.".";
+        $mailerObject   = new PHPMailer(true);
 
         try {
             // Mail sending prerequisites
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->isSMTP();
-            $mail->Host = "smtp.gmail.com";
-            $mail->SMTPAuth = true;
-            $mail->Username = "definitelynotandy01@gmail.com";
-            $mail->Password = "gkwtdvvgwxinusqx";
-            $mail->SMTPSecure = "ssl";
-            $mail->Port = 465;
+            $mailerObject->SMTPDebug  = SMTP::DEBUG_SERVER;
+            $mailerObject->isSMTP(true); // Set the protocol
+            $mailerObject->Host       = "smtp.gmail.com";
+            $mailerObject->SMTPAuth   = true;
+            $mailerObject->Username   = "definitelynotandy01@gmail.com";
+            $mailerObject->Password   = "gkwtdvvgwxinusqx";
+            $mailerObject->SMTPSecure = "ssl";
+            $mailerObject->Port       = 465;
 
             // Sender and recipient
-            $mail->setFrom("definitelynotandy01@gmail.com");
-            $mail->addAddress($dest);
+            $mailerObject->setFrom("definitelynotandy01@gmail.com");
+            $mailerObject->addAddress($recipientEmail);
 
             // Mail content
-            $mail->isHTML(true);
-            $mail->Subject = $subject;
-            $mail->Body = $message;
+            $mailerObject->isHTML(true);
+            $mailerObject->Subject = $mailSubject;
+            $mailerObject->Body    = $mailContent;
 
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, $dest);
-            $mail->send();
+            $mailerObject->send();
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Message sent");
         } catch (Exception $e) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Message could not be sent, error: { $mail->ErrorInfo }");
+            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Message could not be sent, error: { $mailerObject->ErrorInfo }");
         }
     }
 }

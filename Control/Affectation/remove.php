@@ -38,7 +38,7 @@ class RemoveAffectation
     public static function TryToRevertEmployeeLocation($data)
     {
         $affectId = $data['id'];
-        $query = "SELECT NumEmp, AncienLieu, NouveauLieu FROM AFFECTER WHERE NumAffect = '[1]';";
+        $query    = "SELECT NumEmp, AncienLieu, NouveauLieu FROM AFFECTER WHERE NumAffect = '[1]';";
 
         if (!RemoveAffectation::IsRemovedAffectationLatest($affectId)) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Removed affectation isn't the latest: {$affectId}.");
@@ -71,7 +71,7 @@ class RemoveAffectation
     public static function TryToRemoveAffectation()
     {
         $affectationData = XMLHttpRequest::DecodeJson();
-        $possibleId = 0;
+        $possibleId      = 0;
 
         if (!SQLQuery::DoKeysExistInArray($affectationData, 'id')) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist in array.");

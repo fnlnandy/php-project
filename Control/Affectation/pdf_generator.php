@@ -16,58 +16,55 @@ class AffectPDFGen {
         $dataReceived = XMLHttpRequest::DecodeJson();
 
         // Checking if there's any ID, i.e. if the data received is valid
-        if (!key_exists("id", $dataReceived) || intval($dataReceived["id"]) <= 0) {
+        if (!SQLQuery::DoKeysExistInArray($dataReceived, "id") || intval($dataReceived["id"]) <= 0) {
             return;
         } else {
-            $id = $dataReceived["id"];
-            $result = SQLQuery::ExecPreparedQuery("SELECT * FROM AFFECTER WHERE NumAffect = '[1]';", $id);
+            $numAffect = $dataReceived["id"];
+            $result = SQLQuery::ExecPreparedQuery("SELECT * FROM AFFECTER WHERE NumAffect = '[1]';", $numAffect);
             
-            if (!$result || is_null($result)) {
+            if (!SQLQuery::IsResultValid($result)) {
                 return;
             }
             
             // Affectation data loading
-            $row = $result->fetch_assoc();
-            $employee = SQLQuery::ExecPreparedQuery("SELECT * FROM EMPLOYE WHERE NumEmp = '[1]';", $row['NumEmp']);
+            $affectRow = $result->fetch_assoc();
+            $result = SQLQuery::ExecPreparedQuery("SELECT * FROM EMPLOYE WHERE NumEmp = '[1]';", $affectRow['NumEmp']);
             
-            if (!$employee || is_null($employee)) {
+            if (!SQLQuery::IsResultValid($result)) {
                 return;
             }
 
             // Employee data loading
-            $employeeData = $employee->fetch_assoc();
-            $location = SQLQuery::ExecPreparedQuery("SELECT * FROM LIEU WHERE IDLieu = '[1]';", $row['AncienLieu']);
+            $employeeRow = $result->fetch_assoc();
+            $result      = SQLQuery::ExecPreparedQuery("SELECT * FROM LIEU WHERE IDLieu = '[1]';", $row['AncienLieu']);
 
-            if (!$location || is_null($location)) {
+            if (!SQLQuery::IsResultValid($result)) {
                 return;
             }
 
-            // Old location data loading
-            $locationData = $location->fetch_assoc();
-
-            $attestDate = $row['DateAffect'];
-            $name = $employeeData['Nom'];
-            $firstName = $employeeData['Prenom'];
-            $civility = $employeeData['Civilite'];
-            $position = $employeeData['Poste'];
-            $oldLoc = $locationData['Design'];
+            $oldLocationRow = $result->fetch_assoc();
+            $attestDate     = $affectRow['DateAffect'];
+            $name           = $employeeRow['Nom'];
+            $firstName      = $employeeRow['Prenom'];
+            $civility       = $employeeRow['Civilite'];
+            $position       = $employeeRow['Poste'];
+            $oldLoc         = $oldLocationRow['Design'];
+            $oldLocProvince = $oldLocationRow['Province'];
             
-            $location = SQLQuery::ExecPreparedQuery("SELECT * FROM LIEU WHERE IDLieu = '[1]';", $row['NouveauLieu']);
+            $result = SQLQuery::ExecPreparedQuery("SELECT * FROM LIEU WHERE IDLieu = '[1]';", $row['NouveauLieu']);
 
-            if (!$location || is_null($location)) {
+            if (!SQLQuery::IsResultValid($result)) {
                 return;
             }
 
-            // New location data loading
-            $locationData = $location->fetch_assoc();
-
-            $newLoc = $locationData['Design'];
-            $priseServ = $row['DatePriseService'];
-
-            $pdfTitle = "Arrêté N {$id} du {$attestDate}";
-            $pdfContent = array(
-                "{$civility} {$name} {$firstName}, qui occupe le poste : {$position} à {$oldLoc},",
-                "est affecté(e) à {$newLoc} pour compter de la date de prise de service {$priseServ}.",
+            $newLocationRow = $result->fetch_assoc();
+            $newLoc         = $newLocationRow['Design'];
+            $newLocProvince = $newLocationRow['Province'];
+            $priseService   = $affectRow['DatePriseService'];
+            $pdfTitle       = "Arrêté N {$id} du {$attestDate}";
+            $pdfContent     = array(
+                "{$civility} {$name} {$firstName}, qui occupe le poste : {$position} à {$oldLoc} ({$oldLocProvince}),",
+                "est affecté(e) à {$newLoc} ({$newLocProvince}) pour compter de la date de prise de service {$priseService}.",
                 "",
                 "Le présent communiqué sera enregistré et communiqué partout où besoin sera."
             );
