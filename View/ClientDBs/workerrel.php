@@ -1,5 +1,5 @@
 <!-- DATA STORING TABLE TO ACCESS IN JS -->
-<table class="clent-side-database" id="workerNameFirstNameMatch">
+<table class="clent-side-database" id="worker-id-name-relation">
     <?php 
         include_once("../Models/queries.php");
 

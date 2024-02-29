@@ -96,7 +96,7 @@ function EditWorker()
         // Loading the data from the <table> element to the form
         if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
             var selectedIndex = 0;
-            var correctSelectionIndexForLocation = GetSelectionIndexForSelectedName(columnsInRow[6].innerText, "locationIdDesignMatch");
+            var correctSelectionIndexForLocation = GetSelectionIndexForSelectedName(columnsInRow[6].innerText, "location-id-name-relation");
             
             // Selecting the correct option for the civility
             if (columnsInRow[1].innerText == "Mr")

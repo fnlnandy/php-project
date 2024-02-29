@@ -130,9 +130,9 @@ function EditAffectation()
 
         // Loading every value from the <table> into the form
         if (columnsInRow.length > 0 && columnsInRow[0].innerText == gAffectationDataTracker.id) {
-            var employeeIndex = GetSelectionIndexForSelectedName(columnsInRow[1].innerText, "workerNameFirstNameMatch");
-            var oldLocIndex   = GetSelectionIndexForSelectedName(columnsInRow[2].innerText, "locationIdDesignMatch");
-            var newLocIndex   = GetSelectionIndexForSelectedName(columnsInRow[3].innerText, "locationIdDesignMatch");
+            var employeeIndex = GetSelectionIndexForSelectedName(columnsInRow[1].innerText, "worker-id-name-relation");
+            var oldLocIndex   = GetSelectionIndexForSelectedName(columnsInRow[2].innerText, "location-id-name-relation");
+            var newLocIndex   = GetSelectionIndexForSelectedName(columnsInRow[3].innerText, "location-id-name-relation");
 
             numEmpField.selectedIndex     = employeeIndex;
             infoEmpField.selectedIndex    = employeeIndex;
