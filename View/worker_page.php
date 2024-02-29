@@ -29,10 +29,10 @@
                     // Reloading the value searched on refresh
                     $value = "";
 
-                    if (key_exists('searchBar', $_GET))
-                        $value = str_replace('+', ' ', $_GET['searchBar']);
+                    if (key_exists('worker-search-bar', $_GET))
+                        $value = str_replace('+', ' ', $_GET['worker-search-bar']);
 
-                    $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
+                    $searchBar = "<input type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
                     echo $searchBar;
                 ?>
                 <label>Affectés

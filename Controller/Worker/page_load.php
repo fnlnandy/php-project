@@ -54,16 +54,16 @@ class WorkerPageConditions {
      */
     public static function GetMatchingEntriesToSearchbar(): bool|mysqli_result
     {
-        if (!key_exists('searchBar', $_GET)) {
+        if (!key_exists('worker-search-bar', $_GET)) {
             return false;
         }
-        if ($_GET['searchBar'] == "") {
+        if ($_GET['worker-search-bar'] == "") {
             return false;
         }
 
         $queryToExecute = "SELECT * FROM EMPLOYE WHERE Nom LIKE '%[1]%' OR Prenom LIKE '%[1]%' OR CONCAT(Nom, ' ', Prenom) LIKE '%[1]%' OR CONCAT(Prenom, ' ', Nom) LIKE '%[1]%' 
                 OR LOWER(Nom) LIKE '%[2]%' OR LOWER(Prenom) LIKE '%[2]%' OR LOWER(CONCAT(Nom, ' ', Prenom)) LIKE '%[2]%' OR LOWER(CONCAT(Prenom, ' ', Nom)) LIKE '%[2]%';";
-        $cleanString = str_replace("+", " ", $_GET['searchBar']); // To remove the '+' character in the string, which is supposed to be a space
+        $cleanString = str_replace("+", " ", $_GET['worker-search-bar']); // To remove the '+' character in the string, which is supposed to be a space
         $lowerCase = strtolower($cleanString);
         $result = SQLQuery::ExecPreparedQuery($queryToExecute, $cleanString, $lowerCase); 
 
@@ -85,7 +85,7 @@ class WorkerPageConditions {
         while ($rowInDatabase = $mainResults->fetch_assoc()) {
             // If the key doesn't exist in one of the arrays that match
             // the current searching conditions, automatically skip
-            if (key_exists('searchBar', $_GET)          && $_GET['searchBar'] != ""            && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesInSearchBar)) {
+            if (key_exists('worker-search-bar', $_GET)          && $_GET['worker-search-bar'] != ""            && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesInSearchBar)) {
                 continue;
             }
             if (key_exists('showAffectedOnes', $_GET)   && $_GET['showAffectedOnes'] == 'on'   && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesAffected)) {
