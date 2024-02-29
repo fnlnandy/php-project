@@ -17,7 +17,7 @@
               include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
-        <nav class="topNavigationBar">
+        <nav class="top-navigation-bar">
             <a href="../index.php">Menu principal</a>
             <a href="location_page.php">Lieux</a>
             <a href="worker_page.php">Employés</a>

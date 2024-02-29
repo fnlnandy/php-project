@@ -63,7 +63,7 @@
     cursor: pointer;
 }
 
-.topNavigationBar {
+.top-navigation-bar {
     background-color: white;
     border-radius: 2px;
     width: fit-content;
@@ -73,7 +73,7 @@
     top: 0;
 }
 
-.topNavigationBar a {
+.top-navigation-bar a {
     background-color: transparent;
     text-decoration: none;
     color: black;
@@ -84,7 +84,7 @@
     border-radius: 2px;
 }
 
-.topNavigationBar a:hover {
+.top-navigation-bar a:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
 }
