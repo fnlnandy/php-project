@@ -19,7 +19,7 @@ class AffectationList {
         $result = SQLQuery::ExecPreparedQuery($queryToExec, $_GET['workerId']);
 
         while ($row = $result->fetch_assoc()) {
-            echo "<tr class=\"workerAffectationRow\">";
+            echo "<tr class=\"worker-affects-list-row\">";
 
             $secondQuery = "SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';";
 

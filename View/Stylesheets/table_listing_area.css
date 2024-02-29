@@ -47,12 +47,12 @@
     cursor: pointer;
 }
 
-.affectation-table-row, .location-table-row, .worker-table-row, .workerAffectationRow {
+.affectation-table-row, .location-table-row, .worker-table-row, .worker-affects-list-row {
     transition: background-color 0.3s ease;
 }
 
 /* On hover of <tr>s */
-.affectation-table-row:hover, .location-table-row:hover, .worker-table-row:hover, .workerAffectationRow:hover {
+.affectation-table-row:hover, .location-table-row:hover, .worker-table-row:hover, .worker-affects-list-row:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
 }
