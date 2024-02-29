@@ -28,7 +28,7 @@
             <form id="affect-based-on-dates-form" method="get">
                 <label>Par date d'affectation<input type="checkbox" id="fromDateAffect" name="fromDateAffect" <?php if (key_exists('fromDateAffect', $_GET) && $_GET['fromDateAffect'] == 'on') echo "checked"; ?>></label>
                 <label>Par date de prise de service<input type="checkbox" id="fromDatePS" name="fromDatePS" <?php if (key_exists('fromDatePS', $_GET) && $_GET['fromDatePS'] == 'on') echo "checked"; ?>></label>
-                <label>Début: <input type="date" id="dateStart" name="dateStart" <?php if (key_exists('dateStart', $_GET) && $_GET['dateStart'] != "") { echo "value=\"{$_GET['dateStart']}\""; }  ?>></label>
+                <label>Début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
                 <label>Fin: <input type="date" id="dateEnd" name="dateEnd" <?php if (key_exists('dateEnd', $_GET) && $_GET['dateEnd'] != "") { echo "value=\"{$_GET['dateEnd']}\""; }  ?>></label>
                 <input type="submit" value="Afficher les affectations">
             </form>

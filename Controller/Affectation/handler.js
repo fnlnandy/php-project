@@ -5,7 +5,7 @@ window.onload = () => {
     var month         = (currentDate.getMonth() + 1).toString().padStart(2, '0');
     var day           = currentDate.getDate().toString().padStart(2, '0');
     var formattedDate = year + '-' + month + '-' + day;
-    var dateStart     = document.getElementById("dateStart");
+    var dateStart     = document.getElementById("search-bar-date-begin");
     var dateEnd       = document.getElementById("dateEnd");
 
     // Updating every 'date' elements to the current date
