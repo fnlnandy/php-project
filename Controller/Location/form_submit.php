@@ -16,9 +16,9 @@ class Location {
     {
         $lastLocResult = SQLQuery::ExecQuery("SELECT * FROM LIEU ORDER BY LENGTH(IDLieu) DESC, IDLieu DESC LIMIT 1;");
         $newIDLoc      = 1;
-        $lastLocRow    = $lastLocResult->fetch_assoc();
+        $lastLocRow    = SQLQuery::ProcessResultAsAssocArray($lastLocResult, 'IDLieu');
 
-        if (SQLQuery::DoKeysExistInArray($lastLocRow, "IDLieu"))
+        if (!is_null($lastLocRow))
             $newIDLoc = intval($lastIdQuery->fetch_assoc()['IDLieu']) + 1;
 
         return $newIDLoc;
