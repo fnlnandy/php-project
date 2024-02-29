@@ -23,7 +23,7 @@
         </nav>
 
         <!-- SEARCH BAR AREA -->
-        <div class="searchBarAreaContainer firstShownElement">
+        <div class="searchBarAreaContainer top-page-element">
             <form class="searchBarContainer" method="get">
                 <?php
                     // Reloading the value searched on refresh

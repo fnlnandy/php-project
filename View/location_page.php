@@ -22,7 +22,7 @@
         </nav>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer firstShownElement">
+        <div class="tableListingAreaContainer top-page-element">
             <table class="tableListingArea">
                 <tr class="locationHeaderRow">
                     <th>ID Lieu</th>
