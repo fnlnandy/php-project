@@ -37,7 +37,7 @@ var gAffectationDataTracker = {
 function UpdateDataTracker(id, mode)
 {
     // Updating the global data tracker
-    var affectationTableRows   = document.getElementsByClassName("affectationRow");
+    var affectationTableRows   = document.getElementsByClassName("affectation-row");
     gAffectationDataTracker.id = (id < 0 ? 0 : id);
     gAffectationDataTracker.isEditMode = mode;
 
@@ -113,7 +113,7 @@ function EditAffectation()
     var infoNewLocField       = document.getElementById("formInfoNouveauLieu");
     var dateAffectField       = document.getElementById("formDateAffect");
     var datePriseServiceField = document.getElementById("formPriseService");
-    var tableRows             = document.getElementsByClassName("affectationRow");
+    var tableRows             = document.getElementsByClassName("affectation-row");
 
     // An invalid data was selected, thus we cannot load anything into the form
     if (gAffectationDataTracker.id <= 0) {
