@@ -24,9 +24,9 @@
         <!-- TABLE LISTING DATA -->
         <div class="table-list-outer-container space-top-element">
             <table class="table-list-inner-container">
-                <tr class="location-table-header">
-                    <th>ID Lieu</th>
-                    <th>Design</th>
+                <tr class="table-header-row">
+                    <th>ID du lieu</th>
+                    <th>Designation</th>
                     <th>Province</th>
                 </tr>
 
@@ -53,7 +53,7 @@
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="location-main-form">
                             <h3 class="form-title">Formulaire pour un lieu</h3>
-                            <label>Design: <input id="form-location-design" name="form-location-design" type="text" maxlength="30" required>        <br></label>
+                            <label>Designation: <input id="form-location-design" name="form-location-design" type="text" maxlength="30" required>        <br></label>
                             <label>Province: <input id="form-location-province" name="form-location-province" type="text" maxlength="30" required>       <br></label>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
