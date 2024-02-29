@@ -48,6 +48,8 @@
 
 ## Last-To-Do
 * Code Review
+    * Types
+        * Utiliser des types définis pour les fonctions & variables...[ ]
     * Variables...[ ]
         * Nommées correctement...[ ]
         * Nommées significativement...[ ]
