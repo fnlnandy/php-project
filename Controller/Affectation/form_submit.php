@@ -21,7 +21,7 @@ class Affectation {
     public static function RewindEmployeeLoc($numEmp, $oldLoc, $newLoc)
     {
         $query = "UPDATE EMPLOYE SET Lieu = '[1]' WHERE NumEmp = '[2]' AND Lieu = '[3]';";
-        
+
         DebugUtil::Assert(($oldLoc != ""), "\$oldLoc is empty.");
         DebugUtil::Assert(($newLoc != ""), "\$newLoc is empty.");
         DebugUtil::Assert(($numEmp != ""), "\$numEmp is empty.");
@@ -136,6 +136,7 @@ class Affectation {
         $receivedData = XMLHttpRequest::DecodeJson(); // We get the date sent via AJAX in JSON format
         $id           = intval($receivedData['numAffect']);                  // We get the ID, that will be checked if valid or not
         $editMode     = (intval($receivedData['editMode']) != 0);            // We also get the EditMode, in case the ID wasn't correctly made invalid for some reason
+        $sendMail     = intval($receivedData["notifyEmployee"]);
 
         if ($editMode == false || $id <= 0) { // ID is invalid if it is <= 0 because our first ID must be 1
             $id    = Affectation::GenerateNewID();            // We generate a new ID since that field cannot be NULL
@@ -163,7 +164,8 @@ class Affectation {
                             $dateAffect->format("Y-m-d"), 
                             $datePrServ->format("Y-m-d"));
         Affectation::FixCurrentEmployeeLoc($id, false);
-        Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
+        if ($sendMail == 1)
+            Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
         header("Refresh:0");
     }
 
@@ -174,16 +176,17 @@ class Affectation {
     {
         // We first get the employee data
         $result = SQLQuery::ExecPreparedQuery("SELECT * FROM EMPLOYE WHERE NumEmp = '[1]';", $numEmp);
-        
-        if (!$result || is_null($result)) {
-            die("Error in query.");
-        }
+        $employeeRow = SQLQuery::ProcessResultAsAssocArray($result);
 
-        // Now we get his email, to send the mail too and all his basic personal infos
-        $employeeRow    = $result->fetch_assoc();
+        $result = SQLQuery::ExecPreparedQuery("SELECT * FROM LIEU WHERE IDLieu = '[1]';", $location);
+        $locationRow = SQLQuery::ProcessResultAsAssocArray($result);
+
+        if (is_null($employeeRow) || is_null($locationRow))
+            return;
+
         $recipientEmail = $employeeRow["Mail"];
         $mailSubject    = "Notification d'affectation du ".strval($dateAffect).".";
-        $mailContent    = "Bonjour, {$employeeRow["Civilite"]} {$employeeRow["Nom"]} {$employeeRow["Prenom"]}, nous vous informons que vous serez affecté à ".$location.", à compter de la date de prise de service du ".$datePrServ.".";
+        $mailContent    = "Bonjour, {$employeeRow["Civilite"]} {$employeeRow["Nom"]} {$employeeRow["Prenom"]}, nous vous informons que vous serez affecté à {$locationRow['Design']} ({$locationRow['Province']}), à compter de la date de prise de service du ".$datePrServ.".";
         $mailerObject   = new PHPMailer(true);
 
         try {

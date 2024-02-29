@@ -161,6 +161,7 @@ function SubmitForm()
     var newLocField           = document.getElementById("form-affectation-new-location");
     var dateAffectField       = document.getElementById("form-affectation-date-affect");
     var datePriseServiceField = document.getElementById("form-affectation-date-ps");
+    var notifyEmployeeField   = document.getElementById("form-notify-employee");
 
     // If some value in the form is empty, then we refuse to submit it
     if (numEmpField?.innerText == "" || oldLocField?.innerText == "" ||
@@ -176,7 +177,8 @@ function SubmitForm()
             ancienLieu       : GetCurrentSelectOptionValue(oldLocField, oldLocField.selectedIndex),
             nouveauLieu      : GetCurrentSelectOptionValue(newLocField, newLocField.selectedIndex),
             dateAffect       : dateAffectField.value,
-            datePriseService : datePriseServiceField.value
+            datePriseService : datePriseServiceField.value,
+            notifyEmployee   : (notifyEmployeeField.checked ? 1 : 0)
         };
 
         // If the old location and the new location are the same, then it's not an affectation

@@ -84,6 +84,7 @@
                             <br></label>
                             <label>Date d'affectation: <input id="form-affectation-date-affect" name="form-affectation-date-affect" type="date" required>         <br></label>
                             <label>Date de prise de service: <input id="form-affectation-date-ps" name="form-affectation-date-ps" type="date" required><br></label>
+                            <label>Notifier l'employé par e-mail<input id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
                     </form>
