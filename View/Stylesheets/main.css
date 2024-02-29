@@ -78,6 +78,22 @@
     background-color: transparent;
 }
 
-.top-page-element {
+.space-top-element {
     margin-top: 5%;
+}
+
+.space-bottom-element {
+    margin-bottom: 5%;
+}
+
+.space-left-element {
+    margin-left: 5%;
+}
+
+.space-right-element {
+    margin-right: 5%;
+}
+
+.space-element {
+    margin: 5%;
 }

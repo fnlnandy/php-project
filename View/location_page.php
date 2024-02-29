@@ -22,7 +22,7 @@
         </nav>
 
         <!-- TABLE LISTING DATA -->
-        <div class="table-list-outer-container top-page-element">
+        <div class="table-list-outer-container space-top-element">
             <table class="table-list-inner-container">
                 <tr class="location-table-header">
                     <th>ID Lieu</th>
@@ -38,7 +38,7 @@
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="force-center-elements">
+        <div class="force-center-elements space-top-element">
             <span class="crud-actions-container">
                 <button onclick="AddLocation()">Ajouter</button>
                 <button onclick="EditLocation()">Modifier</button>

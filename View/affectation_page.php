@@ -24,7 +24,7 @@
         </nav>
 
         <!-- SEARCH BAR AREA -->
-        <div class="search-bar-outer-container top-page-element">
+        <div class="search-bar-outer-container space-top-element space-bottom-element">
             <form id="affect-based-on-dates-form" method="get">
                 <label>Par date d'affectation<input type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>></label>
                 <label>Par date de prise de service<input type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
@@ -35,7 +35,7 @@
         </div>
 
         <!-- TABLE LISTING DATA -->
-        <div class="table-list-outer-container">
+        <div class="table-list-outer-container space-top-element">
             <table class="table-list-inner-container">
                 <tr class="affectation-table-header">
                     <th>Num Affect</th>
@@ -54,7 +54,7 @@
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="force-center-elements">
+        <div class="force-center-elements space-top-element">
             <span class="crud-actions-container">
                 <button onclick="AddAffectation()">Ajouter</button>
                 <button onclick="EditAffectation()">Modifier</button>

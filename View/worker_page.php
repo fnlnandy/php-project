@@ -23,7 +23,7 @@
         </nav>
 
         <!-- SEARCH BAR AREA -->
-        <div class="search-bar-outer-container top-page-element">
+        <div class="search-bar-outer-container space-top-element">
             <form class="search-bar-inner-container" method="get">
                 <?php
                     // Reloading the value searched on refresh
@@ -62,7 +62,7 @@
         </div>
 
         <!-- TABLE LISTING DATA -->
-        <div class="table-list-outer-container">
+        <div class="table-list-outer-container space-top-element">
             <table class="table-list-inner-container">
                 <tr class="worker-table-header" class="table-list-inner-container">
                     <th>Num Emp</th>
@@ -82,7 +82,7 @@
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="force-center-elements">
+        <div class="force-center-elements space-top-element">
             <span class="crud-actions-container">
                 <button onclick="AddWorker()">Ajouter</button>
                 <button onclick="EditWorker()">Modifier</button>
