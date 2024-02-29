@@ -25,16 +25,6 @@
         <!-- SEARCH BAR AREA -->
         <div class="search-bar-outer-container space-top-element">
             <form class="search-bar-inner-container" method="get">
-                <?php
-                    // Reloading the value searched on refresh
-                    $value = "";
-
-                    if (key_exists('worker-search-bar', $_GET))
-                        $value = str_replace('+', ' ', $_GET['worker-search-bar']);
-
-                    $searchBar = "<input type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
-                    echo $searchBar;
-                ?>
                 <label>Affectés
                 <?php 
                     $checked = "";
@@ -55,9 +45,19 @@
 
                     $unaffectedCBox = "<input type=\"checkbox\" id=\"search-bar-show-unaffected\" name=\"search-bar-show-unaffected\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
                     echo $unaffectedCBox;
-                ?>       
+                ?>
                 </label>
-                <input type="submit" value="Rechercher les employés">
+                <?php
+                    // Reloading the value searched on refresh
+                    $value = "";
+
+                    if (key_exists('worker-search-bar', $_GET))
+                        $value = str_replace('+', ' ', $_GET['worker-search-bar']);
+
+                    $searchBar = "<input type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
+                    echo $searchBar;
+                ?>     
+                <input type="submit" value="Rechercher parmis les employés">
             </form>
         </div>
 

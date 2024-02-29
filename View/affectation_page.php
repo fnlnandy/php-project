@@ -26,11 +26,11 @@
         <!-- SEARCH BAR AREA -->
         <div class="search-bar-outer-container space-top-element space-bottom-element">
             <form id="affect-based-on-dates-form" method="get">
+                <label>Date de début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
+                <label>Date de fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
                 <label>Par date d'affectation<input type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>></label>
                 <label>Par date de prise de service<input type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
-                <label>Début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
-                <label>Fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
-                <input type="submit" value="Rechercher les affectations">
+                <input type="submit" value="Trier les affectations">
             </form>
         </div>
 
