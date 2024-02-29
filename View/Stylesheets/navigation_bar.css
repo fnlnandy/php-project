@@ -1,11 +1,11 @@
 /* index.php's base navigation <section> container */
-#navigationMenu {
+#index-main-menu {
     display: grid;
     height: 100vh;
 }
 
 /* <div> container for the <ol> element */
-#navMenuOptionsContainer {
+#index-menu-outer-container {
     background-color: white;
     margin: 10%;
     min-width: 210px;
@@ -18,7 +18,7 @@
 }
 
 /* <ol> element containing the <li> elements */
-#navMenuOptions {
+#index-menu-inner-container {
     background-color: transparent;
     list-style-type: none;
     counter-reset: exponent;
@@ -28,7 +28,7 @@
 }
 
 /* <li> element containing the <a> element */
-#navMenuOptions li {
+#index-menu-inner-container li {
     background-color: transparent;
     position: relative;
     display: flex;
@@ -39,14 +39,14 @@
 }
 
 /* <a> elements */
-#navMenuOptions a {
+#index-menu-inner-container a {
     background-color: transparent;
     text-decoration: none;
     color: black;
 }
 
 /* Counter to display the list ids as indices */
-#navMenuOptions li::before {
+#index-menu-inner-container li::before {
     content: counter(exponent);
     font-size: 0.6em;
     vertical-align: super;
@@ -58,7 +58,7 @@
 }
 
 /* On hover of a <li> element (i.e. a menu row) */
-#navMenuOptions li:hover {
+#index-menu-inner-container li:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
