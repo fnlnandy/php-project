@@ -62,9 +62,9 @@
         </div>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer">
-            <table class="tableListingArea">
-                <tr class="workerHeaderRow" class="tableListingArea">
+        <div class="table-list-outer-container">
+            <table class="table-list-inner-container">
+                <tr class="workerHeaderRow" class="table-list-inner-container">
                     <th>Num Emp</th>
                     <th>Civilite</th>
                     <th>Nom</th>
@@ -122,8 +122,8 @@
         </dialog>
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
-        <div id="affectationListContainer" class="tableListingAreaContainer">
-            <table id="affectationList" class="tableListingArea"
+        <div id="affectationListContainer" class="table-list-outer-container">
+            <table id="affectationList" class="table-list-inner-container"
             <?php 
                 if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
                     echo "hidden"; 

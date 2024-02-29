@@ -35,8 +35,8 @@
         </div>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer">
-            <table class="tableListingArea">
+        <div class="table-list-outer-container">
+            <table class="table-list-inner-container">
                 <tr class="affectationHeaderRow">
                     <th>Num Affect</th>
                     <th>Num Emp</th>

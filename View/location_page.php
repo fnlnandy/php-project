@@ -22,8 +22,8 @@
         </nav>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer top-page-element">
-            <table class="tableListingArea">
+        <div class="table-list-outer-container top-page-element">
+            <table class="table-list-inner-container">
                 <tr class="locationHeaderRow">
                     <th>ID Lieu</th>
                     <th>Design</th>

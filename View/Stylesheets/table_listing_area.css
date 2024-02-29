@@ -1,21 +1,21 @@
-.tableListingAreaContainer {
+.table-list-outer-container {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.tableListingArea {
+.table-list-inner-container {
     background-color: white;
     padding: 5px;
     border-radius: 12px;
 }
 
-.tableListingArea td {
+.table-list-inner-container td {
     border: 1px solid;
     border-radius: 3px;
 }
 
-.tableListingArea * {
+.table-list-inner-container * {
     background-color: transparent;
 }
 
