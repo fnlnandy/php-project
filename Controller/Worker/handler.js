@@ -1,3 +1,7 @@
+window.onload = () => {
+    HighlightCurrentWorker();
+}
+
 /**
  * Global data tracker to be used later for
  * the form submitting, current mode depends
@@ -192,5 +196,19 @@ function UpdateAffectedCheck()
     if (unaffectedCBox.checked == true) {
         affectedCBox.checked = false;
         return;
+    }
+}
+
+/**
+ * Highlight the current worker when displaying his affectation
+ * data
+ */
+function HighlightCurrentWorker()
+{
+    var url = new URL(window.location.href);
+    var workerIdValue = url.searchParams.get('worker-id');
+
+    if (workerIdValue != null) {
+        UpdateDataTracker(workerIdValue, false);
     }
 }
