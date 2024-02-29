@@ -20,9 +20,9 @@
         ?>
 
         <!-- CUSTOM: MAIN NAVIGATION MENU -->
-        <section id="navigationMenu">
-            <div id="navMenuOptionsContainer">
-                <ol id="navMenuOptions">
+        <section id="index-main-menu">
+            <div id="index-menu-outer-container">
+                <ol id="index-menu-inner-container">
                     <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/affectation_page.php">Affectation</a></li>
                     <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/location_page.php">Lieu</a></li>
                     <li class="navMenuOption" onclick="RedirectToPage(this)"><a href="View/worker_page.php">Employés</a></li>

@@ -57,7 +57,7 @@ class AffectationPageLoadConditions
      */
     public static function PopulateAffectationList()
     {
-        $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "dateStart", "dateEnd") && $_GET["dateStart"] != "" && $_GET["dateEnd"] != "";
+        $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "search-bar-date-begin", "search-bar-date-end") && $_GET["search-bar-date-begin"] != "" && $_GET["search-bar-date-end"] != "";
         $isDateAffectBased    = SQLQuery::DoKeysExistInArray($_GET, "fromDateAffect") && $_GET["fromDateAffect"] != "";
         $isDatePSBased        = SQLQuery::DoKeysExistInArray($_GET, "fromDatePS") && $_GET["fromDatePS"] != "";
         $queryToExec          = "SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) ASC, NumAffect ASC;";
@@ -65,8 +65,8 @@ class AffectationPageLoadConditions
 
         while ($row = $result->fetch_assoc()) {
             if ($limitingDatesPresent) {
-                $dateStart    = $_GET["dateStart"];
-                $dateEnd      = $_GET["dateEnd"];
+                $dateStart    = $_GET["search-bar-date-begin"];
+                $dateEnd      = $_GET["search-bar-date-end"];
                 $betweenDates = AffectationPageLoadConditions::GetAffectationsBetweenTwoDates($dateStart, $dateEnd, $isDateAffectBased, $isDatePSBased);
                 
                 // If it's not part of the limited results i.e. not in the range, we skip
@@ -90,7 +90,7 @@ class AffectationPageLoadConditions
 
             // The current row, contains a call to the JavaScript function supposed to update
             // the data tracker for the Edit and Delete functions on the table
-            echo "<tr class=\"affectationRow\" onclick=\"UpdateDataTracker(".strval($affectCounter).", true)\">";
+            echo "<tr class=\"affectation-table-row\" onclick=\"UpdateDataTracker(".strval($affectCounter).", true)\">";
 
             // Checking if every needed key is within the results
             if (!SQLQuery::DoKeysExistInArray($workerRow, "Nom", "Prenom") ||

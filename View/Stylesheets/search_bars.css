@@ -1,4 +1,4 @@
-#twoDatesForm {
+#affect-based-on-dates-form {
     background-color: white;
     padding: 5px;
     margin: 2px;
@@ -6,61 +6,61 @@
     border-radius: 5px;
 }
 
-.searchBarAreaContainer {
+.search-bar-outer-container {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.searchBarContainer  {
+.search-bar-inner-container  {
     background-color: white;
     padding: 5px;
     border-radius: 5px;
 }
 
-.searchBarContainer input {
+.search-bar-inner-container input {
     border: 1px solid;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.searchBarContainer input:hover {
+.search-bar-inner-container input:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-.searchBarContainer * {
+.search-bar-inner-container * {
     background-color: transparent;
 }
 
-.searchBarContainer #searchBar {
+.search-bar-inner-container #worker-search-bar {
     cursor: text;
 }
 
-#twoDatesForm label {
+#affect-based-on-dates-form label {
     background-color: transparent;
 }
 
-#twoDatesForm input {
+#affect-based-on-dates-form input {
     background-color: transparent;
 }
 
-#dateStart {
+#search-bar-date-begin {
     background-color: transparent;
 }
 
-#dateEnd {
+#search-bar-date-end {
     background-color: transparent;
 }
 
-#twoDatesForm input {
+#affect-based-on-dates-form input {
     border-color: black;
     border: 1px solid;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-#twoDatesForm input:hover {
+#affect-based-on-dates-form input:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }

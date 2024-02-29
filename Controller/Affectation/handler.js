@@ -5,8 +5,8 @@ window.onload = () => {
     var month         = (currentDate.getMonth() + 1).toString().padStart(2, '0');
     var day           = currentDate.getDate().toString().padStart(2, '0');
     var formattedDate = year + '-' + month + '-' + day;
-    var dateStart     = document.getElementById("dateStart");
-    var dateEnd       = document.getElementById("dateEnd");
+    var dateStart     = document.getElementById("search-bar-date-begin");
+    var dateEnd       = document.getElementById("search-bar-date-end");
 
     // Updating every 'date' elements to the current date
     if (dateStart.value === "") {
@@ -37,7 +37,7 @@ var gAffectationDataTracker = {
 function UpdateDataTracker(id, mode)
 {
     // Updating the global data tracker
-    var affectationTableRows   = document.getElementsByClassName("affectationRow");
+    var affectationTableRows   = document.getElementsByClassName("affectation-table-row");
     gAffectationDataTracker.id = (id < 0 ? 0 : id);
     gAffectationDataTracker.isEditMode = mode;
 
@@ -113,7 +113,7 @@ function EditAffectation()
     var infoNewLocField       = document.getElementById("formInfoNouveauLieu");
     var dateAffectField       = document.getElementById("formDateAffect");
     var datePriseServiceField = document.getElementById("formPriseService");
-    var tableRows             = document.getElementsByClassName("affectationRow");
+    var tableRows             = document.getElementsByClassName("affectation-table-row");
 
     // An invalid data was selected, thus we cannot load anything into the form
     if (gAffectationDataTracker.id <= 0) {

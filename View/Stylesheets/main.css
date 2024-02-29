@@ -10,13 +10,13 @@
     font-size: 1.02em;
 }
 
-.centerElementsFlex {
+.force-center-elements {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-#formDialog {
+#form-dialog-container {
     background-color: white;
     opacity: 0;
     transition: opacity 0.3s;
@@ -26,7 +26,7 @@
     display: none;
 }
 
-#formDialog p {
+#form-dialog-container p {
     background-color: white;
     width: fit-content;
     transition: background-color 0.3s;
@@ -38,46 +38,46 @@
     text-align: right;
 }
 
-#formTitle {
+#form-title {
     padding: 5px;
     margin: 0;
 }
 
-#formDialog * {
+#form-dialog-container * {
     margin-top: 5px;
     margin-bottom: 5px;
     background-color: transparent;
 }
 
-#formDialog input {
+#form-dialog-container input {
     border: 1px solid;
     border-radius: 2px;
     transition: background-color 0.3s;
 }
 
-#formDialog input:hover, #formDialog select:hover {
+#form-dialog-container input:hover, #form-dialog-container select:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#formDialog input[type="text"]:hover, #formDialog input[type="number"]:hover, #formDialog input[type="date"]:hover, #formDialog input[type="email"]:hover {
+#form-dialog-container input[type="text"]:hover, #form-dialog-container input[type="number"]:hover, #form-dialog-container input[type="date"]:hover, #form-dialog-container input[type="email"]:hover {
     cursor: text;
 }
 
-#formDialog p:hover {
+#form-dialog-container p:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-.clientDB {
+.clent-side-database {
     display: none;
     background-color: white;
 }
 
-.clientDB * {
+.clent-side-database * {
     background-color: transparent;
 }
 
-.firstShownElement {
+.top-page-element {
     margin-top: 5%;
 }

@@ -17,26 +17,26 @@
               include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
-        <nav class="topNavigationBar">
+        <nav class="top-navigation-bar">
             <a href="../index.php">Menu principal</a>
             <a href="location_page.php">Lieux</a>
             <a href="worker_page.php">Employés</a>
         </nav>
 
         <!-- SEARCH BAR AREA -->
-        <div class="searchBarAreaContainer firstShownElement">
-            <form id="twoDatesForm" method="get">
+        <div class="search-bar-outer-container top-page-element">
+            <form id="affect-based-on-dates-form" method="get">
                 <label>Par date d'affectation<input type="checkbox" id="fromDateAffect" name="fromDateAffect" <?php if (key_exists('fromDateAffect', $_GET) && $_GET['fromDateAffect'] == 'on') echo "checked"; ?>></label>
                 <label>Par date de prise de service<input type="checkbox" id="fromDatePS" name="fromDatePS" <?php if (key_exists('fromDatePS', $_GET) && $_GET['fromDatePS'] == 'on') echo "checked"; ?>></label>
-                <label>Début: <input type="date" id="dateStart" name="dateStart" <?php if (key_exists('dateStart', $_GET) && $_GET['dateStart'] != "") { echo "value=\"{$_GET['dateStart']}\""; }  ?>></label>
-                <label>Fin: <input type="date" id="dateEnd" name="dateEnd" <?php if (key_exists('dateEnd', $_GET) && $_GET['dateEnd'] != "") { echo "value=\"{$_GET['dateEnd']}\""; }  ?>></label>
+                <label>Début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
+                <label>Fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
                 <input type="submit" value="Afficher les affectations">
             </form>
         </div>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer">
-            <table class="tableListingArea">
+        <div class="table-list-outer-container">
+            <table class="table-list-inner-container">
                 <tr class="affectationHeaderRow">
                     <th>Num Affect</th>
                     <th>Num Emp</th>
@@ -54,8 +54,8 @@
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="centerElementsFlex">
-            <span class="actionButtonsContainer">
+        <div class="force-center-elements">
+            <span class="crud-actions-container">
                 <button onclick="AddAffectation()">Ajouter</button>
                 <button onclick="EditAffectation()">Modifier</button>
                 <button onclick="RemoveAffectationEntry()">Supprimer</button>
@@ -64,12 +64,12 @@
         </div>
 
         <!-- DATA FILLING FORM -->
-        <dialog id="formDialog">
+        <dialog id="form-dialog-container">
             <p onclick="CloseFormDialog()">x</p>
-            <div class="centerElementsFlex">
-                <span class="formContainer">
+            <div class="force-center-elements">
+                <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectationForm">
-                            <h3 class="formTitle">Formulaire pour une affectation</h3>
+                            <h3 class="form-title">Formulaire pour une affectation</h3>
                             <label>Employé: 
                                 <select id="formNumEmp" name="formNumEmp" onchange="UpdateFormMatchingSelects(true, 'formNumEmp', 'formInfoEmp')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
                                 <select id="formInfoEmp" name="formInfoEmp" onchange="UpdateFormMatchingSelects(false, 'formNumEmp', 'formInfoEmp')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>

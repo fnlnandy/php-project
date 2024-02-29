@@ -16,23 +16,23 @@
         <?php include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
-        <nav class="topNavigationBar">
+        <nav class="top-navigation-bar">
             <a href="../index.php">Menu principal</a>
             <a href="affectation_page.php">Affectations</a>
             <a href="location_page.php">Lieux</a>
         </nav>
 
         <!-- SEARCH BAR AREA -->
-        <div class="searchBarAreaContainer firstShownElement">
-            <form class="searchBarContainer" method="get">
+        <div class="search-bar-outer-container top-page-element">
+            <form class="search-bar-inner-container" method="get">
                 <?php
                     // Reloading the value searched on refresh
                     $value = "";
 
-                    if (key_exists('searchBar', $_GET))
-                        $value = str_replace('+', ' ', $_GET['searchBar']);
+                    if (key_exists('worker-search-bar', $_GET))
+                        $value = str_replace('+', ' ', $_GET['worker-search-bar']);
 
-                    $searchBar = "<input type=\"search\" id=\"searchBar\" name=\"searchBar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
+                    $searchBar = "<input type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
                     echo $searchBar;
                 ?>
                 <label>Affectés
@@ -62,9 +62,9 @@
         </div>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer">
-            <table class="tableListingArea">
-                <tr class="workerHeaderRow" class="tableListingArea">
+        <div class="table-list-outer-container">
+            <table class="table-list-inner-container">
+                <tr class="workerHeaderRow" class="table-list-inner-container">
                     <th>Num Emp</th>
                     <th>Civilite</th>
                     <th>Nom</th>
@@ -82,8 +82,8 @@
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="centerElementsFlex">
-            <span class="actionButtonsContainer">
+        <div class="force-center-elements">
+            <span class="crud-actions-container">
                 <button onclick="AddWorker()">Ajouter</button>
                 <button onclick="EditWorker()">Modifier</button>
                 <button onclick="RemoveWorker()">Supprimer</button>
@@ -95,12 +95,12 @@
         </div>
 
         <!-- DATA FILLING FORM -->
-        <dialog id="formDialog">
+        <dialog id="form-dialog-container">
             <p onclick="CloseFormDialog()">x</p>
-            <div class="centerElementsFlex">
-                <span class="formContainer">
+            <div class="force-center-elements">
+                <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="workerForm">
-                        <h3 class="formTitle">Formulaire pour un employé</h3>
+                        <h3 class="form-title">Formulaire pour un employé</h3>
                         <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
                                             <option id="sirCivility">Mr</option>
                                             <option id="missCivility">Mlle</option>
@@ -122,8 +122,8 @@
         </dialog>
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
-        <div id="affectationListContainer" class="tableListingAreaContainer">
-            <table id="affectationList" class="tableListingArea"
+        <div id="affectationListContainer" class="table-list-outer-container">
+            <table id="affectationList" class="table-list-inner-container"
             <?php 
                 if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
                     echo "hidden"; 

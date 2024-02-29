@@ -1,25 +1,25 @@
-.tableListingAreaContainer {
+.table-list-outer-container {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.tableListingArea {
+.table-list-inner-container {
     background-color: white;
     padding: 5px;
     border-radius: 12px;
 }
 
-.tableListingArea td {
+.table-list-inner-container td {
     border: 1px solid;
     border-radius: 3px;
 }
 
-.tableListingArea * {
+.table-list-inner-container * {
     background-color: transparent;
 }
 
-.actionButtonsContainer {
+.crud-actions-container {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -32,27 +32,27 @@
     top: 0;
 }
 
-.actionButtonsContainer * {
+.crud-actions-container * {
     background-color: transparent;
 }
 
-.actionButtonsContainer button {
+.crud-actions-container button {
     border: 1px solid;
     transition: background-color 0.3s ease;
     border-radius: 5px;
 }
 
-.actionButtonsContainer button:hover {
+.crud-actions-container button:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-.affectationRow, .locationRow, .workerRow, .workerAffectationRow {
+.affectation-table-row, .location-table-row, .worker-table-row, .worker-affects-list-row {
     transition: background-color 0.3s ease;
 }
 
 /* On hover of <tr>s */
-.affectationRow:hover, .locationRow:hover, .workerRow:hover, .workerAffectationRow:hover {
+.affectation-table-row:hover, .location-table-row:hover, .worker-table-row:hover, .worker-affects-list-row:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
 }

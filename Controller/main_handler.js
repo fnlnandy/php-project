@@ -32,7 +32,7 @@ function RedirectToPage(element)
  */
 function DisplayFormDialog()
 {
-    var formDialog = document.getElementById("formDialog");
+    var formDialog = document.getElementById("form-dialog-container");
     formDialog.showModal();
     formDialog.style.display = "block";
     formDialog.style.opacity = 1;
@@ -43,7 +43,7 @@ function DisplayFormDialog()
  */
 function CloseFormDialog()
 {
-    var formDialog = document.getElementById("formDialog");
+    var formDialog = document.getElementById("form-dialog-container");
     formDialog.style.opacity = 0;
     formDialog.addEventListener("transitionend", () => {
         formDialog.style.display = "none";

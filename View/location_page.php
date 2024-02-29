@@ -15,15 +15,15 @@
         <script src="../Controller/Location/handler.js"></script>
         
         <!-- NAVIGATION MENU -->
-        <nav class="topNavigationBar">
+        <nav class="top-navigation-bar">
             <a href="../index.php">Menu principal</a>
             <a href="affectation_page.php">Affectations</a>
             <a href="worker_page.php">Employés</a>
         </nav>
 
         <!-- TABLE LISTING DATA -->
-        <div class="tableListingAreaContainer firstShownElement">
-            <table class="tableListingArea">
+        <div class="table-list-outer-container top-page-element">
+            <table class="table-list-inner-container">
                 <tr class="locationHeaderRow">
                     <th>ID Lieu</th>
                     <th>Design</th>
@@ -32,14 +32,14 @@
 
                 <?php
                     include_once("../Models/table_helpers.php");
-                    TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "locationRow");
+                    TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "location-table-row");
                 ?>
             </table>
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="centerElementsFlex">
-            <span class="actionButtonsContainer">
+        <div class="force-center-elements">
+            <span class="crud-actions-container">
                 <button onclick="AddLocation()">Ajouter</button>
                 <button onclick="EditLocation()">Modifier</button>
                 <button onclick="RemoveLocation()">Supprimer</button>
@@ -47,12 +47,12 @@
         </div>
 
         <!-- DATA FILLING FORM -->
-        <dialog id="formDialog">
+        <dialog id="form-dialog-container">
         <p onclick="CloseFormDialog()">x</p>
-            <div class="centerElementsFlex">
-                <span class="formContainer">
+            <div class="force-center-elements">
+                <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="locationForm">
-                            <h3 class="formTitle">Formulaire pour un lieu</h3>
+                            <h3 class="form-title">Formulaire pour un lieu</h3>
                             <label>Design: <input id="formLocationDesign" name="formLocationDesign" type="text" maxlength="30" required>        <br></label>
                             <label>Province: <input id="formLocationProvince" name="formLocationProvince" type="text" maxlength="30" required>       <br></label>
                             <input type="submit" value="Confirmer">

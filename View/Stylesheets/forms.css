@@ -1,19 +1,19 @@
-.formContainer {
+.form-inner-container {
     background-color: white;
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.formContainer * {
+.form-inner-container * {
     background-color: transparent;
 }
 
-.formContainer input {
+.form-inner-container input {
     right: 0;
     position: relative;
 }
 
-.formTitle {
+.form-title {
     text-align: center;
 }
