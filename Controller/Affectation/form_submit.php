@@ -18,7 +18,7 @@ class Affectation {
     /**
      * Replaces the location of an employee to the previous one
      */
-    public static function RewindEmployeeLoc($numEmp, $oldLoc, $newLoc)
+    public static function RewindEmployeeLoc(string $numEmp, string $oldLoc, string $newLoc): void
     {
         $query = "UPDATE EMPLOYE SET Lieu = '[1]' WHERE NumEmp = '[2]' AND Lieu = '[3]';";
 
@@ -33,7 +33,7 @@ class Affectation {
      * Checks if an affectation is the lastest one made on the employee,
      * if it isn't then it would be an expired one
      */
-    public static function IsAffectationLatestForEmployee($numAffect, $numEmp)
+    public static function IsAffectationLatestForEmployee(string $numAffect, string $numEmp): bool
     {
         $query  = "SELECT * FROM AFFECTER WHERE NumEmp = '[1]' 
                    ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;";
@@ -54,7 +54,7 @@ class Affectation {
      * Fixes the current employee's location depending on the
      * affectation
      */
-    public static function FixCurrentEmployeeLoc($numAffect, bool $rewind = true)
+    public static function FixCurrentEmployeeLoc(string $numAffect, bool $rewind = true): void
     {
         // Check ID validity
         if (intval($numAffect) <= 0) {
@@ -111,7 +111,7 @@ class Affectation {
      * didn't, then we do not rewind the employee's
      * location
      */
-    public static function IsNewEmployeeID($newEmpId, $numAffect): bool
+    public static function IsNewEmployeeID(string $newEmpId, string $numAffect): bool
     {
         $query = "SELECT NumEmp FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);

@@ -9,7 +9,7 @@ class RemoveAffectation
      * Checks if the removed affectation is the latest, the logic is that
      * the latest affectation is the 'active' one, and the others are irrelevant
      */
-    public static function IsRemovedAffectationLatest($id): bool
+    public static function IsRemovedAffectationLatest(string $id): bool
     {
         $lastAffectResult = SQLQuery::ExecPreparedQuery("SELECT * FROM AFFECTER WHERE NumEmp = (SELECT NumEmp FROM AFFECTER WHERE NumAffect = '[1]') ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;", $id);
         $row = SQLQuery::ProcessResultAsAssocArray($lastAffectResult, 'NumAffect');
@@ -28,7 +28,7 @@ class RemoveAffectation
      * Tries to revert the employee's location data to the previous
      * data
      */
-    public static function TryToRevertEmployeeLocation($data)
+    public static function TryToRevertEmployeeLocation(array $data): void
     {
         $affectId = $data['id'];
 
@@ -54,7 +54,7 @@ class RemoveAffectation
     /**
      * Tries to remove the selected affectation from the database
      */
-    public static function TryToRemoveAffectation()
+    public static function TryToRemoveAffectation(): void
     {
         $affectationData = XMLHttpRequest::DecodeJson();
         $possibleId      = 0;

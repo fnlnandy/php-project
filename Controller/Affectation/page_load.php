@@ -26,7 +26,7 @@ class AffectationPageLoadConditions
      * Gets the affectations between two dates, whether it is
      * DateAffect or DatePriseService
      */
-    public static function GetAffectationsBetweenTwoDates($dateStart, $dateEnd, bool $isDateABased, bool $isDatePSBased): bool|mysqli_result
+    public static function GetAffectationsBetweenTwoDates(string $dateStart, string $dateEnd, bool $isDateABased, bool $isDatePSBased): bool|mysqli_result
     {
         $conditionDA = "DateAffect >= '[1]' AND DateAffect <= '[2]'";             // Based on the DateAffect
         $conditionPS = "DatePriseService >= '[1]' AND DatePriseService <= '[2]'"; // Based on the DatePriseService
@@ -58,7 +58,7 @@ class AffectationPageLoadConditions
      * Populates the affectation list table depending on the previous
      * conditions results
      */
-    public static function PopulateAffectationList()
+    public static function PopulateAffectationList(): void
     {
         $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "search-bar-date-begin", "search-bar-date-end") && $_GET["search-bar-date-begin"] != "" && $_GET["search-bar-date-end"] != "";
         $isDateAffectBased    = SQLQuery::DoKeysExistInArray($_GET, "search-date-affect-based") && $_GET["search-date-affect-based"] != "";

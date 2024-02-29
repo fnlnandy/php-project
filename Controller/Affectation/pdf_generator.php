@@ -25,7 +25,7 @@ class AffectPDFGen {
      * Helper function to get both the old location and the new location's
      * database entries from the current affectation's data
      */
-    private static function GetLocationsData($affectationData): array|null
+    private static function GetLocationsData(array|null $affectationData): array|null
     {
         $query = "SELECT * FROM LIEU WHERE IDLieu = '[1]';";
 
@@ -48,7 +48,7 @@ class AffectPDFGen {
      * Helper function to get the database entry of the current employee
      * that's getting affected
      */
-    private static function GetEmployeeData($affectationData): array|null
+    private static function GetEmployeeData(array|null $affectationData): array|null
     {
         $query = "SELECT * FROM EMPLOYE WHERE NumEmp = '[1]';";
 
@@ -64,7 +64,7 @@ class AffectPDFGen {
      * Helper function to get the current affectation's database
      * entry from the id received from JavaScript
      */
-    private static function GetAffectationData($numAffect): array|null
+    private static function GetAffectationData(string $numAffect): array|null
     {
         $query = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
@@ -76,7 +76,7 @@ class AffectPDFGen {
      * Tries to generate a PDF File, creates a 'PDFs'
      * directory and the filename depends on the current Affectation ID
      */
-    public static function TryGeneratePDFFile()
+    public static function TryGeneratePDFFile(): void
     {
         $dataReceived = XMLHttpRequest::DecodeJson();
 
