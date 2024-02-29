@@ -44,6 +44,7 @@ function UpdateDataTracker(id, mode)
     // Resetting the styles of the rows
     for (var i = 0 ; i < affectationTableRows.length ; i++) {
         affectationTableRows[i].style.backgroundColor = "";
+        affectationTableRows[i].style.color = "";
     }
 
     // Highlighting the lastly clicked row
@@ -51,7 +52,8 @@ function UpdateDataTracker(id, mode)
         var columnsInRow = affectationTableRows[i].querySelectorAll("td");
 
         if (columnsInRow.length > 0 && columnsInRow[0].innerText == gAffectationDataTracker.id) {
-            affectationTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+            affectationTableRows[i].style.backgroundColor = "rgb(65, 65, 65)";
+            affectationTableRows[i].style.color = "white";
             break;
         }
     }

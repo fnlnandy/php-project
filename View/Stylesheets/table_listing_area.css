@@ -5,13 +5,13 @@
 }
 
 .table-list-inner-container {
-    background-color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../Ressources/tables-bg.jpg");
     padding: 5px;
     border-radius: 12px;
 }
 
 .table-list-inner-container td {
-    border: 1px solid;
+    padding: 5px;
     border-radius: 3px;
 }
 
@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: white;
+    background-image: url("../Ressources/top-nav-bar-bg.jpg");
     width: fit-content;
     padding: 5px;
     border-radius: 5px;
@@ -48,13 +48,16 @@
 }
 
 .affectation-table-row, .location-table-row, .worker-table-row, .worker-affects-list-row {
+    background-color: white;
     transition: background-color 0.3s ease;
+    transition: color 0.1s;
 }
 
 /* On hover of <tr>s */
 .affectation-table-row:hover, .location-table-row:hover, .worker-table-row:hover, .worker-affects-list-row:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(65, 65, 65);
+    color: white;
 }
 
 table {
@@ -62,7 +65,12 @@ table {
 }
 
 .table-header-row {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     color: white;
+}
+
+.table-header-row * {
+    border-collapse: collapse;
+    border-radius: 5px;
 }

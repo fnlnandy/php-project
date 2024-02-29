@@ -22,6 +22,7 @@ function UpdateDataTracker(id, mode)
     // Resetting every rows' style
     for (var i = 0 ; i < locationTableRows.length ; i++) {
         locationTableRows[i].style.backgroundColor = "";
+        locationTableRows[i].style.color = "";
     }
 
     // Highlighing the lastly clicked row
@@ -29,7 +30,8 @@ function UpdateDataTracker(id, mode)
         var columnsInRow = locationTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gLocationDataTracker.id) {
-            locationTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+            locationTableRows[i].style.backgroundColor = "rgb(65, 65, 65)";
+            locationTableRows[i].style.color = "white";
             break;
         }
     }

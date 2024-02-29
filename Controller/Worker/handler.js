@@ -25,6 +25,7 @@ function UpdateDataTracker(id, mode)
     // Resetting every rows' style
     for (var i = 0 ; i < workerTableRows.length ; i++) {
         workerTableRows[i].style.backgroundColor = "";
+        workerTableRows[i].style.color = "";
     }
 
     // Highlighting the lastly clicked row
@@ -32,7 +33,8 @@ function UpdateDataTracker(id, mode)
         var columnsInRow = workerTableRows[i].querySelectorAll("td");
 
         if (columnsInRow[0].innerText == gWorkerDataTracker.id) {
-            workerTableRows[i].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+            workerTableRows[i].style.backgroundColor = "rgb(65, 65, 65)";
+            workerTableRows[i].style.color = "white";
             break;
         }
     }

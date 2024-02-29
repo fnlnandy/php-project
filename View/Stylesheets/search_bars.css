@@ -1,5 +1,5 @@
 #affect-based-on-dates-form {
-    background-color: white;
+    background-image: url("../Ressources/top-nav-bar-bg.jpg");
     padding: 5px;
     margin: 2px;
     width: fit-content;
@@ -13,7 +13,7 @@
 }
 
 .search-bar-inner-container  {
-    background-color: white;
+    background-image: url("../Ressources/top-nav-bar-bg.jpg");
     padding: 5px;
     border-radius: 5px;
 }
