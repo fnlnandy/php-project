@@ -50,7 +50,7 @@
         <dialog id="formDialog">
         <p onclick="CloseFormDialog()">x</p>
             <div class="centerElementsFlex">
-                <span class="formContainer">
+                <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="locationForm">
                             <h3 class="formTitle">Formulaire pour un lieu</h3>
                             <label>Design: <input id="formLocationDesign" name="formLocationDesign" type="text" maxlength="30" required>        <br></label>

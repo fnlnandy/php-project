@@ -67,7 +67,7 @@
         <dialog id="formDialog">
             <p onclick="CloseFormDialog()">x</p>
             <div class="centerElementsFlex">
-                <span class="formContainer">
+                <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectationForm">
                             <h3 class="formTitle">Formulaire pour une affectation</h3>
                             <label>Employé: 
