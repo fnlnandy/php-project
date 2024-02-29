@@ -88,10 +88,10 @@ class WorkerPageConditions {
             if (key_exists('worker-search-bar', $_GET)          && $_GET['worker-search-bar'] != ""            && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesInSearchBar)) {
                 continue;
             }
-            if (key_exists('showAffectedOnes', $_GET)   && $_GET['showAffectedOnes'] == 'on'   && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesAffected)) {
+            if (key_exists('search-bar-show-affected', $_GET)   && $_GET['search-bar-show-affected'] == 'on'   && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesAffected)) {
                 continue;
             }
-            if (key_exists('showUnaffectedOnes', $_GET) && $_GET['showUnaffectedOnes'] == 'on' && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesUnaffected)) {
+            if (key_exists('search-bar-show-unaffected', $_GET) && $_GET['search-bar-show-unaffected'] == 'on' && !WorkerPageConditions::IsNumEmpInResult($rowInDatabase, $entriesUnaffected)) {
                 continue;
             }
 

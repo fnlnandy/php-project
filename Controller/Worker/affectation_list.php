@@ -12,11 +12,11 @@ class AffectationList {
      */
     public static function PrintAffectations()
     {
-        if (!key_exists('workerId', $_GET) || intval($_GET['workerId']) <= 0)
+        if (!key_exists('worker-id', $_GET) || intval($_GET['worker-id']) <= 0)
             return;
 
         $queryToExec = "SELECT NumAffect, AncienLieu, NouveauLieu, DateAffect, DatePriseService FROM AFFECTER WHERE NumEmp = '[1]';";
-        $result = SQLQuery::ExecPreparedQuery($queryToExec, $_GET['workerId']);
+        $result = SQLQuery::ExecPreparedQuery($queryToExec, $_GET['worker-id']);
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr class=\"worker-affects-list-row\">";

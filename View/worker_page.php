@@ -39,10 +39,10 @@
                 <?php 
                     $checked = "";
 
-                    if (key_exists('showAffectedOnes', $_GET) && $_GET['showAffectedOnes'] == 'on')
+                    if (key_exists('search-bar-show-affected', $_GET) && $_GET['search-bar-show-affected'] == 'on')
                         $checked = "checked";
 
-                    $affectedCBox = "<input type=\"checkbox\" id=\"showAffectedOnes\" name=\"showAffectedOnes\" onchange=\"UpdateUnaffectedCheck()\" {$checked}>";
+                    $affectedCBox = "<input type=\"checkbox\" id=\"search-bar-show-affected\" name=\"search-bar-show-affected\" onchange=\"UpdateUnaffectedCheck()\" {$checked}>";
                     echo $affectedCBox;
                 ?>    
                 </label>
@@ -50,10 +50,10 @@
                 <?php 
                     $checked = "";
 
-                    if (key_exists('showUnaffectedOnes', $_GET) && $_GET['showUnaffectedOnes'] == 'on')
+                    if (key_exists('search-bar-show-unaffected', $_GET) && $_GET['search-bar-show-unaffected'] == 'on')
                         $checked = "checked";
 
-                    $unaffectedCBox = "<input type=\"checkbox\" id=\"showUnaffectedOnes\" name=\"showUnaffectedOnes\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
+                    $unaffectedCBox = "<input type=\"checkbox\" id=\"search-bar-show-unaffected\" name=\"search-bar-show-unaffected\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
                     echo $unaffectedCBox;
                 ?>       
                 </label>
@@ -64,7 +64,7 @@
         <!-- TABLE LISTING DATA -->
         <div class="table-list-outer-container">
             <table class="table-list-inner-container">
-                <tr class="workerHeaderRow" class="table-list-inner-container">
+                <tr class="worker-table-header" class="table-list-inner-container">
                     <th>Num Emp</th>
                     <th>Civilite</th>
                     <th>Nom</th>
@@ -87,9 +87,9 @@
                 <button onclick="AddWorker()">Ajouter</button>
                 <button onclick="EditWorker()">Modifier</button>
                 <button onclick="RemoveWorker()">Supprimer</button>
-                <form id="affectationListForm" method="get">
+                <form id="worker-affects-list-form" method="get">
                     <input type="submit" value="Afficher les affectations">
-                    <input type="number" id="workerId" name="workerId" readonly hidden>
+                    <input type="number" id="worker-id" name="worker-id" readonly hidden>
                 </form>
             </span>
         </div>
@@ -101,18 +101,18 @@
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="workerForm">
                         <h3 class="form-title">Formulaire pour un employé</h3>
-                        <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
-                                            <option id="sirCivility">Mr</option>
-                                            <option id="missCivility">Mlle</option>
-                                            <option id="ladyCivility">Mme</option>
+                        <label>Civilité: <select id="form-worker-civility" name="form-worker-civility" required>
+                                            <option id="sir-civility">Mr</option>
+                                            <option id="miss-civility">Mlle</option>
+                                            <option id="lady-civility">Mme</option>
                                         </select>       <br></label>
-                        <label>Nom: <input id="formWorkerName" name="formWorkerName" type="text" maxlength="30" required>       <br></label>
-                        <label>Prénom: <input id="formWorkerFirstname" name="formWorkerFirstname" maxlength="40" type="text" required>       <br></label>
-                        <label>Mail: <input id="formWorkerMail" name="formWorkerMail" type="email" maxlength="254" required>       <br></label>
-                        <label>Poste: <input id="formWorkerPost" name="formWorkerPost" type="text" maxlength="50" required>       <br></label>
+                        <label>Nom: <input id="form-worker-name" name="form-worker-name" type="text" maxlength="30" required>       <br></label>
+                        <label>Prénom: <input id="form-worker-first-name" name="form-worker-first-name" maxlength="40" type="text" required>       <br></label>
+                        <label>Mail: <input id="form-worker-mail" name="form-worker-mail" type="email" maxlength="254" required>       <br></label>
+                        <label>Poste: <input id="form-worker-post" name="form-worker-post" type="text" maxlength="50" required>       <br></label>
                         <label>Lieu: 
-                            <select id="formWorkerLocation" name="formWorkerLocation" onchange="UpdateFormMatchingSelects(true, 'formWorkerLocation', 'formInfoWorkerLocation')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
-                            <select id="formInfoWorkerLocation" name="formInfoWorkerLocation" onchange="UpdateFormMatchingSelects(false, 'formWorkerLocation', 'formInfoWorkerLocation')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                            <select id="form-worker-location" name="form-worker-location" onchange="UpdateFormMatchingSelects(true, 'form-worker-location', 'form-info-worker-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                            <select id="form-info-worker-location" name="form-info-worker-location" onchange="UpdateFormMatchingSelects(false, 'form-worker-location', 'form-info-worker-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
                         <br></label>
                         <input type="submit" value="Confirmer">
                         <input type="reset" value="Réinitaliser">
@@ -122,10 +122,10 @@
         </dialog>
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
-        <div id="affectationListContainer" class="table-list-outer-container">
-            <table id="affectationList" class="table-list-inner-container"
+        <div id="worker-affects-list-outer-container" class="table-list-outer-container">
+            <table id="worker-affects-list-inner-container" class="table-list-inner-container"
             <?php 
-                if (!key_exists("workerId", $_GET) || $_GET["workerId"] == "" || intval($_GET["workerId"]) <= 0)
+                if (!key_exists("worker-id", $_GET) || $_GET["worker-id"] == "" || intval($_GET["worker-id"]) <= 0)
                     echo "hidden"; 
             ?>>
                 <tr>

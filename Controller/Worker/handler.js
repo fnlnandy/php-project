@@ -15,7 +15,7 @@ var gWorkerDataTracker = {
 function UpdateDataTracker(id, mode)
 {
     var workerTableRows    = document.getElementsByClassName("worker-table-row");
-    var affectCurrWorkerId = document.getElementById("workerId");
+    var affectCurrWorkerId = document.getElementById("worker-id");
 
     // Update the global data tracker for later use
     gWorkerDataTracker.id         = (id < 0 ? 0 : id);
@@ -44,13 +44,13 @@ function UpdateDataTracker(id, mode)
  */
 function AddWorker()
 {
-    var workerCivilityField     = document.getElementById("formWorkerCivility");
-    var workerNameField         = document.getElementById("formWorkerName");
-    var workerFirstnameField    = document.getElementById("formWorkerFirstname");
-    var workerMailField         = document.getElementById("formWorkerMail");
-    var workerPostField         = document.getElementById("formWorkerPost");
-    var workerLocationField     = document.getElementById("formWorkerLocation");
-    var infoWorkerLocationField = document.getElementById("formInfoWorkerLocation");
+    var workerCivilityField     = document.getElementById("form-worker-civility");
+    var workerNameField         = document.getElementById("form-worker-name");
+    var workerFirstnameField    = document.getElementById("form-worker-first-name");
+    var workerMailField         = document.getElementById("form-worker-mail");
+    var workerPostField         = document.getElementById("form-worker-post");
+    var workerLocationField     = document.getElementById("form-worker-location");
+    var infoWorkerLocationField = document.getElementById("form-info-worker-location");
 
     UpdateAffectedCheck(-1, false);
     DisplayFormDialog();
@@ -71,13 +71,13 @@ function AddWorker()
  */
 function EditWorker()
 {
-    var workerCivilityField     = document.getElementById("formWorkerCivility");
-    var workerNameField         = document.getElementById("formWorkerName");
-    var workerFirstnameField    = document.getElementById("formWorkerFirstname");
-    var workerMailField         = document.getElementById("formWorkerMail");
-    var workerPostField         = document.getElementById("formWorkerPost");
-    var workerLocationField     = document.getElementById("formWorkerLocation");
-    var infoWorkerLocationField = document.getElementById("formInfoWorkerLocation");
+    var workerCivilityField     = document.getElementById("form-worker-civility");
+    var workerNameField         = document.getElementById("form-worker-name");
+    var workerFirstnameField    = document.getElementById("form-worker-first-name");
+    var workerMailField         = document.getElementById("form-worker-mail");
+    var workerPostField         = document.getElementById("form-worker-post");
+    var workerLocationField     = document.getElementById("form-worker-location");
+    var infoWorkerLocationField = document.getElementById("form-info-worker-location");
     var workerTableRows         = document.getElementsByClassName("worker-table-row");
 
     // No valid data/row was selected
@@ -137,12 +137,12 @@ function RemoveWorker()
 */
 function SubmitForm()
 {
-    var workerCivilityField  = document.getElementById("formWorkerCivility")
-    var workerNameField      = document.getElementById("formWorkerName");
-    var workerFirstnameField = document.getElementById("formWorkerFirstname");
-    var workerMailField      = document.getElementById("formWorkerMail");
-    var workerPostField      = document.getElementById("formWorkerPost");
-    var workerLocationField  = document.getElementById("formWorkerLocation");
+    var workerCivilityField  = document.getElementById("form-worker-civility")
+    var workerNameField      = document.getElementById("form-worker-name");
+    var workerFirstnameField = document.getElementById("form-worker-first-name");
+    var workerMailField      = document.getElementById("form-worker-mail");
+    var workerPostField      = document.getElementById("form-worker-post");
+    var workerLocationField  = document.getElementById("form-worker-location");
 
     console.log(dataToSend);
     // If some value in the form is empty, then we refuse to submit it
@@ -170,8 +170,8 @@ function SubmitForm()
  */
 function UpdateUnaffectedCheck()
 {
-    var affectedCBox   = document.getElementById("showAffectedOnes");
-    var unaffectedCBox = document.getElementById("showUnaffectedOnes");
+    var affectedCBox   = document.getElementById("search-bar-show-affected");
+    var unaffectedCBox = document.getElementById("search-bar-show-unaffected");
 
     if (affectedCBox.checked == true) {
         unaffectedCBox.checked = false;
@@ -184,8 +184,8 @@ function UpdateUnaffectedCheck()
  */
 function UpdateAffectedCheck()
 {
-    var affectedCBox   = document.getElementById("showAffectedOnes");
-    var unaffectedCBox = document.getElementById("showUnaffectedOnes");
+    var affectedCBox   = document.getElementById("search-bar-show-affected");
+    var unaffectedCBox = document.getElementById("search-bar-show-unaffected");
 
     if (unaffectedCBox.checked == true) {
         affectedCBox.checked = false;
