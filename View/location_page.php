@@ -39,7 +39,7 @@
 
         <!-- CRUD OPERATIONS BUTTONS -->
         <div class="force-center-elements">
-            <span class="actionButtonsContainer">
+            <span class="crud-actions-container">
                 <button onclick="AddLocation()">Ajouter</button>
                 <button onclick="EditLocation()">Modifier</button>
                 <button onclick="RemoveLocation()">Supprimer</button>

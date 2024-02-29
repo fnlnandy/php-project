@@ -83,7 +83,7 @@
 
         <!-- CRUD OPERATIONS BUTTONS -->
         <div class="force-center-elements">
-            <span class="actionButtonsContainer">
+            <span class="crud-actions-container">
                 <button onclick="AddWorker()">Ajouter</button>
                 <button onclick="EditWorker()">Modifier</button>
                 <button onclick="RemoveWorker()">Supprimer</button>

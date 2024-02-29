@@ -55,7 +55,7 @@
 
         <!-- CRUD OPERATIONS BUTTONS -->
         <div class="force-center-elements">
-            <span class="actionButtonsContainer">
+            <span class="crud-actions-container">
                 <button onclick="AddAffectation()">Ajouter</button>
                 <button onclick="EditAffectation()">Modifier</button>
                 <button onclick="RemoveAffectationEntry()">Supprimer</button>
