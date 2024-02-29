@@ -58,8 +58,8 @@ class AffectationPageLoadConditions
     public static function PopulateAffectationList()
     {
         $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "search-bar-date-begin", "search-bar-date-end") && $_GET["search-bar-date-begin"] != "" && $_GET["search-bar-date-end"] != "";
-        $isDateAffectBased    = SQLQuery::DoKeysExistInArray($_GET, "fromDateAffect") && $_GET["fromDateAffect"] != "";
-        $isDatePSBased        = SQLQuery::DoKeysExistInArray($_GET, "fromDatePS") && $_GET["fromDatePS"] != "";
+        $isDateAffectBased    = SQLQuery::DoKeysExistInArray($_GET, "search-date-affect-based") && $_GET["search-date-affect-based"] != "";
+        $isDatePSBased        = SQLQuery::DoKeysExistInArray($_GET, "search-date-ps-based") && $_GET["search-date-ps-based"] != "";
         $queryToExec          = "SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) ASC, NumAffect ASC;";
         $result               = SQLQuery::ExecQuery($queryToExec);
 

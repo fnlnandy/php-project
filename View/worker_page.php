@@ -99,7 +99,7 @@
             <p onclick="CloseFormDialog()">x</p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
-                    <form onsubmit="SubmitForm()" method="post" id="workerForm">
+                    <form onsubmit="SubmitForm()" method="post" id="worker-main-form">
                         <h3 class="form-title">Formulaire pour un employé</h3>
                         <label>Civilité: <select id="form-worker-civility" name="form-worker-civility" required>
                                             <option id="sir-civility">Mr</option>

@@ -26,8 +26,8 @@
         <!-- SEARCH BAR AREA -->
         <div class="search-bar-outer-container top-page-element">
             <form id="affect-based-on-dates-form" method="get">
-                <label>Par date d'affectation<input type="checkbox" id="fromDateAffect" name="fromDateAffect" <?php if (key_exists('fromDateAffect', $_GET) && $_GET['fromDateAffect'] == 'on') echo "checked"; ?>></label>
-                <label>Par date de prise de service<input type="checkbox" id="fromDatePS" name="fromDatePS" <?php if (key_exists('fromDatePS', $_GET) && $_GET['fromDatePS'] == 'on') echo "checked"; ?>></label>
+                <label>Par date d'affectation<input type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>></label>
+                <label>Par date de prise de service<input type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
                 <label>Début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
                 <label>Fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
                 <input type="submit" value="Afficher les affectations">
@@ -37,7 +37,7 @@
         <!-- TABLE LISTING DATA -->
         <div class="table-list-outer-container">
             <table class="table-list-inner-container">
-                <tr class="affectationHeaderRow">
+                <tr class="affectation-table-header">
                     <th>Num Affect</th>
                     <th>Num Emp</th>
                     <th>Ancien Lieu</th>
@@ -68,22 +68,22 @@
             <p onclick="CloseFormDialog()">x</p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
-                    <form onsubmit="SubmitForm()" method="post" id="affectationForm">
+                    <form onsubmit="SubmitForm()" method="post" id="affectation-main-form">
                             <h3 class="form-title">Formulaire pour une affectation</h3>
                             <label>Employé: 
-                                <select id="formNumEmp" name="formNumEmp" onchange="UpdateFormMatchingSelects(true, 'formNumEmp', 'formInfoEmp')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
-                                <select id="formInfoEmp" name="formInfoEmp" onchange="UpdateFormMatchingSelects(false, 'formNumEmp', 'formInfoEmp')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>
+                                <select id="form-affectation-employee-num" name="form-affectation-employee-num" onchange="UpdateFormMatchingSelects(true, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
+                                <select id="form-affectation-info-employee" name="form-affectation-info-employee" onchange="UpdateFormMatchingSelects(false, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>
                             <br></label>
                             <label>Ancien Lieu: 
-                                <select id="formAncienLieu" name="formAncienLieu" onchange="UpdateFormMatchingSelects(true, 'formAncienLieu', 'formInfoAncienLieu')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
-                                <select id="formInfoAncienLieu" name="formInfoAncienLieu" onchange="UpdateFormMatchingSelects(false, 'formAncienLieu', 'formInfoAncienLieu')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                                <select id="form-affectation-old-location" name="form-affectation-old-location" onchange="UpdateFormMatchingSelects(true, 'form-affectation-old-location', 'form-affectation-info-old-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                                <select id="form-affectation-info-old-location" name="form-affectation-info-old-location" onchange="UpdateFormMatchingSelects(false, 'form-affectation-old-location', 'form-affectation-info-old-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
                             <br></label>
                             <label>Nouveau Lieu: 
-                                <select id="formNouveauLieu" name="formNouveauLieu" onchange="UpdateFormMatchingSelects(true, 'formNouveauLieu', 'formInfoNouveauLieu')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
-                                <select id="formInfoNouveauLieu" name="formInfoNouveauLieu" onchange="UpdateFormMatchingSelects(false, 'formNouveauLieu', 'formInfoNouveauLieu')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                                <select id="form-affectation-new-location" name="form-affectation-new-location" onchange="UpdateFormMatchingSelects(true, 'form-affectation-new-location', 'form-affectation-info-new-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                                <select id="form-affectation-info-new-location" name="form-affectation-info-new-location" onchange="UpdateFormMatchingSelects(false, 'form-affectation-new-location', 'form-affectation-info-new-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
                             <br></label>
-                            <label>Date Affect: <input id="formDateAffect" name="formDateAffect" type="date" required>         <br></label>
-                            <label>Date Prise Service: <input id="formPriseService" name="formPriseService" type="date" required><br></label>
+                            <label>Date Affect: <input id="form-affectation-date-affect" name="form-affectation-date-affect" type="date" required>         <br></label>
+                            <label>Date Prise Service: <input id="form-affectation-date-ps" name="form-affectation-date-ps" type="date" required><br></label>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
                     </form>

@@ -40,9 +40,9 @@ function UpdateDataTracker(id, mode)
  */
 function AddLocation()
 {
-    var locationForm          = document.getElementById("locationForm");
-    var locationDesignField   = document.getElementById("formLocationDesign");
-    var locationProvinceField = document.getElementById("formLocationProvince");
+    var locationForm          = document.getElementById("location-main-form");
+    var locationDesignField   = document.getElementById("form-location-design");
+    var locationProvinceField = document.getElementById("form-location-province");
     
     UpdateDataTracker(-1, false);
     DisplayFormDialog();
@@ -58,8 +58,8 @@ function AddLocation()
  */
 function EditLocation()
 {
-    var locationDesignField   = document.getElementById("formLocationDesign");
-    var locationProvinceField = document.getElementById("formLocationProvince");
+    var locationDesignField   = document.getElementById("form-location-design");
+    var locationProvinceField = document.getElementById("form-location-province");
     var locationTableRows     = document.getElementsByClassName("location-table-row");
 
     // No valid data was selected
@@ -103,8 +103,8 @@ function RemoveLocation()
 */
 function SubmitForm()
 {
-    var locationDesignField   = document.getElementById("formLocationDesign");
-    var locationProvinceField = document.getElementById("formLocationProvince");
+    var locationDesignField   = document.getElementById("form-location-design");
+    var locationProvinceField = document.getElementById("form-location-province");
 
     // If some value in the form is empty, then we refuse to submit it
     if (locationDesignField.value == "" || locationProvinceField.value == "")

@@ -16,8 +16,8 @@ window.onload = () => {
         dateEnd.value = formattedDate;
     }
 
-    document.getElementById("formDateAffect").value = formattedDate;
-    document.getElementById("formPriseService").value = formattedDate;
+    document.getElementById("form-affectation-date-affect").value = formattedDate;
+    document.getElementById("form-affectation-date-ps").value = formattedDate;
 }   
 
 /**
@@ -78,12 +78,12 @@ function RemoveAffectationEntry()
  */
 function AddAffectation()
 {
-    var numEmpField     = document.getElementById("formNumEmp");
-    var infoEmpField    = document.getElementById("formInfoEmp");
-    var oldLocField     = document.getElementById("formAncienLieu");
-    var infoOldLocField = document.getElementById("formInfoAncienLieu");
-    var newLocField     = document.getElementById("formNouveauLieu");
-    var infoNewLocField = document.getElementById("formInfoNouveauLieu");
+    var numEmpField     = document.getElementById("form-affectation-employee-num");
+    var infoEmpField    = document.getElementById("form-affectation-info-employee");
+    var oldLocField     = document.getElementById("form-affectation-old-location");
+    var infoOldLocField = document.getElementById("form-affectation-info-old-location");
+    var newLocField     = document.getElementById("form-affectation-new-location");
+    var infoNewLocField = document.getElementById("form-affectation-info-new-location");
 
     UpdateDataTracker(-1, false);
     DisplayFormDialog();
@@ -105,14 +105,14 @@ function AddAffectation()
  */
 function EditAffectation()
 {
-    var numEmpField           = document.getElementById("formNumEmp");
-    var infoEmpField          = document.getElementById("formInfoEmp");
-    var oldLocField           = document.getElementById("formAncienLieu");
-    var infoOldLocField       = document.getElementById("formInfoAncienLieu");
-    var newLocField           = document.getElementById("formNouveauLieu");
-    var infoNewLocField       = document.getElementById("formInfoNouveauLieu");
-    var dateAffectField       = document.getElementById("formDateAffect");
-    var datePriseServiceField = document.getElementById("formPriseService");
+    var numEmpField           = document.getElementById("form-affectation-employee-num");
+    var infoEmpField          = document.getElementById("form-affectation-info-employee");
+    var oldLocField           = document.getElementById("form-affectation-old-location");
+    var infoOldLocField       = document.getElementById("form-affectation-info-old-location");
+    var newLocField           = document.getElementById("form-affectation-new-location");
+    var infoNewLocField       = document.getElementById("form-affectation-info-new-location");
+    var dateAffectField       = document.getElementById("form-affectation-date-affect");
+    var datePriseServiceField = document.getElementById("form-affectation-date-ps");
     var tableRows             = document.getElementsByClassName("affectation-table-row");
 
     // An invalid data was selected, thus we cannot load anything into the form
@@ -154,11 +154,11 @@ function EditAffectation()
 */
 function SubmitForm()
 {
-    var numEmpField           = document.getElementById("formNumEmp");
-    var oldLocField           = document.getElementById("formAncienLieu");
-    var newLocField           = document.getElementById("formNouveauLieu");
-    var dateAffectField       = document.getElementById("formDateAffect");
-    var datePriseServiceField = document.getElementById("formPriseService");
+    var numEmpField           = document.getElementById("form-affectation-employee-num");
+    var oldLocField           = document.getElementById("form-affectation-old-location");
+    var newLocField           = document.getElementById("form-affectation-new-location");
+    var dateAffectField       = document.getElementById("form-affectation-date-affect");
+    var datePriseServiceField = document.getElementById("form-affectation-date-ps");
 
     // If some value in the form is empty, then we refuse to submit it
     if (numEmpField?.innerText == "" || oldLocField?.innerText == "" ||
