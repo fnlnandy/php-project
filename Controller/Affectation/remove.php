@@ -12,19 +12,10 @@ class RemoveAffectation
     public static function IsRemovedAffectationLatest($id): bool
     {
         $lastAffectResult = SQLQuery::ExecPreparedQuery("SELECT * FROM AFFECTER WHERE NumEmp = (SELECT NumEmp FROM AFFECTER WHERE NumAffect = '[1]') ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;", $id);
-
-        if (!SQLQuery::IsResultValid($lastAffectResult)) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Result is invalid.");
-            return false;
-        }
-
-        $row = $lastAffectResult->fetch_array();
-
-        if (!SQLQuery::DoKeysExistInArray($row, 'NumAffect')) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist in array.");
-            return false;
-        }
+        $row = SQLQuery::ProcessResultAsAssocArray($lastAffectResult, 'NumAffect');
         
+        if (is_null($row))
+            return false;
 
         // Return the comparison between both ids, i.e. between the given parameter and the
         // last entry
@@ -40,25 +31,18 @@ class RemoveAffectation
     public static function TryToRevertEmployeeLocation($data)
     {
         $affectId = $data['id'];
-        $query    = "SELECT NumEmp, AncienLieu, NouveauLieu FROM AFFECTER WHERE NumAffect = '[1]';";
 
         if (!RemoveAffectation::IsRemovedAffectationLatest($affectId)) {
             DebugUtil::LogIntoFile(__FILE__, __LINE__, "Removed affectation isn't the latest: {$affectId}.");
             return;
         }
 
+        $query    = "SELECT NumEmp, AncienLieu, NouveauLieu FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $affectId);
+        $row = SQLQuery::ProcessResultAsAssocArray($result, 'NumEmp', 'AncienLieu', 'NouveauLieu');
 
-        if (!SQLQuery::IsResultValid($result)) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Query result is invalid.");
+        if (is_null($row))
             return;
-        }
-
-        $row = $result->fetch_assoc();
-        if (!SQLQuery::DoKeysExistInArray($row, 'NumEmp', 'AncienLieu', 'NouveauLieu')) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist in array.");
-            return;
-        }
 
         // As in form_submit.php, only update if it was actually a valid affectation i.e.
         // the new location (since we're reverting) is the current location

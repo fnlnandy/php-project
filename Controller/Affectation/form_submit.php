@@ -33,13 +33,9 @@ class Affectation {
         $query  = "SELECT * FROM AFFECTER WHERE NumEmp = '[1]' 
                    ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;";
         $result = SQLQuery::ExecPreparedQuery($query, $numEmp);
+        $lastAffectRow = SQLQuery::ProcessResultAsAssocArray($result, 'NumAffect');
 
-        if (!SQLQuery::IsResultValid($result))                            // Check if not null and not false
-            return false;
-
-        $lastAffectRow = $result->fetch_assoc();
-
-        if (!SQLQuery::DoKeysExistInArray($lastAffectRow, 'NumAffect'))    // Check if the needed key is present
+        if (is_null($lastAffectRow))
             return false;
 
         return (intval($lastAffectRow['NumAffect']) == intval($numAffect)); // Returns if the given affectation is in fact the latest
@@ -59,20 +55,10 @@ class Affectation {
 
         $query  = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
+        $currEmployeeRow = SQLQuery::ProcessResultAsAssocArray($result, 'NumEmp', 'AncienLieu', 'NouveauLieu');
 
-        // Check if result is null or false
-        if (!SQLQuery::IsResultValid($result)) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Result is invalid.");
+        if (is_null($currEmployeeRow))
             return;
-        }
-
-        $currEmployeeRow = $result->fetch_assoc();
-        
-        // Check if the needed keys are present
-        if (!SQLQuery::DoKeysExistInArray($currEmployeeRow, "NumEmp", "AncienLieu", "NouveauLieu")) {
-            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist in array.");
-            return;
-        }
 
         // Check if the current affectation is the latest to date
         if (Affectation::IsAffectationLatestForEmployee($numAffect, $currEmployeeRow['NumEmp'])) {
@@ -95,9 +81,9 @@ class Affectation {
     {
         $lastAffectResult = SQLQuery::ExecQuery("SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) DESC, NumAffect DESC LIMIT 1;"); // Last ID in the table
         $newNumAffect     = 1;
-        $lastAffectRow    = $lastAffectResult->fetch_assoc();
+        $lastAffectRow    = SQLQuery::ProcessResultAsAssocArray($lastAffectResult, 'NumAffect');
 
-        if (SQLQuery::DoKeysExistInArray($lastAffectRow, 'NumAffect'))
+        if (!is_null($lastAffectRow))
             $newNumAffect = intval($lastAffectRow['NumAffect']) + 1; // New ID is thus the last + 1
 
         return $newNumAffect;
