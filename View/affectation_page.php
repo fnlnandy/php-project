@@ -24,7 +24,7 @@
         </nav>
 
         <!-- SEARCH BAR AREA -->
-        <div class="searchBarAreaContainer top-page-element">
+        <div class="search-bar-outer-container top-page-element">
             <form id="affect-based-on-dates-form" method="get">
                 <label>Par date d'affectation<input type="checkbox" id="fromDateAffect" name="fromDateAffect" <?php if (key_exists('fromDateAffect', $_GET) && $_GET['fromDateAffect'] == 'on') echo "checked"; ?>></label>
                 <label>Par date de prise de service<input type="checkbox" id="fromDatePS" name="fromDatePS" <?php if (key_exists('fromDatePS', $_GET) && $_GET['fromDatePS'] == 'on') echo "checked"; ?>></label>

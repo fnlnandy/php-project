@@ -6,34 +6,34 @@
     border-radius: 5px;
 }
 
-.searchBarAreaContainer {
+.search-bar-outer-container {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.searchBarContainer  {
+.search-bar-inner-container  {
     background-color: white;
     padding: 5px;
     border-radius: 5px;
 }
 
-.searchBarContainer input {
+.search-bar-inner-container input {
     border: 1px solid;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.searchBarContainer input:hover {
+.search-bar-inner-container input:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-.searchBarContainer * {
+.search-bar-inner-container * {
     background-color: transparent;
 }
 
-.searchBarContainer #searchBar {
+.search-bar-inner-container #searchBar {
     cursor: text;
 }
 
