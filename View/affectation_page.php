@@ -54,7 +54,7 @@
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="centerElementsFlex">
+        <div class="force-center-elements">
             <span class="actionButtonsContainer">
                 <button onclick="AddAffectation()">Ajouter</button>
                 <button onclick="EditAffectation()">Modifier</button>
@@ -66,7 +66,7 @@
         <!-- DATA FILLING FORM -->
         <dialog id="formDialog">
             <p onclick="CloseFormDialog()">x</p>
-            <div class="centerElementsFlex">
+            <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectationForm">
                             <h3 class="form-title">Formulaire pour une affectation</h3>
