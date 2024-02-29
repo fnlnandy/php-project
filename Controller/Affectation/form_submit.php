@@ -104,6 +104,23 @@ class Affectation {
     }
 
     /**
+     * Returns if the employee ID changed, if it
+     * didn't, then we do not rewind the employee's
+     * location
+     */
+    public static function IsNewEmployeeID($newEmpId, $numAffect): bool
+    {
+        $query = "SELECT NumEmp FROM AFFECTER WHERE NumAffect = '[1]';";
+        $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
+        $row = SQLQuery::ProcessResultAsAssocArray($result, 'NumEmp');
+
+        if (is_null($row))
+            return false;
+
+        return (intval($row['NumEmp']) != intval($newEmpId));
+    }
+
+    /**
      * Depends on the data sent from handler.js, this
      * function inserts or updates an entry
      */
@@ -125,7 +142,8 @@ class Affectation {
         $dateAffect = new DateTime($receivedData['dateAffect']);
         $datePrServ = new DateTime($receivedData['datePriseService']);
 
-        Affectation::FixCurrentEmployeeLoc($id);
+        if (Affectation::IsNewEmployeeID($receivedData['numEmp'], $id))
+            Affectation::FixCurrentEmployeeLoc($id);
         SQLQuery::ExecPreparedQuery($query,                 // Executes a prepared query, either
                             $id,                            // an INSERT or an UPDATE,
                             $receivedData['numEmp'],        // Parameters are already in the correct
