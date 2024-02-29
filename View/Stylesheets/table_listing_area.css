@@ -8,6 +8,7 @@
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../Ressources/tables-bg.jpg");
     padding: 5px;
     border-radius: 12px;
+    width: 80%;
 }
 
 .table-list-inner-container td {
@@ -75,9 +76,11 @@ table {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     color: white;
+    padding: 5px;
 }
 
 .table-header-row * {
+    padding: 5px;
     border-collapse: collapse;
     border-radius: 5px;
 }
