@@ -128,7 +128,7 @@
                 if (!key_exists("worker-id", $_GET) || $_GET["worker-id"] == "" || intval($_GET["worker-id"]) <= 0)
                     echo "hidden"; 
             ?>>
-                <tr>
+                <tr class="table-header-row">
                     <th>Num Affect</th>
                     <th>Ancien Lieu</th>
                     <th>Nouveau Lieu</th>

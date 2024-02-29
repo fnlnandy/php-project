@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    background-image: url("../Ressources/top-nav-bar-bg.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../Ressources/tables-bg.jpg");
     width: fit-content;
     padding: 5px;
     border-radius: 5px;
@@ -34,23 +34,30 @@
 
 .crud-actions-container * {
     background-color: transparent;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-.crud-actions-container button {
-    border: 1px solid;
+.crud-actions-container button, .crud-actions-container input[type="submit"] {
+    border: 0px;
+    background-color: white;
+    color: black;
     transition: background-color 0.3s ease;
+    transition: color 0.3ms;
     border-radius: 5px;
+    padding: 5px;
 }
 
-.crud-actions-container button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+.crud-actions-container button:hover, .crud-actions-container input[type="submit"]:hover {
+    background-color: rgb(65, 65, 65);
     cursor: pointer;
+    color: white;
 }
 
 .affectation-table-row, .location-table-row, .worker-table-row, .worker-affects-list-row {
     background-color: white;
     transition: background-color 0.3s ease;
-    transition: color 0.1s;
+    transition: color 0.3ms;
 }
 
 /* On hover of <tr>s */

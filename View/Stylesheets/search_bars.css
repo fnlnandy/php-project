@@ -1,5 +1,5 @@
 #affect-based-on-dates-form {
-    background-image: url("../Ressources/top-nav-bar-bg.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../Ressources/tables-bg.jpg");
     padding: 5px;
     margin: 2px;
     width: fit-content;
@@ -13,36 +13,52 @@
 }
 
 .search-bar-inner-container  {
-    background-image: url("../Ressources/top-nav-bar-bg.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../Ressources/tables-bg.jpg");
     padding: 5px;
     border-radius: 5px;
 }
 
 .search-bar-inner-container input {
-    border: 1px solid;
+    border: 0px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-}
-
-.search-bar-inner-container input:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
 }
 
 .search-bar-inner-container * {
     background-color: transparent;
 }
 
+.search-bar-inner-container label,
+.search-bar-inner-container #worker-search-bar,
+.search-bar-inner-container input[type="submit"] {
+    background-color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+    transition: color 0.3ms;
+}
+
+.search-bar-inner-container input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: rgb(65, 65, 65);
+    color: white;
+}
+
 .search-bar-inner-container #worker-search-bar {
     cursor: text;
 }
 
-#affect-based-on-dates-form label {
-    background-color: transparent;
+.search-bar-inner-container #worker-search-bar:hover {
+    background-color: rgb(65, 65, 65);
+    color: white;
 }
 
-#affect-based-on-dates-form input {
-    background-color: transparent;
+#affect-based-on-dates-form label {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 #search-bar-date-begin {
@@ -54,13 +70,31 @@
 }
 
 #affect-based-on-dates-form input {
-    border-color: black;
-    border: 1px solid;
+    background-color: transparent;
+    color: black;
+    border: 0px solid;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    transition: color 0.3ms;
 }
 
-#affect-based-on-dates-form input:hover {
+#affect-based-on-dates-form input[type="submit"] {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#affect-based-on-dates-form input[type="date"]:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+#affect-based-on-dates-form input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+#affect-based-on-dates-form input[type="submit"]:hover {
+    background-color: rgb(65, 65, 65);
+    cursor: pointer;
+    color: white;
 }
