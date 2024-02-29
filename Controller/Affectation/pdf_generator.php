@@ -100,13 +100,11 @@ class AffectPDFGen {
         $newLocProvince    = $locationsRow['newLoc']['Province'];
 
         $pdfTitle       = "Arrêté N {$numAffect} du {$attestationDate}";
-        $pdfContent     = array(
-            "{$employeeCivility} {$employeeName} {$employeeFirstName}, qui occupe le poste : {$employeeWork}",
-            "à {$oldLocDesign} ({$oldLocProvince}), est affecté(e) à {$newLocDesign} ({$newLocProvince})",
-            "pour compter de la date de prise de service : {$affectPSDate}.",
-            "",
-            "Le présent communiqué sera enregistré et communiqué partout où besoin sera."
-        );
+        $pdfContent = "{$employeeCivility} {$employeeName} {$employeeFirstName}, qui occupe le poste : {$employeeWork}".
+                      " à {$oldLocDesign} ({$oldLocProvince}), est affecté(e) à {$newLocDesign} ({$newLocProvince})".
+                      " pour compter de la date de prise de service : {$affectPSDate}.".
+                      "\n\n".
+                      "Le présent communiqué sera enregistré et communiqué partout où besoin sera.";
         
         $attestationPDFFile = new FPDF();
         $attestationPDFFile->AddPage();                 // So we're able to start writing
@@ -114,9 +112,8 @@ class AffectPDFGen {
         $attestationPDFFile->Cell(0, 10, mb_convert_encoding($pdfTitle, 'ISO-8859-1', 'UTF-8'), 0, 1, 'C'); // Convert accents etc...
         $attestationPDFFile->SetFont('Arial', '', 14);
 
-        foreach ($pdfContent as $line) {
-            $attestationPDFFile->Cell(0, 10, mb_convert_encoding($line, 'ISO-8859-1', 'UTF-8'), 0, 1); // Writing line by line as it doesn't
-        }                                                                                              // automatically check for text overflows
+        $attestationPDFFile->MultiCell(0, 10, mb_convert_encoding($pdfContent, 'ISO-8859-1', 'UTF-8'), 0); // Writing line by line as it doesn't
+                                                                                                // automatically check for text overflows
 
         mkdir("../../PDFs"); // Creates the PDFs directory if it doesn't exist already
         $attestationPDFFile->Output("../../PDFs/arrete_{$numAffect}.pdf", 'F', true); // Output file
