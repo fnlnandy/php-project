@@ -57,7 +57,7 @@ class AffectationPageLoadConditions
      */
     public static function PopulateAffectationList()
     {
-        $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "search-bar-date-begin", "dateEnd") && $_GET["search-bar-date-begin"] != "" && $_GET["dateEnd"] != "";
+        $limitingDatesPresent = SQLQuery::DoKeysExistInArray($_GET, "search-bar-date-begin", "search-bar-date-end") && $_GET["search-bar-date-begin"] != "" && $_GET["search-bar-date-end"] != "";
         $isDateAffectBased    = SQLQuery::DoKeysExistInArray($_GET, "fromDateAffect") && $_GET["fromDateAffect"] != "";
         $isDatePSBased        = SQLQuery::DoKeysExistInArray($_GET, "fromDatePS") && $_GET["fromDatePS"] != "";
         $queryToExec          = "SELECT * FROM AFFECTER ORDER BY LENGTH(NumAffect) ASC, NumAffect ASC;";
@@ -66,7 +66,7 @@ class AffectationPageLoadConditions
         while ($row = $result->fetch_assoc()) {
             if ($limitingDatesPresent) {
                 $dateStart    = $_GET["search-bar-date-begin"];
-                $dateEnd      = $_GET["dateEnd"];
+                $dateEnd      = $_GET["search-bar-date-end"];
                 $betweenDates = AffectationPageLoadConditions::GetAffectationsBetweenTwoDates($dateStart, $dateEnd, $isDateAffectBased, $isDatePSBased);
                 
                 // If it's not part of the limited results i.e. not in the range, we skip
