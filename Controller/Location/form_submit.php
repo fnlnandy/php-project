@@ -19,7 +19,7 @@ class Location {
         $lastLocRow    = SQLQuery::ProcessResultAsAssocArray($lastLocResult, 'IDLieu');
 
         if (!is_null($lastLocRow))
-            $newIDLoc = intval($lastIdQuery->fetch_assoc()['IDLieu']) + 1;
+            $newIDLoc = intval($lastLocRow['IDLieu']) + 1;
 
         return $newIDLoc;
     }

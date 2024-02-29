@@ -89,7 +89,8 @@
     cursor: pointer;
 }
 
-#affect-based-on-dates-form input[type="checkbox"]:hover {
+#affect-based-on-dates-form input[type="checkbox"]:hover,
+.search-bar-inner-container input[type="checkbox"]:hover {
     cursor: pointer;
 }
 
