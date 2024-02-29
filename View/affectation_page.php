@@ -69,7 +69,7 @@
             <div class="centerElementsFlex">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectationForm">
-                            <h3 class="formTitle">Formulaire pour une affectation</h3>
+                            <h3 class="form-title">Formulaire pour une affectation</h3>
                             <label>Employé: 
                                 <select id="formNumEmp" name="formNumEmp" onchange="UpdateFormMatchingSelects(true, 'formNumEmp', 'formInfoEmp')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
                                 <select id="formInfoEmp" name="formInfoEmp" onchange="UpdateFormMatchingSelects(false, 'formNumEmp', 'formInfoEmp')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>

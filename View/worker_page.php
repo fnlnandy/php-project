@@ -100,7 +100,7 @@
             <div class="centerElementsFlex">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="workerForm">
-                        <h3 class="formTitle">Formulaire pour un employé</h3>
+                        <h3 class="form-title">Formulaire pour un employé</h3>
                         <label>Civilité: <select id="formWorkerCivility" name="formWorkerCivility" required>
                                             <option id="sirCivility">Mr</option>
                                             <option id="missCivility">Mlle</option>
