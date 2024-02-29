@@ -107,7 +107,7 @@ class WorkerPageConditions {
             if (is_null($locData) || !key_exists('Design', $locData) || !key_exists('Province', $locData))
                 continue;
 
-            echo "<tr class=\"workerRow\" onclick=\"UpdateDataTracker(".strval($counter).", true)\">";
+            echo "<tr class=\"worker-table-row\" onclick=\"UpdateDataTracker(".strval($counter).", true)\">";
 
             echo "<td>{$rowInDatabase['NumEmp']}</td>";
             echo "<td>{$rowInDatabase['Civilite']}</td>";
