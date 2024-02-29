@@ -64,7 +64,7 @@
         </div>
 
         <!-- DATA FILLING FORM -->
-        <dialog id="formDialog">
+        <dialog id="form-dialog-container">
             <p onclick="CloseFormDialog()">x</p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
