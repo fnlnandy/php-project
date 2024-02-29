@@ -11,7 +11,7 @@
 }
 
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("../Ressources/bg1.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../Ressources/bg1.jpg");
     background-repeat: repeat;
 }
 
@@ -19,59 +19,6 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-}
-
-#form-dialog-container {
-    background-color: white;
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: block;
-    border-radius: 10px;
-    z-index: -1;
-    display: none;
-}
-
-#form-dialog-container p {
-    background-color: white;
-    width: fit-content;
-    transition: background-color 0.3s;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 5px;
-    text-align: right;
-}
-
-#form-title {
-    padding: 5px;
-    margin: 0;
-}
-
-#form-dialog-container * {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: transparent;
-}
-
-#form-dialog-container input {
-    border: 1px solid;
-    border-radius: 2px;
-    transition: background-color 0.3s;
-}
-
-#form-dialog-container input:hover, #form-dialog-container select:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-#form-dialog-container input[type="text"]:hover, #form-dialog-container input[type="number"]:hover, #form-dialog-container input[type="date"]:hover, #form-dialog-container input[type="email"]:hover {
-    cursor: text;
-}
-
-#form-dialog-container p:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
 }
 
 .clent-side-database {

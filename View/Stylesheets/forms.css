@@ -1,5 +1,49 @@
-.form-inner-container {
+#form-dialog-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../Ressources/form-bg.jpg");
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: block;
+    border-radius: 10px;
+    z-index: -1;
+    display: none;
+}
+
+#form-dialog-container p {
     background-color: white;
+    transition: background-color 0.3s;
+    transition: color 0.3ms;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-dialog-container * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
+#form-dialog-container input {
+    border: 1px solid;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+}
+
+#form-dialog-container input:hover, #form-dialog-container select:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#form-dialog-container input[type="text"]:hover, #form-dialog-container input[type="number"]:hover, #form-dialog-container input[type="date"]:hover, #form-dialog-container input[type="email"]:hover {
+    cursor: text;
+}
+
+
+.form-inner-container {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -14,6 +58,33 @@
     position: relative;
 }
 
-.form-title {
+#form-title {
     text-align: center;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#form-dialog-container label {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#form-dialog-container input[type="submit"],
+#form-dialog-container input[type="reset"] {
+    background-color: white;
+    border: 0px;
+    transition: background-color 0.3s ease;
+    transition: color 0.3ms;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#form-dialog-container input[type="submit"]:hover,
+#form-dialog-container input[type="reset"]:hover,
+#form-dialog-container p:hover {
+    cursor: pointer;
+    background-color: rgb(65, 65, 65);
+    color: white;
 }

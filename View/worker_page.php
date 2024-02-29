@@ -57,7 +57,7 @@
                     echo $unaffectedCBox;
                 ?>       
                 </label>
-                <input type="submit" value="Afficher">
+                <input type="submit" value="Rechercher les employés">
             </form>
         </div>
 
@@ -100,7 +100,7 @@
             <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="worker-main-form">
-                        <h3 class="form-title">Formulaire pour un employé</h3>
+                        <h3 id="form-title">Formulaire pour un employé</h3>
                         <label>Civilité: <select id="form-worker-civility" name="form-worker-civility" required>
                                             <option id="sir-civility">Mr</option>
                                             <option id="miss-civility">Mlle</option>

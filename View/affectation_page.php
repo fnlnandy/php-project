@@ -30,7 +30,7 @@
                 <label>Par date de prise de service<input type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
                 <label>Début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
                 <label>Fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
-                <input type="submit" value="Afficher les affectations">
+                <input type="submit" value="Rechercher les affectations">
             </form>
         </div>
 
@@ -69,7 +69,7 @@
             <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectation-main-form">
-                            <h3 class="form-title">Formulaire pour une affectation</h3>
+                            <h3 id="form-title">Formulaire pour une affectation</h3>
                             <label>Employé: 
                                 <select id="form-affectation-employee-num" name="form-affectation-employee-num" onchange="UpdateFormMatchingSelects(true, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
                                 <select id="form-affectation-info-employee" name="form-affectation-info-employee" onchange="UpdateFormMatchingSelects(false, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>
