@@ -1,5 +1,5 @@
 <!-- DATA STORING TABLE TO ACCESS IN JS -->
-<table class="clientDB" id="locationIdDesignMatch">
+<table class="clent-side-database" id="locationIdDesignMatch">
     <?php 
         include_once("../Models/queries.php");
 

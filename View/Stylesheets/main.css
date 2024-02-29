@@ -69,12 +69,12 @@
     cursor: pointer;
 }
 
-.clientDB {
+.clent-side-database {
     display: none;
     background-color: white;
 }
 
-.clientDB * {
+.clent-side-database * {
     background-color: transparent;
 }
 
