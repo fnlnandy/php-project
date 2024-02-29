@@ -129,11 +129,11 @@
                     echo "hidden"; 
             ?>>
                 <tr class="table-header-row">
-                    <th>Num Affect</th>
-                    <th>Ancien Lieu</th>
-                    <th>Nouveau Lieu</th>
-                    <th>Date Affect</th>
-                    <th>Date Prise Service</th>
+                    <th>Numéro d'affectation</th>
+                    <th>Ancien lieu</th>
+                    <th>Nouveau lieu</th>
+                    <th>Date d'affectation</th>
+                    <th>Date de prise de service</th>
                 </tr>
                 <?php 
                 include_once("../Controller/Worker/affectation_list.php");

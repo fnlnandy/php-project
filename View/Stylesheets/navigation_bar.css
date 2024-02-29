@@ -16,6 +16,7 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
+    box-shadow: black 5px 5px 10px;
 }
 
 /* <ol> element containing the <li> elements */
@@ -34,10 +35,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 1.4%;
+    padding: 2.4%;
     border-radius: 10px;
     transition: background-color 0.3s ease;
     transition: color 0.3ms;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: black 2px 2px 5px;
 }
 
 /* <a> elements */
@@ -80,6 +84,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    box-shadow: black 2px 2px 5px;
 }
 
 .top-navigation-bar a {
