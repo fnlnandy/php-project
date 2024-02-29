@@ -44,6 +44,9 @@ class AffectationPageLoadConditions
             $conditionPS = "";
             $joiner = "";
         }
+
+        DebugUtil::Assert(($dateStart != ""), "\$dateStart is empty.");
+        DebugUtil::Assert(($dateEnd != ""), "\$dateEnd is empty.");
             
         $queryToExec = "SELECT * FROM AFFECTER WHERE {$conditionDA} {$joiner} {$conditionPS};";
         $result = SQLQuery::ExecPreparedQuery($queryToExec, $dateStart, $dateEnd);
@@ -79,24 +82,16 @@ class AffectationPageLoadConditions
             $oldLocResult  = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["AncienLieu"]);
             $newLocResult  = SQLQuery::ExecPreparedQuery("SELECT Design, Province FROM LIEU WHERE IDLieu = '[1]';", $row["NouveauLieu"]);
 
-            if (!SQLQuery::IsResultValid($workerResult) ||
-                !SQLQuery::IsResultValid($oldLocResult) ||
-                !SQLQuery::IsResultValid($newLocResult))
-                continue;
+            $workerRow = SQLQuery::ProcessResultAsAssocArray($workerResult, "Nom", "Prenom");
+            $oldLocRow = SQLQuery::ProcessResultAsAssocArray($oldLocResult, "Design", "Province");
+            $newLocRow = SQLQuery::ProcessResultAsAssocArray($newLocResult, "Design", "Province");
 
-            $workerRow = $workerResult->fetch_assoc();
-            $oldLocRow = $oldLocResult->fetch_assoc();
-            $newLocRow = $newLocResult->fetch_assoc();
+            if (is_null($workerRow) || is_null($oldLocRow) || is_null($newLocRow))
+                continue;
 
             // The current row, contains a call to the JavaScript function supposed to update
             // the data tracker for the Edit and Delete functions on the table
             echo "<tr class=\"affectation-table-row\" onclick=\"UpdateDataTracker(".strval($affectCounter).", true)\">";
-
-            // Checking if every needed key is within the results
-            if (!SQLQuery::DoKeysExistInArray($workerRow, "Nom", "Prenom") ||
-                !SQLQuery::DoKeysExistInArray($oldLocRow, "Design", "Province") ||
-                !SQLQuery::DoKeysExistInArray($newLocRow, "Design", "Province"))
-                continue;
 
             // The table's elements
             echo "<td>".$row["NumAffect"]."</td>";

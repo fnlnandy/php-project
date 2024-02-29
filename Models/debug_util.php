@@ -49,5 +49,19 @@ class DebugUtil {
             DebugUtil::LogIntoFile($fileName, $line, var_export($var, true));
         }
     }
+
+    /**
+     * 
+     */
+    public static function Assert($exp, string|null $throw, string $desc = "")
+    {
+        $message = (is_null($throw) ? "" : $throw);
+        $template = "[ASSERT]: Message: {$message}\nDescription: {$desc}";
+
+        if (!$exp) {
+            DebugUtil::WriteMessageIntoFile($template, false);
+            exit(1);
+        }
+    }
 }
 ?>

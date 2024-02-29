@@ -21,6 +21,11 @@ class Affectation {
     public static function RewindEmployeeLoc($numEmp, $oldLoc, $newLoc)
     {
         $query = "UPDATE EMPLOYE SET Lieu = '[1]' WHERE NumEmp = '[2]' AND Lieu = '[3]';";
+        
+        DebugUtil::Assert(($oldLoc != ""), "\$oldLoc is empty.");
+        DebugUtil::Assert(($newLoc != ""), "\$newLoc is empty.");
+        DebugUtil::Assert(($numEmp != ""), "\$numEmp is empty.");
+
         SQLQuery::ExecPreparedQuery($query, $oldLoc, $numEmp, $newLoc);
     }
 
@@ -38,6 +43,10 @@ class Affectation {
         if (is_null($lastAffectRow))
             return false;
 
+        DebugUtil::Assert(isset($lastAffectRow['NumAffect']), '\$lastAffectRow["NumAffect"] isn\'t set.');
+        DebugUtil::Assert(($lastAffectRow['NumAffect'] != "" && intval($lastAffectRow) > 0), "\$lastAffectRow['NumAffect'] is empty or is <= 0.");
+        DebugUtil::Assert(($numAffect != "" && intval($numAffect) > 0), "\$numAffect is empty or is <= 0.");
+
         return (intval($lastAffectRow['NumAffect']) == intval($numAffect)); // Returns if the given affectation is in fact the latest
     }
 
@@ -53,12 +62,18 @@ class Affectation {
             return;
         }
 
+        DebugUtil::Assert(($numAffect != ""), "\$numAffect is empty.");
+
         $query  = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
         $currEmployeeRow = SQLQuery::ProcessResultAsAssocArray($result, 'NumEmp', 'AncienLieu', 'NouveauLieu');
 
         if (is_null($currEmployeeRow))
             return;
+
+        DebugUtil::Assert(($currEmployeeRow['NumEmp'] != "" && intval($currEmployeeRow['NumEmp']) > 0), "\$currEmployeeRow['NumEmp'] is empty or is <= 0.");
+        DebugUtil::Assert(($currEmployeeRow['AncienLieu'] != "" && intval($currEmployeeRow['AncienLieu']) > 0), "\$currEmployeeRow['AncienLieu'] is empty or is <= 0.");
+        DebugUtil::Assert(($currEmployeeRow['NouveauLieu'] != "" && intval($currEmployeeRow['NumEmp']) > 0), "\$currEmployeeRow['NouveauLieu'] is empty or is <= 0.");
 
         // Check if the current affectation is the latest to date
         if (Affectation::IsAffectationLatestForEmployee($numAffect, $currEmployeeRow['NumEmp'])) {
@@ -86,6 +101,8 @@ class Affectation {
         if (!is_null($lastAffectRow))
             $newNumAffect = intval($lastAffectRow['NumAffect']) + 1; // New ID is thus the last + 1
 
+        DebugUtil::Assert(((int)$newNumAffect > 0), "$\newNumAffect is <= 0."); 
+
         return $newNumAffect;
     }
 
@@ -102,6 +119,9 @@ class Affectation {
 
         if (is_null($row))
             return false;
+
+        DebugUtil::Assert((intval($row['NumEmp']) > 0), "\$row['NumEmp'] is <= 0.");
+        DebugUtil::Assert((intval($newEmpId) > 0), "\$newEmpId is <= 0.");
 
         return (intval($row['NumEmp']) != intval($newEmpId));
     }
@@ -124,6 +144,11 @@ class Affectation {
         else {
             $query = "UPDATE AFFECTER SET NumEmp='[2]', AncienLieu='[3]', NouveauLieu='[4]', DateAffect='[5]', DatePriseService='[6]' WHERE NumAffect='[1]';";
         }
+
+        DebugUtil::Assert((intval($receivedData['ancienLieu']) > 0), "\$receivedData['ancienLieu'] is <= 0.");
+        DebugUtil::Assert((intval($receivedData['nouveauLieu']) > 0), "\$receivedData['ancienLieu'] is <= 0.");
+        DebugUtil::Assert(($receivedData['dateAffect'] != ""), "\$receivedData['dateAffect'] is empty.");
+        DebugUtil::Assert(($receivedData['datePriseService'] != ""), "\$receivedData['datePriseService'] is empty.");
 
         $dateAffect = new DateTime($receivedData['dateAffect']);
         $datePrServ = new DateTime($receivedData['datePriseService']);

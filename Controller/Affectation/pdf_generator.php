@@ -16,6 +16,8 @@ class AffectPDFGen {
     {
         $dateTimeObject = new DateTime($date);
         $formatted = $dateTimeObject->format('d/m/Y');
+
+        DebugUtil::Assert(($date != ""), "\$date is empty.");
         
         return $formatted;
     }
