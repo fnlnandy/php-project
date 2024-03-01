@@ -180,7 +180,6 @@ class Affectation {
         Affectation::FixCurrentEmployeeLoc($id, false);
         if ($sendMail == 1)
             Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
-        header("Refresh:0");
     }
 
     /**
@@ -197,7 +196,7 @@ class Affectation {
 
         if (is_null($employeeRow) || is_null($locationRow))
             return;
-        
+
         $dateAffect = Affectation::ReformateDate($dateAffect);
         $datePrServ = Affectation::ReformateDate($datePrServ);
 
@@ -273,4 +272,5 @@ class Affectation {
  * This file's main function
  */
 Affectation::InsertOrReplaceEntry();
+header("Refresh:0");
 ?>

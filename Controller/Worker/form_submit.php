@@ -41,7 +41,6 @@ class Worker {
 
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Civilite'], $receivedData['Nom'],
                         $receivedData['Prenom'], $receivedData['Mail'], $receivedData['Poste'], $receivedData['Lieu']);
-        header("Refresh:0");
     }
 }
 
@@ -49,4 +48,5 @@ class Worker {
  * This file's main function
  */
 Worker::InsertOrReplaceEntry();
+header("Refresh:0");
 ?>

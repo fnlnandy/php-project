@@ -44,7 +44,6 @@ class Location {
         }
 
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Design'], $receivedData['Province']);
-        header("Refresh:0");
     }
 }
 
@@ -52,4 +51,5 @@ class Location {
  * This file's main function
  */
 Location::InsertOrReplaceEntry();
+header("Refresh:0");
 ?>
