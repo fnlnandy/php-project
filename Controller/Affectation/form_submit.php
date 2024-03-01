@@ -51,7 +51,7 @@ class Affectation {
         $result = SQLQuery::ExecPreparedQuery($query, $numEmp);
         $lastAffectRow = SQLQuery::ProcessResultAsAssocArray($result, 'NumAffect');
 
-        Test::Test_Affectation_IsLatest(array("row" => $lastAffectResult, "numAffect" => $numAffect));
+        Test::Test_Affectation_IsLatest(array("row" => $lastAffectRow, "numAffect" => $numAffect));
 
         if (is_null($lastAffectRow))
             return false;
@@ -141,11 +141,13 @@ class Affectation {
         $query        = "";
         $receivedData = XMLHttpRequest::DecodeJson(); // We get the date sent via AJAX in JSON format
         
+        if (!SQLQuery::DoKeysExistInArray($receivedData, 'numAffect', 'editMode', 'notifyEmployee',
+            'numEmp', 'ancienLieu', 'nouveauLieu', 'dateAffect', 'datePriseService'))
+            return;
         if (SQLQuery::AreElementsEmpty($receivedData['numEmp'], $receivedData['ancienLieu'],
             $receivedData['nouveauLieu'], $receivedData['dateAffect'], $receivedData['datePriseService']))
             return;
-        if (!SQLQuery::DoKeysExistInArray($receivedData, 'numAffect', 'editMode', 'notifyEmployee'))
-            return;
+
         
         Test::Test_Affectation_InsertOrReplace($receivedData);
 

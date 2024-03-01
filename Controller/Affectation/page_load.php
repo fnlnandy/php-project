@@ -1,5 +1,6 @@
 <?php 
 include_once("../Models/table_helpers.php");
+include_once("../Models/debug_util.php");
 
 class AffectationPageLoadConditions
 {

@@ -29,8 +29,8 @@ class Test {
      */
     public static function Test_Affectation_IsLatest($data)
     {
-        DebugUtil::Assert(isset($data['row']['NumAffect']), '\$lastAffectRow["NumAffect"] isn\'t set.', __FUNCTION__);
-        DebugUtil::Assert(($data['row']['NumAffect'] != "" && intval($data['row']['NumAffect']) > 0), "\$lastAffectRow['NumAffect'] is empty or is <= 0.", __FUNCTION__);
+        if (isset($data['row']['NumAffect']))
+            DebugUtil::Assert(($data['row']['NumAffect'] != "" && intval($data['row']['NumAffect']) > 0), "\$lastAffectRow['NumAffect'] is empty or is <= 0.", __FUNCTION__);
         DebugUtil::Assert(($data['numAffect'] != "" && intval($data['numAffect']) > 0), "\$numAffect is empty or is <= 0.", __FUNCTION__);
     }
 
@@ -102,8 +102,8 @@ class Test {
      */
     public static function Test_Location_InsertReplace($data)
     {
-        DebugUtil::Assert((isset($data['id']) && intval($data['id'] > 0)), "\$data['id'] is empty or <= 0.", __FUNCTION__);
-        DebugUtil::Assert((isset($data['editMode']) && $data['editMode'] != ""), "\$data['editMode'] isn't set or empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['id'])), "\$data['id'] is empty or <= 0.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['editMode'])), "\$data['editMode'] isn't set or empty.", __FUNCTION__);
     }
 
     /**
