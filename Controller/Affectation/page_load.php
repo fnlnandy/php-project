@@ -45,8 +45,8 @@ class AffectationPageLoadConditions
             $joiner = "";
         }
 
-        DebugUtil::Assert(($dateStart != ""), "\$dateStart is empty.");
-        DebugUtil::Assert(($dateEnd != ""), "\$dateEnd is empty.");
+        DebugUtil::Assert(($dateStart != ""), "\$dateStart is empty.", __FUNCTION__);
+        DebugUtil::Assert(($dateEnd != ""), "\$dateEnd is empty.", __FUNCTION__);
             
         $queryToExec = "SELECT * FROM AFFECTER WHERE {$conditionDA} {$joiner} {$conditionPS};";
         $result = SQLQuery::ExecPreparedQuery($queryToExec, $dateStart, $dateEnd);

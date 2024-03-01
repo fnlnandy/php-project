@@ -3,7 +3,7 @@
  * Main container for unit tests
  */
 
-include_once("../Models/debug_util.php");
+include_once("../../Models/debug_util.php");
 
 class Test {
     /**
@@ -39,7 +39,7 @@ class Test {
      */
     public static function Test_Affectation_FixCurrEmployee($data)
     {
-        DebugUtil::Assert(($data["numAffect"] != ""), "\$numAffect is empty.");
+        DebugUtil::Assert(($data["numAffect"] != ""), "\$numAffect is empty.", __FUNCTION__);
         DebugUtil::Assert(($data['row']['NumEmp'] != "" && intval($data['row']['NumEmp']) > 0), "\$currEmployeeRow['NumEmp'] is empty or is <= 0.", __FUNCTION__);
         DebugUtil::Assert(($data['row']['AncienLieu'] != "" && intval($data['row']['AncienLieu']) > 0), "\$currEmployeeRow['AncienLieu'] is empty or is <= 0.", __FUNCTION__);
         DebugUtil::Assert(($data['row']['NouveauLieu'] != "" && intval($data['row']['NumEmp']) > 0), "\$currEmployeeRow['NouveauLieu'] is empty or is <= 0.", __FUNCTION__);
@@ -104,6 +104,29 @@ class Test {
     {
         DebugUtil::Assert((isset($data['id']) && intval($data['id'] > 0)), "\$data['id'] is empty or <= 0.", __FUNCTION__);
         DebugUtil::Assert((isset($data['editMode']) && $data['editMode'] != ""), "\$data['editMode'] isn't set or empty.", __FUNCTION__);
+    }
+
+    /**
+     * 
+     */
+    public static function Test_Worker_GenerateNewID($data)
+    {
+        DebugUtil::Assert((intval($data) > 0), "\$data is <= 0.", __FUNCTION__);
+    }
+
+    /**
+     * 
+     */
+    public static function Test_Worker_InsertReplace($data)
+    {
+        DebugUtil::Assert((isset($data['NumEmp'])), "\$numEmp is empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['editMode'])), "\$editMode isn't set or empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['Civilite']) && $data['Civilite'] != ""), "\$data['Civilite'] isn't set or empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['Nom']) && $data['Nom'] != ""), "\$data['Nom'] isn't set or empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['Prenom']) && $data['Prenom'] != "\$data['Prenom'] isn't set or empty."), "", __FUNCTION__);
+        DebugUtil::Assert((isset($data['Mail']) && $data['Mail'] != ""), "\$data['Mail'] isn't set or empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['Poste']) && $data['Poste'] != ""), "\$data['Poste'] isn't set or empty.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['Lieu']) && $data['Lieu'] != ""), "\$data['Lieu'] isn't set or empty.", __FUNCTION__);
     }
 }
 ?>

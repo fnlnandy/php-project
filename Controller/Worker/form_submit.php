@@ -1,5 +1,6 @@
 <?php
 include_once("../../Models/queries.php");
+include_once("../tests.php");
 
 /**
  * Containers with functions called on submit
@@ -14,10 +15,16 @@ class Worker {
      */
     public static function GenerateNewID()
     {
-        $lastIdQuery = SQLQuery::ExecQuery("SELECT * FROM EMPLOYE ORDER BY NumEmp DESC LIMIT 1;");
-        $realId      = intval($lastIdQuery->fetch_assoc()['NumEmp']) + 1;
+        $lastIdQuery = SQLQuery::ExecQuery("SELECT * FROM EMPLOYE ORDER BY LENGTH(NumEmp) DESC, NumEmp DESC LIMIT 1;");
+        $newWorkerID = 1;
+        $lastWorkerRow = SQLQuery::ProcessResultAsAssocArray($lastIdQuery, 'NumEmp');
+        
+        if (!is_null($lastWorkerRow))
+            $newWorkerID = intval($lastWorkerRow['NumEmp']) + 1;
 
-        return $realId;
+        Test::Test_Worker_GenerateNewID($newWorkerID);
+
+        return $newWorkerID;
     }
 
     /**
@@ -29,12 +36,15 @@ class Worker {
         $queryToExec = "";
         $receivedData = XMLHttpRequest::DecodeJson();
 
+        if (!SQLQuery::DoKeysExistInArray($receivedData, 'NumEmp', 'editMode',
+            'Civilite', 'Nom', 'Prenom', 'Mail', 'Poste', 'Lieu'))
+            return;
         if (SQLQuery::AreElementsEmpty($receivedData['Civilite'], 
         $receivedData['Nom'], $receivedData['Prenom'], $receivedData['Mail'], 
         $receivedData['Poste'], $receivedData['Lieu']))
             return;
-        if (SQLQuery::DoKeysExistInArray($receivedData, 'NumEmp', 'editMode'))
-            return;
+
+        Test::Test_Worker_InsertReplace($receivedData);
         
         $possibleId = intval($receivedData['NumEmp']);
         $isEditMode = (intval($receivedData['editMode']) != 0);

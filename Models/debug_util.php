@@ -12,7 +12,7 @@ class DebugUtil {
     {
         $openMode = ($isRewrite ? "w" : "a");
         $file = fopen(gLogFileName, $openMode);
-        $message .= "\n";
+        $message .= "\n\n";
 
         if (!$file)
             return;
