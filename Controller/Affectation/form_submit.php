@@ -16,6 +16,20 @@ use PHPMailer\PHPMailer\Exception;
  */
 class Affectation {
     /**
+     * Reformate the date object from the database into the expected
+     * format for the attestation
+     */
+    private static function ReformateDate(string $date): string
+    {
+        $dateTimeObject = new DateTime($date);
+        $formatted = $dateTimeObject->format('d/m/Y');
+
+        DebugUtil::Assert(($date != ""), "\$date is empty.");
+        
+        return $formatted;
+    }
+
+    /**
      * Replaces the location of an employee to the previous one
      */
     public static function RewindEmployeeLoc(string $numEmp, string $oldLoc, string $newLoc): void
@@ -183,10 +197,48 @@ class Affectation {
 
         if (is_null($employeeRow) || is_null($locationRow))
             return;
+        
+        $dateAffect = Affectation::ReformateDate($dateAffect);
+        $datePrServ = Affectation::ReformateDate($datePrServ);
 
         $recipientEmail = $employeeRow["Mail"];
         $mailSubject    = "Notification d'affectation du ".strval($dateAffect).".";
-        $mailContent    = "Bonjour, {$employeeRow["Civilite"]} {$employeeRow["Nom"]} {$employeeRow["Prenom"]}, nous vous informons que vous serez affecté à {$locationRow['Design']} ({$locationRow['Province']}), à compter de la date de prise de service du ".$datePrServ.".";
+        $mailContent = "<style>
+                            * { color: white; }
+                        </style>
+
+                        <h1 style=\"font-size: 2em; color: white; text-decoration: underline;\">
+                            Affectation du {$dateAffect}
+                        </h1>
+                        <p style=\"font-size: 1.5em; color: white;\">
+                            Bonjour, <b>{$employeeRow["Civilite"]} {$employeeRow["Nom"]} {$employeeRow["Prenom"]}</b>.<br><br>
+                            Nous vous informons que vous serez affecté(e) à <b>{$locationRow['Design']} ({$locationRow['Province']})</b>.<br><br>
+                            Vous prendrez service à partir du <b>{$datePrServ}</b>.<br><br>
+                        </p>
+                        <table border=\"1\" style=\"text-align: center;\">
+                            <tr>
+                                <th>
+                                    Nom et prénoms(s)
+                                </th>
+                                <th>
+                                    Lieu d'affectation
+                                </th>
+                                <th>
+                                    Date de prise de service
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>{$employeeRow["Nom"]} {$employeeRow["Prenom"]}</b>
+                                </td>
+                                <td>
+                                    {$locationRow['Design']} ({$locationRow['Province']})
+                                </td>
+                                <td>
+                                    {$datePrServ}
+                                </td>
+                            </tr>
+                        </table>";
         $mailerObject   = new PHPMailer(true);
 
         try {
@@ -195,13 +247,13 @@ class Affectation {
             $mailerObject->isSMTP(true); // Set the protocol
             $mailerObject->Host       = "smtp.gmail.com";
             $mailerObject->SMTPAuth   = true;
-            $mailerObject->Username   = "definitelynotandy01@gmail.com";
-            $mailerObject->Password   = "gkwtdvvgwxinusqx";
+            $mailerObject->Username   = "gestiondbproj2838@gmail.com";
+            $mailerObject->Password   = "zhszwdhzivcgvqpk";
             $mailerObject->SMTPSecure = "ssl";
             $mailerObject->Port       = 465;
 
             // Sender and recipient
-            $mailerObject->setFrom("definitelynotandy01@gmail.com");
+            $mailerObject->setFrom("gestiondbproj2838@gmail.com");
             $mailerObject->addAddress($recipientEmail);
 
             // Mail content
