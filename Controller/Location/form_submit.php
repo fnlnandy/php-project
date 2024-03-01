@@ -1,5 +1,6 @@
 <?php
 include_once("../../Models/queries.php");
+include_once("../tests.php");
 
 /**
  * Container with functions called on submit of
@@ -21,6 +22,8 @@ class Location {
         if (!is_null($lastLocRow))
             $newIDLoc = intval($lastLocRow['IDLieu']) + 1;
 
+        Test::Test_Location_GenerateNewID(array("newId" => $newIDLoc));
+
         return $newIDLoc;
     }
 
@@ -37,6 +40,8 @@ class Location {
             return;
         if (!SQLQuery::DoKeysExistInArray($receivedData, 'IDLieu', 'editMode'))
             return;
+
+        Test::Test_Location_InsertReplace(array('id' => $receivedData['IDLieu'], 'editMode' => $receivedData['editMode']));
 
         $possibleId   = intval($receivedData['IDLieu']);
         $isEditMode   = (intval($receivedData['editMode']) != 0);

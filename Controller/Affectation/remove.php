@@ -2,6 +2,7 @@
 include_once("../../Models/queries.php");
 include_once("../../Models/table_helpers.php");
 include_once("../../Models/debug_util.php");
+include_once("../tests.php");
 
 class RemoveAffectation
 {
@@ -17,10 +18,8 @@ class RemoveAffectation
         if (is_null($row))
             return false;
 
-        // Return the comparison between both ids, i.e. between the given parameter and the
-        // last entry
-        DebugUtil::LogIntoFile(__FILE__, __LINE__, "\$row['NumAffect'] = {$row['NumAffect']}");
-        DebugUtil::LogIntoFile(__FILE__, __LINE__, "\$id = {$id}");
+        Test::Test_Affectation_IsRemovedLatest(array("numAffect" => $row["NumAffect"], "id" => $id));
+
         return (intval($row['NumAffect']) == intval($id));
     }
 

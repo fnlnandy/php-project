@@ -60,8 +60,8 @@ class Test {
      */
     public static function Test_Affectation_IsNewEmpID($data)
     {
-        DebugUtil::Assert((intval($data['row']['NumEmp']) > 0), "\$row['NumEmp'] is <= 0.");
-        DebugUtil::Assert((intval($data['id']) > 0), "\$newEmpId is <= 0.");
+        DebugUtil::Assert((intval($data['row']['NumEmp']) > 0), "\$row['NumEmp'] is <= 0.", __FUNCTION__);
+        DebugUtil::Assert((intval($data['id']) > 0), "\$newEmpId is <= 0.", __FUNCTION__);
     }
 
     /**
@@ -76,6 +76,34 @@ class Test {
         DebugUtil::Assert((intval($data['nouveauLieu']) > 0), "\$receivedData['ancienLieu'] is <= 0.", __FUNCTION__);
         DebugUtil::Assert(($data['dateAffect'] != ""), "\$receivedData['dateAffect'] is empty.", __FUNCTION__);
         DebugUtil::Assert(($data['datePriseService'] != ""), "\$receivedData['datePriseService'] is empty.", __FUNCTION__);
+    }
+
+    /**
+     * Test for the checking latest active affectation function
+     * in Affectation
+     */
+    public static function Test_Affectation_IsRemovedLatest($data)
+    {
+        DebugUtil::Assert(($data['numAffect'] != ""), "\$data['numAffect'] is empty.", __FUNCTION__);
+        DebugUtil::Assert(($data['id'] != ""), "\$data['id'] is empty.", __FUNCTION__);
+    }
+
+    /**
+     * Test for the new ID generating function in Location
+     */
+    public static function Test_Location_GenerateNewID($data)
+    {
+        DebugUtil::Assert((intval($data['newId']) > 0), "\$data['newId'] is <= 0.", __FUNCTION__);
+    }
+
+    /**
+     * Test for the entry inserting or replacing function
+     * in Location
+     */
+    public static function Test_Location_InsertReplace($data)
+    {
+        DebugUtil::Assert((isset($data['id']) && intval($data['id'] > 0)), "\$data['id'] is empty or <= 0.", __FUNCTION__);
+        DebugUtil::Assert((isset($data['editMode']) && $data['editMode'] != ""), "\$data['editMode'] isn't set or empty.", __FUNCTION__);
     }
 }
 ?>
