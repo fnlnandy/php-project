@@ -106,10 +106,10 @@
                                             <option id="miss-civility">Mlle</option>
                                             <option id="lady-civility">Mme</option>
                                         </select>       <br></label>
-                        <label>Nom: <input id="form-worker-name" name="form-worker-name" type="text" maxlength="30" required>       <br></label>
-                        <label>Prénom: <input id="form-worker-first-name" name="form-worker-first-name" maxlength="40" type="text" required>       <br></label>
+                        <label>Nom: <input id="form-worker-name" name="form-worker-name" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>       <br></label>
+                        <label>Prénom: <input id="form-worker-first-name" name="form-worker-first-name" maxlength="40" pattern="[a-zA-Z ]+" type="text" required>       <br></label>
                         <label>Adresse e-mail: <input id="form-worker-mail" name="form-worker-mail" type="email" maxlength="254" required>       <br></label>
-                        <label>Poste: <input id="form-worker-post" name="form-worker-post" type="text" maxlength="50" required>       <br></label>
+                        <label>Poste: <input id="form-worker-post" name="form-worker-post" type="text" pattern="[a-zA-Z ]+" maxlength="50" required>       <br></label>
                         <label>Lieu: 
                             <select id="form-worker-location" name="form-worker-location" onchange="UpdateFormMatchingSelects(true, 'form-worker-location', 'form-info-worker-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
                             <select id="form-info-worker-location" name="form-info-worker-location" onchange="UpdateFormMatchingSelects(false, 'form-worker-location', 'form-info-worker-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>

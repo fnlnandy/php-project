@@ -53,8 +53,8 @@
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="location-main-form">
                             <h3 id="form-title">Formulaire pour un lieu</h3>
-                            <label>Designation: <input id="form-location-design" name="form-location-design" type="text" maxlength="30" required>        <br></label>
-                            <label>Province: <input id="form-location-province" name="form-location-province" type="text" maxlength="30" required>       <br></label>
+                            <label>Designation: <input id="form-location-design" name="form-location-design" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>        <br></label>
+                            <label>Province: <input id="form-location-province" name="form-location-province" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>       <br></label>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
                     </form>
