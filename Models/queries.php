@@ -196,6 +196,8 @@ class SQLQuery {
         foreach ($vars as $var) {
             $var = (string)($var);
 
+            if (!isset($var))
+                return true;
             if ($var == "")
                 return true;
         }

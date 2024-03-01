@@ -32,6 +32,12 @@ class Location {
     {
         $queryToExec  = "";
         $receivedData = XMLHttpRequest::DecodeJson();
+
+        if (SQLQuery::AreElementsEmpty($receivedData['Design'], $receivedData['Province']))
+            return;
+        if (!SQLQuery::DoKeysExistInArray($receivedData, 'IDLieu', 'editMode'))
+            return;
+
         $possibleId   = intval($receivedData['IDLieu']);
         $isEditMode   = (intval($receivedData['editMode']) != 0);
 
@@ -42,9 +48,6 @@ class Location {
         else {
             $queryToExec = "UPDATE LIEU SET Design='[2]', Province='[3]' WHERE IDLieu='[1]';";
         }
-
-        if (SQLQuery::AreElementsEmpty($receivedData['Design'], $receivedData['Province']))
-            return;
         
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Design'], $receivedData['Province']);
     }

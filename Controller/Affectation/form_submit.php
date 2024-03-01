@@ -5,6 +5,7 @@ include_once("../../Models/debug_util.php");
 include_once("../../Dependencies/PHPMailer/PHPMailer.php");
 include_once("../../Dependencies/PHPMailer/SMTP.php");
 include_once("../../Dependencies/PHPMailer/Exception.php");
+include_once("../tests.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -21,10 +22,9 @@ class Affectation {
      */
     private static function ReformateDate(string $date): string
     {
+        Test::Test_Affectation_ReformateDate($date);
         $dateTimeObject = new DateTime($date);
         $formatted = $dateTimeObject->format('d/m/Y');
-
-        DebugUtil::Assert(($date != ""), "\$date is empty.");
         
         return $formatted;
     }
@@ -34,11 +34,8 @@ class Affectation {
      */
     public static function RewindEmployeeLoc(string $numEmp, string $oldLoc, string $newLoc): void
     {
+        Test::Test_Affectation_RewindEmployee(array("oldLoc" => $oldLoc, "newLoc" => $newLoc, "numEmp" => $numEmp));
         $query = "UPDATE EMPLOYE SET Lieu = '[1]' WHERE NumEmp = '[2]' AND Lieu = '[3]';";
-
-        DebugUtil::Assert(($oldLoc != ""), "\$oldLoc is empty.");
-        DebugUtil::Assert(($newLoc != ""), "\$newLoc is empty.");
-        DebugUtil::Assert(($numEmp != ""), "\$numEmp is empty.");
 
         SQLQuery::ExecPreparedQuery($query, $oldLoc, $numEmp, $newLoc);
     }
@@ -54,12 +51,10 @@ class Affectation {
         $result = SQLQuery::ExecPreparedQuery($query, $numEmp);
         $lastAffectRow = SQLQuery::ProcessResultAsAssocArray($result, 'NumAffect');
 
+        Test::Test_Affectation_IsLatest(array("row" => $lastAffectResult, "numAffect" => $numAffect));
+
         if (is_null($lastAffectRow))
             return false;
-
-        DebugUtil::Assert(isset($lastAffectRow['NumAffect']), '\$lastAffectRow["NumAffect"] isn\'t set.');
-        DebugUtil::Assert(($lastAffectRow['NumAffect'] != "" && intval($lastAffectRow) > 0), "\$lastAffectRow['NumAffect'] is empty or is <= 0.");
-        DebugUtil::Assert(($numAffect != "" && intval($numAffect) > 0), "\$numAffect is empty or is <= 0.");
 
         return (intval($lastAffectRow['NumAffect']) == intval($numAffect)); // Returns if the given affectation is in fact the latest
     }
@@ -76,8 +71,6 @@ class Affectation {
             return;
         }
 
-        DebugUtil::Assert(($numAffect != ""), "\$numAffect is empty.");
-
         $query  = "SELECT * FROM AFFECTER WHERE NumAffect = '[1]';";
         $result = SQLQuery::ExecPreparedQuery($query, $numAffect);
         $currEmployeeRow = SQLQuery::ProcessResultAsAssocArray($result, 'NumEmp', 'AncienLieu', 'NouveauLieu');
@@ -85,9 +78,7 @@ class Affectation {
         if (is_null($currEmployeeRow))
             return;
 
-        DebugUtil::Assert(($currEmployeeRow['NumEmp'] != "" && intval($currEmployeeRow['NumEmp']) > 0), "\$currEmployeeRow['NumEmp'] is empty or is <= 0.");
-        DebugUtil::Assert(($currEmployeeRow['AncienLieu'] != "" && intval($currEmployeeRow['AncienLieu']) > 0), "\$currEmployeeRow['AncienLieu'] is empty or is <= 0.");
-        DebugUtil::Assert(($currEmployeeRow['NouveauLieu'] != "" && intval($currEmployeeRow['NumEmp']) > 0), "\$currEmployeeRow['NouveauLieu'] is empty or is <= 0.");
+        Test::Test_Affectation_FixCurrEmployee(array("row" => $currEmployeeRow, "numAffect" => $numAffect));
 
         // Check if the current affectation is the latest to date
         if (Affectation::IsAffectationLatestForEmployee($numAffect, $currEmployeeRow['NumEmp'])) {
@@ -115,7 +106,7 @@ class Affectation {
         if (!is_null($lastAffectRow))
             $newNumAffect = intval($lastAffectRow['NumAffect']) + 1; // New ID is thus the last + 1
 
-        DebugUtil::Assert(((int)$newNumAffect > 0), "$\newNumAffect is <= 0."); 
+        Test::Test_Affectation_GenerateNewId($newNumAffect);
 
         return $newNumAffect;
     }
@@ -136,6 +127,7 @@ class Affectation {
 
         DebugUtil::Assert((intval($row['NumEmp']) > 0), "\$row['NumEmp'] is <= 0.");
         DebugUtil::Assert((intval($newEmpId) > 0), "\$newEmpId is <= 0.");
+        Test::Test_Affectation_IsNewEmpID(array('row' => $row, 'id' => $newEmpId));
 
         return (intval($row['NumEmp']) != intval($newEmpId));
     }
@@ -148,6 +140,15 @@ class Affectation {
     {
         $query        = "";
         $receivedData = XMLHttpRequest::DecodeJson(); // We get the date sent via AJAX in JSON format
+        
+        if (SQLQuery::AreElementsEmpty($receivedData['numEmp'], $receivedData['ancienLieu'],
+            $receivedData['nouveauLieu'], $receivedData['dateAffect'], $receivedData['datePriseService']))
+            return;
+        if (!SQLQuery::DoKeysExistInArray($receivedData, 'numAffect', 'editMode', 'notifyEmployee'))
+            return;
+        
+        Test::Test_Affectation_InsertOrReplace($receivedData);
+
         $id           = intval($receivedData['numAffect']);                  // We get the ID, that will be checked if valid or not
         $editMode     = (intval($receivedData['editMode']) != 0);            // We also get the EditMode, in case the ID wasn't correctly made invalid for some reason
         $sendMail     = intval($receivedData["notifyEmployee"]);
@@ -159,15 +160,6 @@ class Affectation {
         else {
             $query = "UPDATE AFFECTER SET NumEmp='[2]', AncienLieu='[3]', NouveauLieu='[4]', DateAffect='[5]', DatePriseService='[6]' WHERE NumAffect='[1]';";
         }
-
-        DebugUtil::Assert((intval($receivedData['ancienLieu']) > 0), "\$receivedData['ancienLieu'] is <= 0.");
-        DebugUtil::Assert((intval($receivedData['nouveauLieu']) > 0), "\$receivedData['ancienLieu'] is <= 0.");
-        DebugUtil::Assert(($receivedData['dateAffect'] != ""), "\$receivedData['dateAffect'] is empty.");
-        DebugUtil::Assert(($receivedData['datePriseService'] != ""), "\$receivedData['datePriseService'] is empty.");
-
-        if (SQLQuery::AreElementsEmpty($receivedData['numEmp'], $receivedData['ancienLieu'],
-        $receivedData['nouveauLieu'], $receivedData['dateAffect'], $receivedData['datePriseService']))
-            return;
 
         $dateAffect = new DateTime($receivedData['dateAffect']);
         $datePrServ = new DateTime($receivedData['datePriseService']);
@@ -182,6 +174,7 @@ class Affectation {
                             $dateAffect->format("Y-m-d"), 
                             $datePrServ->format("Y-m-d"));
         Affectation::FixCurrentEmployeeLoc($id, false);
+        
         if ($sendMail == 1)
             Affectation::SendEmailOnSubmit($receivedData['numEmp'], $receivedData['nouveauLieu'], $dateAffect->format("Y-m-d"), $datePrServ->format("Y-m-d"));
     }

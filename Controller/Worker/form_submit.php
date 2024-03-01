@@ -28,6 +28,14 @@ class Worker {
     {
         $queryToExec = "";
         $receivedData = XMLHttpRequest::DecodeJson();
+
+        if (SQLQuery::AreElementsEmpty($receivedData['Civilite'], 
+        $receivedData['Nom'], $receivedData['Prenom'], $receivedData['Mail'], 
+        $receivedData['Poste'], $receivedData['Lieu']))
+            return;
+        if (SQLQuery::DoKeysExistInArray($receivedData, 'NumEmp', 'editMode'))
+            return;
+        
         $possibleId = intval($receivedData['NumEmp']);
         $isEditMode = (intval($receivedData['editMode']) != 0);
 
@@ -38,11 +46,6 @@ class Worker {
         else {
             $queryToExec = "UPDATE EMPLOYE SET Civilite='[2]', Nom='[3]', Prenom='[4]', Mail='[5]', Poste='[6]', Lieu='[7]' WHERE NumEmp='[1]';";
         }
-
-        if (SQLQuery::AreElementsEmpty($receivedData['Civilite'], 
-        $receivedData['Nom'], $receivedData['Prenom'], $receivedData['Mail'], 
-        $receivedData['Poste'], $receivedData['Lieu']))
-            return;
 
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Civilite'], $receivedData['Nom'],
                         $receivedData['Prenom'], $receivedData['Mail'], $receivedData['Poste'], $receivedData['Lieu']);

@@ -53,10 +53,10 @@ class DebugUtil {
     /**
      * 
      */
-    public static function Assert($exp, string|null $throw, string $desc = "")
+    public static function Assert($exp, string|null $throw, string $func = "", string $desc = "")
     {
         $message = (is_null($throw) ? "" : $throw);
-        $template = "[ASSERT]: Message: {$message}\nDescription: {$desc}";
+        $template = "[ASSERT ({$func})]: Message: {$message}\nDescription: {$desc}";
 
         if (!$exp) {
             DebugUtil::WriteMessageIntoFile($template, false);
