@@ -43,6 +43,9 @@ class Location {
             $queryToExec = "UPDATE LIEU SET Design='[2]', Province='[3]' WHERE IDLieu='[1]';";
         }
 
+        if (SQLQuery::AreElementsEmpty($receivedData['Design'], $receivedData['Province']))
+            return;
+        
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Design'], $receivedData['Province']);
     }
 }
@@ -51,5 +54,5 @@ class Location {
  * This file's main function
  */
 Location::InsertOrReplaceEntry();
-header("Refresh:0");
+HTML::ForceRefresh();
 ?>

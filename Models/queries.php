@@ -185,5 +185,33 @@ class SQLQuery {
 
         return $row;
     }
+
+    /**
+     * Returns if elements (as strings) are empty,
+     * when force refreshing, the AJAX request may
+     * be sent twice, so we have to account for that
+     */
+    public static function AreElementsEmpty(... $vars): bool
+    {
+        foreach ($vars as $var) {
+            $var = (string)($var);
+
+            if ($var == "")
+                return true;
+        }
+
+        return false;
+    }
+}
+
+class HTML {
+    /**
+     * Force reloads the current page
+     * to display the correct informations
+     */
+    public static function ForceRefresh()
+    {
+        header("Location: " . $_SERVER["PHP_SELF"]);
+    }
 }
 ?>

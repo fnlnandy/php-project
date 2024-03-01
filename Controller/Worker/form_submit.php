@@ -39,6 +39,11 @@ class Worker {
             $queryToExec = "UPDATE EMPLOYE SET Civilite='[2]', Nom='[3]', Prenom='[4]', Mail='[5]', Poste='[6]', Lieu='[7]' WHERE NumEmp='[1]';";
         }
 
+        if (SQLQuery::AreElementsEmpty($receivedData['Civilite'], 
+        $receivedData['Nom'], $receivedData['Prenom'], $receivedData['Mail'], 
+        $receivedData['Poste'], $receivedData['Lieu']))
+            return;
+
         SQLQuery::ExecPreparedQuery($queryToExec, $possibleId, $receivedData['Civilite'], $receivedData['Nom'],
                         $receivedData['Prenom'], $receivedData['Mail'], $receivedData['Poste'], $receivedData['Lieu']);
     }
@@ -48,5 +53,5 @@ class Worker {
  * This file's main function
  */
 Worker::InsertOrReplaceEntry();
-header("Refresh:0");
+HTML::ForceRefresh();
 ?>

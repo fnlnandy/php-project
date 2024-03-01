@@ -165,6 +165,10 @@ class Affectation {
         DebugUtil::Assert(($receivedData['dateAffect'] != ""), "\$receivedData['dateAffect'] is empty.");
         DebugUtil::Assert(($receivedData['datePriseService'] != ""), "\$receivedData['datePriseService'] is empty.");
 
+        if (SQLQuery::AreElementsEmpty($receivedData['numEmp'], $receivedData['ancienLieu'],
+        $receivedData['nouveauLieu'], $receivedData['dateAffect'], $receivedData['datePriseService']))
+            return;
+
         $dateAffect = new DateTime($receivedData['dateAffect']);
         $datePrServ = new DateTime($receivedData['datePriseService']);
 
@@ -272,5 +276,5 @@ class Affectation {
  * This file's main function
  */
 Affectation::InsertOrReplaceEntry();
-header("Refresh:0");
+HTML::ForceRefresh();
 ?>
