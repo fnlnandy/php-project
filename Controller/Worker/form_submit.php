@@ -66,5 +66,4 @@ class Worker {
  * This file's main function
  */
 Worker::InsertOrReplaceEntry();
-HTML::ForceRefresh();
 ?>

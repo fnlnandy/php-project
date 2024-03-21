@@ -7,5 +7,4 @@ include_once("../../Models/table_helpers.php");
  * of the column 'NumEmp'
  */
 TableHelper::RemoveEntryFromTable("id", "EMPLOYE", "NumEmp");
-HTML::ForceRefresh();
 ?>

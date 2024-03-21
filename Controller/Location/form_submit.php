@@ -62,5 +62,4 @@ class Location {
  * This file's main function
  */
 Location::InsertOrReplaceEntry();
-HTML::ForceRefresh();
 ?>

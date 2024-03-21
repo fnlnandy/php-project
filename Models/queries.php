@@ -205,15 +205,4 @@ class SQLQuery {
         return false;
     }
 }
-
-class HTML {
-    /**
-     * Force reloads the current page
-     * to display the correct informations
-     */
-    public static function ForceRefresh()
-    {
-        header("Location: " . $_SERVER["PHP_SELF"]);
-    }
-}
 ?>

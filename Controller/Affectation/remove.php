@@ -79,5 +79,4 @@ class RemoveAffectation
  * This file's main and only callback
  */
 RemoveAffectation::TryToRemoveAffectation();
-HTML::ForceRefresh();
 ?>

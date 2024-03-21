@@ -71,7 +71,6 @@ function RemoveAffectationEntry()
     }
 
     SendXMLHttpRequest(gAffectationDataTracker, "../Controller/Affectation/remove.php");
-    window.location.reload();
 }
 
 /**
@@ -190,7 +189,6 @@ function SubmitForm()
         
         console.log(formData);
         SendXMLHttpRequest(formData, "../Controller/Affectation/form_submit.php");
-        window.location.reload();
     }
 }
 

@@ -6,5 +6,4 @@ include_once("../../Models/table_helpers.php");
  * This file's main and only callback
  */
 TableHelper::RemoveEntryFromTable("id", "LIEU", "IDLieu");
-HTML::ForceRefresh();
 ?>

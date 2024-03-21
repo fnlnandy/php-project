@@ -271,5 +271,4 @@ class Affectation {
  * This file's main function
  */
 Affectation::InsertOrReplaceEntry();
-HTML::ForceRefresh();
 ?>

@@ -1,4 +1,22 @@
 /**
+ * 
+ */
+function ReloadPageWithTimeStamp()
+{
+    var tsName = "tstamp";
+    var tsVal = (performance.now() % 1000).toFixed(3).toString();
+    var currentUrl = window.location.href;
+    var urlParams = new URLSearchParams(window.location.search);
+    var updatedUrl = "";
+    
+    urlParams.set(tsName, tsVal);
+    updatedUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
+
+    console.log(updatedUrl);
+    window.location.href = updatedUrl;
+}
+
+/**
  * Sends a Request to a specific file,
  * response is just logged, but we rarely
  * are able to use that response
@@ -10,10 +28,11 @@ function SendXMLHttpRequest(dataToSend, dest) {
     req.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
     req.onreadystatechange = function () {
         console.log(req.responseText);
+        ReloadPageWithTimeStamp();
     };
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
-    
-    location.reload(); // Force refresh to load data instantly
+    console.log("Before updating the URL.");
+    ReloadPageWithTimeStamp();
 }
 
 /**
