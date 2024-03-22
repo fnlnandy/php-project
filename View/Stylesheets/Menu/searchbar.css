@@ -1,0 +1,30 @@
+/*
+Source: https://uiverse.io/alexruix/slippery-frog-10
+*/
+
+.search-bar-component {
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+}
+
+input[type="date"].search-bar-component {
+    cursor: pointer;
+}
+
+.search-bar-component::placeholder {
+    color: #9e9ea7;
+}
+
+.search-bar-component:focus, .search-bar-component:hover {
+    outline: none;
+    border-color: rgba(95, 95, 95, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}

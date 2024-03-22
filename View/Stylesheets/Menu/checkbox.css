@@ -1,6 +1,7 @@
 /*
 Source: https://cssdeck.com/labs/customcheck
 */
+
 input[type="checkbox"].flat-checkbox {
   	margin-left: 15px;
 	margin-top: 11px;
@@ -31,7 +32,7 @@ input[type="checkbox"].flat-checkbox {
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-o-border-radius: 100px;
- 	background-color: #E87460;
+ 	background-color: #8d8d8d;
 	backface-visibility: hidden;
  	transition: all 0.3s ease; 
  	-webkit-transition: all 0.3s ease;

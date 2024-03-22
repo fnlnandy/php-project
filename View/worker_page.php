@@ -67,7 +67,7 @@
                         if (key_exists('worker-search-bar', $_GET))
                             $value = str_replace('+', ' ', $_GET['worker-search-bar']);
 
-                        $searchBar = "<input type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
+                        $searchBar = "<input class=\"search-bar-component\" type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
                         echo $searchBar;
                     ?>     
                     <input type="submit" value="Rechercher parmis les employés">
