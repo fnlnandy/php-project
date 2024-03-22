@@ -69,7 +69,7 @@
 
                         $searchBar = "<input class=\"search-bar-component\" type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
                         echo $searchBar;
-                    ?>     
+                    ?>              
                     <input type="submit" value="Rechercher parmis les employés">
                 </form>
             </div>
