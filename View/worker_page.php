@@ -39,26 +39,26 @@
             <div class="search-bar-outer-container space-top-element">
                 <form class="search-bar-inner-container" method="get">
                     <label>Affectés
+                    <input class="flat-checkbox" type="checkbox" id="search-bar-show-affected" name="search-bar-show-affected" onchange="UpdateUnaffectedCheck()"
                     <?php 
                         $checked = "";
 
                         if (key_exists('search-bar-show-affected', $_GET) && $_GET['search-bar-show-affected'] == 'on')
                             $checked = "checked";
-
-                        $affectedCBox = "<input class=\"flat-checkbox\" type=\"checkbox\" id=\"search-bar-show-affected\" name=\"search-bar-show-affected\" onchange=\"UpdateUnaffectedCheck()\" {$checked}>";
-                        echo $affectedCBox;
-                    ?>    
+                        
+                        echo $checked;
+                    ?>>
                     </label>
                     <label>Non affectés
+                    <input class="flat-checkbox" type="checkbox" id="search-bar-show-unaffected" name="search-bar-show-unaffected" onchange="UpdateAffectedCheck()"
                     <?php 
                         $checked = "";
 
                         if (key_exists('search-bar-show-unaffected', $_GET) && $_GET['search-bar-show-unaffected'] == 'on')
                             $checked = "checked";
 
-                        $unaffectedCBox = "<input class=\"flat-checkbox\" type=\"checkbox\" id=\"search-bar-show-unaffected\" name=\"search-bar-show-unaffected\" onchange=\"UpdateAffectedCheck()\" {$checked}>";
-                        echo $unaffectedCBox;
-                    ?>
+                        echo $checked;
+                    ?>>
                     </label>
                     <?php
                         // Reloading the value searched on refresh
