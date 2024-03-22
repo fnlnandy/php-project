@@ -18,10 +18,15 @@
         <script src="../Controller/Location/handler.js"></script>
         
         <!-- NAVIGATION MENU -->
+        <input class="top-navigation-bar-burger-check" id="top-navigation-bar-burger-check" type="checkbox">
+        <label for="top-navigation-bar-burger-check" class="top-navigation-bar-burger"></label>
         <nav class="top-navigation-bar">
-            <a href="../index.php">Menu principal</a>
-            <a href="affectation_page.php">Affectations</a>
-            <a href="worker_page.php">Employés</a>
+            <ul>
+                <li><a href="../index.php">Menu principal</a></li>
+                <li><a href="affectation_page.php">Affectations</a></li>
+                <li><a href="location_page.php">Lieux</a></li>
+                <li><a href="worker_page.php">Employés</a></li>
+            </ul>
         </nav>
 
         <!-- TABLE LISTING DATA -->
