@@ -6,6 +6,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Page des employés">
+        <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Expires" content="0">
         <meta http-equiv="Pragma" content="no-cache">
         <link rel="icon" href="" type="image/x-icon">
         <link rel="stylesheet" href="Stylesheets/main.css">

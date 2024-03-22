@@ -12,8 +12,7 @@ function ReloadPageWithTimeStamp()
     urlParams.set(tsName, tsVal);
     updatedUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
 
-    console.log(updatedUrl);
-    window.location.href = updatedUrl;
+    window.location.replace(updatedUrl);
 }
 
 /**
@@ -26,7 +25,7 @@ function SendXMLHttpRequest(dataToSend, dest) {
 
     req.open("POST", dest);              // We prepare the destination file
     req.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
-    req.onreadystatechange = function () {
+    req.onload = function () {
         console.log(req.responseText);
         ReloadPageWithTimeStamp();
     };
