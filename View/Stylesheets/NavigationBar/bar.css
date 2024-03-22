@@ -1,0 +1,17 @@
+.navigation-bar-wrapper {
+    background-color: white;
+    vertical-align: baseline;
+    top: 0%;
+    left: 0%;
+    position: fixed;
+}
+
+.navigation-bar-wrapper .top-navigation-bar-burger-check,
+.navigation-bar-wrapper .top-navigation-bar-burger {
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.navigation-bar-wrapper * {
+    background-color: transparent;
+}

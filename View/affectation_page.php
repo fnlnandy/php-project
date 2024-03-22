@@ -20,16 +20,20 @@
               include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
-        <input class="top-navigation-bar-burger-check" id="top-navigation-bar-burger-check" type="checkbox">
-        <label for="top-navigation-bar-burger-check" class="top-navigation-bar-burger"></label>
-        <nav class="top-navigation-bar">
-            <ul>
-                <li><a href="../index.php">Menu principal</a></li>
-                <li><a href="affectation_page.php">Affectations</a></li>
-                <li><a href="location_page.php">Lieux</a></li>
-                <li><a href="worker_page.php">Employés</a></li>
-            </ul>
-        </nav>
+        <header class="page-header">
+            <div class="navigation-bar-wrapper">
+                <input class="top-navigation-bar-burger-check" id="top-navigation-bar-burger-check" type="checkbox">
+                <label for="top-navigation-bar-burger-check" class="top-navigation-bar-burger"></label>
+                <nav class="top-navigation-bar">
+                    <ul>
+                        <li><a href="../index.php">Menu principal</a></li>
+                        <li><a href="affectation_page.php">Affectations</a></li>
+                        <li><a href="location_page.php">Lieux</a></li>
+                        <li><a href="worker_page.php">Employés</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
         <!-- SEARCH BAR AREA -->
         <div class="search-bar-outer-container space-top-element space-bottom-element">

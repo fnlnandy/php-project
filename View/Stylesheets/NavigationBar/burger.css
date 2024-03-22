@@ -91,7 +91,7 @@ Source: https://cssdeck.com/labs/full/collapsible-nav-with-burger-menu-no-js
 .top-navigation-bar li {
     list-style: none;
     font-size: 25px;
-    padding: 5px 0;
+    padding: 10px;
 }
 
 .top-navigation-bar li a {
