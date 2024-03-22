@@ -5,4 +5,5 @@
     position: fixed;
     background-color: white;
     height: 40px;
+    z-index: 255;
 }

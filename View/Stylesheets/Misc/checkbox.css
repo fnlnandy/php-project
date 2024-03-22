@@ -1,0 +1,65 @@
+/*
+Source: https://cssdeck.com/labs/customcheck
+*/
+input[type="checkbox"].flat-checkbox {
+  	margin-left: 15px;
+	margin-top: 11px;
+	outline: none;
+	cursor: pointer;
+}
+
+label:active input[type="checkbox"].flat-checkbox:after {
+	width: 28px;
+	left: -2px;
+}
+
+label:active input[type="checkbox"].flat-checkbox:checked:after {
+	width: 28px;
+	left: 10px;
+}
+
+input[type="checkbox"].flat-checkbox {
+	position: relative;
+ 	-webkit-appearance: none;
+ 	-moz-appearance: none;
+ 	-o-appearance: none;
+  	appearance: none;
+ 	display: inline-block;
+ 	height: 16px;
+ 	width: 38px;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-o-border-radius: 100px;
+ 	background-color: #E87460;
+	backface-visibility: hidden;
+ 	transition: all 0.3s ease; 
+ 	-webkit-transition: all 0.3s ease;
+ 	-moz-transition: all 0.3s ease; 
+ 	-o-transition: all 0.3s ease;  
+}
+
+input[type="checkbox"].flat-checkbox:checked {
+	background-color: #6FFDAF;
+}
+
+input[type="checkbox"].flat-checkbox:after {
+	content: "";
+  	width: 22px;
+	height: 22px;
+	box-shadow: 0p 0px 1px #fff, inset 10px 0px 10px #000;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-o-border-radius: 100px;
+ 	top: -3px;
+  	left: -2px;
+  	position: absolute;
+  	background: #fff; 
+	transition: all .25s ease;
+}
+input[type="checkbox"].flat-checkbox:checked:after {
+	left: 16px;
+  	position: absolute;
+  	background: #fff;
+}

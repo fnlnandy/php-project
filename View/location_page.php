@@ -34,29 +34,31 @@
         </header>
 
         <!-- TABLE LISTING DATA -->
-        <div class="table-list-outer-container space-top-element">
-            <table class="table-list-inner-container">
-                <tr class="table-header-row">
-                    <th>ID du lieu</th>
-                    <th>Designation</th>
-                    <th>Province</th>
-                </tr>
+        <main class="page-main-content">
+            <div class="table-list-outer-container space-top-element">
+                <table class="table-list-inner-container">
+                    <tr class="table-header-row">
+                        <th>ID du lieu</th>
+                        <th>Designation</th>
+                        <th>Province</th>
+                    </tr>
 
-                <?php
-                    include_once("../Models/table_helpers.php");
-                    TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "location-table-row");
-                ?>
-            </table>
-        </div>
+                    <?php
+                        include_once("../Models/table_helpers.php");
+                        TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "location-table-row");
+                    ?>
+                </table>
+            </div>
 
-        <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="force-center-elements space-top-element">
-            <span class="crud-actions-container">
-                <button onclick="AddLocation()">Ajouter</button>
-                <button onclick="EditLocation()">Modifier</button>
-                <button onclick="RemoveLocation()">Supprimer</button>
-            </span>
-        </div>
+            <!-- CRUD OPERATIONS BUTTONS -->
+            <div class="force-center-elements space-top-element">
+                <span class="crud-actions-container">
+                    <button onclick="AddLocation()">Ajouter</button>
+                    <button onclick="EditLocation()">Modifier</button>
+                    <button onclick="RemoveLocation()">Supprimer</button>
+                </span>
+            </div>
+        </main>
 
         <!-- DATA FILLING FORM -->
         <dialog id="form-dialog-container">

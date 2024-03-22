@@ -17,6 +17,11 @@ body {
     background-repeat: repeat;
 }
 
+main {
+    top: 40px;
+    position: relative;
+}
+
 /* .force-center-elements {
     justify-content: center;
     align-items: center;

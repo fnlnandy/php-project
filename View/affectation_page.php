@@ -35,45 +35,47 @@
             </div>
         </header>
 
-        <!-- SEARCH BAR AREA -->
-        <div class="search-bar-outer-container space-top-element space-bottom-element">
-            <form id="affect-based-on-dates-form" method="get">
-                <label>Date de début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
-                <label>Date de fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
-                <label>Par date d'affectation<input type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>></label>
-                <label>Par date de prise de service<input type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
-                <input type="submit" value="Trier les affectations">
-            </form>
-        </div>
+        <main class="page-main-content">
+            <!-- SEARCH BAR AREA -->
+            <div class="search-bar-outer-container space-top-element space-bottom-element">
+                <form id="affect-based-on-dates-form" method="get">
+                    <label>Date de début: <input type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
+                    <label>Date de fin: <input type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
+                    <label>Par date d'affectation<input class="flat-checkbox" type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>></label>
+                    <label>Par date de prise de service<input class="flat-checkbox" type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
+                    <input type="submit" value="Trier les affectations">
+                </form>
+            </div>
 
-        <!-- TABLE LISTING DATA -->
-        <div class="table-list-outer-container space-top-element">
-            <table class="table-list-inner-container">
-                <tr class="table-header-row">
-                    <th>Numéro d'affectation</th>
-                    <th>Employé</th>
-                    <th>Ancien lieu</th>
-                    <th>Nouveau lieu</th>
-                    <th>Date d'affectation</th>
-                    <th>Date de prise de service</th>
-                </tr>
+            <!-- TABLE LISTING DATA -->
+            <div class="table-list-outer-container space-top-element">
+                <table class="table-list-inner-container">
+                    <tr class="table-header-row">
+                        <th>Numéro d'affectation</th>
+                        <th>Employé</th>
+                        <th>Ancien lieu</th>
+                        <th>Nouveau lieu</th>
+                        <th>Date d'affectation</th>
+                        <th>Date de prise de service</th>
+                    </tr>
 
-                <?php
-                include_once("../Controller/Affectation/page_load.php");
-                AffectationPageLoadConditions::PopulateAffectationList();
-                ?>
-            </table>
-        </div>
+                    <?php
+                    include_once("../Controller/Affectation/page_load.php");
+                    AffectationPageLoadConditions::PopulateAffectationList();
+                    ?>
+                </table>
+            </div>
 
-        <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="force-center-elements space-top-element">
-            <span class="crud-actions-container">
-                <button onclick="AddAffectation()">Ajouter</button>
-                <button onclick="EditAffectation()">Modifier</button>
-                <button onclick="RemoveAffectationEntry()">Supprimer</button>
-                <button onclick="TryGeneratePDF()">Generer un PDF</button>
-            </span>
-        </div>
+            <!-- CRUD OPERATIONS BUTTONS -->
+            <div class="force-center-elements space-top-element">
+                <span class="crud-actions-container">
+                    <button onclick="AddAffectation()">Ajouter</button>
+                    <button onclick="EditAffectation()">Modifier</button>
+                    <button onclick="RemoveAffectationEntry()">Supprimer</button>
+                    <button onclick="TryGeneratePDF()">Generer un PDF</button>
+                </span>
+            </div>
+        </main>
 
         <!-- DATA FILLING FORM -->
         <dialog id="form-dialog-container">
@@ -96,7 +98,7 @@
                             <br></label>
                             <label>Date d'affectation: <input id="form-affectation-date-affect" name="form-affectation-date-affect" type="date" required>         <br></label>
                             <label>Date de prise de service: <input id="form-affectation-date-ps" name="form-affectation-date-ps" type="date" required><br></label>
-                            <label>Notifier l'employé par e-mail<input id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
+                            <label>Notifier l'employé par e-mail<input class="flat-checkbox" id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
                     </form>
