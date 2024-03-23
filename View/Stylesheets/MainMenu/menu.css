@@ -1,0 +1,9 @@
+.main-navigation-menu {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-navigation-menu .main-menu-card {
+    margin: 10px;
+}

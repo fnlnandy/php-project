@@ -1,0 +1,67 @@
+/*
+Source: https://uiverse.io/andrew-demchenk0/silent-duck-2
+*/
+
+.main-menu-card {
+    --main-color: #000000;
+    --bg-color: #858585;
+    --bg-color-highlighted: #585858;
+    float: left;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    padding: 20px;
+    width: 320px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.main-menu-card:hover {
+    background: var(--bg-color-highlighted);
+}
+
+.main-menu-card a {
+    display: none;
+}
+
+.main-menu-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-menu-card-back svg {
+    width: 20px;
+    height: 20px;
+}
+
+.main-menu-card-img {
+    width: 170px;
+    height: 170px;
+    background: linear-gradient(90deg, #fff8f79a, #f0f7dfa2);
+    border-radius: 100%;
+    margin-inline: auto;
+}
+
+.main-menu-card-img svg {
+    height: 150px;
+    transform: rotate(-45deg) translate(15px, 0px);
+}
+
+.main-menu-card-title {
+    font-weight: 600;
+    font-size: 25px;
+    color: var(--main-color);
+}
+
+.main-menu-card-description {
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--main-color);
+    letter-spacing: 0.5px;
+}

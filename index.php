@@ -23,14 +23,36 @@
         ?>
 
         <!-- CUSTOM: MAIN NAVIGATION MENU -->
-        <section id="index-main-menu">
-            <div id="index-menu-outer-container">
-                <ol id="index-menu-inner-container">
-                    <li class="index-menu-inner-container" onclick="RedirectToPage(this)"><a href="View/affectation_page.php">Affectations</a></li>
-                    <li class="index-menu-inner-container" onclick="RedirectToPage(this)"><a href="View/location_page.php">Lieux</a></li>
-                    <li class="index-menu-inner-container" onclick="RedirectToPage(this)"><a href="View/worker_page.php">Employés</a></li>
-                </ol>
+        <main class="main-navigation-menu">
+            <div class="main-menu-card" onclick="RedirectToPage(this)">
+                <a href="View/affectation_page.php"></a>
+                <div class="main-menu-card-wrapper">
+                    <div class="main-menu-card-back"></div>
+                </div>
+                <div class="main-menu-card-img"></div>
+                <div class="main-menu-card-title">Affectations</div>
+                <div class="main-menu-card-description">Ajouter, modifier et supprimer les affectations de chaques employés</div>
             </div>
-        </section>
+
+            <div class="main-menu-card" onclick="RedirectToPage(this)">
+                <a href="View/location_page.php"></a>
+                <div class="main-menu-card-wrapper">
+                    <div class="main-menu-card-back"></div>
+                </div>
+                <div class="main-menu-card-img"></div>
+                <div class="main-menu-card-title">Lieux</div>
+                <div class="main-menu-card-description">Ajouter, modifier et supprimer les lieux où les employés sont affectés</div>
+            </div>
+
+            <div class="main-menu-card" onclick="RedirectToPage(this)">
+                <a href="View/worker_page.php"></a>
+                <div class="main-menu-card-wrapper">
+                    <div class="main-menu-card-back"></div>
+                </div>
+                <div class="main-menu-card-img"></div>
+                <div class="main-menu-card-title">Employés</div>
+                <div class="main-menu-card-description">Ajouter, modifier et supprimer les affectations de chaques employés</div>
+            </div>
+        <main>
     </body>
 </html>
