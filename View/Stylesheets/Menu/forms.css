@@ -45,3 +45,21 @@ Source: https://uiverse.io/zanina-yassine/angry-shrimp-34
 .form-field-value[type=number] {
     appearance: textfield;
 }
+
+.form-quit-button {
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 24px;
+    position: relative;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.form-quit-button::before {
+    content: "✕";
+    display: inline-block;
+    vertical-align: middle;
+}

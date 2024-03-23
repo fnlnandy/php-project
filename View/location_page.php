@@ -62,7 +62,7 @@
 
         <!-- DATA FILLING FORM -->
         <dialog id="form-dialog-container">
-        <p onclick="CloseFormDialog()">x</p>
+        <p onclick="CloseFormDialog()" class="form-quit-button"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="location-main-form">
