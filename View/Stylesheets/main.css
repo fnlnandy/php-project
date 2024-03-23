@@ -14,8 +14,11 @@
 }
 
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("../Ressources/bg1.jpg");
-    background-repeat: repeat;
+    background: linear-gradient(to bottom right, rgb(39, 39, 39), rgb(71, 71, 71));
+}
+
+html {
+    height: 100%;
 }
 
 main {

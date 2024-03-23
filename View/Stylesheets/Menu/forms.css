@@ -1,0 +1,47 @@
+/*
+Source: https://uiverse.io/zanina-yassine/angry-shrimp-34
+*/
+
+.form-field-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-field-label {
+    font-size: 10px;
+    color: #8B8E98;
+    font-weight: 600;
+}
+
+.form-field-value {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 16px;
+    border-radius: 9px;
+    outline: none;
+    background-color: #F2F2F2;
+    border: 1px solid #e5e5e500;
+    font-size: 1.5em;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.form-field-value:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #242424;
+    background-color: transparent;
+}
+
+.form-field-value::-webkit-outer-spin-button,
+.form-field-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-field-value[type=number] {
+    appearance: textfield;
+}

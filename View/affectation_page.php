@@ -84,21 +84,33 @@
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectation-main-form">
                             <h3 id="form-title">Formulaire pour une affectation</h3>
-                            <label>Employé: 
-                                <select id="form-affectation-employee-num" name="form-affectation-employee-num" onchange="UpdateFormMatchingSelects(true, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
-                                <select id="form-affectation-info-employee" name="form-affectation-info-employee" onchange="UpdateFormMatchingSelects(false, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>
-                            <br></label>
-                            <label>Ancien lieu: 
-                                <select id="form-affectation-old-location" name="form-affectation-old-location" onchange="UpdateFormMatchingSelects(true, 'form-affectation-old-location', 'form-affectation-info-old-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
-                                <select id="form-affectation-info-old-location" name="form-affectation-info-old-location" onchange="UpdateFormMatchingSelects(false, 'form-affectation-old-location', 'form-affectation-info-old-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
-                            <br></label>
-                            <label>Nouveau lieu: 
-                                <select id="form-affectation-new-location" name="form-affectation-new-location" onchange="UpdateFormMatchingSelects(true, 'form-affectation-new-location', 'form-affectation-info-new-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
-                                <select id="form-affectation-info-new-location" name="form-affectation-info-new-location" onchange="UpdateFormMatchingSelects(false, 'form-affectation-new-location', 'form-affectation-info-new-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
-                            <br></label>
-                            <label>Date d'affectation: <input id="form-affectation-date-affect" name="form-affectation-date-affect" type="date" required>         <br></label>
-                            <label>Date de prise de service: <input id="form-affectation-date-ps" name="form-affectation-date-ps" type="date" required><br></label>
-                            <label>Notifier l'employé par e-mail<input class="flat-checkbox" id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Employé: 
+                                    <select class="form-field-value" id="form-affectation-employee-num" name="form-affectation-employee-num" onchange="UpdateFormMatchingSelects(true, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php include_once("ClientDBs/workerselectoptions.php"); WorkerSelectOptions::PopulateSelectOptionIds(); ?></select> 
+                                    <select class="form-field-value" id="form-affectation-info-employee" name="form-affectation-info-employee" onchange="UpdateFormMatchingSelects(false, 'form-affectation-employee-num', 'form-affectation-info-employee')" required><?php  WorkerSelectOptions::PopulateSelectOptionNames(); ?></select>
+                                <br></label>
+                            </div>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Ancien lieu: 
+                                    <select class="form-field-value" id="form-affectation-old-location" name="form-affectation-old-location" onchange="UpdateFormMatchingSelects(true, 'form-affectation-old-location', 'form-affectation-info-old-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                                    <select class="form-field-value" id="form-affectation-info-old-location" name="form-affectation-info-old-location" onchange="UpdateFormMatchingSelects(false, 'form-affectation-old-location', 'form-affectation-info-old-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                                <br></label>
+                            </div>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Nouveau lieu: 
+                                    <select class="form-field-value" id="form-affectation-new-location" name="form-affectation-new-location" onchange="UpdateFormMatchingSelects(true, 'form-affectation-new-location', 'form-affectation-info-new-location')" required><?php include_once("ClientDBs/locationselectoptions.php"); LocationSelectOptions::PopulateSelectOptionIds(); ?></select>
+                                    <select class="form-field-value" id="form-affectation-info-new-location" name="form-affectation-info-new-location" onchange="UpdateFormMatchingSelects(false, 'form-affectation-new-location', 'form-affectation-info-new-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
+                                <br></label>
+                            </div>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Date d'affectation: <input class="form-field-value" id="form-affectation-date-affect" name="form-affectation-date-affect" type="date" required>         <br></label>
+                            </div>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Date de prise de service: <input class="form-field-value" id="form-affectation-date-ps" name="form-affectation-date-ps" type="date" required><br></label>
+                            </div>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Notifier l'employé par e-mail<input class="flat-checkbox" id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
+                            </div>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
                     </form>

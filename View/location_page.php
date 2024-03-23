@@ -67,8 +67,12 @@
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="location-main-form">
                             <h3 id="form-title">Formulaire pour un lieu</h3>
-                            <label>Designation: <input id="form-location-design" name="form-location-design" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>        <br></label>
-                            <label>Province: <input id="form-location-province" name="form-location-province" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>       <br></label>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Designation: <input class="form-field-value" id="form-location-design" name="form-location-design" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>        <br></label>
+                            </div>
+                            <div class="form-field-container">
+                                <label class="form-field-label">Province: <input class="form-field-value" id="form-location-province" name="form-location-province" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>       <br></label>
+                            </div>
                             <input type="submit" value="Confirmer">
                             <input type="reset" value="Réinitaliser">
                     </form>
