@@ -30,6 +30,9 @@
                     </ul>
                 </nav>
             </div>
+            <div class="page-title">
+                Employés
+            </div>
         </header>
 
         <!-- SEARCH BAR AREA -->

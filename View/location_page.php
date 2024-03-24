@@ -29,6 +29,9 @@
                     </ul>
                 </nav>
             </div>
+            <div class="page-title">
+                Lieux
+            </div>
         </header>
 
         <!-- TABLE LISTING DATA -->

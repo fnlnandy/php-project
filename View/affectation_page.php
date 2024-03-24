@@ -31,12 +31,15 @@
                     </ul>
                 </nav>
             </div>
+            <div class="page-title">
+                Affectations
+            </div>
         </header>
 
         <main class="page-main-content">
             <!-- SEARCH BAR AREA -->
             <div class="search-bar-outer-container space-top-element space-bottom-element">
-                <form id="affect-based-on-dates-form" method="get">
+                <form id="affect-based-on-dates-form" class="search-bar-inner-container" method="get">
                     <div class="search-bar-field-wrapper">
                         <label>Date de début: <input class="search-bar-component" type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
                     </div>

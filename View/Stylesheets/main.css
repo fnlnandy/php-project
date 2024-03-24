@@ -27,37 +27,13 @@ main {
     position: relative;
 }
 
-/* .force-center-elements {
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.page-title {
+    z-index: 255;
+    top: 15px;
+    left: 70px;
+    position: fixed;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
 }
-
-.clent-side-database {
-    display: none;
-    background-color: white;
-}
-
-.clent-side-database * {
-    background-color: transparent;
-}
-
-.space-top-element {
-    margin-top: 5%;
-}
-
-.space-bottom-element {
-    margin-bottom: 5%;
-}
-
-.space-left-element {
-    margin-left: 5%;
-}
-
-.space-right-element {
-    margin-right: 5%;
-}
-
-.space-element {
-    margin: 5%;
-} */
