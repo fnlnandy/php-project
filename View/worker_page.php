@@ -153,7 +153,7 @@
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
         <dialog id="affect-list-dialog-container">
-            <p onclick="CloseFormDialog('affect-list-dialog-container')" class="form-quit-button button-highlight-red"></p>
+            <p onclick="UnscheduleListing()" class="form-quit-button button-highlight-red"></p>
             <h3 id="affect-list-title"></h3>
             <div id="worker-affects-list-outer-container" class="table-list-outer-container">
                 <table id="worker-affects-list-inner-container" class="table-list-inner-container">

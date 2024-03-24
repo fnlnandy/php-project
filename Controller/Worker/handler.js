@@ -207,13 +207,16 @@ function HighlightCurrentWorker()
 {
     var url = new URL(window.location.href);
     var workerIdValue = url.searchParams.get('worker-id');
+    var scheduledListing = url.searchParams.get("list-scheduled")
     var affectListTitle = document.getElementById("affect-list-title");
 
     affectListTitle.innerText = "Liste des affectations de l'employé(e) N " + workerIdValue;
 
     if (workerIdValue != null) {
         UpdateDataTracker(workerIdValue, false);
-        DisplayFormDialog("affect-list-dialog-container")
+    }
+    if (scheduledListing != null && scheduledListing == 'true') {
+        DisplayFormDialog("affect-list-dialog-container");
     }
 }
 
@@ -224,8 +227,17 @@ function DisplayCurrentEmployeeAffectation()
 {
     var id = document.getElementById("worker-id");
     var url = new URL(window.location.href);
-    var workerIdValue = url.searchParams.get('worker-id');
     
     url.searchParams.set("worker-id", id.value);
+    url.searchParams.set("list-scheduled", "true");
+    location.replace(url.href);
+}
+
+function UnscheduleListing()
+{
+    var url = new URL(window.location.href);
+
+    CloseFormDialog("affect-list-dialog-container");
+    url.searchParams.set("list-scheduled", "false");
     location.replace(url.href);
 }
