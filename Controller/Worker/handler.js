@@ -227,6 +227,11 @@ function DisplayCurrentEmployeeAffectation()
 {
     var id = document.getElementById("worker-id");
     var url = new URL(window.location.href);
+
+    if (id.value == "" || id.value == "0") {
+        alert("Séléctionnez un employé valide.");
+        return;
+    }
     
     url.searchParams.set("worker-id", id.value);
     url.searchParams.set("list-scheduled", "true");
