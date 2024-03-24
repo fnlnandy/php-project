@@ -81,8 +81,10 @@ class AffectPDFGen {
         $dataReceived = XMLHttpRequest::DecodeJson();
 
         // Checking if there's any ID, i.e. if the data received is valid
-        if (!SQLQuery::DoKeysExistInArray($dataReceived, "id") || intval($dataReceived["id"]) <= 0)
+        if (!SQLQuery::DoKeysExistInArray($dataReceived, "id", "realPath") || intval($dataReceived["id"]) <= 0) {
+            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist");
             return;
+        }
 
         // Data from the database
         $numAffect    = $dataReceived["id"];
@@ -118,12 +120,13 @@ class AffectPDFGen {
                                                                                                 // automatically check for text overflows
 
         mkdir("../../PDFs"); // Creates the PDFs directory if it doesn't exist already
-        $attestationPDFFile->Output("../../PDFs/arrete_{$numAffect}.pdf", 'F', true); // Output file
+        DebugUtil::LogIntoFile(__FILE__, __LINE__, $attestationPDFFile->Output($dataReceived['realPath'], 'F', true)); // Output file
     }
 }
 
 /**
  * This file's main function
  */
+DebugUtil::LogIntoFile(__FILE__, __LINE__, "HELLO!");
 AffectPDFGen::TryGeneratePDFFile();
 ?>

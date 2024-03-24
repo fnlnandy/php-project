@@ -206,5 +206,23 @@ function TryGeneratePDF()
         return;
     }
 
-    SendXMLHttpRequest(gAffectationDataTracker, "../Controller/Affectation/pdf_generator.php");
+    DisplayFormDialog("pdf-file-dialog");
+}
+
+function SubmitPDFForm()
+{
+    var pdfPath = document.getElementById("pdf-path-field");
+    var pdfName = document.getElementById("pdf-name-field");
+
+    if (pdfPath.value.trim() == "" || pdfName.value.trim() == "") {
+        return;
+    }
+
+    var dataToSend = {
+        id: gAffectationDataTracker.id,
+        realPath: pdfPath + '/' + pdfName
+    };
+
+    console.log(dataToSend);
+    SendXMLHttpRequest(dataToSend, "../Controller/Affectation/pdf_generator.php");
 }

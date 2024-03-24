@@ -127,7 +127,26 @@
                     </form>
                 </span>
             </div>
-        <dialog>
+        </dialog>
+
+        <dialog id="pdf-file-dialog">
+            <p onclick="CloseFormDialog('pdf-file-dialog')" class="form-quit-button button-highlight-red"></p>
+                <form onsubmit="event.preventDefault(); SubmitPDFForm();" method="post" id="pdf-main-form">
+                        <h3 id="form-title">Informations du Fichier PDF</h3>
+                        <div class="form-field-container">
+                            <label class="form-field-label">Emplacement de stockage:
+                                <input id="pdf-path-field" name="pdf-path-field" class="form-field-value" type="text" required>
+                            <br></label>
+                        </div>
+                        <div class="form-field-container">
+                            <label class="form-field-label">Nom du fichier:
+                                <input id="pdf-name-field" name="pdf-name-field" class="form-field-value" type="text" required>
+                            <br></label>
+                        </div>
+                        <input class="button-highlight-green" type="submit" value="Confirmer">
+                        <input class="button-highlight-red" type="reset" value="Réinitaliser">
+                </form>
+        </dialog>
 
         <!-- JAVASCRIPT SCRIPTS -->
         <script src="../Controller/main_handler.js"></script>
