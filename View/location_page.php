@@ -14,8 +14,6 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="../Controller/main_handler.js"></script>
-        <script src="../Controller/Location/handler.js"></script>
         
         <!-- NAVIGATION MENU -->
         <header class="page-header">
@@ -81,5 +79,9 @@
                 </span>
             </div>
         </dialog>
+
+        <!-- JAVASCRIPT SCRIPTS -->
+        <script src="../Controller/main_handler.js"></script>
+        <script src="../Controller/Location/handler.js"></script>
     </body>
 </html>

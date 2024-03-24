@@ -14,8 +14,6 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="../Controller/main_handler.js"></script>
-        <script src="../Controller/Affectation/handler.js"></script>
         <?php include_once("ClientDBs/workerrel.php");
               include_once("ClientDBs/locationrel.php"); ?>
         
@@ -127,5 +125,9 @@
                 </span>
             </div>
         <dialog>
+
+        <!-- JAVASCRIPT SCRIPTS -->
+        <script src="../Controller/main_handler.js"></script>
+        <script src="../Controller/Affectation/handler.js"></script>
     </body>
 </html>

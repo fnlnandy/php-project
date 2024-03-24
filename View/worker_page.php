@@ -14,8 +14,6 @@
     </head>
     <body>
         <!-- INCLUDES -->
-        <script src="../Controller/main_handler.js"></script> 
-        <script src="../Controller/Worker/handler.js"></script>
         <?php include_once("ClientDBs/locationrel.php"); ?>
         
         <!-- NAVIGATION MENU -->
@@ -174,5 +172,9 @@
                 ?>
             </table>
         </div>
+
+        <!-- JAVASCRIPT SCRIPTS -->
+        <script src="../Controller/main_handler.js"></script> 
+        <script src="../Controller/Worker/handler.js"></script>
     </body>
 </html>
