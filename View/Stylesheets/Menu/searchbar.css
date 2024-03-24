@@ -37,6 +37,13 @@ input[type="date"].search-bar-component {
     position: relative;
 }
 
+.search-bar-inner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .search-bar-field-wrapper {
     float: left;
     display: flex;
