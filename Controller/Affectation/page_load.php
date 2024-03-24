@@ -87,6 +87,9 @@ class AffectationPageLoadConditions
             $oldLocRow = SQLQuery::ProcessResultAsAssocArray($oldLocResult, "Design", "Province");
             $newLocRow = SQLQuery::ProcessResultAsAssocArray($newLocResult, "Design", "Province");
 
+            $affectDate = new DateTime($row["DateAffect"]);
+            $serviceDate = new DateTime($row["DatePriseService"]);
+
             if (is_null($workerRow) || is_null($oldLocRow) || is_null($newLocRow))
                 continue;
 
@@ -99,8 +102,8 @@ class AffectationPageLoadConditions
             echo "<td>".$workerRow["Nom"]." ".$workerRow["Prenom"]."</td>";
             echo "<td> {$oldLocRow['Design']} ({$oldLocRow['Province']})</td>";
             echo "<td> {$newLocRow['Design']} ({$newLocRow['Province']})</td>";
-            echo "<td>".$row["DateAffect"]."</td>";
-            echo "<td>".$row["DatePriseService"]."</td>";
+            echo "<td>{$affectDate->format('d/m/Y')}</td>";
+            echo "<td>{$serviceDate->format('d/m/Y')}</td>";
 
             // Closing the current row
             echo "</tr>";

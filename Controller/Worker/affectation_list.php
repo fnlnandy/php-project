@@ -28,14 +28,17 @@ class AffectationList {
             $oldLocData = SQLQuery::ProcessResultAsAssocArray($oldLocRes, 'Design', 'Province');
             $newLocData = SQLQuery::ProcessResultAsAssocArray($newLocRes, 'Design', 'Province');
 
+            $affectDate = new DateTime($row['DateAffect']);
+            $serviceDate = new DateTime($row['DatePriseService']);
+
             if (is_null($oldLocData) || is_null($newLocData))
                 continue;
 
             echo "<td>{$row['NumAffect']}</td>";
             echo "<td>{$oldLocData['Design']} ({$oldLocData['Province']})</td>";
             echo "<td>{$newLocData['Design']} ({$newLocData['Province']})</td>";
-            echo "<td>{$row['DateAffect']}</td>";
-            echo "<td>{$row['DatePriseService']}</td>";
+            echo "<td>{$affectDate->format('d/m/Y')}</td>";
+            echo "<td>{$serviceDate->format('d/m/Y')}</td>";
 
             echo "</tr>";
         }
