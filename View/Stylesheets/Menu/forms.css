@@ -13,8 +13,8 @@ Source: https://uiverse.io/zanina-yassine/angry-shrimp-34
 }
 
 .form-field-label {
-    font-size: 10px;
-    color: #8B8E98;
+    font-size: 13px;
+    color: #000000;
     font-weight: 600;
 }
 
@@ -26,7 +26,8 @@ Source: https://uiverse.io/zanina-yassine/angry-shrimp-34
     outline: none;
     background-color: #F2F2F2;
     border: 1px solid #e5e5e500;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    text-align: center;
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 

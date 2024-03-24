@@ -38,7 +38,9 @@
         <main class="page-main-content">
             <div class="search-bar-outer-container space-top-element">
                 <form class="search-bar-inner-container" method="get">
-                    <label>Affectés
+                    <div class="search-bar-field-wrapper">
+                    <label for="search-bar-show-affected">Affectés
+                    </label>
                     <input class="flat-checkbox" type="checkbox" id="search-bar-show-affected" name="search-bar-show-affected" onchange="UpdateUnaffectedCheck()"
                     <?php 
                         $checked = "";
@@ -48,8 +50,10 @@
                         
                         echo $checked;
                     ?>>
+                    </div>
+                    <div class="search-bar-field-wrapper">
+                    <label for="search-bar-show-unaffected">Non affectés
                     </label>
-                    <label>Non affectés
                     <input class="flat-checkbox" type="checkbox" id="search-bar-show-unaffected" name="search-bar-show-unaffected" onchange="UpdateAffectedCheck()"
                     <?php 
                         $checked = "";
@@ -59,7 +63,8 @@
 
                         echo $checked;
                     ?>>
-                    </label>
+                    </div>
+                    <div class="search-bar-field-wrapper">
                     <?php
                         // Reloading the value searched on refresh
                         $value = "";
@@ -69,7 +74,8 @@
 
                         $searchBar = "<input class=\"search-bar-component\" type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le Prénom...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
                         echo $searchBar;
-                    ?>              
+                    ?>
+                    </div>    
                     <input type="submit" value="Rechercher parmis les employés">
                 </form>
             </div>
@@ -77,7 +83,7 @@
         <!-- TABLE LISTING DATA -->
         <div class="table-list-outer-container space-top-element">
             <table class="table-list-inner-container">
-                <tr class="table-header-row" class="table-list-inner-container">
+                <tr class="table-header-row">
                     <th>Numéro d'employé</th>
                     <th>Civilité</th>
                     <th>Nom</th>

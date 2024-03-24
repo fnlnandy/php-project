@@ -45,7 +45,7 @@
 
                     <?php
                         include_once("../Models/table_helpers.php");
-                        TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "location-table-row");
+                        TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "inner-table-row");
                     ?>
                 </table>
             </div>

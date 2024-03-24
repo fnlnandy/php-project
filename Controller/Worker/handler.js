@@ -18,7 +18,7 @@ var gWorkerDataTracker = {
  */
 function UpdateDataTracker(id, mode)
 {
-    var workerTableRows    = document.getElementsByClassName("worker-table-row");
+    var workerTableRows    = document.getElementsByClassName("inner-table-row");
     var affectCurrWorkerId = document.getElementById("worker-id");
 
     // Update the global data tracker for later use
@@ -84,7 +84,7 @@ function EditWorker()
     var workerPostField         = document.getElementById("form-worker-post");
     var workerLocationField     = document.getElementById("form-worker-location");
     var infoWorkerLocationField = document.getElementById("form-info-worker-location");
-    var workerTableRows         = document.getElementsByClassName("worker-table-row");
+    var workerTableRows         = document.getElementsByClassName("inner-table-row");
 
     // No valid data/row was selected
     if (gWorkerDataTracker.id <= 0) {

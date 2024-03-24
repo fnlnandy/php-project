@@ -1,0 +1,12 @@
+#form-dialog-container {
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: block;
+    border-radius: 10px;
+    z-index: -1;
+    display: none;
+    background-color: rgb(158, 158, 158);
+    border: 0px;
+    border-radius: 10px;
+    box-shadow: black 5px 5px 10px;
+}

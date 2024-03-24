@@ -15,7 +15,7 @@ var gLocationDataTracker = {
 function UpdateDataTracker(id, mode)
 {
     // Updating the global data tracker for later use
-    var locationTableRows   = document.getElementsByClassName("location-table-row");
+    var locationTableRows   = document.getElementsByClassName("inner-table-row");
     gLocationDataTracker.id = (id < 0 ? 0 : id);
     gLocationDataTracker.isEditMode = mode;
 
@@ -62,7 +62,7 @@ function EditLocation()
 {
     var locationDesignField   = document.getElementById("form-location-design");
     var locationProvinceField = document.getElementById("form-location-province");
-    var locationTableRows     = document.getElementsByClassName("location-table-row");
+    var locationTableRows     = document.getElementsByClassName("inner-table-row");
 
     // No valid data was selected
     if (gLocationDataTracker.id <= 0) {

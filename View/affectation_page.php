@@ -39,10 +39,18 @@
             <!-- SEARCH BAR AREA -->
             <div class="search-bar-outer-container space-top-element space-bottom-element">
                 <form id="affect-based-on-dates-form" method="get">
-                    <label>Date de début: <input class="search-bar-component" type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
-                    <label>Date de fin: <input class="search-bar-component" type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
-                    <label>Par date d'affectation<input class="flat-checkbox" type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>></label>
-                    <label>Par date de prise de service<input class="flat-checkbox" type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>></label>
+                    <div class="search-bar-field-wrapper">
+                        <label>Date de début: <input class="search-bar-component" type="date" id="search-bar-date-begin" name="search-bar-date-begin" <?php if (key_exists('search-bar-date-begin', $_GET) && $_GET['search-bar-date-begin'] != "") { echo "value=\"{$_GET['search-bar-date-begin']}\""; }  ?>></label>
+                    </div>
+                    <div class="search-bar-field-wrapper">
+                        <label>Date de fin: <input class="search-bar-component" type="date" id="search-bar-date-end" name="search-bar-date-end" <?php if (key_exists('search-bar-date-end', $_GET) && $_GET['search-bar-date-end'] != "") { echo "value=\"{$_GET['search-bar-date-end']}\""; }  ?>></label>
+                    </div>
+                    <div class="search-bar-field-wrapper">
+                        <label for="search-date-affect-based">Par date<br>d'affectation</label><input class="flat-checkbox" type="checkbox" id="search-date-affect-based" name="search-date-affect-based" <?php if (key_exists('search-date-affect-based', $_GET) && $_GET['search-date-affect-based'] == 'on') echo "checked"; ?>>
+                    </div>
+                    <div class="search-bar-field-wrapper">
+                        <label for="search-date-ps-based">Par date<br>de prise de service</label><input class="flat-checkbox" type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>>
+                    </div>
                     <input type="submit" value="Trier les affectations">
                 </form>
             </div>

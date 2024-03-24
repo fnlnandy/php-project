@@ -92,7 +92,7 @@ class AffectationPageLoadConditions
 
             // The current row, contains a call to the JavaScript function supposed to update
             // the data tracker for the Edit and Delete functions on the table
-            echo "<tr class=\"affectation-table-row\" onclick=\"UpdateDataTracker(".strval($affectCounter).", true)\">";
+            echo "<tr class=\"inner-table-row\" onclick=\"UpdateDataTracker(".strval($affectCounter).", true)\">";
 
             // The table's elements
             echo "<td>".$row["NumAffect"]."</td>";

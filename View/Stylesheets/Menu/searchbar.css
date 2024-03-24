@@ -3,7 +3,7 @@ Source: https://uiverse.io/alexruix/slippery-frog-10
 */
 
 .search-bar-component {
-    height: 40px;
+    height: 30px;
     line-height: 28px;
     padding: 0 1rem;
     border: 2px solid transparent;
@@ -27,4 +27,30 @@ input[type="date"].search-bar-component {
     border-color: rgba(95, 95, 95, 0.4);
     background-color: #fff;
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.search-bar-outer-container label {
+    font-size: 15px;
+    font-weight: 500px;
+    text-transform: uppercase;
+    top: 0%;
+    position: relative;
+}
+
+.search-bar-field-wrapper {
+    float: left;
+    display: flex;
+    background-color: white;
+    box-shadow: black 5px 5px 10px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 5px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar-field-wrapper input[type="checkbox"] {
+    top: 0%;
+    position: relative;
 }

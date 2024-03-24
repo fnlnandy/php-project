@@ -18,6 +18,7 @@ Source: https://uiverse.io/andrew-demchenk0/silent-duck-2
     gap: 20px;
     cursor: pointer;
     transition: background 0.3s ease;
+    box-shadow: black 5px 5px 10px;
 }
 
 .main-menu-card:hover {
