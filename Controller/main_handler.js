@@ -43,6 +43,11 @@ function ReloadPageWithTimeStamp()
 function SendXMLHttpRequest(dataToSend, dest) {
     ReloadPageWithTimeStamp();
     var req = new XMLHttpRequest();
+    var result = {
+        err: false,
+        text: "",
+        errText: ""
+    }
 
     req.open("POST", dest);              // We prepare the destination file
     req.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
@@ -50,7 +55,19 @@ function SendXMLHttpRequest(dataToSend, dest) {
         console.log(req.responseText);
         ReloadPageWithTimeStamp();
     };
-    req.onreadystatechange = () => { ReloadPageWithTimeStamp(); };
+    req.onerror = () => {
+        console.error("Request failed.");
+    };
+    req.onreadystatechange = () => { 
+        if (req.readyState == req.DONE) {
+            result.err = (req.status == 200);
+            result.text = req.responseText;
+            result.errText = req.statusText;
+
+            return result;
+        }
+        ReloadPageWithTimeStamp(); 
+    };
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
     console.log("Before updating the URL.");
     ReloadPageWithTimeStamp();
