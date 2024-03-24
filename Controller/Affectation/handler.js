@@ -206,5 +206,22 @@ function TryGeneratePDF()
         return;
     }
 
-    SendXMLHttpRequest(gAffectationDataTracker, "../Controller/Affectation/pdf_generator.php");
+    DisplayFormDialog("pdf-file-dialog");
+}
+
+function SubmitPDFForm()
+{
+    var pdfName = document.getElementById("pdf-name-field");
+
+    if (pdfName.value.trim() == "") {
+        return;
+    }
+
+    var dataToSend = {
+        id: gAffectationDataTracker.id,
+        realPath: pdfName.value
+    };
+
+    console.log(dataToSend);
+    SendXMLHttpRequest(dataToSend, "../Controller/Affectation/pdf_generator.php", "Le dossier 'PDFs' n'existe pas ou est protégé en écriture.");
 }

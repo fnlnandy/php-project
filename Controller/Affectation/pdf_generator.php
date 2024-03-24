@@ -81,8 +81,10 @@ class AffectPDFGen {
         $dataReceived = XMLHttpRequest::DecodeJson();
 
         // Checking if there's any ID, i.e. if the data received is valid
-        if (!SQLQuery::DoKeysExistInArray($dataReceived, "id") || intval($dataReceived["id"]) <= 0)
+        if (!SQLQuery::DoKeysExistInArray($dataReceived, "id", "realPath") || intval($dataReceived["id"]) <= 0) {
+            DebugUtil::LogIntoFile(__FILE__, __LINE__, "Keys don't exist");
             return;
+        }
 
         // Data from the database
         $numAffect    = $dataReceived["id"];
@@ -118,8 +120,7 @@ class AffectPDFGen {
             $attestationPDFFile->MultiCell(0, 10, mb_convert_encoding($pdfContent, 'ISO-8859-1', 'UTF-8'), 0); // Writing line by line as it doesn't
                                                                                                     // automatically check for text overflows
 
-            mkdir("../../PDFs"); // Creates the PDFs directory if it doesn't exist already
-            $attestationPDFFile->Output("../../PDFs/arrete_{$numAffect}.pdf", 'F', true); // Output file
+            $attestationPDFFile->Output("../../PDFs/".$dataReceived['realPath'], 'F', true); // Output file
         } catch (Exception $e) {
             echo $e;
         }
@@ -129,6 +130,5 @@ class AffectPDFGen {
 /**
  * This file's main function
  */
-echo "HELLO ???";
 AffectPDFGen::TryGeneratePDFFile();
 ?>

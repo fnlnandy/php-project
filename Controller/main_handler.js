@@ -40,7 +40,7 @@ function ReloadPageWithTimeStamp()
  * response is just logged, but we rarely
  * are able to use that response
  */
-function SendXMLHttpRequest(dataToSend, dest) {
+function SendXMLHttpRequest(dataToSend, dest, err = "Erreur inconnue.") {
     ReloadPageWithTimeStamp();
     var req = new XMLHttpRequest();
     var result = {
@@ -60,9 +60,13 @@ function SendXMLHttpRequest(dataToSend, dest) {
     };
     req.onreadystatechange = () => { 
         if (req.readyState == req.DONE) {
-            result.err = (req.status == 200);
+            result.err = (req.status != 200);
             result.text = req.responseText;
             result.errText = req.statusText;
+
+            if (result.err == true) {
+                alert(err);
+            }
 
             return result;
         }

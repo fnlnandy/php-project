@@ -1,5 +1,6 @@
 #form-dialog-container,
-#affect-list-dialog-container {
+#affect-list-dialog-container,
+#pdf-file-dialog {
     opacity: 0;
     transition: opacity 0.3s;
     display: block;
