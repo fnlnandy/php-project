@@ -74,7 +74,7 @@
                         echo $searchBar;
                     ?>
                     </div>    
-                    <input type="submit" value="Rechercher parmis les employés">
+                    <input class="button-highlight-blue" type="submit" value="Rechercher parmis les employés">
                 </form>
             </div>
 
@@ -114,7 +114,7 @@
 
         <!-- DATA FILLING FORM -->
         <dialog id="form-dialog-container">
-            <p onclick="CloseFormDialog()" class="form-quit-button"></p>
+            <p onclick="CloseFormDialog()" class="form-quit-button button-highlight-red"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="worker-main-form">
@@ -144,8 +144,8 @@
                                 <select class="form-field-value" id="form-info-worker-location" name="form-info-worker-location" onchange="UpdateFormMatchingSelects(false, 'form-worker-location', 'form-info-worker-location')" required><?php LocationSelectOptions::PopulateSelectOptionNames(); ?></select>
                             <br></label>
                         </div>
-                        <input type="submit" value="Confirmer">
-                        <input type="reset" value="Réinitaliser">
+                        <input class="button-highlight-green" type="submit" value="Confirmer">
+                        <input class="button-highlight-red" type="reset" value="Réinitaliser">
                     </form>
                 </span>
             </div>
@@ -153,9 +153,8 @@
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
         <dialog id="affect-list-dialog-container">
-            <p onclick="CloseFormDialog('affect-list-dialog-container')" class="form-quit-button"></p>
+            <p onclick="CloseFormDialog('affect-list-dialog-container')" class="form-quit-button button-highlight-red"></p>
             <h3 id="affect-list-title"></h3>
-            <p id="scheduled-flag" hidden>false</p>
             <div id="worker-affects-list-outer-container" class="table-list-outer-container">
                 <table id="worker-affects-list-inner-container" class="table-list-inner-container">
                     <tr class="table-header-row">

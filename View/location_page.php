@@ -62,7 +62,7 @@
 
         <!-- DATA FILLING FORM -->
         <dialog id="form-dialog-container">
-        <p onclick="CloseFormDialog()" class="form-quit-button"></p>
+        <p onclick="CloseFormDialog()" class="form-quit-button button-highlight-red"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="location-main-form">
@@ -73,8 +73,8 @@
                             <div class="form-field-container">
                                 <label class="form-field-label">Province: <input class="form-field-value" id="form-location-province" name="form-location-province" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>       <br></label>
                             </div>
-                            <input type="submit" value="Confirmer">
-                            <input type="reset" value="Réinitaliser">
+                            <input class="button-highlight-green" type="submit" value="Confirmer">
+                            <input class="button-highlight-red" type="reset" value="Réinitaliser">
                     </form>
                 </span>
             </div>

@@ -87,7 +87,7 @@
 
         <!-- DATA FILLING FORM -->
         <dialog id="form-dialog-container">
-            <p onclick="CloseFormDialog()" class="form-quit-button"></p>
+            <p onclick="CloseFormDialog()" class="form-quit-button button-highlight-red"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
                     <form onsubmit="SubmitForm()" method="post" id="affectation-main-form">
