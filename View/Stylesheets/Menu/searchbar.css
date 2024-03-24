@@ -41,7 +41,7 @@ input[type="date"].search-bar-component {
     float: left;
     display: flex;
     background-color: white;
-    box-shadow: black 5px 5px 10px;
+    box-shadow: black 2px 2px 6px;
     border-radius: 10px;
     padding: 5px;
     margin-left: 5px;

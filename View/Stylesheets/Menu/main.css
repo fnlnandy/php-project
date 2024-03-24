@@ -2,4 +2,5 @@
 @import url("searchbar.css");
 @import url("buttons.css");
 @import url("forms.css");
-@import url("dialogs.css")
+@import url("dialogs.css");
+@import url("crud_actions.css");

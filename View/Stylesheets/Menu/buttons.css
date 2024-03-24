@@ -5,7 +5,7 @@ Source: https://uiverse.io/cssbuttons-io/stale-rattlesnake-87
 input[type="submit"],
 input[type="reset"],
 button {
-    padding: 1.3em 3em;
+    padding: 10px;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
@@ -13,19 +13,29 @@ button {
     color: #000;
     background-color: #fff;
     border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: black 2px 2px 6px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     margin: 3px;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-button:hover {
+.button-highlight-green:hover {
     background-color: #23c483;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+}
+
+.button-highlight-blue:hover {
+    background-color: #236ec4;
+    box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
+    color: #fff;
+}
+
+.button-highlight-red:hover {
+    background-color: #c42323;
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
     color: #fff;
 }
 

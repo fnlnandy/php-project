@@ -51,37 +51,39 @@
                     <div class="search-bar-field-wrapper">
                         <label for="search-date-ps-based">Par date<br>de prise de service</label><input class="flat-checkbox" type="checkbox" id="search-date-ps-based" name="search-date-ps-based" <?php if (key_exists('search-date-ps-based', $_GET) && $_GET['search-date-ps-based'] == 'on') echo "checked"; ?>>
                     </div>
-                    <input type="submit" value="Trier les affectations">
+                    <input class="button-highlight-blue" type="submit" value="Trier les affectations">
                 </form>
             </div>
 
             <!-- TABLE LISTING DATA -->
             <div class="table-list-outer-container space-top-element">
-                <table class="table-list-inner-container">
-                    <tr class="table-header-row">
-                        <th>Numéro d'affectation</th>
-                        <th>Employé</th>
-                        <th>Ancien lieu</th>
-                        <th>Nouveau lieu</th>
-                        <th>Date d'affectation</th>
-                        <th>Date de prise de service</th>
-                    </tr>
+                <div class = "table-list-padder">
+                    <table class="table-list-inner-container">
+                        <tr class="table-header-row">
+                            <th>Numéro d'affectation</th>
+                            <th>Employé</th>
+                            <th>Ancien lieu</th>
+                            <th>Nouveau lieu</th>
+                            <th>Date d'affectation</th>
+                            <th>Date de prise de service</th>
+                        </tr>
 
-                    <?php
-                    include_once("../Controller/Affectation/page_load.php");
-                    AffectationPageLoadConditions::PopulateAffectationList();
-                    ?>
-                </table>
+                        <?php
+                        include_once("../Controller/Affectation/page_load.php");
+                        AffectationPageLoadConditions::PopulateAffectationList();
+                        ?>
+                    </table>
+                </div>
             </div>
 
             <!-- CRUD OPERATIONS BUTTONS -->
-            <div class="force-center-elements space-top-element">
-                <span class="crud-actions-container">
-                    <button onclick="AddAffectation()">Ajouter</button>
-                    <button onclick="EditAffectation()">Modifier</button>
-                    <button onclick="RemoveAffectationEntry()">Supprimer</button>
-                    <button onclick="TryGeneratePDF()">Generer un PDF</button>
-                </span>
+            <div id="crud-actions-movable" class="crud-actions-wrapper">
+                <div class="crud-actions-container">
+                    <button class="button-highlight-green" onclick="AddAffectation()">Ajouter</button>
+                    <button class="button-highlight-blue" onclick="EditAffectation()">Modifier</button>
+                    <button class="button-highlight-red" onclick="RemoveAffectationEntry()">Supprimer</button>
+                    <button class="button-highlight-blue" onclick="TryGeneratePDF()">Generer un PDF</button>
+                </div>
             </div>
         </main>
 
@@ -119,8 +121,8 @@
                             <div class="form-field-container">
                                 <label class="form-field-label">Notifier l'employé par e-mail<input class="flat-checkbox" id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
                             </div>
-                            <input type="submit" value="Confirmer">
-                            <input type="reset" value="Réinitaliser">
+                            <input class="button-highlight-green" type="submit" value="Confirmer">
+                            <input class="button-highlight-red" type="reset" value="Réinitaliser">
                     </form>
                 </span>
             </div>

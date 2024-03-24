@@ -36,22 +36,24 @@
         <!-- TABLE LISTING DATA -->
         <main class="page-main-content">
             <div class="table-list-outer-container space-top-element">
-                <table class="table-list-inner-container">
-                    <tr class="table-header-row">
-                        <th>ID du lieu</th>
-                        <th>Designation</th>
-                        <th>Province</th>
-                    </tr>
+                <div class="table-list-padder">
+                    <table class="table-list-inner-container">
+                        <tr class="table-header-row">
+                            <th>ID du lieu</th>
+                            <th>Designation</th>
+                            <th>Province</th>
+                        </tr>
 
-                    <?php
-                        include_once("../Models/table_helpers.php");
-                        TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "inner-table-row");
-                    ?>
-                </table>
+                        <?php
+                            include_once("../Models/table_helpers.php");
+                            TableHelper::PopulateTableElementWithDatabseData("LIEU", "IDLieu", "inner-table-row");
+                        ?>
+                    </table>
+                </div>
             </div>
 
             <!-- CRUD OPERATIONS BUTTONS -->
-            <div class="force-center-elements space-top-element">
+            <div id="crud-actions-movable" class="crud-actions-wrapper">
                 <span class="crud-actions-container">
                     <button onclick="AddLocation()">Ajouter</button>
                     <button onclick="EditLocation()">Modifier</button>

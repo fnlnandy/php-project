@@ -1,0 +1,17 @@
+.crud-actions-container * {
+    float: left;
+}
+
+.crud-actions-wrapper {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 255;
+    bottom: 25%;
+    background-color: gray;
+    border-radius: 25px;
+}

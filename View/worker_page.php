@@ -82,26 +82,28 @@
 
         <!-- TABLE LISTING DATA -->
         <div class="table-list-outer-container space-top-element">
-            <table class="table-list-inner-container">
-                <tr class="table-header-row">
-                    <th>Numéro d'employé</th>
-                    <th>Civilité</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse e-mail</th>
-                    <th>Poste</th>
-                    <th>Lieu</th>
-                </tr>
+            <div class="table-list-padder">
+                <table class="table-list-inner-container">
+                    <tr class="table-header-row">
+                        <th>Numéro d'employé</th>
+                        <th>Civilité</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Adresse e-mail</th>
+                        <th>Poste</th>
+                        <th>Lieu</th>
+                    </tr>
 
-                <?php
-                    include_once("../Controller/Worker/page_load.php");
-                    WorkerPageConditions::PopulateWorkersAfterTaskConditions();
-                ?>
-            </table>
+                    <?php
+                        include_once("../Controller/Worker/page_load.php");
+                        WorkerPageConditions::PopulateWorkersAfterTaskConditions();
+                    ?>
+                </table>
+            </div>
         </div>
 
         <!-- CRUD OPERATIONS BUTTONS -->
-        <div class="force-center-elements space-top-element">
+        <div id="crud-actions-movable" class="crud-actions-wrapper">
             <span class="crud-actions-container">
                 <button onclick="AddWorker()">Ajouter</button>
                 <button onclick="EditWorker()">Modifier</button>
