@@ -142,8 +142,8 @@ function EditAffectation()
             infoOldLocField.selectedIndex = oldLocIndex;
             newLocField.selectedIndex     = newLocIndex;
             infoNewLocField.selectedIndex = newLocIndex;
-            dateAffectField.value         = columnsInRow[4].innerText;
-            datePriseServiceField.value   = columnsInRow[5].innerText;
+            dateAffectField.value         = FormatDMYDate(columnsInRow[4].innerText);
+            datePriseServiceField.value   = FormatDMYDate(columnsInRow[5].innerText);
 
             break;
         }

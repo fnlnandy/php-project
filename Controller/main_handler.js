@@ -169,3 +169,15 @@ function UpdateFormMatchingSelects(idIsBase, idName, infoName)
         idField.selectedIndex = infoField.selectedIndex;
     }
 }
+
+function FormatDMYDate(date)
+{
+    var parts = date.split('/');
+
+    var day = parts[0];
+    var month = parts[1];
+    var year = parts[2];
+    var valid = year + '-' + month + '-' + day;
+
+    return valid;
+}
