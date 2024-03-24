@@ -68,7 +68,7 @@
         <p onclick="CloseFormDialog()" class="form-quit-button button-highlight-red"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
-                    <form onsubmit="SubmitForm()" method="post" id="location-main-form">
+                    <form onsubmit="event.preventDefault(); SubmitForm();" method="post" id="location-main-form">
                             <h3 id="form-title">Formulaire pour un lieu</h3>
                             <div class="form-field-container">
                                 <label class="form-field-label">Designation: <input class="form-field-value" id="form-location-design" name="form-location-design" type="text" maxlength="30" pattern="[a-zA-Z ]+" required>        <br></label>

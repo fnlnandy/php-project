@@ -120,7 +120,7 @@
             <p onclick="CloseFormDialog()" class="form-quit-button button-highlight-red"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
-                    <form onsubmit="SubmitForm()" method="post" id="worker-main-form">
+                    <form onsubmit="event.preventDefault(); SubmitForm();" method="post" id="worker-main-form">
                         <h3 id="form-title">Formulaire pour un employé</h3>
                         <div class="form-field-container">
                             <label class="form-field-label">Civilité: <select class="form-field-value" id="form-worker-civility" name="form-worker-civility" required>

@@ -93,7 +93,7 @@
             <p onclick="CloseFormDialog()" class="form-quit-button button-highlight-red"></p>
             <div class="force-center-elements">
                 <span class="form-inner-container">
-                    <form onsubmit="SubmitForm()" method="post" id="affectation-main-form">
+                    <form onsubmit="event.preventDefault(); SubmitForm();" method="post" id="affectation-main-form">
                             <h3 id="form-title">Formulaire pour une affectation</h3>
                             <div class="form-field-container">
                                 <label class="form-field-label">Employé: 
