@@ -57,6 +57,7 @@ Source: https://uiverse.io/andrew-demchenk0/silent-duck-2
     font-weight: 600;
     font-size: 25px;
     color: var(--main-color);
+    text-transform: uppercase;
 }
 
 .main-menu-card-description {

@@ -1,0 +1,9 @@
+.table-header-row {
+    background-color: rgb(66, 66, 66);
+}
+
+.table-header-row th {
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: black 2px 2px 5px;
+}
