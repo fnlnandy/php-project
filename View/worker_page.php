@@ -106,10 +106,8 @@
                 <button class="button-highlight-green" onclick="AddWorker()">Ajouter</button>
                 <button class="button-highlight-blue" onclick="EditWorker()">Modifier</button>
                 <button class="button-highlight-red" onclick="RemoveWorker()">Supprimer</button>
-                <form id="worker-affects-list-form" method="get">
-                    <input class="button-highlight-blue" type="submit" value="Afficher les affectations">
-                    <input type="number" id="worker-id" name="worker-id" readonly hidden>
-                </form>
+                <button onclick="DisplayCurrentEmployeeAffectation()" class="button-highlight-blue">Afficher les affectations</button>
+                <input type="number" id="worker-id" name="worker-id" readonly hidden>
             </span>
         </div>
         </main>
@@ -154,24 +152,25 @@
         </dialog>
 
         <!-- CUSTOM: LIST OF AFFECTATIONS FOR A WORKER -->
-        <div id="worker-affects-list-outer-container" class="table-list-outer-container">
-            <table id="worker-affects-list-inner-container" class="table-list-inner-container"
-            <?php 
-                if (!key_exists("worker-id", $_GET) || $_GET["worker-id"] == "" || intval($_GET["worker-id"]) <= 0)
-                    echo "hidden"; 
-            ?>>
-                <tr class="table-header-row">
-                    <th>Numéro d'affectation</th>
-                    <th>Ancien lieu</th>
-                    <th>Nouveau lieu</th>
-                    <th>Date d'affectation</th>
-                    <th>Date de prise de service</th>
-                </tr>
-                <?php 
-                include_once("../Controller/Worker/affectation_list.php");
-                ?>
-            </table>
-        </div>
+        <dialog id="affect-list-dialog-container">
+            <p onclick="CloseFormDialog('affect-list-dialog-container')" class="form-quit-button"></p>
+            <h3 id="affect-list-title"></h3>
+            <p id="scheduled-flag" hidden>false</p>
+            <div id="worker-affects-list-outer-container" class="table-list-outer-container">
+                <table id="worker-affects-list-inner-container" class="table-list-inner-container">
+                    <tr class="table-header-row">
+                        <th>Numéro d'affectation</th>
+                        <th>Ancien lieu</th>
+                        <th>Nouveau lieu</th>
+                        <th>Date d'affectation</th>
+                        <th>Date de prise de service</th>
+                    </tr>
+                    <?php 
+                    include_once("../Controller/Worker/affectation_list.php");
+                    ?>
+                </table>
+            </div>
+        </dialog>
 
         <!-- JAVASCRIPT SCRIPTS -->
         <script src="../Controller/main_handler.js"></script> 

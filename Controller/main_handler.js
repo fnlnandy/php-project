@@ -70,9 +70,9 @@ function RedirectToPage(element)
 /**
  * Displays a <dialog> element
  */
-function DisplayFormDialog()
+function DisplayFormDialog(formId = "form-dialog-container")
 {
-    var formDialog = document.getElementById("form-dialog-container");
+    var formDialog = document.getElementById(formId);
     formDialog.showModal();
     formDialog.style.display = "block";
     formDialog.style.opacity = 1;
@@ -81,9 +81,9 @@ function DisplayFormDialog()
 /**
  * Closes a <dialog> element
  */
-function CloseFormDialog()
+function CloseFormDialog(formId = "form-dialog-container")
 {
-    var formDialog = document.getElementById("form-dialog-container");
+    var formDialog = document.getElementById(formId);
     formDialog.style.opacity = 0;
     formDialog.addEventListener("transitionend", () => {
         formDialog.style.display = "none";

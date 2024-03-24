@@ -210,5 +210,21 @@ function HighlightCurrentWorker()
 
     if (workerIdValue != null) {
         UpdateDataTracker(workerIdValue, false);
+        DisplayFormDialog("affect-list-dialog-container")
     }
+}
+
+/**
+ * 
+ */
+function DisplayCurrentEmployeeAffectation()
+{
+    var id = document.getElementById("worker-id");
+    var url = new URL(window.location.href);
+    var workerIdValue = url.searchParams.get('worker-id');
+    var affectListTitle = document.getElementById("affect-list-title");
+
+    affectListTitle.innerText = "Liste des affectations de l'employé(e) N " + workerIdValue;
+    url.searchParams.set("worker-id", id.value);
+    location.replace(url.href);
 }

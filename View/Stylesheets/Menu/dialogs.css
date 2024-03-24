@@ -1,4 +1,5 @@
-#form-dialog-container {
+#form-dialog-container,
+#affect-list-dialog-container {
     opacity: 0;
     transition: opacity 0.3s;
     display: block;
