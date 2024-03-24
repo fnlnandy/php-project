@@ -1,10 +1,29 @@
 /**
+ * We trick the browser into thinking it needs to reload,
+ * since location.reload() only makes a GET request and sometimes
+ * the page's data isn't actually updated.
  * 
+ * This does absolutely nothing as it's literally directed to index.php
+ */
+function FakePostRequest()
+{
+    var fakeReq = new XMLHttpRequest();
+    var fakeData = { __trash_data_345243353348: null };
+    
+    fakeReq.open("POST", "../index.php");
+    fakeReq.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
+    fakeReq.send(JSON.stringify(fakeData));// We send the data in JSON Format
+}
+
+/**
+ * Reloads the current page with a timestamp, might 
+ * be deprecated if it shows that FakePostRequest() can
+ * handle the refreshing by itself
  */
 function ReloadPageWithTimeStamp()
 {
     var tsName = "tstamp";
-    var tsVal = (performance.now() % 1000).toFixed(3).toString();
+    var tsVal = (performance.now() % 1000).toFixed(8).toString();
     var currentUrl = window.location.href;
     var urlParams = new URLSearchParams(window.location.search);
     var updatedUrl = "";
@@ -13,6 +32,7 @@ function ReloadPageWithTimeStamp()
     updatedUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
 
     window.location.replace(updatedUrl);
+    FakePostRequest();
 }
 
 /**
@@ -21,6 +41,7 @@ function ReloadPageWithTimeStamp()
  * are able to use that response
  */
 function SendXMLHttpRequest(dataToSend, dest) {
+    ReloadPageWithTimeStamp();
     var req = new XMLHttpRequest();
 
     req.open("POST", dest);              // We prepare the destination file
@@ -29,6 +50,7 @@ function SendXMLHttpRequest(dataToSend, dest) {
         console.log(req.responseText);
         ReloadPageWithTimeStamp();
     };
+    req.onreadystatechange = () => { ReloadPageWithTimeStamp(); };
     req.send(JSON.stringify(dataToSend));// We send the data in JSON Format
     console.log("Before updating the URL.");
     ReloadPageWithTimeStamp();

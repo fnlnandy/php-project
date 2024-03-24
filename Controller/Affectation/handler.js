@@ -190,9 +190,8 @@ function SubmitForm()
         
         console.log(formData);
         SendXMLHttpRequest(formData, "../Controller/Affectation/form_submit.php");
+        ReloadPageWithTimeStamp();
     }
-
-    ReloadPageWithTimeStamp();
 }
 
 /**

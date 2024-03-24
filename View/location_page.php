@@ -55,9 +55,9 @@
             <!-- CRUD OPERATIONS BUTTONS -->
             <div id="crud-actions-movable" class="crud-actions-wrapper">
                 <span class="crud-actions-container">
-                    <button onclick="AddLocation()">Ajouter</button>
-                    <button onclick="EditLocation()">Modifier</button>
-                    <button onclick="RemoveLocation()">Supprimer</button>
+                    <button class="button-highlight-green" onclick="AddLocation()">Ajouter</button>
+                    <button class="button-highlight-blue" onclick="EditLocation()">Modifier</button>
+                    <button class="button-highlight-red" onclick="RemoveLocation()">Supprimer</button>
                 </span>
             </div>
         </main>

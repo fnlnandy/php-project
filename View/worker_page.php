@@ -105,11 +105,11 @@
         <!-- CRUD OPERATIONS BUTTONS -->
         <div id="crud-actions-movable" class="crud-actions-wrapper">
             <span class="crud-actions-container">
-                <button onclick="AddWorker()">Ajouter</button>
-                <button onclick="EditWorker()">Modifier</button>
-                <button onclick="RemoveWorker()">Supprimer</button>
+                <button class="button-highlight-green" onclick="AddWorker()">Ajouter</button>
+                <button class="button-highlight-blue" onclick="EditWorker()">Modifier</button>
+                <button class="button-highlight-red" onclick="RemoveWorker()">Supprimer</button>
                 <form id="worker-affects-list-form" method="get">
-                    <input type="submit" value="Afficher les affectations">
+                    <input class="button-highlight-blue" type="submit" value="Afficher les affectations">
                     <input type="number" id="worker-id" name="worker-id" readonly hidden>
                 </form>
             </span>
