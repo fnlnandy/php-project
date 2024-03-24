@@ -134,6 +134,7 @@ function RemoveWorker()
         return;
     }
     SendXMLHttpRequest(gWorkerDataTracker, "../Controller/Worker/remove.php");
+    ReloadPageWithTimeStamp();
 }
 
 /*
@@ -167,6 +168,7 @@ function SubmitForm()
     };
 
     SendXMLHttpRequest(dataToSend, "../Controller/Worker/form_submit.php");
+    ReloadPageWithTimeStamp();
 }
 
 /**

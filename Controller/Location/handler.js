@@ -96,6 +96,7 @@ function RemoveLocation()
     }
 
     SendXMLHttpRequest(gLocationDataTracker, "../Controller/Location/remove.php");
+    ReloadPageWithTimeStamp();
 }
 
 /*
@@ -119,4 +120,5 @@ function SubmitForm()
     };
 
     SendXMLHttpRequest(dataToSend, "../Controller/Location/form_submit.php");
+    ReloadPageWithTimeStamp();
 }
