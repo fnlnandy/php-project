@@ -66,16 +66,14 @@
                     ?>>
                     </div>
                     <div class="search-bar-field-wrapper">
-                    <?php
-                        // Reloading the value searched on refresh
+                    <input class="search-bar-component" type="search" id="worker-search-bar" name="worker-search-bar" placeholder="Le nom et/ou le(s) prénom(s)..." pattern="[a-zA-Z]+" value=
+                    <?php 
                         $value = "";
 
                         if (key_exists('worker-search-bar', $_GET))
                             $value = str_replace('+', ' ', $_GET['worker-search-bar']);
-
-                        $searchBar = "<input class=\"search-bar-component\" type=\"search\" id=\"worker-search-bar\" name=\"worker-search-bar\" placeholder=\"Nom et/ou le(s) Prénom(s)...\" pattern=\"[a-zA-Z ]+\" value=\"{$value}\">";
-                        echo $searchBar;
-                    ?>
+                        echo "\"{$value}\"";
+                    ?>>
                     </div>    
                     <input class="button-highlight-blue" type="submit" value="Rechercher parmis les employés">
                 </form>
