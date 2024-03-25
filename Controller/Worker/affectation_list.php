@@ -45,5 +45,8 @@ class AffectationList {
     }
 }
 
+/**
+ * This file's main and only callback
+ */
 AffectationList::PrintAffectations();
 ?>

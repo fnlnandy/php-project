@@ -2,7 +2,14 @@
 include_once("../../Models/queries.php");
 include_once("../../Models/table_helpers.php");
 
+/**
+ * Container with a function called on removal of a worker
+ */
 class WorkerRemove {
+    /**
+     * Handles removing a worker from the database, since affectations
+     * also depend on the employee's number: we remove them as well.
+     */
     public static function RemoveWorkerFromEmpAndAffect()
     {
         $dataReceived = XMLHttpRequest::DecodeJson();
@@ -20,5 +27,8 @@ class WorkerRemove {
     }
 }
 
+/**
+ * This file's main and only callback
+ */
 WorkerRemove::RemoveWorkerFromEmpAndAffect();
 ?>

@@ -107,7 +107,7 @@ class Test {
     }
 
     /**
-     * 
+     * Test for the new ID generation of a worker
      */
     public static function Test_Worker_GenerateNewID($data)
     {
@@ -115,7 +115,7 @@ class Test {
     }
 
     /**
-     * 
+     * Test for the insertion or replacement of a worker
      */
     public static function Test_Worker_InsertReplace($data)
     {

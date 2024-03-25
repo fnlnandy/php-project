@@ -174,6 +174,11 @@ function UpdateFormMatchingSelects(idIsBase, idName, infoName)
     }
 }
 
+/**
+ * Formats a d/m/Y year date into a
+ * Y-m-d date, is useful for filling form data that
+ * depends on dates
+ */
 function FormatDMYDate(date)
 {
     var parts = date.split('/');
