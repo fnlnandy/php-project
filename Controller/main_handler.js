@@ -31,8 +31,8 @@ function ReloadPageWithTimeStamp()
     urlParams.set(tsName, tsVal);
     updatedUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
 
-    window.location.replace(updatedUrl);
     FakePostRequest();
+    window.location.replace(updatedUrl);
 }
 
 /**

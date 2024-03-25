@@ -47,11 +47,14 @@ Source: https://uiverse.io/andrew-demchenk0/silent-duck-2
     background: linear-gradient(90deg, #fff8f79a, #f0f7dfa2);
     border-radius: 100%;
     margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.main-menu-card-img svg {
-    height: 150px;
-    transform: rotate(-45deg) translate(15px, 0px);
+.main-menu-card-img img {
+    width: 100px;
+    height: 100px;
 }
 
 .main-menu-card-title {

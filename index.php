@@ -29,7 +29,7 @@
                 <div class="main-menu-card-wrapper">
                     <div class="main-menu-card-back"></div>
                 </div>
-                <div class="main-menu-card-img"></div>
+                <div class="main-menu-card-img"><img src="View/Ressources/list-affect-icon.svg"></div>
                 <div class="main-menu-card-title">Affectations</div>
                 <div class="main-menu-card-description">Ajouter, modifier et supprimer les affectations de chaques employés</div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="main-menu-card-wrapper">
                     <div class="main-menu-card-back"></div>
                 </div>
-                <div class="main-menu-card-img"></div>
+                <div class="main-menu-card-img"><img src="View/Ressources/place-icon.svg"></div>
                 <div class="main-menu-card-title">Lieux</div>
                 <div class="main-menu-card-description">Ajouter, modifier et supprimer les lieux où les employés sont affectés</div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="main-menu-card-wrapper">
                     <div class="main-menu-card-back"></div>
                 </div>
-                <div class="main-menu-card-img"></div>
+                <div class="main-menu-card-img"><img src="View/Ressources/people-icon.svg"></div>
                 <div class="main-menu-card-title">Employés</div>
                 <div class="main-menu-card-description">Ajouter, modifier et supprimer les affectations de chaques employés</div>
             </div>
