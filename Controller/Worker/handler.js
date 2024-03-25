@@ -221,7 +221,8 @@ function HighlightCurrentWorker()
 }
 
 /**
- * 
+ * Handles showing the dialog to display
+ * the current selected employee's affectations
  */
 function DisplayCurrentEmployeeAffectation()
 {
@@ -238,6 +239,9 @@ function DisplayCurrentEmployeeAffectation()
     location.replace(url.href);
 }
 
+/**
+ * Closes the dialog for the affectation list
+ */
 function UnscheduleListing()
 {
     var url = new URL(window.location.href);

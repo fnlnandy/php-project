@@ -216,6 +216,10 @@ function TryGeneratePDF()
     DisplayFormDialog("pdf-file-dialog");
 }
 
+/**
+ * Handles submitting the form for the PDF
+ * file
+ */
 function SubmitPDFForm()
 {
     var pdfName = document.getElementById("pdf-name-field");
