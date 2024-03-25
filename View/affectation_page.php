@@ -9,7 +9,7 @@
         <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
         <meta http-equiv="Expires" content="0">
         <meta http-equiv="Pragma" content="no-cache">
-        <link rel="icon" href="" type="image/x-icon">
+        <link rel="icon" href="Ressources/list-affect-icon.svg" type="image/x-icon">
         <link rel="stylesheet" href="Stylesheets/main.css">
     </head>
     <body>
