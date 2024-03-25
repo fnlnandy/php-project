@@ -29,6 +29,10 @@ input[type="date"].search-bar-component {
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
 
+.search-bar-outer-container {
+    margin-top: 20px;
+}
+
 .search-bar-outer-container label {
     font-size: 15px;
     font-weight: 500px;
