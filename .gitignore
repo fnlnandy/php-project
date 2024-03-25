@@ -3,4 +3,7 @@ Dependencies
 PDFs
 *.patch
 *.diff
-Ressources/
+View/Ressources/*.*
+!View/Ressources/list-affect-icon.svg
+!View/Ressources/place-icon.svg
+!View/Ressources/people-icon.svg
