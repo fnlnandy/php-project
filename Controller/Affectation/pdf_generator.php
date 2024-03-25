@@ -104,7 +104,7 @@ class AffectPDFGen {
         $newLocProvince    = $locationsRow['newLoc']['Province'];
 
         try {
-            $pdfTitle       = "Arrêté N {$numAffect} du {$attestationDate}";
+            $pdfTitle       = "Arrêté N-{$numAffect} du {$attestationDate}";
             $pdfContent = "{$employeeCivility} {$employeeName} {$employeeFirstName}, qui occupe le poste : {$employeeWork}".
                         " à {$oldLocDesign} ({$oldLocProvince}), est affecté(e) à {$newLocDesign} ({$newLocProvince})".
                         " pour compter de la date de prise de service : {$affectPSDate}.".
