@@ -30,7 +30,7 @@
 * Ajuster le formulaire et la table d'Affectation
     - Remplacer IDs par texte dans le formulaire..[X]
     - Remplacer IDs par texte dans la table.......[X]
-* Faire en sorte que les formulaires soient considérés comme envoyés après AJAX...[ ]
+* Faire en sorte que les formulaires soient considérés comme envoyés après AJAX...[X]
 * Mettre les boutons d'actions en haut à droite pour ne pas avoir à les retrouver à chaque fois...[X]
 * ^ Même chose pour la barre de navigation...[X]
 * Mettre à jour le lieu d'un Employé quand il est affecté...[X]
@@ -41,7 +41,7 @@
     - Fusionner les fichiers ?..........................[X]
 * Fusionner les fichiers répétés vers des 'headers'.....[X]
 * Créer des namespaces pour les fichiers handler.js....[ ]
-* Contrôler l'entrée des dates pour les affectations...[ ]
+* Contrôler l'entrée des dates pour les affectations...[X]
 * Après avoir utilisé la barre de recherche, les valeurs cherchées doivent être préservées...[X]
 * ^ Même chose pour les dates d'affectation...[X]
 * Utiliser UpdateDataTracker partout........[X]
