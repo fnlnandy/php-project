@@ -5,13 +5,17 @@
  * 
  * This does absolutely nothing as it's literally directed to index.php
  */
-function FakePostRequest()
+function FakePostRequest(url)
 {
     var fakeReq = new XMLHttpRequest();
     var fakeData = { __trash_data_345243353348: null };
     
     fakeReq.open("POST", "../index.php");
     fakeReq.setRequestHeader("Content-type", "application/json") // We set the header for the data we'll send
+    fakeReq.onreadystatechange = () => {
+        window.location.replace(url);
+        window.location.reload();
+    }
     fakeReq.send(JSON.stringify(fakeData));// We send the data in JSON Format
 }
 
@@ -31,8 +35,8 @@ function ReloadPageWithTimeStamp()
     urlParams.set(tsName, tsVal);
     updatedUrl = currentUrl.split("?")[0] + "?" + urlParams.toString();
 
-    FakePostRequest();
-    window.location.replace(updatedUrl);
+    FakePostRequest(updatedUrl);
+    // window.location.replace(updatedUrl);
 }
 
 /**
