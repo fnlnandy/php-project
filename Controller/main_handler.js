@@ -190,3 +190,10 @@ function FormatDMYDate(date)
 
     return valid;
 }
+/**
+ * Waits for ms milliseconds
+ */
+function Sleep(ms)
+{
+    return new Promise(resolve => setTimeout(resolve, ms));
+}

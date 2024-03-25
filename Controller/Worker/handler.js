@@ -242,11 +242,12 @@ function DisplayCurrentEmployeeAffectation()
 /**
  * Closes the dialog for the affectation list
  */
-function UnscheduleListing()
+async function UnscheduleListing()
 {
     var url = new URL(window.location.href);
 
     CloseFormDialog("affect-list-dialog-container");
+    await Sleep(400);
     url.searchParams.set("list-scheduled", "false");
     location.replace(url.href);
 }
