@@ -15,7 +15,8 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, rgb(65, 65, 65), rgb(114, 114, 114));
+    background: url("../Ressources/black-fluid-bg.jpg");
+    background-size: cover;
 }
 
 html {
