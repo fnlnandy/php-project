@@ -120,7 +120,7 @@
                                 <label class="form-field-label">Date de prise de service: <input class="form-field-value" id="form-affectation-date-ps" name="form-affectation-date-ps" type="date" required><br></label>
                             </div>
                             <div class="form-field-container">
-                                <label class="form-field-label">Notifier l'employé par e-mail<input class="flat-checkbox" id="form-notify-employee" name="form-notify-employee" type="checkbox" checked></label>
+                                <label class="form-field-label" for="form-notify-employee">Notifier l'employé par e-mail:</label><input class="flat-checkbox" id="form-notify-employee" name="form-notify-employee" type="checkbox" checked>
                             </div>
                             <input class="button-highlight-green" type="submit" value="Confirmer">
                             <input class="button-highlight-red" type="reset" value="Réinitaliser">
