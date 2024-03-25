@@ -30,7 +30,7 @@ input[type="checkbox"].flat-checkbox {
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	-o-border-radius: 100px;
- 	background-color: #8d8d8d;
+ 	background-color: #383838;
 	backface-visibility: hidden;
  	transition: all 0.3s ease; 
  	-webkit-transition: all 0.3s ease;
@@ -39,7 +39,7 @@ input[type="checkbox"].flat-checkbox {
 }
 
 input[type="checkbox"].flat-checkbox:checked {
-	background-color: #6FFDAF;
+	background-color: #009b40;
 }
 
 input[type="checkbox"].flat-checkbox:after {
@@ -54,11 +54,11 @@ input[type="checkbox"].flat-checkbox:after {
  	top: -3px;
   	left: -2px;
   	position: absolute;
-  	background: #fff; 
+  	background: #b3b3b3; 
 	transition: all .25s ease;
 }
 input[type="checkbox"].flat-checkbox:checked:after {
 	left: 16px;
   	position: absolute;
-  	background: #fff;
+  	background: #b3b3b3;
 }
