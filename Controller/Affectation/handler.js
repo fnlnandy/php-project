@@ -162,6 +162,8 @@ function SubmitForm()
     var dateAffectField       = document.getElementById("form-affectation-date-affect");
     var datePriseServiceField = document.getElementById("form-affectation-date-ps");
     var notifyEmployeeField   = document.getElementById("form-notify-employee");
+    var affectDateObj         = new Date(dateAffectField.value);
+    var serviceDateObj        = new Date(datePriseServiceField.value);
 
     // If some value in the form is empty, then we refuse to submit it
     if (numEmpField?.innerText == "" || oldLocField?.innerText == "" ||
@@ -185,6 +187,11 @@ function SubmitForm()
         // at all
         if (formData.ancienLieu == formData.nouveauLieu) {
             alert("L'ancien lieu et le nouveau lieu ne peuvent pas être identiques.");
+            return;
+        }
+
+        if (affectDateObj > serviceDateObj) {
+            alert("L'employé ne peut pas prendre service avant son affectation.");
             return;
         }
         
